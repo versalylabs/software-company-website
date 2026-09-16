@@ -1,0 +1,73 @@
+{
+  "media": [
+    {
+      "id": "med-hotelflow-dashboard",
+      "filename": "hotelflow-dashboard.svg",
+      "originalName": "HotelFlow Operations Dashboard.svg",
+      "mimeType": "image/svg+xml",
+      "size": 4096,
+      "width": 1200,
+      "height": 750,
+      "url": "/assets/uploads/hotelflow-dashboard.svg",
+      "title": "HotelFlow Main PMS Dashboard",
+      "alt": "HotelFlow PMS Operations Dashboard showing reservations, occupancy, and room status",
+      "caption": "Live multi-room reservation timeline with drag-and-drop allocation and housekeeping status.",
+      "tags": [
+        "dashboard",
+        "hospitality",
+        "hotelflow",
+        "mockup"
+      ],
+      "uploadedAt": "2026-09-10T10:00:00.000Z",
+      "linkedProductIds": [
+        "hotel-management-system"
+      ]
+    },
+    {
+      "id": "med-clinicos-records",
+      "filename": "clinicos-records.svg",
+      "originalName": "ClinicOS Patient Charting.svg",
+      "mimeType": "image/svg+xml",
+      "size": 4200,
+      "width": 1200,
+      "height": 750,
+      "url": "/assets/uploads/clinicos-records.svg",
+      "title": "ClinicOS Clinical Workflow & EHR",
+      "alt": "ClinicOS digital patient charting and appointment scheduling interface",
+      "caption": "Intuitive outpatient encounter charting, lab integration, and appointment reminders.",
+      "tags": [
+        "healthcare",
+        "clinicos",
+        "records",
+        "mockup"
+      ],
+      "uploadedAt": "2026-09-10T11:30:00.000Z",
+      "linkedProductIds": [
+        "healthcare-pro"
+      ]
+    },
+    {
+      "id": "med-financeflow-ledger",
+      "filename": "financeflow-ledger.svg",
+      "originalName": "FinanceFlow Multi-Entity Analytics.svg",
+      "mimeType": "image/svg+xml",
+      "size": 3950,
+      "width": 1200,
+      "height": 750,
+      "url": "/assets/uploads/financeflow-ledger.svg",
+      "title": "FinanceFlow Real-Time Financial Ledger",
+      "alt": "FinanceFlow executive cash flow forecasting and multi-currency consolidation",
+      "caption": "Automated ledger reconciliation with real-time multi-currency cash flow insights.",
+      "tags": [
+        "finance",
+        "financeflow",
+        "analytics",
+        "mockup"
+      ],
+      "uploadedAt": "2026-09-11T09:15:00.000Z",
+      "linkedProductIds": [
+        "financeflow"
+      ]
+    }
+  ]
+}

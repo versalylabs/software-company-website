@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Demo — softify | Personalized Software Walkthrough</title>
+    <meta name="description" content="Schedule a focused software walkthrough of softify's in-development business systems tailored to your industry workflows.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://softify.example.com/request-demo.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://softify.example.com/request-demo.html">
+    <meta property="og:title" content="Request a Demo — softify | Personalized Software Walkthrough">
+    <meta property="og:description" content="Schedule a focused software walkthrough of softify's in-development business systems tailored to your industry workflows.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:site_name" content="softify">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://softify.example.com/request-demo.html">
+    <meta name="twitter:title" content="Request a Demo — softify | Personalized Software Walkthrough">
+    <meta name="twitter:description" content="Schedule a focused software walkthrough of softify's in-development business systems tailored to your industry workflows.">
+    <meta name="twitter:image" content="https://softify.example.com/assets/images/og-preview.svg">
+
+    <!-- Favicon & Brand Meta -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Request a Demo — softify",
+      "url": "https://softify.example.com/request-demo.html",
+      "description": "Schedule a personalized product walkthrough and demo session with softify specialists.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "softify",
+        "url": "https://softify.example.com/",
+        "logo": "https://softify.example.com/assets/icons/favicon.svg"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <style>
+        body.demo-page .navbar { display: none !important; }
+        body.demo-page { background: #eef2ff; }
+
+        /* Main Section */
+        .dm-main {
+            padding: 5rem 2rem 6rem;
+            min-height: calc(100vh - 64px);
+        }
+        .dm-main__inner {
+            max-width: 76rem;
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        /* Left Copy */
+        .dm-copy__tag {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #4f46e5;
+            margin-bottom: 0.85rem;
+        }
+        .dm-copy__title {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            line-height: 1.12;
+            margin: 0 0 1rem;
+        }
+        .dm-copy__sub {
+            font-size: 0.96rem;
+            line-height: 1.7;
+            color: #475569;
+            margin: 0 0 2rem;
+        }
+
+        .dm-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .dm-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            font-size: 0.92rem;
+            color: #1e293b;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        .dm-benefits li .dm-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .dm-benefits li .dm-check svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .dm-reassurance-box {
+            background: #ffffff;
+            border: 1px solid #e8edf3;
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+        }
+        .dm-reassurance-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: #eef2ff;
+            color: #4f46e5;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+        .dm-reassurance-box h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 0.3rem;
+        }
+        .dm-reassurance-box p {
+            font-size: 0.82rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 960px) {
+            .dm-main__inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .dm-main {
+                padding: 3.5rem 1.25rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body class="demo-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="request-demo.html" class="hn-cta">Request a Demo →</a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="dm-main">
+        <div class="dm-main__inner">
+
+            <!-- Left: Overview & Trust Copy -->
+            <div class="dm-copy motion-fade-up">
+                <span class="dm-copy__tag">REQUEST A DEMO OR INFORMATION</span>
+                <h1 class="dm-copy__title">See how softify can fit your workflows.</h1>
+                <p class="dm-copy__sub">
+                    Tell us what you are looking for and our team will prepare a structured walkthrough tailored to your industry. We will discuss your current operational challenges and show you how our systems are being designed to address them.
+                </p>
+
+                <ul class="dm-benefits motion-stagger">
+                    <li>
+                        <span class="dm-check" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span><strong>Tailored to your industry:</strong> We focus specifically on your operational environment.</span>
+                    </li>
+                    <li>
+                        <span class="dm-check" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span><strong>Direct specialist discussion:</strong> Speak with people who understand software and industry workflows.</span>
+                    </li>
+                    <li>
+                        <span class="dm-check" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span><strong>Understand planned capabilities:</strong> Walk through product roadmap and feature architecture.</span>
+                    </li>
+                    <li>
+                        <span class="dm-check" aria-hidden="true">
+                            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span><strong>No commitment required:</strong> An exploratory session with no sales pressure.</span>
+                    </li>
+                </ul>
+
+                <div class="dm-reassurance-box">
+                    <div class="dm-reassurance-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M12 2L3 7v8c0 4.4 3.9 8.5 9 9.9 5.1-1.4 9-5.5 9-9.9V7l-9-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h4>Confidential and focused</h4>
+                        <p>We review every enquiry carefully. Your contact details are kept strictly private and used solely to prepare and schedule your demo session.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Interactive Lead Generation Form -->
+            <div class="form-card motion-scale-up">
+                
+                <!-- Product pre-fill banner -->
+                <div id="demo-product-banner" class="form-product-banner" style="display:none;">
+                    <div class="form-product-banner__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        Enquiring about: <strong id="demo-banner-product-name">Product</strong>
+                    </div>
+                </div>
+
+                <div class="form-card__header">
+                    <h2 class="form-card__title">Request a Demo or Consultation</h2>
+                    <p class="form-card__subtitle">Fill in your details below and we will get in touch to coordinate a suitable time.</p>
+                    <span class="form-required-legend"><span class="form-req">*</span> Required fields</span>
+                </div>
+
+                <!-- Success Confirmation State -->
+                <div id="demo-success" class="form-success-state" role="status" aria-live="polite">
+                    <div class="form-success-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="34" height="34" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="form-success-title" id="demo-success-title">Thank you!</h3>
+                    <p class="form-success-desc" id="demo-success-msg">
+                        Your request has been received. Our team will review your enquiry and reach out to coordinate your walkthrough.
+                    </p>
+
+                    <div class="form-success-recap" id="demo-success-recap"></div>
+
+                    <div class="form-success-actions">
+                        <a href="products.html" class="hh-btn-primary" style="font-size:0.88rem;padding:0.75rem 1.5rem;">Explore All Products &rarr;</a>
+                        <button type="button" class="form-btn-secondary" id="demo-reset-btn">Submit Another Request</button>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form id="demo-form" novalidate aria-label="Demo request form">
+                    
+                    <!-- Server Alert Banner -->
+                    <div id="demo-server-error" class="form-server-error" role="alert">
+                        <svg class="form-server-error__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        <div class="form-server-error__text">
+                            <strong>Submission Issue</strong>
+                            <span id="demo-server-error-msg">Unable to process your request at this time. Please review your details and try again.</span>
+                        </div>
+                    </div>
+
+                    <!-- Security Honeypot (hidden from real users, autofill protected) -->
+                    <input type="text" name="_hp_check" id="demo-hp" class="form-hp" tabindex="-1" autocomplete="new-password" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+                    <input type="hidden" name="_ts" id="demo-ts" value="">
+
+                    <!-- Row 1: Name & Email -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="demo-name" class="form-label">
+                                Full Name <span class="form-req" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text" id="demo-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" autocomplete="name" required aria-required="true" aria-describedby="demo-name-error">
+                            <span class="form-error-msg" id="demo-name-error" role="alert">Please enter your full name (at least 2 characters).</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-email" class="form-label">
+                                Work Email <span class="form-req" aria-hidden="true">*</span>
+                            </label>
+                            <input type="email" id="demo-email" name="email" class="form-input" placeholder="alex@company.com" autocomplete="email" required aria-required="true" aria-describedby="demo-email-error">
+                            <span class="form-error-msg" id="demo-email-error" role="alert">Please enter a valid work email address.</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Company & Phone -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="demo-company" class="form-label">
+                                Company Name <span class="form-req" aria-hidden="true">*</span>
+                            </label>
+                            <input type="text" id="demo-company" name="company" class="form-input" placeholder="e.g. Acme Health Group" autocomplete="organization" required aria-required="true" aria-describedby="demo-company-error">
+                            <span class="form-error-msg" id="demo-company-error" role="alert">Please enter your company or organization name.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-phone" class="form-label">
+                                Phone Number <span class="form-opt">(optional)</span>
+                            </label>
+                            <input type="tel" id="demo-phone" name="phone" class="form-input" placeholder="+1 (555) 000-0000" autocomplete="tel" aria-describedby="demo-phone-error">
+                            <span class="form-error-msg" id="demo-phone-error" role="alert">Please enter a valid phone number.</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Product of Interest & Industry -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="demo-product" class="form-label">
+                                Product of Interest <span class="form-req" aria-hidden="true">*</span>
+                            </label>
+                            <div class="form-select-wrap">
+                                <select id="demo-product" name="product" class="form-select" required aria-required="true" aria-describedby="demo-product-error">
+                                    <option value="">Select a product...</option>
+                                    <option value="hotel-management-system">HotelFlow (Hospitality &amp; Lodging)</option>
+                                    <option value="healthcare-pro">ClinicOS (Healthcare &amp; Clinics)</option>
+                                    <option value="financeflow">FinanceFlow (Finance &amp; Reporting)</option>
+                                    <option value="makersuite">MakerSuite (Manufacturing &amp; Ops)</option>
+                                    <option value="retailoptix">RetailOptix (Retail &amp; Unified Commerce)</option>
+                                    <option value="all-suite">Multiple Products / Full Suite</option>
+                                    <option value="other">Custom Solution / Other</option>
+                                </select>
+                            </div>
+                            <span class="form-error-msg" id="demo-product-error" role="alert">Please select the product you are interested in.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="demo-industry" class="form-label">
+                                Company Industry <span class="form-req" aria-hidden="true">*</span>
+                            </label>
+                            <div class="form-select-wrap">
+                                <select id="demo-industry" name="industry" class="form-select" required aria-required="true" aria-describedby="demo-industry-error">
+                                    <option value="">Select your industry...</option>
+                                    <option value="hospitality">Hospitality &amp; Tourism</option>
+                                    <option value="healthcare">Healthcare &amp; Medical</option>
+                                    <option value="finance">Financial Services &amp; Banking</option>
+                                    <option value="manufacturing">Manufacturing &amp; Industrial</option>
+                                    <option value="retail">Retail &amp; E-commerce</option>
+                                    <option value="technology">Technology &amp; Software</option>
+                                    <option value="services">Professional Services</option>
+                                    <option value="other">Other Industry</option>
+                                </select>
+                            </div>
+                            <span class="form-error-msg" id="demo-industry-error" role="alert">Please select your industry.</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4: What they are looking for -->
+                    <div class="form-group">
+                        <label for="demo-goal" class="form-label">
+                            What are you looking for? <span class="form-req" aria-hidden="true">*</span>
+                        </label>
+                        <div class="form-select-wrap">
+                            <select id="demo-goal" name="goal" class="form-select" required aria-required="true" aria-describedby="demo-goal-error">
+                                <option value="">Select primary goal...</option>
+                                <option value="replace">Replacing existing legacy software</option>
+                                <option value="evaluate">Evaluating software currently in development</option>
+                                <option value="custom">Looking for custom software consultation</option>
+                                <option value="partner">Exploring a commercial or integration partnership</option>
+                                <option value="explore">General exploration of capabilities</option>
+                            </select>
+                        </div>
+                        <span class="form-error-msg" id="demo-goal-error" role="alert">Please select what you are looking to achieve.</span>
+                    </div>
+
+                    <!-- Row 5: Additional Message -->
+                    <div class="form-group">
+                        <label for="demo-message" class="form-label">
+                            Additional Details <span class="form-opt">(optional)</span>
+                        </label>
+                        <textarea id="demo-message" name="message" class="form-textarea" placeholder="Tell us about your team size, key operational bottlenecks, or specific workflows you'd like to improve..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="demo-submit-btn" class="form-submit-btn">
+                        <span class="form-spinner" aria-hidden="true"></span>
+                        <span class="form-submit-text">Request Your Demo &rarr;</span>
+                    </button>
+
+                    <div class="form-trust-note">
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span>No commitment required. We'll review your enquiry and get back to you.</span>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <!-- Newsletter Banner -->
+            <div class="footer-newsletter">
+                <div class="footer-newsletter__info">
+                    <span class="footer-newsletter__eyebrow">Stay Connected</span>
+                    <h3 class="footer-newsletter__heading">Subscribe to softify Product Updates</h3>
+                    <p class="footer-newsletter__desc">Get quarterly insights on modern enterprise workflows, new feature releases, and engineering updates.</p>
+                </div>
+                <form class="footer-newsletter__form" id="footer-newsletter-form">
+                    <div class="footer-newsletter__input-group">
+                        <input type="email" class="footer-newsletter__input" id="footer-email" placeholder="Enter your work email..." required aria-label="Work email address">
+                        <button type="submit" class="footer-newsletter__btn" id="footer-subscribe-btn">
+                            <span>Subscribe</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="footer-newsletter__feedback" id="footer-newsletter-success">✓ Thank you for subscribing! Check your inbox soon.</div>
+                </form>
+            </div>
+
+            <!-- Main Navigation Grid -->
+            <div class="footer-main-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-link">
+                        <div class="footer-brand-logo">S</div>
+                        <span class="footer-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-tagline">Practical, high-performance business software built around real workflows and industry-specific operations.</p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.5 2.48 2.5zM0 8h5v16H0zm7 0h4.8v2.05h.07c.67-1.28 2.3-2.65 4.72-2.65 5.05 0 5.98 3.32 5.98 7.62V24h-5v-8.5c0-2.04-.03-4.67-2.85-4.67-2.85 0-3.28 2.22-3.28 4.5V24H7z"/></svg></a>
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 0 9.032H12.6L6.77 19.5H3.326l6.98-8.02L3.12 2.25H6.5l6.6 9.027L19.02 2.25Zm-2.67 15.29h.01-5.05L9.2 15.5l-2.5-2.85V4.75l5.05 6.15 2.65-6.15h3.55l-4.2 5.95 3.96 7.45Z"/></svg></a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.802 8.205 11.385.6.113.82-.26.82-.58 0-.29-.01-1.14-.017-2.04-3.338.726-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.094-.745.084-.73.084-.73 1.21.086 1.846 1.246 1.846 1.246 1.07 1.835 2.81 1.312 3.497.999.108-.775.417-1.312.764-1.61-2.665-.304-5.467-1.334-5.467-5.934 0-1.31.47-2.38 1.24-3.22-.124-.304-.535-1.527.117-3.182 0 0 1.008-.323 3.3 1.23.956-.266 1.98-.399 3-.404 1.013.005 2.037.138 3 .404 2.29-1.553 3.296-1.23 3.296-1.23.653 1.655.242 2.878.118 3.182.77.84 1.237 1.91 1.237 3.22 0 4.61-2.807 5.622-5.478 5.921.43.37.813 1.104.813 2.224 0 1.606-.015 2.898-.015 3.29-0.005.322.21.702.825.58A12.002 12.002 0 0 0 24 12.286c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 1: Products -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Products</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html" class="footer-nav-link">All Products</a></li>
+                        <li><a href="product.html?id=hotel-management-system" class="footer-nav-link">HotelFlow <span class="footer-badge">Hospitality</span></a></li>
+                        <li><a href="product.html?id=healthcare-pro" class="footer-nav-link">ClinicOS <span class="footer-badge">Health</span></a></li>
+                        <li><a href="product.html?id=financeflow" class="footer-nav-link">FinanceFlow <span class="footer-badge">Finance</span></a></li>
+                        <li><a href="product.html?id=makersuite" class="footer-nav-link">MakerSuite <span class="footer-badge">Mfg</span></a></li>
+                        <li><a href="product.html?id=retailoptix" class="footer-nav-link">RetailOptix <span class="footer-badge">Retail</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Solutions -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="products.html?filter=manufacturing" class="footer-nav-link">Supply & Inventory</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">FAQ</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                        <li><a href="request-demo.html" class="footer-nav-link">Request Demo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Support & Admin -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support & Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">API & Developer Docs</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">System Reliability</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('demo-form');
+            var success = document.getElementById('demo-success');
+            var submitBtn = document.getElementById('demo-submit-btn');
+            var submitText = submitBtn ? submitBtn.querySelector('.form-submit-text') : null;
+            var resetBtn = document.getElementById('demo-reset-btn');
+            var serverErrorBanner = document.getElementById('demo-server-error');
+            var serverErrorMsg = document.getElementById('demo-server-error-msg');
+            var tsField = document.getElementById('demo-ts');
+
+            if (!form || !success) return;
+
+            // Set load timestamp for bot protection
+            if (tsField) tsField.value = Date.now().toString();
+
+            // Track form interaction (funnel: Form Started)
+            form.addEventListener('focusin', function () {
+                if (window.softifyAnalytics) {
+                    var prodSelect = document.getElementById('demo-product');
+                    var currentProd = prodSelect ? prodSelect.value : '';
+                    softifyAnalytics.trackFormStarted('demo_request', currentProd);
+                }
+            });
+
+            var productNames = {
+                'hotel-management-system': 'HotelFlow',
+                'healthcare-pro': 'ClinicOS',
+                'financeflow': 'FinanceFlow',
+                'makersuite': 'MakerSuite',
+                'retailoptix': 'RetailOptix',
+                'all-suite': 'Full Product Suite',
+                'other': 'Custom Solution'
+            };
+
+            var productSelect = document.getElementById('demo-product');
+            var banner = document.getElementById('demo-product-banner');
+            var bannerName = document.getElementById('demo-banner-product-name');
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var preSelectedProduct = urlParams.get('product');
+            var preSelectedGoal = urlParams.get('goal');
+
+            if (preSelectedProduct && productSelect) {
+                if (Array.from(productSelect.options).some(function(o) { return o.value === preSelectedProduct; })) {
+                    productSelect.value = preSelectedProduct;
+                    if (banner && bannerName && productNames[preSelectedProduct]) {
+                        bannerName.textContent = productNames[preSelectedProduct];
+                        banner.style.display = 'flex';
+                    }
+                }
+            }
+
+            var goalSelect = document.getElementById('demo-goal');
+            if (preSelectedGoal && goalSelect) {
+                if (Array.from(goalSelect.options).some(function(o) { return o.value === preSelectedGoal; })) {
+                    goalSelect.value = preSelectedGoal;
+                }
+            }
+
+            var fields = {
+                name: {
+                    input: document.getElementById('demo-name'),
+                    error: document.getElementById('demo-name-error'),
+                    validate: function(v) { return v.trim().length >= 2; }
+                },
+                email: {
+                    input: document.getElementById('demo-email'),
+                    error: document.getElementById('demo-email-error'),
+                    validate: function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+                },
+                company: {
+                    input: document.getElementById('demo-company'),
+                    error: document.getElementById('demo-company-error'),
+                    validate: function(v) { return v.trim().length >= 2; }
+                },
+                phone: {
+                    input: document.getElementById('demo-phone'),
+                    error: document.getElementById('demo-phone-error'),
+                    validate: function(v) {
+                        if (!v.trim()) return true;
+                        return /^[\d\s()+.-]{6,25}$/.test(v.trim());
+                    }
+                },
+                product: {
+                    input: document.getElementById('demo-product'),
+                    error: document.getElementById('demo-product-error'),
+                    validate: function(v) { return v.trim().length > 0; }
+                },
+                industry: {
+                    input: document.getElementById('demo-industry'),
+                    error: document.getElementById('demo-industry-error'),
+                    validate: function(v) { return v.trim().length > 0; }
+                },
+                goal: {
+                    input: document.getElementById('demo-goal'),
+                    error: document.getElementById('demo-goal-error'),
+                    validate: function(v) { return v.trim().length > 0; }
+                }
+            };
+
+            function showError(f) {
+                f.input.classList.add('is-invalid');
+                f.error.classList.add('is-visible');
+                f.input.setAttribute('aria-invalid', 'true');
+            }
+
+            function clearError(f) {
+                f.input.classList.remove('is-invalid');
+                f.error.classList.remove('is-visible');
+                f.input.removeAttribute('aria-invalid');
+            }
+
+            Object.keys(fields).forEach(function(k) {
+                var f = fields[k];
+                if (!f.input) return;
+
+                f.input.addEventListener('blur', function() {
+                    if (f.input.value.trim() || k === 'product' || k === 'industry' || k === 'goal') {
+                        if (!f.validate(f.input.value)) showError(f);
+                        else clearError(f);
+                    }
+                });
+
+                f.input.addEventListener('input', function() {
+                    if (f.input.classList.contains('is-invalid') && f.validate(f.input.value)) {
+                        clearError(f);
+                    }
+                });
+
+                if (f.input.tagName === 'SELECT') {
+                    f.input.addEventListener('change', function() {
+                        if (f.validate(f.input.value)) clearError(f);
+                    });
+                }
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var isValid = true;
+                var firstInvalid = null;
+
+                if (serverErrorBanner) serverErrorBanner.classList.remove('is-visible');
+
+                Object.keys(fields).forEach(function(k) {
+                    var f = fields[k];
+                    if (!f.validate(f.input.value)) {
+                        showError(f);
+                        isValid = false;
+                        if (!firstInvalid) firstInvalid = f.input;
+                    } else {
+                        clearError(f);
+                    }
+                });
+
+                if (!isValid) {
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+
+                // In-flight locking & submit button spinner
+                submitBtn.disabled = true;
+                submitBtn.classList.add('is-loading');
+                if (submitText) submitText.textContent = 'Scheduling Request...';
+
+                var nameVal = fields.name.input.value.trim();
+                var emailVal = fields.email.input.value.trim();
+                var companyVal = fields.company.input.value.trim();
+                var phoneVal = fields.phone.input.value.trim();
+                var prodKey = fields.product.input.value;
+                var prodName = productNames[prodKey] || fields.product.input.options[fields.product.input.selectedIndex].text;
+                var indVal = fields.industry.input.options[fields.industry.input.selectedIndex].text;
+                var goalVal = fields.goal.input.options[fields.goal.input.selectedIndex].text;
+                var msgVal = document.getElementById('demo-message').value.trim();
+                var hpVal = document.getElementById('demo-hp').value;
+                var tsVal = tsField ? tsField.value : Date.now().toString();
+
+                var payload = {
+                    form_type: 'demo_request',
+                    name: nameVal,
+                    email: emailVal,
+                    company: companyVal,
+                    phone: phoneVal,
+                    product: prodKey,
+                    product_name: prodName,
+                    industry: indVal,
+                    goal: goalVal,
+                    message: msgVal,
+                    source_page: window.location.pathname + window.location.search,
+                    referrer: document.referrer || '',
+                    _hp_check: hpVal,
+                    _ts: tsVal
+                };
+
+                function showSuccess(refId) {
+                    var successTitle = document.getElementById('demo-success-title');
+                    var successMsg = document.getElementById('demo-success-msg');
+                    var recap = document.getElementById('demo-success-recap');
+
+                    if (successTitle) successTitle.textContent = 'Thank you, ' + nameVal + '!';
+                    if (successMsg) successMsg.textContent = 'Your request has been securely received. Our team will review your requirements for ' + prodName + ' and contact you at ' + emailVal + ' to schedule your session.';
+
+                    if (recap) {
+                        recap.innerHTML = '<div class="form-success-recap__item"><span class="form-success-recap__label">Reference ID</span><span class="form-success-recap__val" style="font-family:monospace;color:#4f46e5;">' + refId + '</span></div>'
+                            + '<div class="form-success-recap__item"><span class="form-success-recap__label">Company</span><span class="form-success-recap__val">' + companyVal + '</span></div>'
+                            + '<div class="form-success-recap__item"><span class="form-success-recap__label">Product</span><span class="form-success-recap__val">' + prodName + '</span></div>'
+                            + '<div class="form-success-recap__item"><span class="form-success-recap__label">Contact Email</span><span class="form-success-recap__val">' + emailVal + '</span></div>'
+                            + '<div class="form-success-recap__item"><span class="form-success-recap__label">Status</span><span class="form-success-recap__val" style="color:#16a34a;">Received &amp; Pending Review</span></div>';
+                    }
+
+                    form.style.display = 'none';
+                    if (banner) banner.style.display = 'none';
+                    success.classList.add('is-visible');
+                    window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' });
+
+                    // Track successful demo conversion without personal data
+                    if (window.softifyAnalytics) {
+                        softifyAnalytics.trackFormSubmitted('demo_request', {
+                            product_id: prodKey,
+                            product_name: prodName,
+                            industry: indVal,
+                            goal: goalVal
+                        });
+                    }
+                }
+
+                fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(function(res) {
+                    var contentType = res.headers.get('content-type') || '';
+                    if (contentType.indexOf('application/json') !== -1) {
+                        return res.json().then(function(data) {
+                            return { ok: res.ok, status: res.status, data: data, serverHandled: true };
+                        });
+                    }
+                    // Static preview host fallback (e.g. Live Server / Python http.server)
+                    return { ok: false, isStaticHost: true, status: res.status };
+                })
+                .then(function(result) {
+                    if (result.serverHandled) {
+                        if (!result.ok || !result.data.success) {
+                            throw new Error(result.data.error || 'Unable to submit your request. Please try again.');
+                        }
+                        showSuccess(result.data.refId || ('softify-' + Math.floor(1000 + Math.random() * 9000)));
+                    } else {
+                        // Resilient fallback for static environments: preserve lead in localStorage
+                        var localRef = 'softify-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+                        try {
+                            var leads = JSON.parse(localStorage.getItem('softify_demo_leads') || '[]');
+                            payload.ref_id = localRef;
+                            payload.submitted_at = new Date().toISOString();
+                            leads.push(payload);
+                            localStorage.setItem('softify_demo_leads', JSON.stringify(leads));
+                        } catch (e) {}
+                        showSuccess(localRef);
+                    }
+                })
+                .catch(function(err) {
+                    if (serverErrorBanner && serverErrorMsg) {
+                        serverErrorMsg.textContent = err.message || 'Unable to transmit enquiry. Please check your network connection.';
+                        serverErrorBanner.classList.add('is-visible');
+                        serverErrorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('is-loading');
+                    if (submitText) submitText.textContent = 'Request Your Demo →';
+                });
+            });
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    form.reset();
+                    if (tsField) tsField.value = Date.now().toString();
+                    if (serverErrorBanner) serverErrorBanner.classList.remove('is-visible');
+                    form.style.display = 'block';
+                    success.classList.remove('is-visible');
+                    window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

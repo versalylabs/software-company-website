@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Center | softify</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- 1. LOGIN SCREEN -->
+    <div id="admin-login-view" class="admin-login-wrap">
+        <div class="admin-login-card">
+            <div class="admin-login-logo">⚡</div>
+            <h1 class="admin-login-title">softify Control Center</h1>
+            <p class="admin-login-desc">Enter your administrative master password to access product CMS, conversion metrics, and client inquiries.</p>
+            
+            <div id="login-error" class="admin-login-error" role="alert"></div>
+
+            <form id="admin-login-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
+                <div class="admin-form-group">
+                    <label class="admin-form-label" for="admin-password">Admin Password</label>
+                    <div class="admin-input-wrap">
+                        <input type="password" id="admin-password" class="admin-input" placeholder="••••••••••••" required autofocus autocomplete="current-password">
+                    </div>
+                </div>
+                <button type="submit" id="login-submit-btn" class="admin-btn">
+                    <span>Unlock Control Center</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. DASHBOARD MAIN APP (SIDEBAR + MAIN CONTENT) -->
+    <div id="admin-dashboard-view" class="admin-app">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar__brand">
+                <div class="admin-nav__logo">⚡</div>
+                <div class="admin-sidebar__title-wrap">
+                    <div class="admin-nav__title">softify</div>
+                    <span class="admin-nav__badge">Admin Center</span>
+                </div>
+                <button class="admin-sidebar__close-mobile" id="sidebar-close-mobile" aria-label="Close menu">&times;</button>
+            </div>
+
+            <nav class="admin-sidebar__nav" aria-label="Admin Navigation">
+                <div class="admin-sidebar__section-title">Core Management</div>
+                <button class="admin-sidebar__link active" data-tab="dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Overview</span>
+                </button>
+
+                <button class="admin-sidebar__link" data-tab="products">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    <span>Products (CMS)</span>
+                    <span id="badge-products-count" class="admin-nav__count-pill">0</span>
+                </button>
+
+                <button class="admin-sidebar__link" data-tab="leads">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>Leads & Inquiries</span>
+                    <span id="badge-leads-count" class="admin-nav__count-pill">0</span>
+                </button>
+
+                <button class="admin-sidebar__link" data-tab="media">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span>Media Library</span>
+                    <span id="badge-media-count" class="admin-nav__count-pill">0</span>
+                </button>
+
+                <div class="admin-sidebar__section-title">Roadmap & Platform</div>
+                <button class="admin-sidebar__link" data-tab="content">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <span>Trust & Content</span>
+                    <span class="admin-badge" id="badge-content-count">0</span>
+                </button>
+
+                <button class="admin-sidebar__link" data-tab="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>Settings & Logs</span>
+                </button>
+            </nav>
+
+            <div class="admin-sidebar__footer">
+                <div class="admin-sidebar__user-info">
+                    <div class="admin-sidebar__user-dot"></div>
+                    <div>
+                        <div class="admin-sidebar__user-name">Administrator</div>
+                        <div class="admin-sidebar__user-role">Master Owner</div>
+                    </div>
+                </div>
+                <a href="/" target="_blank" class="admin-btn-secondary" style="width:100%; justify-content:center;" title="Open live website">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>View Public Site</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="admin-main-wrap">
+            <!-- Top Header Bar -->
+            <header class="admin-nav">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <button class="admin-nav__mobile-toggle" id="sidebar-toggle-btn" aria-label="Open sidebar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div id="admin-current-tab-title" class="admin-nav__current-title">Overview Dashboard</div>
+                </div>
+
+                <div class="admin-nav__actions">
+                    <!-- Notification Bell & Tray (Phase 18) -->
+                    <div class="admin-notif-wrapper" style="position:relative;">
+                        <button id="btn-notification-bell" class="admin-btn-secondary admin-btn-icon-badge" title="Notifications & Alerts" aria-expanded="false" aria-haspopup="true">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <span id="notification-badge" class="admin-nav__notif-badge" style="display:none;">0</span>
+                        </button>
+                        <!-- Notification Dropdown Drawer -->
+                        <div id="notification-drawer" class="admin-notif-dropdown" style="display:none;">
+                            <div class="admin-notif-header">
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <span style="font-weight:700; font-size:0.9rem; color:var(--adm-text-main);">Notifications</span>
+                                    <span id="notif-header-unread-count" class="admin-badge admin-badge-info" style="font-size:0.7rem; padding:0.15rem 0.45rem;">0 new</span>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:0.4rem;">
+                                    <button id="btn-mark-all-read" class="admin-btn-ghost-sm" title="Mark all as read">Mark all read</button>
+                                    <button id="btn-clear-all-notifs" class="admin-btn-ghost-sm text-danger" title="Clear all notifications">&times;</button>
+                                </div>
+                            </div>
+                            <div class="admin-notif-filter-bar">
+                                <button class="admin-notif-tab active" data-notif-filter="all">All</button>
+                                <button class="admin-notif-tab" data-notif-filter="unread">Unread</button>
+                                <button class="admin-notif-tab" data-notif-filter="leads">Leads</button>
+                                <button class="admin-notif-tab" data-notif-filter="system">System</button>
+                            </div>
+                            <div id="notification-list" class="admin-notif-list">
+                                <div class="admin-empty-table" style="padding:1.5rem;">No notifications yet.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btn-refresh" class="admin-btn-secondary" title="Refresh all data">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 0 0 0 20.49 15"/></svg>
+                        <span>Refresh</span>
+                    </button>
+                    <button id="btn-export-csv" class="admin-btn-secondary btn-export-csv" onclick="window.handleExportCsv && window.handleExportCsv(event)" title="Export all lead records">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Export CSV</span>
+                    </button>
+                    <button id="btn-logout" class="admin-btn-secondary" title="Log out of console">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Container with Tabs -->
+            <main class="admin-content">
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 1: DASHBOARD OVERVIEW -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-dashboard" class="admin-tab-pane active">
+                    
+                    <!-- Analytics Timeframe & Executive Export Bar -->
+                    <div class="admin-time-range-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.75rem;">
+                        <div style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap;">
+                            <span style="font-size:0.82rem; font-weight:600; color:var(--adm-text-muted);">Timeframe:</span>
+                            <div class="admin-filter-group" id="analytics-range-group">
+                                <button class="admin-filter-btn" data-analytics-range="7d">7 Days</button>
+                                <button class="admin-filter-btn active" data-analytics-range="30d">30 Days</button>
+                                <button class="admin-filter-btn" data-analytics-range="90d">90 Days</button>
+                                <button class="admin-filter-btn" data-analytics-range="all">All Time</button>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:0.5rem; align-items:center;">
+                            <button id="btn-export-exec-report" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.85rem;" title="Download Executive Analytics Summary">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                <span>Executive Report</span>
+                            </button>
+                            <button id="btn-refresh-analytics" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.75rem;" title="Refresh Analytics &amp; Charts">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 0 0 0 20.49 15"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Top Summary KPI Grid -->
+                    <section class="admin-metrics-grid" aria-label="Key Performance Indicators">
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Total Products</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                            </div>
+                            <div id="metric-products-total" class="admin-metric__val">0</div>
+                            <div class="admin-metric__sub" id="metric-products-sub">0 live • 0 in development</div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Total Inquiries</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                            </div>
+                            <div id="metric-total" class="admin-metric__val">0</div>
+                            <div class="admin-metric__sub" id="metric-leads-sub">0 demos • 0 contact inquiries</div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Demo Intent Rate</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div id="metric-conversion-rate" class="admin-metric__val">0%</div>
+                            <div class="admin-metric__sub">Percentage of leads requesting demos</div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Total Pipeline Value</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div id="metric-deal-value" class="admin-metric__val">$0</div>
+                            <div class="admin-metric__sub" id="metric-velocity-sub">0 won deals</div>
+                        </div>
+                    </section>
+
+                    <!-- Interactive Acquisition & Conversion Trend Line Chart Card -->
+                    <section class="admin-card" style="margin-bottom: 1.5rem;" aria-label="Acquisition & Conversion Trends">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                            <div>
+                                <h3 class="admin-card__title" style="margin-bottom:0.2rem;">
+                                    <span>Acquisition Velocity &amp; Demo Conversion Trajectory</span>
+                                    <span id="chart-range-label" style="font-size:0.75rem; color:#818cf8; font-weight:600; margin-left:0.5rem;">Past 30 Days</span>
+                                </h3>
+                                <p style="font-size:0.8rem; color:var(--adm-text-muted); margin:0;">Daily breakdown of inbound inquiry volume, demo request conversions, and pipeline growth.</p>
+                            </div>
+                            <div style="display:flex; gap:1rem; font-size:0.78rem; align-items:center; flex-wrap:wrap;">
+                                <div style="display:flex; align-items:center; gap:0.35rem;">
+                                    <span style="width:10px; height:10px; border-radius:50%; background:#6366f1; display:inline-block;"></span>
+                                    <span>Total Inquiries</span>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:0.35rem;">
+                                    <span style="width:10px; height:10px; border-radius:50%; background:#10b981; display:inline-block;"></span>
+                                    <span>Demo Requests</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="trend-chart-container" class="admin-svg-chart-wrap" style="position:relative; width:100%; min-height:220px;">
+                            <div class="admin-empty-table" style="padding: 2.5rem;">Rendering trend charts...</div>
+                        </div>
+                    </section>
+
+                    <!-- Funnel & Channel Breakdown Grid -->
+                    <section class="admin-insights-grid" style="margin-bottom: 1.5rem;">
+                        <!-- Conversion Funnel -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Sales Pipeline Funnel</span>
+                                <span id="funnel-won-revenue" style="color:#10b981; font-weight:700;">$0 Won</span>
+                            </h3>
+                            <div id="funnel-container" class="admin-funnel-list">
+                                <div class="admin-empty-table" style="padding: 1.5rem;">Calculating funnel stages...</div>
+                            </div>
+                        </div>
+
+                        <!-- Acquisition Channel Attribution -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Channel Attribution</span>
+                                <span style="font-size:0.75rem; color:var(--adm-text-subtle);">Source Pages</span>
+                            </h3>
+                            <div id="channels-container" class="admin-bar-list">
+                                <div class="admin-empty-table" style="padding: 1.5rem;">Calculating channel metrics...</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Actions Strip -->
+                    <section class="admin-quick-actions-bar" aria-label="Owner Quick Actions">
+                        <div class="admin-quick-actions__title">Quick Actions</div>
+                        <div class="admin-quick-actions__btns">
+                            <button id="btn-quick-add-product" class="admin-btn-action primary">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span>Add New Product</span>
+                            </button>
+                            <button id="btn-quick-view-demos" class="admin-btn-action">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span>View Demo Requests</span>
+                            </button>
+                            <button id="btn-quick-public-catalog" class="admin-btn-action">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                                <span>Public Catalogue</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Pipelines & Insights Section -->
+                    <section class="admin-insights-grid">
+                        <!-- Product Pipeline Breakdown -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Product Pipeline</span>
+                                <span id="pipeline-product-count">0 items</span>
+                            </h3>
+                            <div id="insights-product-pipeline" class="admin-bar-list">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Lead Workflow Pipeline -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Lead Pipeline Stages</span>
+                                <span>Workflow Stage</span>
+                            </h3>
+                            <div id="insights-statuses" class="admin-bar-list">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Product Demand from Leads -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Product Demand</span>
+                                <span>Customer Requests</span>
+                            </h3>
+                            <div id="insights-products" class="admin-bar-list">
+                                <div class="admin-empty-table" style="padding: 1.5rem;">No product requests yet</div>
+                            </div>
+                        </div>
+
+                        <!-- Target Industries -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>Target Industries</span>
+                                <span>Market Reach</span>
+                            </h3>
+                            <div id="insights-industries" class="admin-bar-list">
+                                <div class="admin-empty-table" style="padding: 1.5rem;">No industry data yet</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recent Activity Feed & Audit Trail Section -->
+                    <section class="admin-card" style="margin-top: 1.5rem;" aria-label="Recent Admin Activity &amp; Audit Trail">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+                            <div>
+                                <h3 class="admin-card__title" style="margin-bottom:0.2rem;">
+                                    <span>System Activity &amp; Audit Trail</span>
+                                    <span id="audit-total-count" class="admin-nav__badge" style="margin-left:0.5rem;">0 Events</span>
+                                </h3>
+                                <p style="font-size:0.8rem; color:var(--adm-text-muted); margin:0;">Real-time enterprise audit log of all administrative actions, data edits, and security events.</p>
+                            </div>
+                            <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+                                <button id="btn-export-audit-csv" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.85rem;" title="Download Audit History (CSV)">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Export Audit CSV</span>
+                                </button>
+                                <button id="btn-clear-audit-logs" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.85rem; color:#ef4444; border-color:rgba(239,68,68,0.3);" title="Clear audit history">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    <span>Clear Logs</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Audit Filter Toolbar -->
+                        <div class="admin-toolbar" style="padding:0.6rem 0.85rem; margin-bottom:1rem;">
+                            <div class="admin-filter-group" id="audit-filter-group">
+                                <button class="admin-filter-btn active" data-audit-category="all">All Logs</button>
+                                <button class="admin-filter-btn" data-audit-category="auth">🔐 Auth</button>
+                                <button class="admin-filter-btn" data-audit-category="products">📦 Products</button>
+                                <button class="admin-filter-btn" data-audit-category="leads">👥 Leads</button>
+                                <button class="admin-filter-btn" data-audit-category="media">🖼️ Media</button>
+                                <button class="admin-filter-btn" data-audit-category="content">📝 Content</button>
+                                <button class="admin-filter-btn" data-audit-category="settings">⚙️ Settings</button>
+                            </div>
+                            <div style="display:flex; gap:0.5rem; align-items:center; margin-left:auto;">
+                                <div class="admin-search-wrap" style="min-width:180px;">
+                                    <input type="text" id="audit-search-input" class="admin-search-input" style="padding:0.4rem 0.8rem 0.4rem 2rem; font-size:0.8rem;" placeholder="Search audit trail...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="activity-feed-list" class="admin-activity-list">
+                            <div class="admin-empty-table" style="padding: 1.5rem;">Loading audit stream...</div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 2: PRODUCTS CMS (Phase 7 Main Feature) -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-products" class="admin-tab-pane">
+                    
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">Product Catalogue Management</h2>
+                            <p class="admin-section-sub">Create, edit, reorder, and configure product pipelines, features, benefits, and homepage highlights.</p>
+                        </div>
+                        <button id="btn-add-product" class="admin-btn" style="width: auto; padding: 0.65rem 1.4rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Add Product</span>
+                        </button>
+                    </div>
+
+                    <!-- Filter & Search Toolbar for Products -->
+                    <div class="admin-toolbar">
+                        <div class="admin-filter-group" id="product-filter-group">
+                            <button class="admin-filter-btn active" data-prod-status="all">All Statuses</button>
+                            <button class="admin-filter-btn" data-prod-status="live">Live</button>
+                            <button class="admin-filter-btn" data-prod-status="in-development">In Development</button>
+                            <button class="admin-filter-btn" data-prod-status="coming-soon">Coming Soon</button>
+                            <button class="admin-filter-btn" data-prod-status="draft">Drafts</button>
+                            <button class="admin-filter-btn" data-prod-status="archived">Archived</button>
+                        </div>
+                        <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+                            <select id="product-category-filter" class="admin-select-filter">
+                                <option value="all">All Categories</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="finance">Finance</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="retail">Retail</option>
+                            </select>
+                            <div class="admin-search-wrap">
+                                <input type="text" id="product-search-input" class="admin-search-input" placeholder="Search products by name, tag, id...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Table -->
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 70px; text-align:center;">Order</th>
+                                    <th>Product & Slug</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Visibility</th>
+                                    <th>Inquiries</th>
+                                    <th style="text-align: right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-tbody">
+                                <tr>
+                                    <td colspan="7" class="admin-empty-table">Loading product catalogue...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 3: LEADS & INQUIRIES -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-leads" class="admin-tab-pane">
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">Client Inquiries &amp; CRM Pipeline</h2>
+                            <p class="admin-section-sub">Track incoming demo requests, manage qualifying stages, assign owners, schedule follow-ups, and log team notes.</p>
+                        </div>
+                        <div style="display:flex; gap:0.5rem; align-items:center;">
+                            <button id="btn-leads-export-csv" class="admin-btn-secondary btn-export-csv" onclick="window.handleExportCsv && window.handleExportCsv(event)" style="font-size:0.82rem; padding:0.45rem 0.9rem;" title="Export all lead records">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <span>Export CSV</span>
+                            </button>
+                            <span id="leads-count-badge" class="admin-nav__badge">0 Records</span>
+                        </div>
+                    </div>
+
+                    <!-- Filter & Search Toolbar -->
+                    <div class="admin-toolbar" style="flex-wrap: wrap; gap: 0.75rem;">
+                        <div class="admin-filter-group" id="filter-group" style="flex-wrap: wrap;">
+                            <button class="admin-filter-btn active" data-filter-status="all">All Stages</button>
+                            <button class="admin-filter-btn" data-filter-status="new">New</button>
+                            <button class="admin-filter-btn" data-filter-status="in_review">In Review</button>
+                            <button class="admin-filter-btn" data-filter-status="contacted">Contacted</button>
+                            <button class="admin-filter-btn" data-filter-status="qualified">Qualified</button>
+                            <button class="admin-filter-btn" data-filter-status="proposal_sent">Proposal</button>
+                            <button class="admin-filter-btn" data-filter-status="closed_won">Won</button>
+                            <button class="admin-filter-btn" data-filter-status="closed_lost">Lost</button>
+                        </div>
+
+                        <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-left:auto;">
+                            <select id="lead-priority-filter" class="admin-select-filter">
+                                <option value="all">All Priorities</option>
+                                <option value="urgent">🔴 Urgent</option>
+                                <option value="high">🟠 High</option>
+                                <option value="medium">🟡 Medium</option>
+                                <option value="low">🟢 Low</option>
+                            </select>
+
+                            <select id="lead-followup-filter" class="admin-select-filter">
+                                <option value="all">All Follow-ups</option>
+                                <option value="overdue">⚠️ Overdue</option>
+                                <option value="today">📅 Due Today</option>
+                                <option value="upcoming">⏳ Upcoming</option>
+                            </select>
+
+                            <div class="admin-search-wrap" style="min-width: 220px;">
+                                <input type="text" id="admin-search" class="admin-search-input" placeholder="Search leads, company, owner...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leads Table -->
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref ID</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Lead Contact</th>
+                                    <th>Product / Goal</th>
+                                    <th>Stage</th>
+                                    <th>Priority</th>
+                                    <th>Assignee &amp; Follow-up</th>
+                                    <th style="text-align: right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leads-tbody">
+                                <tr>
+                                    <td colspan="8" class="admin-empty-table">Loading inquiries...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 4: MEDIA LIBRARY & ASSET MANAGER (Phase 8) -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-media" class="admin-tab-pane">
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">Media Library & Screenshot Manager</h2>
+                            <p class="admin-section-sub">Upload product screenshots, manage mockup galleries, edit captions, and associate visuals with products.</p>
+                        </div>
+                        <div style="display:flex; gap:0.75rem;">
+                            <input type="file" id="media-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif" multiple style="display:none;">
+                            <button id="btn-upload-media" class="admin-btn" style="width: auto; padding: 0.65rem 1.4rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <span>Upload Images</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Media Storage & Usage KPI Bar -->
+                    <div class="admin-metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 1.5rem;">
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Total Media Assets</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            </div>
+                            <div id="metric-media-total" class="admin-metric__val">0</div>
+                            <div class="admin-metric__sub" id="metric-media-total-sub">0 SVGs • 0 raster images</div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Storage Utilization</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            </div>
+                            <div id="metric-media-storage" class="admin-metric__val">0 KB</div>
+                            <div class="admin-metric__sub">assets/uploads/ disk storage</div>
+                        </div>
+
+                        <div class="admin-metric-card">
+                            <div class="admin-metric__lbl">
+                                <span>Active Product Links</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            </div>
+                            <div id="metric-media-linked" class="admin-metric__val">0</div>
+                            <div class="admin-metric__sub">Featured images &amp; screenshots</div>
+                        </div>
+                    </div>
+
+                    <!-- Drag & Drop Upload Zone -->
+                    <div id="media-dropzone" class="admin-dropzone" tabindex="0" role="button" aria-label="Drop files here or click to upload">
+                        <div class="admin-dropzone__icon">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div class="admin-dropzone__text">
+                            <strong>Drop screenshots or mockups here</strong>, or <span class="admin-dropzone__browse">browse files</span>
+                        </div>
+                        <div class="admin-dropzone__sub">Supports PNG, WebP, SVG, JPEG, GIF up to 10MB each</div>
+                        <div id="media-upload-progress" class="admin-dropzone__progress" style="display:none;">
+                            <div class="admin-progress-bar"><div id="media-progress-fill" class="admin-progress-fill"></div></div>
+                            <span id="media-progress-text" style="font-size:0.8rem; color:var(--adm-text-subtle);">Uploading...</span>
+                        </div>
+                    </div>
+
+                    <!-- Filter & Search Toolbar -->
+                    <div class="admin-toolbar" style="margin-top: 1.5rem;">
+                        <div class="admin-filter-group" id="media-filter-group">
+                            <button class="admin-filter-btn active" data-media-filter="all">All Media</button>
+                            <button class="admin-filter-btn" data-media-filter="svg">SVGs &amp; Vectors</button>
+                            <button class="admin-filter-btn" data-media-filter="raster">Screenshots (PNG/JPG)</button>
+                            <button class="admin-filter-btn" data-media-filter="linked">Product Linked</button>
+                        </div>
+                        <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+                            <select id="media-product-filter" class="admin-select-filter">
+                                <option value="all">All Linked Products</option>
+                            </select>
+                            <div class="admin-search-wrap">
+                                <input type="text" id="media-search-input" class="admin-search-input" placeholder="Search by title, filename, tags, caption...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Media Asset Grid -->
+                    <div id="media-grid-container" class="admin-media-grid">
+                        <div class="admin-empty-table" style="grid-column: 1 / -1; padding: 3rem;">Loading media assets...</div>
+                    </div>
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 5: CONTENT & TRUST CMS (Phase 9 Core Feature) -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-content" class="admin-tab-pane">
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">Content, Testimonials &amp; Trust CMS</h2>
+                            <p class="admin-section-sub">Manage client social proof, FAQ knowledge hub, conversion metrics, company pillars, and partner logos.</p>
+                        </div>
+                        <div style="display:flex; gap:0.75rem;">
+                            <button id="btn-add-content-item" class="admin-btn" style="width:auto; padding:0.6rem 1.25rem;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                <span id="btn-add-content-text">Add Item</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content Section Subnav Tabs -->
+                    <div class="admin-subnav-bar">
+                        <button class="admin-subnav-btn active" data-content-subtab="testimonials" data-subnav="testimonials">
+                            <span>Testimonials &amp; Reviews</span>
+                            <span class="admin-subnav-badge" id="badge-subtab-testimonials">0</span>
+                        </button>
+                        <button class="admin-subnav-btn" data-content-subtab="faqs" data-subnav="faqs">
+                            <span>FAQ Knowledge Hub</span>
+                            <span class="admin-subnav-badge" id="badge-subtab-faqs">0</span>
+                        </button>
+                        <button class="admin-subnav-btn" data-content-subtab="stats" data-subnav="stats">
+                            <span>Trust Stats &amp; Metrics</span>
+                            <span class="admin-subnav-badge" id="badge-subtab-stats">0</span>
+                        </button>
+                        <button class="admin-subnav-btn" data-content-subtab="values" data-subnav="values">
+                            <span>Company Values &amp; Pillars</span>
+                            <span class="admin-subnav-badge" id="badge-subtab-values">0</span>
+                        </button>
+                        <button class="admin-subnav-btn" data-content-subtab="partners" data-subnav="partners">
+                            <span>Partners &amp; Logos</span>
+                            <span class="admin-subnav-badge" id="badge-subtab-partners">0</span>
+                        </button>
+                    </div>
+
+                    <!-- Content Toolbar -->
+                    <div class="admin-toolbar" style="margin-bottom: 1.5rem;">
+                        <div class="admin-filter-group" id="content-filter-group">
+                            <button class="admin-filter-btn active" data-content-filter="all" data-status="all">All Statuses</button>
+                            <button class="admin-filter-btn" data-content-filter="published" data-status="published">Published</button>
+                            <button class="admin-filter-btn" data-content-filter="draft" data-status="draft">Drafts</button>
+                        </div>
+
+                        <div style="display:flex; gap:0.75rem; flex:1; max-width:480px; margin-left:auto;">
+                            <div class="admin-search-wrap" style="flex:1;">
+                                <input type="text" id="content-search-input" class="admin-search-input" placeholder="Search items in active section...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Content Container -->
+                    <div id="content-list-container" class="admin-content-list-container">
+                        <div class="admin-empty-table" style="padding: 3rem;">Loading content items...</div>
+                    </div>
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB 6: SETTINGS & PLATFORM CONFIGURATION (Phase 10) -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-settings" class="admin-tab-pane">
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">System Settings &amp; Platform Configuration</h2>
+                            <p class="admin-section-sub">Configure company profile, lead notification webhooks, tracking IDs, platform maintenance mode, and security.</p>
+                        </div>
+                        <button id="btn-save-settings" class="admin-btn" style="width:auto; padding: 0.65rem 1.5rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            <span>Save All Settings</span>
+                        </button>
+                    </div>
+                    
+                    <div class="admin-settings-grid">
+                        <!-- Card 1: Company Profile & Contact Info -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>1. Company Profile &amp; Identity</span>
+                                <span style="font-size:0.75rem; color:#818cf8;">Public Metadata</span>
+                            </h3>
+                            <div class="admin-form-grid-2">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-company-name">Brand Name</label>
+                                    <input type="text" id="set-company-name" class="admin-input" placeholder="e.g. softify">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-company-legal">Legal Entity Name</label>
+                                    <input type="text" id="set-company-legal" class="admin-input" placeholder="e.g. softify Inc.">
+                                </div>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="set-company-tagline">Primary Tagline</label>
+                                <input type="text" id="set-company-tagline" class="admin-input" placeholder="e.g. Software solutions that work the way your business does.">
+                            </div>
+                            <div class="admin-form-grid-2">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-support-email">Support Email</label>
+                                    <input type="email" id="set-support-email" class="admin-input" placeholder="support@softify.example.com">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-sales-email">Sales Email</label>
+                                    <input type="email" id="set-sales-email" class="admin-input" placeholder="sales@softify.example.com">
+                                </div>
+                            </div>
+                            <div class="admin-form-grid-2">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-company-phone">Direct Phone</label>
+                                    <input type="text" id="set-company-phone" class="admin-input" placeholder="+1 (555) 019-2834">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-company-address">Physical Office Address</label>
+                                    <input type="text" id="set-company-address" class="admin-input" placeholder="100 Innovation Parkway, Suite 400...">
+                                </div>
+                            </div>
+                            <div class="admin-form-grid-3">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-linkedin">LinkedIn URL</label>
+                                    <input type="url" id="set-linkedin" class="admin-input" placeholder="https://linkedin.com/...">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-twitter">X (Twitter) URL</label>
+                                    <input type="url" id="set-twitter" class="admin-input" placeholder="https://x.com/...">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-github">GitHub URL</label>
+                                    <input type="url" id="set-github" class="admin-input" placeholder="https://github.com/...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Lead Notifications & Webhooks (Phase 18 Enhanced) -->
+                        <div class="admin-card" style="grid-column: 1 / -1;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+                                <h3 class="admin-card__title" style="margin-bottom:0;">
+                                    <span>2. Notifications &amp; Outbound Webhooks Engine</span>
+                                    <span style="font-size:0.75rem; color:#38bdf8;">Phase 18 Core Engine</span>
+                                </h3>
+                                <button type="button" id="btn-add-webhook" class="admin-btn" style="width:auto; padding:0.5rem 1rem; font-size:0.8rem;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    <span>Add Webhook Endpoint</span>
+                                </button>
+                            </div>
+
+                            <div class="admin-form-grid-2" style="margin-bottom:1.5rem; background:rgba(255,255,255,0.02); padding:1rem; border-radius:8px; border:1px solid var(--adm-border);">
+                                <div class="admin-form-group">
+                                    <label class="admin-checkbox-label" style="margin-bottom:0.75rem;">
+                                        <input type="checkbox" id="set-email-alerts">
+                                        <span style="font-weight:600; color:var(--adm-text);">Enable Lead Email Notifications</span>
+                                    </label>
+                                    <label class="admin-form-label" for="set-recipient-email">Notification Target Email</label>
+                                    <input type="email" id="set-recipient-email" class="admin-input" placeholder="leads@softify.example.com">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-checkbox-label" style="margin-bottom:0.75rem;">
+                                        <input type="checkbox" id="set-webhook-enabled">
+                                        <span style="font-weight:600; color:var(--adm-text);">Enable Global Webhook Dispatching</span>
+                                    </label>
+                                    <label class="admin-form-label" for="set-webhook-url">Default Webhook URL (Legacy Fallback)</label>
+                                    <input type="url" id="set-webhook-url" class="admin-input" placeholder="https://hooks.slack.com/services/...">
+                                </div>
+                            </div>
+
+                            <!-- Registered Webhooks List -->
+                            <div style="margin-bottom:1.5rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                                    <h4 style="font-size:0.88rem; font-weight:700; color:var(--adm-text-main); margin:0;">Active Webhook Endpoints</h4>
+                                    <span style="font-size:0.78rem; color:var(--adm-text-muted);">Payloads signed with HMAC-SHA256</span>
+                                </div>
+                                <div id="webhooks-list-container" class="admin-webhooks-container">
+                                    <div class="admin-empty-table" style="padding:1.5rem;">No webhook endpoints configured. Click "+ Add Webhook Endpoint" to create one.</div>
+                                </div>
+                            </div>
+
+                            <!-- Webhook Delivery Logs -->
+                            <div>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                                    <h4 style="font-size:0.88rem; font-weight:700; color:var(--adm-text-main); margin:0;">Recent Webhook Dispatch Deliveries</h4>
+                                    <button type="button" id="btn-refresh-deliveries" class="admin-btn-secondary" style="padding:0.35rem 0.75rem; font-size:0.78rem;">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 0 0 0 20.49 15"/></svg>
+                                        <span>Refresh Deliveries</span>
+                                    </button>
+                                </div>
+                                <div id="webhook-deliveries-container" class="admin-table-container" style="max-height:240px; overflow-y:auto;">
+                                    <div class="admin-empty-table" style="padding:1.5rem;">No webhook deliveries logged yet.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Analytics & Tracking -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>3. Analytics &amp; Conversion Tracking</span>
+                                <span style="font-size:0.75rem; color:#34d399;">Measurement</span>
+                            </h3>
+                            <div class="admin-form-grid-2">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-ga-id">Google Analytics 4 (GA4) ID</label>
+                                    <input type="text" id="set-ga-id" class="admin-input" placeholder="G-XXXXXXXXXX">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="set-gtm-id">Google Tag Manager (GTM) ID</label>
+                                    <input type="text" id="set-gtm-id" class="admin-input" placeholder="GTM-XXXXXXX">
+                                </div>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-checkbox-label">
+                                    <input type="checkbox" id="set-privacy-banner">
+                                    <span style="font-weight:600; color:var(--adm-text);">Enforce Zero-PII Privacy Banner &amp; Consent</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Platform Status & Maintenance Controls -->
+                        <div class="admin-card">
+                            <h3 class="admin-card__title">
+                                <span>4. Platform Controls &amp; System Health</span>
+                                <span style="font-size:0.75rem; color:#fbbf24;">Operations</span>
+                            </h3>
+                            <div class="admin-form-group">
+                                <label class="admin-checkbox-label" style="margin-bottom:0.75rem;">
+                                    <input type="checkbox" id="set-maintenance-mode">
+                                    <span style="font-weight:600; color:#fbbf24;">Enable Maintenance Mode Banner</span>
+                                </label>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="set-status-text">Public System Status Pill</label>
+                                <input type="text" id="set-status-text" class="admin-input" placeholder="e.g. All Systems Operational">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="set-maintenance-msg">Maintenance Announcement Message</label>
+                                <input type="text" id="set-maintenance-msg" class="admin-input" placeholder="System maintenance in progress. We'll be back shortly.">
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Security & Admin Credentials -->
+                        <div class="admin-card" style="grid-column: 1 / -1; border-color: rgba(239, 68, 68, 0.3);">
+                            <h3 class="admin-card__title">
+                                <span style="color: #ef4444;">5. Security &amp; Admin Password</span>
+                                <span style="font-size:0.75rem; color:#ef4444;">Sensitive Access</span>
+                            </h3>
+                            <p style="font-size:0.82rem; color:var(--adm-text-subtle); margin-bottom:1rem;">Update your master administrative password. This will update your runtime security configuration.</p>
+                            
+                            <form id="admin-password-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
+                                <div class="admin-form-grid-3">
+                                    <div class="admin-form-group">
+                                        <label class="admin-form-label" for="pwd-current">Current Password</label>
+                                        <input type="password" id="pwd-current" class="admin-input" placeholder="Enter current password" required>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label class="admin-form-label" for="pwd-new">New Password</label>
+                                        <input type="password" id="pwd-new" class="admin-input" placeholder="Minimum 6 characters" required>
+                                    </div>
+                                    <div class="admin-form-group">
+                                        <label class="admin-form-label" for="pwd-confirm">Confirm New Password</label>
+                                        <input type="password" id="pwd-confirm" class="admin-input" placeholder="Re-enter new password" required>
+                                    </div>
+                                </div>
+                                <button type="button" id="btn-change-password" class="admin-btn-secondary" style="color:#ef4444; border-color:rgba(239,68,68,0.4); margin-top:0.5rem;">
+                                    <span>Update Admin Password</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- 3. PRODUCT EDITOR MODAL (Phase 7 Core Feature) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="product-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 id="product-modal-title" class="admin-modal__title">Create Product</h3>
+                    <span id="product-modal-slug-preview" class="admin-ref-id" style="font-size: 0.8rem;"></span>
+                </div>
+                <button id="product-modal-close-btn" class="admin-drawer__close" aria-label="Close product editor">&times;</button>
+            </div>
+
+            <div class="admin-modal__body">
+                <form id="product-editor-form" autocomplete="off">
+                    <input type="hidden" id="prod-original-id" value="">
+
+                    <!-- Section 1: General & Classification -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">1. General Information & Identity</div>
+                        
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="prod-name">Product Name <span class="required">*</span></label>
+                                <input type="text" id="prod-name" class="admin-input" placeholder="e.g. HotelFlow, ClinicOS" required>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="prod-id">URL Slug / ID <span class="required">*</span></label>
+                                <input type="text" id="prod-id" class="admin-input" placeholder="e.g. hotel-management-system" required>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid-3">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="prod-category">Industry Category</label>
+                                <select id="prod-category" class="admin-input">
+                                    <option value="Hospitality">Hospitality</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Manufacturing">Manufacturing</option>
+                                    <option value="Retail">Retail</option>
+                                    <option value="Custom">Custom / Enterprise</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="prod-status">Lifecycle Status</label>
+                                <select id="prod-status" class="admin-input">
+                                    <option value="in-development">In Development</option>
+                                    <option value="coming-soon">Coming Soon</option>
+                                    <option value="live">Live / Available</option>
+                                    <option value="draft">Draft (Hidden)</option>
+                                    <option value="archived">Archived</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="prod-accent">Accent Color</label>
+                                <div style="display:flex; gap:0.5rem; align-items:center;">
+                                    <input type="color" id="prod-accent-picker" value="#4f46e5" class="admin-color-picker">
+                                    <input type="text" id="prod-accent" class="admin-input" value="#4f46e5" style="font-family:monospace; padding:0.6rem 0.75rem;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="prod-tagline">Tagline / Pitch</label>
+                            <input type="text" id="prod-tagline" class="admin-input" placeholder="e.g. All-in-one hotel operations, from front desk to housekeeping.">
+                        </div>
+
+                        <!-- Visibility Toggles -->
+                        <div class="admin-form-grid-3" style="background:#0b0f19; padding:0.85rem; border-radius:8px; border:1px solid var(--adm-border);">
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" id="prod-featured">
+                                <span>Featured on Homepage</span>
+                            </label>
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" id="prod-spotlight">
+                                <span>Spotlight Banner Hero</span>
+                            </label>
+                            <div style="display:flex; align-items:center; gap:0.5rem;">
+                                <label for="prod-order" style="font-size:0.8rem; color:var(--adm-text-muted);">Sort Order:</label>
+                                <input type="number" id="prod-order" class="admin-input" value="1" min="1" max="99" style="width:70px; padding:0.35rem 0.5rem;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Narrative & Problem Statement -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">2. Narrative & Value Proposition</div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="prod-short-desc">Short Description (Catalogue Card Summary)</label>
+                            <textarea id="prod-short-desc" class="admin-input" rows="2" placeholder="Brief 1-2 sentence teaser shown on products listing cards..."></textarea>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="prod-full-desc">Full Overview Description</label>
+                            <textarea id="prod-full-desc" class="admin-input" rows="3" placeholder="Detailed product overview narrative explaining why this product exists..."></textarea>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="prod-problem">The Problem We Are Solving</label>
+                            <textarea id="prod-problem" class="admin-input" rows="3" placeholder="Describe the real-world operational frictions and legacy pain points..."></textarea>
+                        </div>
+
+                        <!-- What We Are Building Bullets -->
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">What We Are Building (Bullet Points)</label>
+                            <div id="building-items-container" class="admin-dynamic-list">
+                                <!-- Populated dynamically -->
+                            </div>
+                            <button type="button" id="btn-add-building-item" class="admin-btn-secondary" style="margin-top:0.5rem; font-size:0.8rem;">
+                                + Add Capability Bullet
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Detailed Features Builder -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">3. Key Features & Capabilities</div>
+                        <div id="features-container" class="admin-dynamic-cards">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <button type="button" id="btn-add-feature" class="admin-btn-secondary" style="margin-top:0.75rem;">
+                            + Add Feature Card
+                        </button>
+                    </div>
+
+                    <!-- Section 4: Benefits Builder -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">4. Business Benefits</div>
+                        <div id="benefits-container" class="admin-dynamic-cards">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <button type="button" id="btn-add-benefit" class="admin-btn-secondary" style="margin-top:0.75rem;">
+                            + Add Benefit Card
+                        </button>
+                    </div>
+
+                    <!-- Section 5: Target Audience Builder -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">5. Target Audience (Who It Is For)</div>
+                        <div id="audience-container" class="admin-dynamic-cards">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <button type="button" id="btn-add-audience" class="admin-btn-secondary" style="margin-top:0.75rem;">
+                            + Add Audience Card
+                        </button>
+                    </div>
+
+                    <!-- Section 6: Featured Image & Visual Branding -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">6. Featured Image &amp; Visual Branding</div>
+                        <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap;">
+                            <div id="prod-featured-preview-box" class="admin-featured-preview-box">
+                                <img id="prod-featured-preview-img" src="" alt="Featured preview" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:6px;">
+                                <div id="prod-featured-preview-empty" class="admin-featured-empty">No visual selected</div>
+                            </div>
+                            <div style="flex:1; min-width:260px;">
+                                <div class="admin-form-group">
+                                    <label class="admin-form-label" for="prod-featured-image">Featured Asset URL / Path</label>
+                                    <input type="text" id="prod-featured-image" class="admin-input" placeholder="e.g. /assets/uploads/hotelflow-dashboard.svg">
+                                </div>
+                                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                                    <button type="button" id="btn-pick-featured-media" class="admin-btn-secondary" style="font-size:0.8rem;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                        <span>Choose from Media Library</span>
+                                    </button>
+                                    <button type="button" id="btn-clear-featured-media" class="admin-btn-secondary" style="font-size:0.8rem; color:#ef4444;">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 7: Screenshot Gallery & Device Mockups -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">7. Screenshot Gallery &amp; Interface Concepts</div>
+                        <p style="font-size:0.8rem; color:var(--adm-text-subtle); margin-bottom:0.75rem;">Configure product screenshots, mockup layouts, and captions displayed in the interactive preview gallery.</p>
+                        <div id="screenshots-container" class="admin-dynamic-cards">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap;">
+                            <button type="button" id="btn-add-screenshot" class="admin-btn-secondary">
+                                + Add Screenshot Item
+                            </button>
+                            <button type="button" id="btn-pick-gallery-media" class="admin-btn-secondary">
+                                + Pick from Media Library
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Section 8: Related Products -->
+                    <div class="admin-form-section">
+                        <div class="admin-form-section__title">8. Related Products</div>
+                        <div id="related-products-checkboxes" class="admin-related-grid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="admin-modal__footer">
+                <button type="button" id="prod-modal-delete-btn" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); display:none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Product</span>
+                </button>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="prod-modal-cancel-btn" class="admin-btn-secondary">Cancel</button>
+                    <button type="button" id="prod-modal-draft-btn" class="admin-btn-secondary">Save as Draft</button>
+                    <button type="button" id="prod-modal-save-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.5rem;">
+                        <span>Save & Publish</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- 4. SLIDE-OVER LEAD DETAIL DRAWER -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="lead-drawer-backdrop" class="admin-drawer-backdrop" aria-hidden="true">
+        <aside class="admin-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+            <div class="admin-drawer__header">
+                <div>
+                    <h3 id="drawer-title" class="admin-drawer__title">Lead Details</h3>
+                    <span id="drawer-ref-id" class="admin-ref-id" style="font-size: 0.85rem;"></span>
+                </div>
+                <button id="drawer-close-btn" class="admin-drawer__close" aria-label="Close drawer">&times;</button>
+            </div>
+
+            <div class="admin-drawer__body" id="drawer-body">
+                <!-- Quick CRM Action Bar -->
+                <div class="admin-drawer-quick-actions">
+                    <a id="drawer-btn-quick-email" href="#" class="admin-btn-action primary" style="flex:1; justify-content:center; text-decoration:none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>Quick Email Response</span>
+                    </a>
+                    <button type="button" id="drawer-btn-advance-stage" class="admin-btn-action" style="flex:1; justify-content:center;">
+                        <span>Advance Stage →</span>
+                    </button>
+                </div>
+
+                <!-- Lead Contact Info -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading">Contact Information</div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Full Name:</span>
+                        <span id="drawer-name" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Work Email:</span>
+                        <span id="drawer-email" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Company:</span>
+                        <span id="drawer-company" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Phone Number:</span>
+                        <span id="drawer-phone" class="admin-detail-value">-</span>
+                    </div>
+                </div>
+
+                <!-- Submission Details -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading">Inquiry Details</div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Form Type:</span>
+                        <span id="drawer-type" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Submitted At:</span>
+                        <span id="drawer-date" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Target Product:</span>
+                        <span id="drawer-product" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Industry:</span>
+                        <span id="drawer-industry" class="admin-detail-value">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Goal / Subject:</span>
+                        <span id="drawer-goal" class="admin-detail-value">-</span>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading">Message / Requirement</div>
+                    <div id="drawer-message" class="admin-message-box">No message provided.</div>
+                </div>
+
+                <!-- Pipeline & CRM Attributes -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading">CRM Pipeline &amp; Deal Attributes</div>
+                    <div class="admin-form-grid-2" style="margin-bottom:0.75rem;">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drawer-status-select">Pipeline Stage</label>
+                            <select id="drawer-status-select" class="admin-input">
+                                <option value="new">1. New (Uncontacted)</option>
+                                <option value="in_review">2. In Review / Qualifying</option>
+                                <option value="contacted">3. Contacted / In Discussion</option>
+                                <option value="qualified">4. Qualified Opportunity</option>
+                                <option value="proposal_sent">5. Proposal / Walkthrough Sent</option>
+                                <option value="closed_won">6. Closed Won ✓</option>
+                                <option value="closed_lost">7. Closed Lost ✕</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drawer-priority-select">Priority Level</label>
+                            <select id="drawer-priority-select" class="admin-input">
+                                <option value="urgent">🔴 Urgent (Immediate response)</option>
+                                <option value="high">🟠 High Priority</option>
+                                <option value="medium" selected>🟡 Medium Priority</option>
+                                <option value="low">🟢 Low Priority</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-grid-3" style="margin-bottom:0.75rem;">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drawer-assigned-select">Assignee Owner</label>
+                            <select id="drawer-assigned-select" class="admin-input">
+                                <option value="unassigned">Unassigned</option>
+                                <option value="sales">Sales Team</option>
+                                <option value="engineering">Engineering Team</option>
+                                <option value="executive">Executive</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drawer-followup-input">Follow-up Due Date</label>
+                            <input type="date" id="drawer-followup-input" class="admin-input">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="drawer-value-input">Est. Deal Value ($)</label>
+                            <input type="number" id="drawer-value-input" class="admin-input" placeholder="e.g. 15000" min="0" step="100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Notes Thread -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading" style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>Internal Note Thread</span>
+                        <span id="drawer-notes-count" style="font-size:0.75rem; color:var(--adm-text-subtle);">0 notes</span>
+                    </div>
+
+                    <div id="drawer-notes-thread" class="admin-notes-thread">
+                        <!-- Notes populated dynamically -->
+                    </div>
+
+                    <div style="margin-top:0.75rem;">
+                        <textarea id="drawer-new-note-text" class="admin-notes-textarea" placeholder="Add an internal note or meeting summary..." rows="2"></textarea>
+                        <div style="display:flex; justify-content:flex-end; margin-top:0.5rem;">
+                            <button type="button" id="drawer-btn-add-note" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.9rem;">
+                                <span>+ Add Note</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Timeline -->
+                <div class="admin-detail-group">
+                    <div class="admin-detail-heading">Activity &amp; Touchpoint Timeline</div>
+                    <div id="drawer-timeline-events" class="admin-timeline-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Technical Session Metadata -->
+                <div class="admin-detail-group" style="opacity: 0.75; font-size: 0.8rem;">
+                    <div class="admin-detail-heading" style="font-size: 0.7rem;">Session Metadata</div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">Source Page:</span>
+                        <span id="drawer-source" class="admin-detail-value" style="font-family: monospace;">-</span>
+                    </div>
+                    <div class="admin-detail-row">
+                        <span class="admin-detail-label">IP Hash:</span>
+                        <span id="drawer-ip" class="admin-detail-value" style="font-family: monospace;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-drawer__footer">
+                <button id="drawer-delete-btn" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Lead</span>
+                </button>
+                <button id="drawer-save-btn" class="admin-btn" style="width: auto; padding: 0.6rem 1.4rem;">
+                    <span>Save CRM Details</span>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- 5. MEDIA ASSET DETAIL & CAPTION MODAL (Phase 8) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="media-detail-backdrop" class="admin-modal-backdrop" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="media-modal-title" style="max-width: 850px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 id="media-modal-title" class="admin-modal__title">Media Asset Details</h3>
+                    <span id="media-modal-filename" class="admin-ref-id" style="font-size: 0.8rem;"></span>
+                </div>
+                <button id="media-modal-close-btn" class="admin-drawer__close" aria-label="Close media details">&times;</button>
+            </div>
+
+            <div class="admin-modal__body">
+                <input type="hidden" id="med-detail-id" value="">
+                
+                <div class="admin-media-detail-grid">
+                    <!-- Left: Preview -->
+                    <div class="admin-media-detail-preview-pane">
+                        <div class="admin-media-detail-img-wrap">
+                            <img id="med-detail-img" src="" alt="Media preview" class="admin-media-detail-img">
+                        </div>
+                        <div class="admin-media-detail-meta-pills">
+                            <span id="med-detail-format-pill" class="admin-badge-type">SVG</span>
+                            <span id="med-detail-size-pill" class="admin-badge-size">4.1 KB</span>
+                            <span id="med-detail-dim-pill" class="admin-badge-dim">1200 x 750</span>
+                        </div>
+                        <a id="med-detail-open-link" href="#" target="_blank" class="admin-btn-secondary" style="width:100%; justify-content:center; margin-top:0.75rem; font-size:0.8rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            <span>Open Full Resolution</span>
+                        </a>
+                    </div>
+
+                    <!-- Right: Metadata & Captions -->
+                    <div class="admin-media-detail-form-pane">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="med-detail-title">Visual Title</label>
+                            <input type="text" id="med-detail-title" class="admin-input" placeholder="e.g. ClinicOS Encounter Charting">
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="med-detail-caption">Screenshot Caption / Teaser</label>
+                            <textarea id="med-detail-caption" class="admin-input" rows="3" placeholder="Contextual explanation shown below mockup in product preview..."></textarea>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="med-detail-alt">Accessibility Alt Text</label>
+                            <input type="text" id="med-detail-alt" class="admin-input" placeholder="Screen reader descriptive text...">
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="med-detail-tags">Keywords &amp; Tags (comma separated)</label>
+                            <input type="text" id="med-detail-tags" class="admin-input" placeholder="dashboard, clinical, charting, mockup">
+                        </div>
+
+                        <!-- Linked Products Section -->
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Linked Products</label>
+                            <div id="med-detail-linked-products" class="admin-linked-prods-list">
+                                <span style="font-size:0.8rem; color:var(--adm-text-subtle);">Not linked to any products.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-modal__footer">
+                <button type="button" id="med-detail-delete-btn" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Asset</span>
+                </button>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="med-detail-copy-url-btn" class="admin-btn-secondary">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        <span>Copy URL</span>
+                    </button>
+                    <button type="button" id="med-detail-cancel-btn" class="admin-btn-secondary">Close</button>
+                    <button type="button" id="med-detail-save-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- 6. REUSABLE MEDIA PICKER MODAL (For Product CMS) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="media-picker-backdrop" class="admin-modal-backdrop" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="media-picker-title" style="max-width: 900px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 id="media-picker-title" class="admin-modal__title">Select Visual from Media Library</h3>
+                    <span class="admin-ref-id" style="font-size: 0.8rem;">Choose an asset to insert into product</span>
+                </div>
+                <button id="media-picker-close-btn" class="admin-drawer__close" aria-label="Close media picker">&times;</button>
+            </div>
+
+            <div class="admin-modal__body">
+                <div class="admin-toolbar" style="margin-bottom: 1rem;">
+                    <div class="admin-filter-group" id="picker-filter-group">
+                        <button class="admin-filter-btn active" data-picker-filter="all">All Assets</button>
+                        <button class="admin-filter-btn" data-picker-filter="svg">SVGs</button>
+                        <button class="admin-filter-btn" data-picker-filter="raster">Images</button>
+                    </div>
+                    <div class="admin-search-wrap" style="flex:1;">
+                        <input type="text" id="picker-search-input" class="admin-search-input" placeholder="Search visuals...">
+                    </div>
+                </div>
+
+                <div id="picker-grid-container" class="admin-picker-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <div class="admin-modal__footer">
+                <div id="picker-selection-info" style="font-size:0.85rem; color:var(--adm-text-subtle);">No asset selected</div>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="picker-cancel-btn" class="admin-btn-secondary">Cancel</button>
+                    <button type="button" id="picker-confirm-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;" disabled>
+                        <span>Use Selected Visual</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- 7. CONTENT ITEM EDITOR MODAL (Phase 9 Core Feature) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="content-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="content-modal-title" style="max-width: 760px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 id="content-modal-title" class="admin-modal__title">Edit Content Item</h3>
+                    <span id="content-modal-section-badge" class="admin-ref-id" style="font-size: 0.8rem;">Testimonial</span>
+                </div>
+                <button id="content-modal-close-btn" class="admin-drawer__close" aria-label="Close content editor">&times;</button>
+            </div>
+
+            <div class="admin-modal__body">
+                <form id="content-item-form" autocomplete="off">
+                    <input type="hidden" id="content-item-id" value="">
+                    <input type="hidden" id="content-item-section" value="testimonials">
+
+                    <!-- Panel 1: Testimonials Form Fields -->
+                    <div id="panel-form-testimonials" class="content-section-panel">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="test-author">Client / Author Name <span class="required">*</span></label>
+                                <input type="text" id="test-author" class="admin-input" placeholder="e.g. Elena Rostova">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="test-role">Author Role / Job Title</label>
+                                <input type="text" id="test-role" class="admin-input" placeholder="e.g. Chief Operations Officer">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="test-company">Company / Organization</label>
+                                <input type="text" id="test-company" class="admin-input" placeholder="e.g. Nordic Grand Hotel Group">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="test-product">Associated Product</label>
+                                <select id="test-product" class="admin-input">
+                                    <option value="">General (All Products)</option>
+                                    <!-- Populated dynamically from products list -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Star Rating</label>
+                            <div class="admin-star-rating-picker" id="test-rating-stars">
+                                <button type="button" class="star-btn active" data-rating="1">★</button>
+                                <button type="button" class="star-btn active" data-rating="2">★</button>
+                                <button type="button" class="star-btn active" data-rating="3">★</button>
+                                <button type="button" class="star-btn active" data-rating="4">★</button>
+                                <button type="button" class="star-btn active" data-rating="5">★</button>
+                                <input type="hidden" id="test-rating-val" value="5">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="test-quote">Client Quote / Testimonial Text <span class="required">*</span></label>
+                            <textarea id="test-quote" class="admin-input" rows="3" placeholder="What the client said about the platform..."></textarea>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Client Avatar / Photo / Logo</label>
+                            <div style="display:flex; gap:0.65rem; align-items:center;">
+                                <input type="text" id="test-avatar" class="admin-input" placeholder="URL or select from Media Library..." style="flex:1;">
+                                <button type="button" id="btn-pick-test-avatar" class="admin-btn-secondary" style="white-space:nowrap; padding:0.6rem 0.85rem;">Choose Visual</button>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" id="test-featured">
+                                <span>Feature on Homepage Spotlight Strip</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: FAQs Form Fields -->
+                    <div id="panel-form-faqs" class="content-section-panel" style="display:none;">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="faq-category">FAQ Category</label>
+                            <select id="faq-category" class="admin-input">
+                                <option value="general">General &amp; Company</option>
+                                <option value="products">Products &amp; Capabilities</option>
+                                <option value="security">Security &amp; Compliance</option>
+                                <option value="implementation">Deployment &amp; Onboarding</option>
+                                <option value="pricing">Licensing &amp; Pricing</option>
+                            </select>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="faq-question">Question <span class="required">*</span></label>
+                            <input type="text" id="faq-question" class="admin-input" placeholder="e.g. Can Softify integrate with existing ERPs?">
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="faq-answer">Answer (Detailed response) <span class="required">*</span></label>
+                            <textarea id="faq-answer" class="admin-input" rows="4" placeholder="Clear, transparent explanation..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Stats Form Fields -->
+                    <div id="panel-form-stats" class="content-section-panel" style="display:none;">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="stat-val">Metric / Value <span class="required">*</span></label>
+                                <input type="text" id="stat-val" class="admin-input" placeholder="e.g. 99.98%, 5+, 10x">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="stat-icon">Icon Name</label>
+                                <input type="text" id="stat-icon" class="admin-input" placeholder="e.g. shield, star, zap, trending-up, users">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="stat-label">Headline Label <span class="required">*</span></label>
+                            <input type="text" id="stat-label" class="admin-input" placeholder="e.g. Platform Uptime SLA">
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="stat-subtext">Supporting Subtext</label>
+                            <input type="text" id="stat-subtext" class="admin-input" placeholder="e.g. Enterprise reliability guarantee">
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: Values Form Fields -->
+                    <div id="panel-form-values" class="content-section-panel" style="display:none;">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="val-title">Value Title <span class="required">*</span></label>
+                                <input type="text" id="val-title" class="admin-input" placeholder="e.g. Purpose-Built over Bloatware">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="val-icon">Icon Name</label>
+                                <input type="text" id="val-icon" class="admin-input" placeholder="e.g. star, shield, users, zap">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="val-category">Display Location</label>
+                            <select id="val-category" class="admin-input">
+                                <option value="core">Core Homepage Pillars</option>
+                                <option value="about">About Page Mission / Values</option>
+                                <option value="engineering">Engineering Philosophy</option>
+                            </select>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="val-desc">Description <span class="required">*</span></label>
+                            <textarea id="val-desc" class="admin-input" rows="3" placeholder="Explain the principle and why it matters to customers..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Panel 5: Partners Form Fields -->
+                    <div id="panel-form-partners" class="content-section-panel" style="display:none;">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="partner-name">Partner / Client Name <span class="required">*</span></label>
+                                <input type="text" id="partner-name" class="admin-input" placeholder="e.g. Nordic Grand Hotels">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="partner-industry">Industry Category</label>
+                                <input type="text" id="partner-industry" class="admin-input" placeholder="e.g. Hospitality, Healthcare, Finance">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Logo / Visual URL</label>
+                            <div style="display:flex; gap:0.65rem; align-items:center;">
+                                <input type="text" id="partner-logo" class="admin-input" placeholder="URL or choose from Media Library..." style="flex:1;">
+                                <button type="button" id="btn-pick-partner-logo" class="admin-btn-secondary" style="white-space:nowrap; padding:0.6rem 0.85rem;">Choose Visual</button>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="partner-website">Website URL (Optional)</label>
+                            <input type="url" id="partner-website" class="admin-input" placeholder="https://example.com">
+                        </div>
+                    </div>
+
+                    <!-- Shared Settings (Status & Order) -->
+                    <div class="admin-form-section" style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--adm-border);">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="content-item-status">Publication Status</label>
+                                <select id="content-item-status" class="admin-input">
+                                    <option value="published">Published (Live on site)</option>
+                                    <option value="draft">Draft (Hidden)</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="content-item-order">Display Sort Order</label>
+                                <input type="number" id="content-item-order" class="admin-input" value="1" min="1" max="99">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-modal__footer">
+                <button type="button" id="content-modal-delete-btn" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Item</span>
+                </button>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="content-modal-cancel-btn" class="admin-btn-secondary">Cancel</button>
+                    <button type="button" id="content-modal-save-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
+                        <span>Save Item</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Webhook Integration Modal (Phase 18) -->
+    <div id="webhook-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal__backdrop" id="webhook-modal-backdrop"></div>
+        <div class="admin-modal__content" style="max-width: 600px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 class="admin-modal__title" id="webhook-modal-title">Add Webhook Integration</h3>
+                    <p class="admin-modal__subtitle">Dispatch JSON payloads or chat notifications on platform events.</p>
+                </div>
+                <button type="button" class="admin-modal__close" id="webhook-modal-close-btn">&times;</button>
+            </div>
+
+            <div class="admin-modal__body">
+                <form id="webhook-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
+                    <input type="hidden" id="hook-edit-id" value="">
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="hook-name">Integration Label / Name <span class="required">*</span></label>
+                        <input type="text" id="hook-name" class="admin-input" placeholder="e.g. Sales Team Slack, Zapier CRM Bridge" required>
+                    </div>
+
+                    <div class="admin-form-grid-2">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="hook-type">Target Format / Preset</label>
+                            <select id="hook-type" class="admin-input">
+                                <option value="generic">Generic REST API (Standard JSON)</option>
+                                <option value="slack">Slack Incoming Webhook</option>
+                                <option value="discord">Discord Channel Webhook</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="hook-active">Status</label>
+                            <select id="hook-active" class="admin-input">
+                                <option value="true">Active (Enabled)</option>
+                                <option value="false">Paused (Disabled)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="hook-url">Endpoint URL <span class="required">*</span></label>
+                        <input type="url" id="hook-url" class="admin-input" placeholder="https://api.yourcompany.com/webhooks or https://discord.com/api/webhooks/..." required>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="hook-secret">HMAC Signing Secret (Optional)</label>
+                        <div style="display:flex; gap:0.5rem;">
+                            <input type="text" id="hook-secret" class="admin-input" placeholder="Secret key used to generate sha256 signature">
+                            <button type="button" id="btn-generate-secret" class="admin-btn-secondary" style="white-space:nowrap; padding:0.5rem 0.75rem; font-size:0.8rem;">Generate</button>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--adm-text-muted); margin-top:0.25rem; display:block;">If provided, headers will include <code>X-Softify-Signature: sha256=...</code></span>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Subscribed Event Topics</label>
+                        <div class="admin-form-grid-2" style="background:rgba(255,255,255,0.02); padding:0.75rem; border-radius:8px; border:1px solid var(--adm-border);">
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" name="hook_event" value="lead.created" checked>
+                                <span>lead.created (New Lead)</span>
+                            </label>
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" name="hook_event" value="lead.qualified" checked>
+                                <span>lead.qualified (Qualified Lead)</span>
+                            </label>
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" name="hook_event" value="ticket.created" checked>
+                                <span>ticket.created (Support Ticket)</span>
+                            </label>
+                            <label class="admin-checkbox-label">
+                                <input type="checkbox" name="hook_event" value="system.alert">
+                                <span>system.alert (System Alert)</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-modal__footer">
+                <button type="button" id="webhook-modal-delete-btn" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3); display:none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Webhook</span>
+                </button>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="webhook-modal-cancel-btn" class="admin-btn-secondary">Cancel</button>
+                    <button type="button" id="webhook-modal-save-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
+                        <span>Save Webhook</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/motion.js"></script>
+    <script src="js/admin.js?v=20260914-phase18"></script>
+</body>
+</html>
+

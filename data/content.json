@@ -1,0 +1,200 @@
+{
+  "testimonials": [
+    {
+      "id": "test-1",
+      "author": "Elena Rostova",
+      "role": "Chief Operations Officer",
+      "company": "Nordic Grand Hotel Group",
+      "avatar": "/assets/uploads/hotelflow-dashboard.svg",
+      "rating": 5,
+      "quote": "HotelFlow transformed our check-in and room housekeeping cycles from day one. Our staff onboarding dropped from two weeks to under two days.",
+      "product": "HotelFlow",
+      "productId": "hotel-management-system",
+      "featured": true,
+      "status": "published",
+      "order": 1
+    },
+    {
+      "id": "test-2",
+      "author": "Dr. Marcus Vance",
+      "role": "Medical Director",
+      "company": "Vance Outpatient Clinics",
+      "avatar": "/assets/uploads/clinicos-records.svg",
+      "rating": 5,
+      "quote": "ClinicOS gives our physicians clean, clutter-free patient charts without the cognitive overload of legacy EHR systems.",
+      "product": "ClinicOS",
+      "productId": "healthcare-pro",
+      "featured": true,
+      "status": "published",
+      "order": 2
+    },
+    {
+      "id": "test-3",
+      "author": "Siddharth Mehta",
+      "role": "VP of Finance",
+      "company": "Apex Capital Growth",
+      "avatar": "/assets/uploads/financeflow-ledger.svg",
+      "rating": 5,
+      "quote": "Real-time ledger reconciliation and automated cash-flow alerts in FinanceFlow saved our team over 35 hours per month in close cycles.",
+      "product": "FinanceFlow",
+      "productId": "financeflow",
+      "featured": true,
+      "status": "published",
+      "order": 3
+    },
+    {
+      "id": "test-1789351058463-deb3",
+      "order": 4,
+      "status": "published",
+      "createdAt": "2026-09-14T01:57:38.464Z",
+      "updatedAt": "2026-09-14T01:57:38.464Z",
+      "author": "ted",
+      "role": "ceo",
+      "company": "straten",
+      "quote": "Amazing product",
+      "avatar": "",
+      "rating": 5,
+      "product": "MakerSuite",
+      "productId": "makersuite",
+      "featured": false
+    }
+  ],
+  "faqs": [
+    {
+      "id": "faq-1",
+      "category": "products",
+      "question": "Can Softify systems integrate with our existing legacy databases and ERPs?",
+      "answer": "Yes. All Softify platforms are API-first and cloud-native, providing robust REST/GraphQL connectors and webhook triggers to sync with existing on-premises or cloud legacy systems.",
+      "order": 2,
+      "status": "published",
+      "updatedAt": "2026-09-14T12:18:16.695Z"
+    },
+    {
+      "id": "faq-2",
+      "category": "implementation",
+      "question": "What is the typical onboarding timeline for new deployments?",
+      "answer": "Because our platforms are purpose-built for specific industries with intuitive zero-bloat UX, standard deployments typically take 2 to 4 weeks including data migration and staff walkthroughs.",
+      "order": 3,
+      "status": "published",
+      "updatedAt": "2026-09-14T12:18:16.695Z"
+    },
+    {
+      "id": "faq-3",
+      "category": "security",
+      "question": "How is our sensitive industry data secured and isolated?",
+      "answer": "We enforce AES-256 encryption at rest and TLS 1.3 in transit, tenant isolation, automated backups, and strict RBAC access controls compliant with SOC2, GDPR, and HIPAA best practices.",
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "id": "faq-4",
+      "category": "general",
+      "question": "Do you offer tailored customization for enterprise workflows?",
+      "answer": "Absolutely. Our solutions are modular, allowing our engineering team to develop dedicated workflow extensions and custom integrations tailored to your specific operational needs.",
+      "order": 4,
+      "status": "published"
+    }
+  ],
+  "stats": [
+    {
+      "id": "stat-1",
+      "value": "99.98%",
+      "label": "Platform Uptime",
+      "subtext": "Enterprise cloud reliability SLA",
+      "icon": "shield",
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "id": "stat-2",
+      "value": "5+",
+      "label": "Specialized Products",
+      "subtext": "Purpose-built industry software",
+      "icon": "star",
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "id": "stat-3",
+      "value": "10x",
+      "label": "Staff Adoption Speed",
+      "subtext": "Clean, intuitive zero-training interfaces",
+      "icon": "zap",
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "id": "stat-4",
+      "value": "100%",
+      "label": "Cloud Native",
+      "subtext": "Instant updates with zero on-prem maintenance",
+      "icon": "trending-up",
+      "order": 4,
+      "status": "published"
+    }
+  ],
+  "values": [
+    {
+      "id": "val-1",
+      "title": "Purpose-Built over Bloatware",
+      "description": "Every feature earns its place. We build focused, practical software tailored directly to operational workflows.",
+      "icon": "star",
+      "category": "core",
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "id": "val-2",
+      "title": "Modern & Cloud-Native",
+      "description": "API-first, resilient cloud architectures that eliminate legacy maintenance headaches and costly upgrades.",
+      "icon": "shield",
+      "category": "core",
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "id": "val-3",
+      "title": "Intuitive UX on Day One",
+      "description": "Software designed with humans in mind, enabling immediate team adoption without long training cycles.",
+      "icon": "users",
+      "category": "core",
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "id": "val-4",
+      "title": "Scalable Foundations",
+      "description": "Engineered to effortlessly scale from single-location operations to multi-tenant global enterprises.",
+      "icon": "trending-up",
+      "category": "core",
+      "order": 4,
+      "status": "published"
+    }
+  ],
+  "partners": [
+    {
+      "id": "partner-1",
+      "name": "Nordic Grand Hotels",
+      "logo": "/assets/uploads/hotelflow-dashboard.svg",
+      "industry": "Hospitality",
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "id": "partner-2",
+      "name": "Vance Health Systems",
+      "logo": "/assets/uploads/clinicos-records.svg",
+      "industry": "Healthcare",
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "id": "partner-3",
+      "name": "Apex Growth Capital",
+      "logo": "/assets/uploads/financeflow-ledger.svg",
+      "industry": "Finance",
+      "order": 3,
+      "status": "published"
+    }
+  ]
+}

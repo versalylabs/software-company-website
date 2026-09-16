@@ -1,0 +1,3660 @@
+[
+  {
+    "ref_id": "softify-2026-999729",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T21:23:10.861Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-D31CA5",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T21:23:10.868Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T21:23:10.984Z"
+  },
+  {
+    "ref_id": "softify-2026-23DA98",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T21:23:53.638Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-FA1A04",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T21:23:53.647Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T21:23:53.712Z"
+  },
+  {
+    "ref_id": "softify-2026-49D141",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T22:04:43.735Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-56DE13",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T22:04:43.745Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T22:04:43.829Z"
+  },
+  {
+    "ref_id": "softify-2026-47E365",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T22:58:49.325Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-9C3C6A",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T22:58:49.333Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T22:58:49.405Z"
+  },
+  {
+    "ref_id": "softify-2026-D0127C",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:12:31.143Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-7790D0",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:12:31.153Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T23:12:31.264Z"
+  },
+  {
+    "ref_id": "softify-2026-49C020",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:13:18.411Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-0C62F3",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:13:18.427Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "status": "in_review",
+    "admin_notes": "Automated test qualifying call completed.",
+    "updated_at": "2026-09-13T23:13:18.535Z"
+  },
+  {
+    "ref_id": "softify-2026-645EB5",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:24:47.543Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-7DA097",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:24:47.550Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:24:47.602Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:24:47.725Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:24:47.725Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:24:47.725Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:24:47.725Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:24:47.730Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:24:47.730Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789341887730_6e98",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:24:47.730Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-B8DD1A",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:26:31.536Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-81588C",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:26:31.543Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:26:31.599Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:26:31.740Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:26:31.740Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:26:31.740Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:26:31.740Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:26:31.746Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:26:31.746Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789341991746_45a0",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:26:31.746Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-831703",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:26:51.810Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-F7C163",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:26:51.818Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-FDA82F",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:27:15.827Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-5B4DB1",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:27:15.835Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:27:15.899Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:27:16.069Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:27:16.069Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:27:16.069Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:27:16.069Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:27:16.077Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:27:16.077Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789342036077_83a7",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:27:16.077Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-CE6C98",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:36:57.073Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-09B760",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:36:57.080Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:36:57.140Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:36:57.288Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:36:57.288Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:36:57.288Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:36:57.288Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:36:57.295Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:36:57.295Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789342617294_81ff",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:36:57.295Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-9B26CE",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:48:07.528Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-F60077",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:48:07.536Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:48:07.596Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:48:07.737Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:48:07.737Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:48:07.737Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:48:07.737Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:48:07.743Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:48:07.743Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789343287743_00e2",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:48:07.743Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-07B5EF",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-13T23:48:37.038Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-BFF171",
+    "form_type": "contact",
+    "submitted_at": "2026-09-13T23:48:37.047Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-13T23:48:37.109Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-13T23:48:37.257Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-13T23:48:37.257Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-13T23:48:37.257Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-13T23:48:37.257Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-13T23:48:37.263Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-13T23:48:37.263Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789343317263_8820",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-13T23:48:37.263Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-63B297",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T00:17:24.513Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-025EE2",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T00:17:24.521Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T00:17:24.593Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T00:17:24.760Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T00:17:24.760Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T00:17:24.760Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T00:17:24.760Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T00:17:24.768Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T00:17:24.768Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789345044767_d7ed",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T00:17:24.768Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-F79F6C",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T00:23:03.167Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-95E3EC",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T00:23:03.178Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T00:23:03.267Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T00:23:03.493Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T00:23:03.493Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T00:23:03.493Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T00:23:03.493Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T00:23:03.502Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T00:23:03.502Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789345383502_ec0c",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T00:23:03.502Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-AB8695",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T00:26:33.998Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-E58015",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T00:26:34.006Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T00:26:34.077Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T00:26:34.229Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T00:26:34.229Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T00:26:34.229Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T00:26:34.229Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T00:26:34.239Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T00:26:34.239Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789345594239_b58b",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T00:26:34.239Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-78DBD6",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:19:10.770Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-D32001",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:19:10.779Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:19:10.853Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:19:11.009Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:19:11.009Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:19:11.009Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:19:11.009Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:19:11.018Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:19:11.018Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789348751018_3ad0",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:19:11.018Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-95D452",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:27:50.134Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-79CBDF",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:27:50.145Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:27:50.228Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:27:50.430Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:27:50.430Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:27:50.430Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:27:50.430Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:27:50.439Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:27:50.439Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789349270439_5ec4",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:27:50.439Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-E877FC",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:32:20.544Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-B067B5",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:32:20.553Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:32:20.726Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:32:20.908Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:32:20.908Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:32:20.908Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:32:20.908Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:32:20.916Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:32:20.916Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789349540916_7273",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:32:20.916Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-C1F201",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:36:40.098Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-952121",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:36:40.109Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:36:40.193Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:36:40.368Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:36:40.368Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:36:40.368Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:36:40.368Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:36:40.376Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:36:40.376Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789349800376_12e5",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:36:40.376Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-799347",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:37:29.591Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-A25E3A",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:37:29.598Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:37:29.666Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:37:29.813Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:37:29.813Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:37:29.813Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:37:29.813Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:37:29.820Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:37:29.820Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789349849820_b8c4",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:37:29.820Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-93EAC1",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:37:53.349Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-F2C81A",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:37:53.358Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:37:53.424Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:37:53.569Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:37:53.569Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:37:53.569Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:37:53.569Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:37:53.575Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:37:53.575Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789349873575_a3ce",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:37:53.575Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-E7D386",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T01:50:55.360Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-BD45C0",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T01:50:55.368Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T01:50:55.447Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T01:50:55.629Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T01:50:55.629Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T01:50:55.629Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T01:50:55.629Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T01:50:55.642Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T01:50:55.642Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789350655642_658c",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T01:50:55.642Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-D05627",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:05:16.545Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-B3CB33",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:05:16.557Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:05:16.668Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:05:16.926Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:05:16.926Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:05:16.926Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:05:16.926Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:05:16.935Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:05:16.935Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789351516935_f9fc",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:05:16.935Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-D94AAD",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:15:35.608Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-CCE020",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:15:35.618Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:15:35.708Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:15:35.903Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:15:35.903Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:15:35.903Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:15:35.903Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:15:35.911Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:15:35.911Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789352135911_e83f",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:15:35.911Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-4FC576",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:15:48.409Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-7E8F13",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:15:48.424Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:15:48.533Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:15:48.713Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:15:48.713Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:15:48.713Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:15:48.713Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:15:48.722Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:15:48.722Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789352148722_fcb2",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:15:48.722Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-4FEDDE",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:27:38.103Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-1D53E3",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:27:38.123Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:27:38.275Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:27:38.569Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:27:38.569Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:27:38.569Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:27:38.569Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:27:38.585Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:27:38.585Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789352858585_75b2",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:27:38.585Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-80EC35",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:44:46.112Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-ADDC32",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:44:46.213Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:44:48.517Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:44:57.464Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:44:57.464Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:44:57.464Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:44:57.464Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:44:57.585Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:44:57.585Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789353897584_78f4",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:44:57.585Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-7C4487",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:45:18.930Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-EF6D5E",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:45:18.966Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:45:19.798Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:45:21.168Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:45:21.168Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:45:21.168Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:45:21.168Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:45:21.206Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:45:21.206Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789353921206_bc20",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:45:21.206Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-ADC8DB",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T02:46:33.261Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-F986C6",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T02:46:33.289Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T02:46:33.984Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T02:46:35.595Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T02:46:35.595Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T02:46:35.595Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T02:46:35.595Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T02:46:35.705Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T02:46:35.705Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789353995705_68df",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T02:46:35.705Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-DD6F5E",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T03:06:04.898Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-20E826",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T03:06:04.927Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T03:06:05.207Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T03:06:05.765Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T03:06:05.765Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T03:06:05.765Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T03:06:05.765Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T03:06:05.780Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T03:06:05.780Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789355165780_c8a3",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T03:06:05.780Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-53BC9E",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T11:12:28.354Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-A5AA2A",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:12:28.477Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T11:12:35.371Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T11:12:44.463Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T11:12:44.463Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T11:12:44.463Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T11:12:44.463Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T11:12:44.505Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T11:12:44.505Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789384364505_a1e7",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T11:12:44.505Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-0ED4F9",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T11:14:46.808Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-28B11D",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:14:47.408Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T11:14:50.287Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T11:15:03.213Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T11:15:03.213Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T11:15:03.213Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T11:15:03.213Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T11:15:04.091Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T11:15:04.091Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789384504091_f016",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T11:15:04.091Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-9E6AA5",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:15:19.128Z",
+    "contact": {
+      "name": "Webhook Verification Lead",
+      "email": "webhook-lead@example.com",
+      "company": "N/A",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Phase 18 Integration Testing",
+      "enquiry_type": "general",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "Testing automatic notification and webhook event emission."
+    },
+    "meta": {
+      "source_page": null,
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-A37158",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T11:24:30.048Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-905567",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:24:30.082Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T11:24:30.765Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T11:24:32.018Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T11:24:32.018Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T11:24:32.018Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T11:24:32.018Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T11:24:32.125Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T11:24:32.125Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789385072125_c56c",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T11:24:32.125Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-243EBE",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:24:33.407Z",
+    "contact": {
+      "name": "Webhook Verification Lead",
+      "email": "webhook-lead@example.com",
+      "company": "N/A",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Phase 18 Integration Testing",
+      "enquiry_type": "general",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "Testing automatic notification and webhook event emission."
+    },
+    "meta": {
+      "source_page": null,
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-DCFA2C",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T11:44:37.063Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-099699",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:44:37.080Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T11:44:37.188Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T11:44:37.456Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T11:44:37.456Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T11:44:37.456Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T11:44:37.456Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T11:44:37.472Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T11:44:37.472Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789386277472_4972",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T11:44:37.472Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-A0A75E",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T11:44:37.777Z",
+    "contact": {
+      "name": "Webhook Verification Lead",
+      "email": "webhook-lead@example.com",
+      "company": "N/A",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Phase 18 Integration Testing",
+      "enquiry_type": "general",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "Testing automatic notification and webhook event emission."
+    },
+    "meta": {
+      "source_page": null,
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-3BE01B",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T12:17:44.422Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-BF9429",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T12:17:44.433Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T12:17:44.530Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T12:17:44.716Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T12:17:44.716Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T12:17:44.716Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T12:17:44.716Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T12:17:44.727Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T12:17:44.727Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789388264727_62a9",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T12:17:44.727Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-3FC778",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T12:17:44.968Z",
+    "contact": {
+      "name": "Webhook Verification Lead",
+      "email": "webhook-lead@example.com",
+      "company": "N/A",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Phase 18 Integration Testing",
+      "enquiry_type": "general",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "Testing automatic notification and webhook event emission."
+    },
+    "meta": {
+      "source_page": null,
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-A918FA",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T12:18:16.065Z",
+    "contact": {
+      "name": "Sarah Connor",
+      "email": "sarah@cyberdyne-health.com",
+      "company": "Cyberdyne Health",
+      "phone": "+1 555-019-2834"
+    },
+    "details": {
+      "subject": "Demo Request: ClinicOS",
+      "enquiry_type": "general",
+      "product_id": "healthcare-pro",
+      "product_name": "ClinicOS",
+      "industry": "Healthcare & Medical",
+      "goal": "Replacing existing legacy software",
+      "message": "Looking to evaluate ClinicOS for our 4 outpatient clinic locations."
+    },
+    "meta": {
+      "source_page": "/request-demo.html?product=healthcare-pro",
+      "referrer": "http://localhost:3000/product.html?id=healthcare-pro",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-E8C4A2",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T12:18:16.088Z",
+    "contact": {
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Logistics",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Partnership & Integration Inquiry",
+      "enquiry_type": "partnership",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "We provide cold-chain monitoring hardware and would like to explore integration with MakerSuite."
+    },
+    "meta": {
+      "source_page": "/contact.html?type=partnership",
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    },
+    "timeline": [
+      {
+        "event": "status_changed",
+        "from": "new",
+        "to": "in_review",
+        "timestamp": "2026-09-14T12:18:16.279Z"
+      },
+      {
+        "event": "status_changed",
+        "from": "in_review",
+        "to": "qualified",
+        "timestamp": "2026-09-14T12:18:16.823Z"
+      },
+      {
+        "event": "priority_changed",
+        "from": "medium",
+        "to": "urgent",
+        "timestamp": "2026-09-14T12:18:16.823Z"
+      },
+      {
+        "event": "assignment_changed",
+        "from": "unassigned",
+        "to": "sales",
+        "timestamp": "2026-09-14T12:18:16.823Z"
+      },
+      {
+        "event": "follow_up_scheduled",
+        "date": "2026-10-15",
+        "timestamp": "2026-09-14T12:18:16.823Z"
+      },
+      {
+        "event": "note_added",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "author": "Alex (Lead Architect)",
+        "timestamp": "2026-09-14T12:18:16.888Z"
+      }
+    ],
+    "status": "qualified",
+    "admin_notes": "Spoke with CTO, scheduled deep-dive architecture review.",
+    "updated_at": "2026-09-14T12:18:16.888Z",
+    "priority": "urgent",
+    "assigned_to": "sales",
+    "follow_up_date": "2026-10-15",
+    "estimated_value": 45000,
+    "notes": [
+      {
+        "id": "note_1789388296887_425f",
+        "author": "Alex (Lead Architect)",
+        "text": "Client requested multi-region high availability SLA confirmation.",
+        "createdAt": "2026-09-14T12:18:16.888Z"
+      }
+    ]
+  },
+  {
+    "ref_id": "softify-2026-384602",
+    "form_type": "contact",
+    "submitted_at": "2026-09-14T12:18:17.875Z",
+    "contact": {
+      "name": "Webhook Verification Lead",
+      "email": "webhook-lead@example.com",
+      "company": "N/A",
+      "phone": "N/A"
+    },
+    "details": {
+      "subject": "Phase 18 Integration Testing",
+      "enquiry_type": "general",
+      "product_id": null,
+      "product_name": null,
+      "industry": null,
+      "goal": null,
+      "message": "Testing automatic notification and webhook event emission."
+    },
+    "meta": {
+      "source_page": null,
+      "referrer": null,
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "softify-Test-Runner/1.0"
+    }
+  },
+  {
+    "ref_id": "softify-2026-8C7B7C",
+    "form_type": "demo_request",
+    "submitted_at": "2026-09-14T22:47:50.282Z",
+    "contact": {
+      "name": "Ted Khalwale",
+      "email": "khalwaleted@gmail.com",
+      "company": "BloomWeb",
+      "phone": "+254704611033"
+    },
+    "details": {
+      "subject": "Demo Request: FinanceFlow",
+      "enquiry_type": "general",
+      "product_id": "financeflow",
+      "product_name": "FinanceFlow",
+      "industry": "Healthcare & Medical",
+      "goal": "Evaluating software currently in development",
+      "message": ""
+    },
+    "meta": {
+      "source_page": "/request-demo.html",
+      "referrer": "http://localhost:3005/",
+      "client_ip_hash": "270cf5cbb54ca8e4",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+    }
+  }
+]

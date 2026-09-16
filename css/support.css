@@ -1,0 +1,347 @@
+﻿/* ==========================================================================
+   softify Customer Support & Helpdesk Styles (css/support.css) — Phase 14
+   Styles for Service Health Monitor, KB Categories & Ticket Routing
+   ========================================================================== */
+
+.sup-hero {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 4.5rem 1.5rem 3.5rem;
+    text-align: center;
+}
+.sup-hero__inner {
+    max-width: 52rem;
+    margin: 0 auto;
+}
+.sup-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #4f46e5;
+    background: #eef2ff;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+.sup-hero__title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+.sup-hero__sub {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.6;
+    max-width: 44rem;
+    margin: 0 auto 2rem;
+}
+
+/* System Health Live Widget */
+.sup-status-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+.sup-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+}
+
+/* Service Health Grid */
+.sup-health-section {
+    padding: 3rem 1.5rem 2rem;
+    background: #ffffff;
+}
+.sup-health-container {
+    max-width: 76rem;
+    margin: 0 auto;
+}
+.sup-health-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    color: #ffffff;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15);
+}
+.sup-health-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sup-health-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.sup-health-metrics {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+.sup-health-metrics strong {
+    color: #34d399;
+}
+
+.sup-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+}
+.sup-service-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.sup-service-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 0.4rem;
+}
+.sup-service-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+}
+.sup-service-status span {
+    color: #34d399;
+    font-weight: 700;
+}
+.sup-service-latency {
+    color: #94a3b8;
+    font-family: ui-monospace, monospace;
+}
+
+/* Knowledge Base / Self-Serve Categories */
+.sup-kb-section {
+    padding: 3.5rem 1.5rem;
+    background: #ffffff;
+}
+.sup-kb-container {
+    max-width: 76rem;
+    margin: 0 auto;
+}
+.sup-section-heading {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.sup-section-sub {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.sup-kb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+.sup-kb-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.sup-kb-card:hover {
+    background: #ffffff;
+    border-color: #4f46e5;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(79, 70, 229, 0.08);
+}
+.sup-kb-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.sup-kb-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.4rem;
+}
+.sup-kb-desc {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+}
+.sup-kb-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+/* Guided Support Ticket Form */
+.sup-ticket-section {
+    padding: 4rem 1.5rem 5rem;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+.sup-ticket-container {
+    max-width: 48rem;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+}
+
+.sup-severity-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.sup-sev-btn {
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+}
+.sup-sev-btn:hover {
+    border-color: #cbd5e1;
+}
+.sup-sev-btn.active {
+    background: #eef2ff;
+    border-color: #4f46e5;
+    color: #4f46e5;
+}
+.sup-sev-btn.active[data-severity="P1"] {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #b91c1c;
+}
+
+.sup-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+.sup-form-group {
+    margin-bottom: 1.25rem;
+}
+.sup-form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.4rem;
+}
+.sup-input,
+.sup-select,
+.sup-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    background: #f8fafc;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sup-input:focus,
+.sup-select:focus,
+.sup-textarea:focus {
+    border-color: #4f46e5;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.sup-submit-btn {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.sup-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45);
+}
+.sup-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.sup-success-banner {
+    display: none;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: #166534;
+}
+.sup-success-banner strong {
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .sup-ticket-container {
+        padding: 2rem 1.5rem;
+    }
+    .sup-form-row {
+        grid-template-columns: 1fr;
+    }
+    .sup-severity-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

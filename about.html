@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — softify | Purpose-Built Business Software</title>
+    <meta name="description" content="Learn about softify: our mission, 5-stage development philosophy, core engineering differentiators, and purpose-built software vision.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://softify.example.com/about.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://softify.example.com/about.html">
+    <meta property="og:title" content="About Us — softify | Purpose-Built Business Software">
+    <meta property="og:description" content="Learn about softify: our mission, 5-stage development philosophy, core engineering differentiators, and purpose-built software vision.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:site_name" content="softify">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://softify.example.com/about.html">
+    <meta name="twitter:title" content="About Us — softify | Purpose-Built Business Software">
+    <meta name="twitter:description" content="Learn about softify: our mission, 5-stage development philosophy, core engineering differentiators, and purpose-built software vision.">
+    <meta name="twitter:image" content="https://softify.example.com/assets/images/og-preview.svg">
+
+    <!-- Favicon & Brand Meta -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About softify",
+      "url": "https://softify.example.com/about.html",
+      "description": "About softify, our mission, values, and development philosophy.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "softify",
+        "url": "https://softify.example.com/",
+        "logo": "https://softify.example.com/assets/icons/favicon.svg"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <style>
+        body.about-page .navbar { display: none !important; }
+
+        /* Mission section */
+        .ab-mission {
+            background: #ffffff;
+            padding: 5.5rem 2rem;
+            border-bottom: 1px solid #e8edf3;
+        }
+        .ab-mission__inner {
+            max-width: 76rem;
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 5rem;
+            align-items: center;
+        }
+        .ab-mission__tag {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #4f46e5;
+            margin-bottom: 0.75rem;
+        }
+        .ab-mission__title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            line-height: 1.15;
+            margin: 0 0 1.25rem;
+        }
+        .ab-mission__text {
+            font-size: 0.96rem;
+            line-height: 1.75;
+            color: #475569;
+            margin: 0 0 1.25rem;
+        }
+
+        .ab-stats-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            box-shadow: 0 16px 40px rgba(79, 70, 229, 0.25);
+        }
+        .ab-stat { text-align: center; }
+        .ab-stat__val {
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .ab-stat__lbl {
+            font-size: 0.76rem;
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Why section */
+        .ab-why {
+            background: #eef2ff;
+            padding: 5.5rem 2rem;
+        }
+        .ab-why__inner { max-width: 76rem; margin-inline: auto; }
+        .ab-why__header { text-align: center; max-width: 44rem; margin: 0 auto 3.5rem; }
+        .ab-why__title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            margin: 0.5rem 0 0.85rem;
+        }
+        .ab-why__sub {
+            font-size: 0.96rem;
+            line-height: 1.65;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .ab-why__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+        .ab-why-card {
+            background: #ffffff;
+            border: 1px solid #e8edf3;
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+        .ab-why-card:hover {
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+            border-color: rgba(79, 70, 229, 0.2);
+            transform: translateY(-3px);
+        }
+        .ab-why-card__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1.25rem;
+        }
+        .ab-why-card__icon--indigo { background: #eef2ff; color: #4f46e5; }
+        .ab-why-card__icon--teal   { background: #f0fdfa; color: #0d9488; }
+        .ab-why-card__icon--blue   { background: #eff6ff; color: #2563eb; }
+        .ab-why-card__icon--violet { background: #f5f3ff; color: #7c3aed; }
+        .ab-why-card__icon--orange { background: #fff7ed; color: #ea580c; }
+        .ab-why-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .ab-why-card p {
+            font-size: 0.86rem;
+            line-height: 1.6;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Values */
+        .ab-values {
+            background: #ffffff;
+            padding: 5.5rem 2rem;
+            border-bottom: 1px solid #e8edf3;
+        }
+        .ab-values__inner { max-width: 76rem; margin-inline: auto; }
+        .ab-values__header { text-align: center; max-width: 44rem; margin: 0 auto 3.5rem; }
+        .ab-values__title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            margin: 0.5rem 0 0.85rem;
+        }
+        .ab-values__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .ab-val-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            background: #f8fafc;
+            border: 1px solid #e8edf3;
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .ab-val-item:hover {
+            border-color: rgba(79, 70, 229, 0.22);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+            background: #ffffff;
+        }
+        .ab-val-item__num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            display: grid;
+            place-items: center;
+        }
+        .ab-val-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 0.4rem;
+        }
+        .ab-val-item p {
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: #64748b;
+            margin: 0;
+        }
+
+        @media(max-width: 960px) {
+            .ab-mission__inner { grid-template-columns: 1fr; gap: 3rem; }
+            .ab-why__grid { grid-template-columns: repeat(2, 1fr); }
+            .ab-values__grid { grid-template-columns: 1fr; }
+        }
+        @media(max-width: 640px) {
+            .ab-why__grid { grid-template-columns: 1fr; }
+            .ab-stats-card { grid-template-columns: 1fr; gap: 1.25rem; }
+            .ab-mission, .ab-why, .ab-values { padding: 3.5rem 1.25rem; }
+        }
+    </style>
+</head>
+<body class="about-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link hn-link--active">About</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="request-demo.html" class="hn-cta">Request a Demo &rarr;</a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link nav-link--active">About</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="pg-hero motion-fade-up">
+            <span class="pg-hero__eyebrow">ABOUT softify</span>
+            <h1 class="pg-hero__title">Building software that works for real businesses.</h1>
+            <p class="pg-hero__sub">We are a focused software development company building practical, industry-specific products and custom solutions that help businesses operate with clarity and efficiency.</p>
+        </section>
+
+        <!-- Mission & Who We Are -->
+        <section class="ab-mission reveal" aria-label="Our Mission">
+            <div class="ab-mission__inner motion-fade-up">
+                <div>
+                    <span class="ab-mission__tag">WHO WE ARE &amp; OUR MISSION</span>
+                    <h2 class="ab-mission__title">We exist to simplify complex business workflows.</h2>
+                    <p class="ab-mission__text">
+                        Most businesses struggle with software complexity — disconnected spreadsheets, generic off-the-shelf tools that don't fit, and bloated legacy systems that burden daily operations instead of streamlining them.
+                    </p>
+                    <p class="ab-mission__text">
+                        At softify, we take the opposite approach: we build focused, purpose-engineered software designed around the actual workflows of specific industries like healthcare, finance, manufacturing, hospitality, and retail. Every module earns its place by removing friction and improving clarity.
+                    </p>
+                </div>
+                <div class="ab-stats-card motion-stagger">
+                    <div class="ab-stat">
+                        <span class="ab-stat__val">5+</span>
+                        <span class="ab-stat__lbl">Products in active development</span>
+                    </div>
+                    <div class="ab-stat">
+                        <span class="ab-stat__val">5</span>
+                        <span class="ab-stat__lbl">Target industry verticals</span>
+                    </div>
+                    <div class="ab-stat">
+                        <span class="ab-stat__val">100%</span>
+                        <span class="ab-stat__lbl">Cloud-native &amp; modular architecture</span>
+                    </div>
+                    <div class="ab-stat">
+                        <span class="ab-stat__val">0</span>
+                        <span class="ab-stat__lbl">Generic template bloat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Approach: Visual 5-Step Pipeline -->
+        <section class="approach-section reveal" aria-label="Development Philosophy">
+            <div class="approach-inner">
+                <div class="approach-header motion-fade-up">
+                    <span class="pg-hero__eyebrow">OUR DEVELOPMENT PHILOSOPHY</span>
+                    <h2>How we build software.</h2>
+                    <p>A disciplined, human-centered engineering approach designed to deliver practical outcomes rather than unnecessary complexity.</p>
+                </div>
+
+                <div class="approach-timeline motion-stagger">
+                    
+                    <!-- Step 1 -->
+                    <div class="approach-step">
+                        <div class="approach-step__top">
+                            <span class="approach-step__num">STEP 01</span>
+                            <div class="approach-step__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="approach-step__title">Understand the Problem</h3>
+                        <p class="approach-step__desc">We investigate operational bottlenecks and understand the human workflows before writing a single line of code.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="approach-step">
+                        <div class="approach-step__top">
+                            <span class="approach-step__num">STEP 02</span>
+                            <div class="approach-step__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="2"/><line x1="9" y1="21" x2="9" y2="9" stroke="currentColor" stroke-width="2"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="approach-step__title">Design the Experience</h3>
+                        <p class="approach-step__desc">We craft intuitive interfaces and clear navigation hierarchies so teams can adopt the software from day one.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="approach-step">
+                        <div class="approach-step__top">
+                            <span class="approach-step__num">STEP 03</span>
+                            <div class="approach-step__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="approach-step__title">Build the Solution</h3>
+                        <p class="approach-step__desc">We engineer cloud-native, modular systems using modern tech stacks with strong security and API-first architecture.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="approach-step">
+                        <div class="approach-step__top">
+                            <span class="approach-step__num">STEP 04</span>
+                            <div class="approach-step__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="approach-step__title">Test and Refine</h3>
+                        <p class="approach-step__desc">We rigorously validate edge cases, data integrity, and usability against real-world operational scenarios.</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="approach-step">
+                        <div class="approach-step__top">
+                            <span class="approach-step__num">STEP 05</span>
+                            <div class="approach-step__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                        </div>
+                        <h3 class="approach-step__title">Launch and Evolve</h3>
+                        <p class="approach-step__desc">We continuously iterate and expand capabilities based on operational feedback and evolving business needs.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Why softify: Genuine Differentiators -->
+        <section class="ab-why reveal" aria-label="Why choose softify">
+            <div class="ab-why__inner">
+                <div class="ab-why__header">
+                    <span class="pg-hero__eyebrow">WHY softify</span>
+                    <h2 class="ab-why__title">Built around genuine business needs.</h2>
+                    <p class="ab-why__sub">We focus on real software utility, operational clarity, and sustainable technology foundations.</p>
+                </div>
+                <div class="ab-why__grid">
+                    <div class="ab-why-card">
+                        <div class="ab-why-card__icon ab-why-card__icon--indigo" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Purpose-Built Software</h3>
+                        <p>No bloated features you'll never use. Every module is designed specifically for your industry's daily operating patterns.</p>
+                    </div>
+                    <div class="ab-why-card">
+                        <div class="ab-why-card__icon ab-why-card__icon--teal" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/></svg>
+                        </div>
+                        <h3>Practical Solutions</h3>
+                        <p>We prioritize tools that solve real operational bottlenecks, cut down administrative overhead, and reduce manual errors.</p>
+                    </div>
+                    <div class="ab-why-card">
+                        <div class="ab-why-card__icon ab-why-card__icon--violet" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+                        </div>
+                        <h3>User-Focused Design</h3>
+                        <p>Clean, modern interfaces that your team can adopt with ease — minimizing training time and maximizing productivity.</p>
+                    </div>
+                    <div class="ab-why-card">
+                        <div class="ab-why-card__icon ab-why-card__icon--blue" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Scalable Architecture</h3>
+                        <p>Cloud-native, API-ready foundations built to scale gracefully as your operations expand and integrations grow.</p>
+                    </div>
+                    <div class="ab-why-card">
+                        <div class="ab-why-card__icon ab-why-card__icon--orange" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><polyline points="23 4 23 10 17 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3>Continuous Improvement</h3>
+                        <p>Iterative product development shaped by authentic feedback from businesses using our software concepts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="ab-values reveal" aria-label="Our Values">
+            <div class="ab-values__inner">
+                <div class="ab-values__header">
+                    <span class="pg-hero__eyebrow">OUR VALUES</span>
+                    <h2 class="ab-values__title">What guides everything we build.</h2>
+                </div>
+                <div class="ab-values__grid">
+                    <div class="ab-val-item">
+                        <div class="ab-val-item__num">01</div>
+                        <div>
+                            <h3>Useful over flashy</h3>
+                            <p>Every screen, button, and data field must earn its place by helping someone do their job faster and with greater confidence.</p>
+                        </div>
+                    </div>
+                    <div class="ab-val-item">
+                        <div class="ab-val-item__num">02</div>
+                        <div>
+                            <h3>Simple by design</h3>
+                            <p>We eliminate clutter and unnecessary layers so teams can adopt our systems without lengthy training or operational friction.</p>
+                        </div>
+                    </div>
+                    <div class="ab-val-item">
+                        <div class="ab-val-item__num">03</div>
+                        <div>
+                            <h3>Built with people</h3>
+                            <p>Real operators and industry specialists directly shape our feature roadmap, usability decisions, and workflow models.</p>
+                        </div>
+                    </div>
+                    <div class="ab-val-item">
+                        <div class="ab-val-item__num">04</div>
+                        <div>
+                            <h3>Ready to grow</h3>
+                            <p>We engineer solid, modular architectures that seamlessly expand as your user base, transactions, and integrations multiply.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Software Pathway Callout -->
+        <section class="custom-callout reveal" aria-label="Custom Software Services">
+            <div class="custom-callout__inner">
+                <div>
+                    <span class="custom-callout__tag">TAILORED SOLUTIONS</span>
+                    <h2 class="custom-callout__title">Don't see what you need?<br>We can build software around your business.</h2>
+                    <p class="custom-callout__text">
+                        If your operational model doesn't fit standard off-the-shelf software, our software team can design and engineer a custom solution tailored to your exact workflows, compliance requirements, and integration needs.
+                    </p>
+                </div>
+                <div class="custom-callout__actions">
+                    <a href="request-demo.html?goal=custom" class="custom-callout__btn">
+                        <span>Discuss Custom Development</span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <span class="custom-callout__note">Direct conversation &bull; No commitment required</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section reveal" id="faq" aria-label="Frequently Asked Questions">
+            <div class="faq-inner">
+                <div class="faq-header">
+                    <span class="pg-hero__eyebrow">FREQUENTLY ASKED QUESTIONS</span>
+                    <h2>Common questions about softify.</h2>
+                    <p>Clear, direct answers about our software portfolio, development process, and customization capabilities.</p>
+                </div>
+
+                <div class="faq-accordion" id="faq-accordion">
+                    
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
+                            <span>What type of software does softify build?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-1" role="region">
+                            <p>We build focused business software systems engineered for specific industries, including hospitality operations, clinic and healthcare management, financial reporting, retail commerce, and manufacturing execution. We focus on daily workflows, usability, and clean architecture rather than generic templates.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
+                            <span>Do you build custom software for specific business needs?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-2" role="region">
+                            <p>Yes. In addition to our core product portfolio, we work with select businesses to design and develop custom software solutions when existing off-the-shelf tools fail to address unique operational requirements or legacy integration needs.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
+                            <span>How does your software development process work?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-3" role="region">
+                            <p>Our process follows 5 disciplined stages: Understand the operational problem, Design an intuitive experience, Build cloud-native modular solutions, Test against real-world edge cases, and Launch iteratively based on direct feedback.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
+                            <span>Can existing legacy software or disconnected spreadsheets be replaced?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-4" role="region">
+                            <p>Absolutely. Modernizing disconnected data and migrating legacy workflows into centralized, secure web platforms is one of the primary problems our software is designed to solve.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-5">
+                            <span>What stage of development are your catalogue products in?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-5" role="region">
+                            <p>Our catalogue systems (such as HotelFlow and ClinicOS) are currently in active development. We transparently showcase planned capabilities and invite interested businesses to schedule walkthroughs and contribute feedback into early product direction.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-6">
+                            <span>How can I enquire about a product or request a walkthrough?</span>
+                            <span class="faq-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer" id="faq-ans-6" role="region">
+                            <p>You can submit an enquiry through our <a href="request-demo.html" style="color:#4f46e5;font-weight:600;text-decoration:none;">Request a Demo</a> page or contact us directly via our <a href="contact.html" style="color:#4f46e5;font-weight:600;text-decoration:none;">Contact page</a>. Our product team will review your requirements and coordinate a discussion.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="pg-cta reveal">
+            <h2 class="pg-cta__title">Ready to transform your business operations?</h2>
+            <p class="pg-cta__sub">Tell us what you're looking for and let's arrange a focused walkthrough tailored to your industry.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <a href="request-demo.html" class="pg-cta__btn" data-track-cta="request_demo" data-track-location="about_cta_banner">Request a Demo &rarr;</a>
+                <a href="products.html" class="hh-cta-banner__btn-outline" data-track-cta="explore_products" data-track-location="about_cta_banner" style="padding:0.9rem 1.85rem;border-radius:8px;font-weight:700;font-size:0.95rem;">Explore All Products</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <!-- Newsletter Banner -->
+            <div class="footer-newsletter">
+                <div class="footer-newsletter__info">
+                    <span class="footer-newsletter__eyebrow">Stay Connected</span>
+                    <h3 class="footer-newsletter__heading">Subscribe to softify Product Updates</h3>
+                    <p class="footer-newsletter__desc">Get quarterly insights on modern enterprise workflows, new feature releases, and engineering updates.</p>
+                </div>
+                <form class="footer-newsletter__form" id="footer-newsletter-form">
+                    <div class="footer-newsletter__input-group">
+                        <input type="email" class="footer-newsletter__input" id="footer-email" placeholder="Enter your work email..." required aria-label="Work email address">
+                        <button type="submit" class="footer-newsletter__btn" id="footer-subscribe-btn">
+                            <span>Subscribe</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="footer-newsletter__feedback" id="footer-newsletter-success">✓ Thank you for subscribing! Check your inbox soon.</div>
+                </form>
+            </div>
+
+            <!-- Main Navigation Grid -->
+            <div class="footer-main-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-link">
+                        <div class="footer-brand-logo">S</div>
+                        <span class="footer-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-tagline">Practical, high-performance business software built around real workflows and industry-specific operations.</p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.5 2.48 2.5zM0 8h5v16H0zm7 0h4.8v2.05h.07c.67-1.28 2.3-2.65 4.72-2.65 5.05 0 5.98 3.32 5.98 7.62V24h-5v-8.5c0-2.04-.03-4.67-2.85-4.67-2.85 0-3.28 2.22-3.28 4.5V24H7z"/></svg></a>
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 0 9.032H12.6L6.77 19.5H3.326l6.98-8.02L3.12 2.25H6.5l6.6 9.027L19.02 2.25Zm-2.67 15.29h.01-5.05L9.2 15.5l-2.5-2.85V4.75l5.05 6.15 2.65-6.15h3.55l-4.2 5.95 3.96 7.45Z"/></svg></a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.802 8.205 11.385.6.113.82-.26.82-.58 0-.29-.01-1.14-.017-2.04-3.338.726-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.094-.745.084-.73.084-.73 1.21.086 1.846 1.246 1.846 1.246 1.07 1.835 2.81 1.312 3.497.999.108-.775.417-1.312.764-1.61-2.665-.304-5.467-1.334-5.467-5.934 0-1.31.47-2.38 1.24-3.22-.124-.304-.535-1.527.117-3.182 0 0 1.008-.323 3.3 1.23.956-.266 1.98-.399 3-.404 1.013.005 2.037.138 3 .404 2.29-1.553 3.296-1.23 3.296-1.23.653 1.655.242 2.878.118 3.182.77.84 1.237 1.91 1.237 3.22 0 4.61-2.807 5.622-5.478 5.921.43.37.813 1.104.813 2.224 0 1.606-.015 2.898-.015 3.29-0.005.322.21.702.825.58A12.002 12.002 0 0 0 24 12.286c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 1: Products -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Products</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html" class="footer-nav-link">All Products</a></li>
+                        <li><a href="product.html?id=hotel-management-system" class="footer-nav-link">HotelFlow <span class="footer-badge">Hospitality</span></a></li>
+                        <li><a href="product.html?id=healthcare-pro" class="footer-nav-link">ClinicOS <span class="footer-badge">Health</span></a></li>
+                        <li><a href="product.html?id=financeflow" class="footer-nav-link">FinanceFlow <span class="footer-badge">Finance</span></a></li>
+                        <li><a href="product.html?id=makersuite" class="footer-nav-link">MakerSuite <span class="footer-badge">Mfg</span></a></li>
+                        <li><a href="product.html?id=retailoptix" class="footer-nav-link">RetailOptix <span class="footer-badge">Retail</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Solutions -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="products.html?filter=manufacturing" class="footer-nav-link">Supply & Inventory</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">FAQ</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                        <li><a href="request-demo.html" class="footer-nav-link">Request Demo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Support & Admin -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support & Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">API & Developer Docs</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">System Reliability</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var accordion = document.getElementById('faq-accordion');
+            if (!accordion) return;
+
+            var items = accordion.querySelectorAll('.faq-item');
+            items.forEach(function(item) {
+                var btn = item.querySelector('.faq-question');
+                if (!btn) return;
+
+                btn.addEventListener('click', function() {
+                    var isOpen = item.classList.contains('is-open');
+
+                    // Optional: close other open items for clean single-expand behavior
+                    items.forEach(function(other) {
+                        if (other !== item) {
+                            other.classList.remove('is-open');
+                            var otherBtn = other.querySelector('.faq-question');
+                            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    if (isOpen) {
+                        item.classList.remove('is-open');
+                        btn.setAttribute('aria-expanded', 'false');
+                    } else {
+                        item.classList.add('is-open');
+                        btn.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

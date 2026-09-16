@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Helpdesk & System Health — softify</title>
+    <meta name="description" content="Access technical documentation, check live system uptime, and submit priority engineering support tickets.">
+    <link rel="canonical" href="https://softify.example.com/support.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Customer Helpdesk & System Health — softify">
+    <meta property="og:description" content="Live system uptime monitor, knowledge base, and SLA engineering support tickets.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:url" content="https://softify.example.com/support.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/support.css">
+</head>
+<body class="support-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="resources.html" class="hn-link">Resources</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo →</a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link" data-track-cta="request_demo" data-track-location="mobile_nav">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <!-- ===== HERO ===== -->
+        <section class="sup-hero">
+            <div class="sup-hero__inner">
+                <span class="sup-hero__badge">🛡️ Enterprise SLA Helpdesk</span>
+                <h1 class="sup-hero__title">Customer Support &amp; <span style="background:linear-gradient(135deg,#4f46e5,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Service Center</span></h1>
+                <p class="sup-hero__sub">
+                    Self-service operational guides, real-time platform diagnostics, and dedicated ticketing for business clients.
+                </p>
+                <div class="sup-status-bar">
+                    <span class="sup-status-dot"></span>
+                    <span id="sup-global-status-text">All Systems Operational • 99.99% Uptime</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LIVE SERVICE HEALTH SECTION ===== -->
+        <section class="sup-health-section">
+            <div class="sup-health-container">
+                <div class="sup-health-box">
+                    <div class="sup-health-header">
+                        <div class="sup-health-title">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span>Live Infrastructure Telemetry</span>
+                        </div>
+                        <div class="sup-health-metrics">
+                            <div>Overall Availability: <strong id="sup-uptime-val">99.99%</strong></div>
+                            <div>API Status: <strong>Normal</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="sup-services-grid" id="sup-services-grid">
+                        <div class="sup-service-card">
+                            <div class="sup-service-name">Core Application API</div>
+                            <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">6ms</span></div>
+                        </div>
+                        <div class="sup-service-card">
+                            <div class="sup-service-name">Persistence Datastore</div>
+                            <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">3ms</span></div>
+                        </div>
+                        <div class="sup-service-card">
+                            <div class="sup-service-name">Media Asset Engine</div>
+                            <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">12ms</span></div>
+                        </div>
+                        <div class="sup-service-card">
+                            <div class="sup-service-name">Outbound Webhook Worker</div>
+                            <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">18ms</span></div>
+                        </div>
+                        <div class="sup-service-card">
+                            <div class="sup-service-name">Edge CDN Caching</div>
+                            <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">2ms</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== KNOWLEDGE BASE CATEGORIES ===== -->
+        <section class="sup-kb-section">
+            <div class="sup-kb-container">
+                <h2 class="sup-section-heading">Self-Serve Knowledge Hub</h2>
+                <p class="sup-section-sub">Quick resolution workflows for common administrator and operator tasks</p>
+
+                <div class="sup-kb-grid">
+                    <a href="docs.html#overview" class="sup-kb-card">
+                        <span class="sup-kb-icon">🚀</span>
+                        <h3 class="sup-kb-title">Getting Started &amp; Onboarding</h3>
+                        <p class="sup-kb-desc">First-time administrator setup, role delegation, team invitation, and initial seed imports.</p>
+                        <span class="sup-kb-link">View Setup Guides →</span>
+                    </a>
+
+                    <a href="docs.html#endpoint-submit" class="sup-kb-card">
+                        <span class="sup-kb-icon">⚡</span>
+                        <h3 class="sup-kb-title">REST APIs &amp; Webhooks</h3>
+                        <p class="sup-kb-desc">Connect Softify endpoints to internal databases, ERPs, and automated Slack/Discord channels.</p>
+                        <span class="sup-kb-link">View API Reference →</span>
+                    </a>
+
+                    <a href="resources.html" class="sup-kb-card">
+                        <span class="sup-kb-icon">📊</span>
+                        <h3 class="sup-kb-title">Operational Best Practices</h3>
+                        <p class="sup-kb-desc">Review industry workflows and case studies across hospitality, clinic management, and inventory.</p>
+                        <span class="sup-kb-link">View Playbooks →</span>
+                    </a>
+
+                    <a href="privacy.html" class="sup-kb-card">
+                        <span class="sup-kb-icon">🔒</span>
+                        <h3 class="sup-kb-title">Security &amp; Data Privacy</h3>
+                        <p class="sup-kb-desc">Details on zero-PII architecture, GDPR compliance, tenant isolation, and encrypted backups.</p>
+                        <span class="sup-kb-link">Security Policies →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SUBMIT A SUPPORT TICKET ===== -->
+        <section class="sup-ticket-section" id="ticket-form-section">
+            <div class="sup-ticket-container">
+                <h2 style="font-size:1.6rem; font-weight:800; color:#0f172a; margin-bottom:0.4rem; text-align:center;">Open an Engineering Ticket</h2>
+                <p style="font-size:0.9rem; color:#64748b; text-align:center; margin-bottom:2rem;">Our solutions engineering desk responds to priority client tickets within SLA.</p>
+
+                <div id="sup-success-banner" class="sup-success-banner">
+                    <strong>✓ Ticket Submitted Successfully</strong>
+                    <p id="sup-success-msg" style="margin-bottom:1rem;">Your ticket has been logged and assigned to the duty engineer.</p>
+                    <button type="button" class="sup-sev-btn active" onclick="location.reload()" style="padding:0.6rem 1.5rem;">Submit Another Ticket</button>
+                </div>
+
+                <form id="sup-ticket-form" novalidate>
+                    <!-- Severity Selector -->
+                    <div class="sup-form-group">
+                        <label class="sup-form-label">Select Issue Severity</label>
+                        <div class="sup-severity-group" id="sup-severity-group">
+                            <button type="button" class="sup-sev-btn" data-severity="P1">P1 - Critical Outage</button>
+                            <button type="button" class="sup-sev-btn" data-severity="P2">P2 - Major Blocker</button>
+                            <button type="button" class="sup-sev-btn active" data-severity="P3">P3 - Normal Issue</button>
+                            <button type="button" class="sup-sev-btn" data-severity="P4">P4 - General Question</button>
+                        </div>
+                        <input type="hidden" id="sup-severity-input" name="severity" value="P3">
+                    </div>
+
+                    <div class="sup-form-row">
+                        <div class="sup-form-group">
+                            <label for="sup-name" class="sup-form-label">Full Name *</label>
+                            <input type="text" id="sup-name" class="sup-input" placeholder="e.g. David Sterling" required>
+                        </div>
+                        <div class="sup-form-group">
+                            <label for="sup-email" class="sup-form-label">Work Email *</label>
+                            <input type="email" id="sup-email" class="sup-input" placeholder="david@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="sup-form-row">
+                        <div class="sup-form-group">
+                            <label for="sup-company" class="sup-form-label">Company / Organization</label>
+                            <input type="text" id="sup-company" class="sup-input" placeholder="e.g. Grandview Suites">
+                        </div>
+                        <div class="sup-form-group">
+                            <label for="sup-product" class="sup-form-label">Affected Platform</label>
+                            <select id="sup-product" class="sup-select">
+                                <option value="hotel-management-system">HotelFlow (Hospitality)</option>
+                                <option value="healthcare-pro">ClinicOS (Healthcare)</option>
+                                <option value="financeflow">FinanceFlow (Analytics)</option>
+                                <option value="makersuite">MakerSuite (Inventory)</option>
+                                <option value="general">Account &amp; API Integration</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sup-form-group">
+                        <label for="sup-subject" class="sup-form-label">Issue Subject *</label>
+                        <input type="text" id="sup-subject" class="sup-input" placeholder="Brief summary of the issue..." required>
+                    </div>
+
+                    <div class="sup-form-group">
+                        <label for="sup-message" class="sup-form-label">Detailed Description &amp; Reproduction Steps *</label>
+                        <textarea id="sup-message" class="sup-textarea" rows="4" placeholder="Describe the behavior observed, affected user IDs, or error messages..." required></textarea>
+                    </div>
+
+                    <button type="submit" id="sup-submit-btn" class="sup-submit-btn">
+                        <span>Dispatch Support Ticket →</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-enterprise" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-main-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-logo" aria-label="softify home">
+                        <span class="hn-logo" aria-hidden="true">S</span>
+                        <span class="hn-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Engineering purpose-built, cloud-native software systems that help businesses operate with clarity, speed, and continuous reliability.
+                    </p>
+                </div>
+
+                <!-- Column 2: Solutions & Tools -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions &amp; Tools</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="roi-calculator.html" class="footer-nav-link highlight">ROI Calculator ✨</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources & Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Resources &amp; Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="resources.html" class="footer-nav-link">Case Studies &amp; Hub</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">Developer Docs</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Console & Support -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support &amp; Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="support.html" class="footer-nav-link active">Customer Helpdesk</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">API &amp; Developer Docs</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Ticket & Status Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Severity Pill Toggle
+            const sevBtns = document.querySelectorAll('.sup-sev-btn');
+            const sevInput = document.getElementById('sup-severity-input');
+            sevBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sevBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    if (sevInput) sevInput.value = btn.dataset.severity;
+                });
+            });
+
+            // 2. Ticket Submission Handler
+            const form = document.getElementById('sup-ticket-form');
+            const submitBtn = document.getElementById('sup-submit-btn');
+            const successBanner = document.getElementById('sup-success-banner');
+            const successMsg = document.getElementById('sup-success-msg');
+
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('sup-name').value.trim();
+                    const email = document.getElementById('sup-email').value.trim();
+                    const company = document.getElementById('sup-company').value.trim();
+                    const product = document.getElementById('sup-product').value;
+                    const severity = (sevInput ? sevInput.value : 'P3');
+                    const subject = document.getElementById('sup-subject').value.trim();
+                    const message = document.getElementById('sup-message').value.trim();
+
+                    if (!name || !email || !subject || !message) {
+                        alert('Please complete all required fields.');
+                        return;
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Submitting Ticket...';
+                    }
+
+                    try {
+                        let apiUrl = '/api/support/ticket';
+                        if (window.location.protocol === 'file:') {
+                            apiUrl = 'http://localhost:3005/api/support/ticket';
+                        }
+
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ name, email, company, product, severity, subject, message })
+                        });
+
+                        const data = await res.json();
+                        if (res.ok && data.success) {
+                            form.style.display = 'none';
+                            if (successBanner) {
+                                successBanner.style.display = 'block';
+                                if (successMsg) {
+                                    successMsg.textContent = `Ticket ${data.ticketId} has been created and assigned. A confirmation has been sent to ${email}.`;
+                                }
+                            }
+                        } else {
+                            alert(data.error || 'Unable to submit ticket. Please try again.');
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Dispatch Support Ticket →';
+                            }
+                        }
+                    } catch (err) {
+                        alert('Network error submitting ticket. Please ensure server is running.');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Dispatch Support Ticket →';
+                        }
+                    }
+                });
+            }
+
+            // 3. Live System Telemetry Loader
+            async function fetchSystemStatus() {
+                try {
+                    let apiUrl = '/api/system/status';
+                    if (window.location.protocol === 'file:') {
+                        apiUrl = 'http://localhost:3005/api/system/status';
+                    }
+                    const res = await fetch(apiUrl);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.services) {
+                            const grid = document.getElementById('sup-services-grid');
+                            if (grid) {
+                                grid.innerHTML = data.services.map(s => `
+                                    <div class="sup-service-card">
+                                        <div class="sup-service-name">${s.name}</div>
+                                        <div class="sup-service-status"><span>● Operational</span> <span class="sup-service-latency">${s.latency_ms}ms</span></div>
+                                    </div>
+                                `).join('');
+                            }
+                            const uptimeEl = document.getElementById('sup-uptime-val');
+                            if (uptimeEl) uptimeEl.textContent = data.uptime_pct || '99.99%';
+                        }
+                    }
+                } catch (e) {}
+            }
+            fetchSystemStatus();
+        });
+    </script>
+
+    <!-- Core Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

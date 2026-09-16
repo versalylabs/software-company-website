@@ -1,0 +1,293 @@
+/* ==========================================================
+   softify Motion System
+   Subtle, premium, restrained animation and interaction styles
+   ========================================================== */
+
+:root {
+    --motion-ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --motion-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-duration-fast: 0.2s;
+    --motion-duration-normal: 0.35s;
+    --motion-duration-slow: 0.6s;
+}
+
+/* ── 1. BASE ENTRANCE & SCROLL REVEALS ─────────────────────── */
+.motion-fade-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--motion-duration-normal) var(--motion-ease-out-quint),
+                transform var(--motion-duration-normal) var(--motion-ease-out-quint);
+    will-change: opacity, transform;
+}
+
+.motion-fade-in {
+    opacity: 0;
+    transition: opacity var(--motion-duration-normal) var(--motion-ease-smooth);
+    will-change: opacity;
+}
+
+.motion-scale-up {
+    opacity: 0;
+    transform: scale(0.97) translateY(10px);
+    transition: opacity var(--motion-duration-normal) var(--motion-ease-out-quint),
+                transform var(--motion-duration-normal) var(--motion-ease-out-quint);
+    will-change: opacity, transform;
+}
+
+/* Active State (Triggered via Motion Engine or IntersectionObserver) */
+.motion-fade-up.is-in-view,
+.motion-fade-in.is-in-view,
+.motion-scale-up.is-in-view,
+.is-in-view {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* Stagger item delays */
+.motion-stagger > *:nth-child(1) { transition-delay: 0.04s; }
+.motion-stagger > *:nth-child(2) { transition-delay: 0.09s; }
+.motion-stagger > *:nth-child(3) { transition-delay: 0.14s; }
+.motion-stagger > *:nth-child(4) { transition-delay: 0.19s; }
+.motion-stagger > *:nth-child(5) { transition-delay: 0.24s; }
+.motion-stagger > *:nth-child(6) { transition-delay: 0.29s; }
+
+/* ── 2. BUTTONS & CTA MICRO-INTERACTIONS ─────────────────── */
+.hn-cta,
+.hh-btn-primary,
+.hh-btn-secondary,
+.btn-primary,
+.admin-btn,
+.admin-btn-action,
+.px-filter-btn {
+    transition: transform var(--motion-duration-fast) var(--motion-ease-spring),
+                box-shadow var(--motion-duration-fast) var(--motion-ease-smooth),
+                background-color var(--motion-duration-fast) ease,
+                border-color var(--motion-duration-fast) ease,
+                color var(--motion-duration-fast) ease !important;
+}
+
+.hn-cta:hover,
+.hh-btn-primary:hover,
+.btn-primary:hover,
+.admin-btn:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.28);
+}
+
+.hn-cta:active,
+.hh-btn-primary:active,
+.btn-primary:active,
+.admin-btn:active {
+    transform: translateY(0.5px) scale(0.985);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+}
+
+.hh-btn-secondary:hover,
+.admin-btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+.hh-btn-secondary:active,
+.admin-btn-secondary:active {
+    transform: translateY(0.5px) scale(0.985);
+}
+
+/* Arrow slide on CTA hover */
+.hn-cta svg,
+.hh-btn-primary svg,
+.btn-primary svg,
+.cta-arrow {
+    transition: transform var(--motion-duration-fast) var(--motion-ease-out-quint);
+}
+
+.hn-cta:hover svg,
+.hh-btn-primary:hover svg,
+.btn-primary:hover svg,
+.cta-arrow:hover {
+    transform: translateX(3px);
+}
+
+/* ── 3. PRODUCT CARDS & VISUAL INTERACTION ────────────────── */
+.product-card,
+.hh-product-card,
+.hh-spotlight-card,
+.hh-value-card,
+.about-mission-card,
+.about-why-card,
+.admin-metric-card,
+.admin-card {
+    transition: transform var(--motion-duration-normal) var(--motion-ease-spring),
+                box-shadow var(--motion-duration-normal) var(--motion-ease-smooth),
+                border-color var(--motion-duration-normal) var(--motion-ease-smooth) !important;
+}
+
+.product-card:hover,
+.hh-product-card:hover,
+.about-why-card:hover,
+.hh-value-card:hover {
+    transform: translateY(-3.5px);
+    box-shadow: 0 14px 30px -8px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+    border-color: rgba(79, 70, 229, 0.35);
+}
+
+.product-card:hover .product-icon-wrap,
+.hh-product-card:hover .hh-product-card__icon {
+    transform: scale(1.06);
+    transition: transform var(--motion-duration-fast) var(--motion-ease-spring);
+}
+
+/* Product screenshot hover scale */
+.product-hero-screenshot,
+.hh-screenshot-wrap img,
+.gallery-thumbnail {
+    transition: transform var(--motion-duration-slow) var(--motion-ease-spring),
+                box-shadow var(--motion-duration-slow) var(--motion-ease-smooth);
+}
+
+.hh-screenshot-wrap:hover img,
+.product-hero-screenshot:hover {
+    transform: scale(1.015);
+}
+
+/* ── 4. NAVBAR & NAVIGATION MOTION ───────────────────────── */
+.hn-bar,
+.navbar {
+    transition: background-color var(--motion-duration-normal) var(--motion-ease-smooth),
+                box-shadow var(--motion-duration-normal) var(--motion-ease-smooth),
+                backdrop-filter var(--motion-duration-normal) var(--motion-ease-smooth);
+}
+
+.hn-bar.is-scrolled {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.nav-link,
+.hn-link {
+    position: relative;
+    transition: color var(--motion-duration-fast) ease;
+}
+
+.hn-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4f46e5;
+    border-radius: 999px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--motion-duration-fast) var(--motion-ease-spring);
+}
+
+.hn-link:hover::after,
+.hn-link--active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Mobile Nav Panel Entrance */
+.nav-panel {
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--motion-duration-fast) var(--motion-ease-smooth),
+                transform var(--motion-duration-fast) var(--motion-ease-spring) !important;
+}
+
+.nav-panel.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nav-panel .nav-menu li {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.2s var(--motion-ease-smooth), transform 0.2s var(--motion-ease-spring);
+}
+
+.nav-panel.is-open .nav-menu li:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateX(0); }
+.nav-panel.is-open .nav-menu li:nth-child(2) { transition-delay: 0.09s; opacity: 1; transform: translateX(0); }
+.nav-panel.is-open .nav-menu li:nth-child(3) { transition-delay: 0.13s; opacity: 1; transform: translateX(0); }
+.nav-panel.is-open .nav-menu li:nth-child(4) { transition-delay: 0.17s; opacity: 1; transform: translateX(0); }
+.nav-panel.is-open .nav-menu li:nth-child(5) { transition-delay: 0.21s; opacity: 1; transform: translateX(0); }
+
+/* ── 5. FORM CONTROLS & FEEDBACK ─────────────────────────── */
+.form-input,
+.form-select,
+.form-textarea,
+.admin-input,
+.contact-input {
+    transition: border-color var(--motion-duration-fast) ease,
+                box-shadow var(--motion-duration-fast) var(--motion-ease-spring),
+                background-color var(--motion-duration-fast) ease !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus,
+.admin-input:focus {
+    transform: translateY(-0.5px);
+}
+
+/* Subtle badge pulse on filter activate */
+.px-filter-btn.active {
+    animation: motion-subtle-pop 0.25s var(--motion-ease-spring);
+}
+
+@keyframes motion-subtle-pop {
+    0% { transform: scale(0.96); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* ── 6. MODALS & DRAWERS SPRING ───────────────────────────── */
+.admin-modal,
+.modal-card {
+    transition: transform var(--motion-duration-normal) var(--motion-ease-spring),
+                opacity var(--motion-duration-fast) ease;
+}
+
+/* ── 7. GSAP CHOREOGRAPHY HOOKS ───────────────────────────── */
+.gsap-reveal,
+.gsap-hero-elem {
+    will-change: opacity, transform;
+}
+
+/* ── 8. ACCESSIBILITY: PREFERS REDUCED MOTION ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .motion-fade-up,
+    .motion-fade-in,
+    .motion-scale-up,
+    .reveal,
+    .gsap-reveal,
+    .gsap-hero-elem,
+    .nav-panel .nav-menu li {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .hn-cta:hover,
+    .hh-btn-primary:hover,
+    .btn-primary:hover,
+    .product-card:hover,
+    .hh-product-card:hover {
+        transform: none !important;
+    }
+}

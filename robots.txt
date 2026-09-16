@@ -1,0 +1,15 @@
+﻿# ==========================================
+# softify Robots Configuration
+# ==========================================
+
+User-agent: *
+Allow: /
+
+# Disallow internal data and test endpoints
+Disallow: /data/
+Disallow: /test/
+Disallow: /api/
+
+# Sitemap Location
+Sitemap: https://softify.example.com/sitemap.xml
+

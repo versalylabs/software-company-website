@@ -1,0 +1,786 @@
+{
+  "products": [
+    {
+      "id": "hotel-management-system",
+      "name": "HotelFlow",
+      "tagline": "All-in-one hotel operations, from front desk to housekeeping.",
+      "category": "Hospitality",
+      "status": "in-development",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#4f46e5",
+      "shortDescription": "Streamline every aspect of hotel operations — reservations, housekeeping, billing, and guest experience — in one connected platform.",
+      "fullDescription": "HotelFlow is being built to give independent hotels and small hotel groups a single, modern system to manage every part of their operation. From check-in to checkout, room assignments to billing, the goal is to reduce the manual overhead that currently spreads across multiple disconnected tools.",
+      "problem": "Most independent hotels run on a patchwork of outdated systems — a legacy PMS, separate housekeeping sheets, manual billing, and disconnected guest communication. The result is wasted time, missed details, and a guest experience that suffers from the gaps in between.",
+      "whatWeAreBuilding": [
+        "A unified front desk and reservation management system",
+        "Housekeeping task board with real-time room status updates",
+        "Integrated billing and folio management",
+        "Guest profile and preference tracking",
+        "Channel management for online booking sites",
+        "Reporting on occupancy, revenue, and operations"
+      ],
+      "keyFeatures": [
+        "Reservation & front desk management",
+        "Housekeeping & room status board",
+        "Integrated billing & folio"
+      ],
+      "features": [
+        {
+          "icon": "calendar",
+          "title": "Reservation Management",
+          "description": "A clear, visual booking calendar with drag-and-drop room assignment and multi-channel reservation sync."
+        },
+        {
+          "icon": "home",
+          "title": "Housekeeping Board",
+          "description": "Real-time room status updates, task assignment, and inspection tracking for housekeeping teams."
+        },
+        {
+          "icon": "chart",
+          "title": "Occupancy & Revenue Reporting",
+          "description": "Daily, weekly, and monthly summaries of occupancy rates, ADR, and revenue by room type."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Folio & Billing",
+          "description": "Guest folios, itemised charges, and checkout billing with integrated payment recording."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "clock",
+          "title": "Fewer manual tasks",
+          "description": "Automated status updates and task routing reduce the time staff spend on coordination."
+        },
+        {
+          "icon": "star",
+          "title": "Clearer guest picture",
+          "description": "Guest profiles and preference notes help staff deliver a more consistent experience."
+        },
+        {
+          "icon": "trend",
+          "title": "Operational visibility",
+          "description": "Managers get a clear picture of what is happening across rooms, tasks, and revenue at any time."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Independent hotels",
+          "description": "Properties of 20-200 rooms that currently rely on spreadsheets or legacy PMS software."
+        },
+        {
+          "icon": "villa",
+          "title": "Boutique hotel groups",
+          "description": "Small groups managing 2-5 properties that need a consistent system across locations."
+        },
+        {
+          "icon": "home",
+          "title": "Guesthouses & B&Bs",
+          "description": "Owner-operated properties looking for a simple but professional front desk system."
+        }
+      ],
+      "relatedIds": [
+        "healthcare-pro",
+        "financeflow",
+        "retailoptix"
+      ],
+      "featuredImage": "/assets/uploads/hotelflow-dashboard.svg",
+      "screenshots": [
+        {
+          "image": "/assets/uploads/hotelflow-dashboard.svg",
+          "layout": "browser",
+          "label": "Operations Dashboard",
+          "caption": "Live multi-room reservation timeline with drag-and-drop allocation and housekeeping status."
+        },
+        {
+          "layout": "table",
+          "label": "Reservations Folio",
+          "caption": "Automated guest billing, room charges, and checkout folios."
+        },
+        {
+          "layout": "chart",
+          "label": "Occupancy Trends",
+          "caption": "Real-time occupancy analytics, ADR tracking, and revenue forecasting."
+        }
+      ],
+      "order": 2,
+      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Cloud Native (AWS/GCP)",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Hybrid Local Cache",
+          "multiTenant": true,
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": true,
+          "ssoSaml": true,
+          "encryption": "AES-256 at rest / TLS 1.3 in transit",
+          "auditTrail": true,
+          "gdprCompliant": true,
+          "complianceCert": "PCI-DSS Level 1 & SOC 2 Type II",
+          "backups": "Hourly Automated Snapshots"
+        },
+        "workflows": {
+          "workflowBuilder": "Visual Room & Task Automations",
+          "customFields": true,
+          "multiLocation": "Multi-property / Cluster Management",
+          "taskDelegation": "Housekeeping & Maintenance Routing",
+          "slaAlerts": "Instant Room Turnaround Triggers"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Occupancy, RevPAR & ADR",
+          "customKpi": true,
+          "scheduledExports": "Automated Night Audit & Financials",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "Discord, Slack, SMS Webhooks",
+          "erpAccounting": "QuickBooks, Xero, Sage",
+          "posHardware": "Keycard Encoders, EMV Terminals, POS",
+          "paymentGateways": "Stripe, Adyen, PayPal",
+          "customSdk": "Public REST & Webhook APIs"
+        },
+        "support": {
+          "uptimeSla": "99.99% Availability",
+          "onboarding": "1-2 Weeks Fast-Track",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Priority Emergency Desk"
+        },
+        "commercial": {
+          "pricingModel": "Per Room / Property Tiered",
+          "sandboxTrial": "14-Day Live Demo Sandbox",
+          "customEnterpriseTier": "Custom White-Label & SLA"
+        }
+      }
+    },
+    {
+      "id": "healthcare-pro",
+      "name": "ClinicOS",
+      "tagline": "Clinic management built for the way medical teams actually work.",
+      "category": "Healthcare",
+      "status": "in-development",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#0d9488",
+      "shortDescription": "A focused clinic management system covering patient records, appointments, billing, and clinical workflow in one integrated platform.",
+      "fullDescription": "ClinicOS is being designed for small to mid-sized clinics that need a modern, reliable system to manage their day-to-day clinical and administrative operations without the complexity of enterprise healthcare software.",
+      "problem": "Many clinics still rely on paper records, disconnected appointment systems, and manual billing processes. The administrative burden this creates pulls clinical staff away from patient care and creates gaps that affect both the patient experience and practice efficiency.",
+      "whatWeAreBuilding": [
+        "Patient registration and electronic health records (EHR) management",
+        "Appointment scheduling with SMS and email reminders",
+        "Consultation notes and clinical documentation tools",
+        "Billing, invoicing, and insurance claim tracking",
+        "Prescription management and pharmacy integration hooks",
+        "Reporting on appointment volume, billing, and clinical activity"
+      ],
+      "keyFeatures": [
+        "Patient records & EHR",
+        "Appointment scheduling & reminders",
+        "Billing & invoice management"
+      ],
+      "features": [
+        {
+          "icon": "clipboard",
+          "title": "Patient Records",
+          "description": "Structured patient profiles, consultation history, clinical notes, and document attachments in one place."
+        },
+        {
+          "icon": "calendar",
+          "title": "Appointment Scheduling",
+          "description": "A visual calendar for booking, rescheduling, and tracking appointments with automated reminders."
+        },
+        {
+          "icon": "shield",
+          "title": "Clinical Documentation",
+          "description": "Structured note templates for consultations, diagnoses, and treatment plans that save time and reduce errors."
+        },
+        {
+          "icon": "chart",
+          "title": "Billing & Claims",
+          "description": "Invoice generation, payment tracking, and insurance claim management with status visibility."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "clock",
+          "title": "Less paperwork",
+          "description": "Digital records and structured forms reduce the time clinical and admin staff spend on documentation."
+        },
+        {
+          "icon": "star",
+          "title": "Fewer missed appointments",
+          "description": "Automated reminders and a clear scheduling view reduce no-shows and scheduling gaps."
+        },
+        {
+          "icon": "trend",
+          "title": "Cleaner billing",
+          "description": "Streamlined invoicing and claim tracking reduce errors and speed up payment cycles."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "General practice clinics",
+          "description": "GP practices and family health clinics with 2-20 practitioners."
+        },
+        {
+          "icon": "shield",
+          "title": "Specialist clinics",
+          "description": "Dental, physiotherapy, dermatology, and other specialist practices."
+        },
+        {
+          "icon": "home",
+          "title": "Multi-location practices",
+          "description": "Clinics operating across 2-5 sites that need a consistent system."
+        }
+      ],
+      "relatedIds": [
+        "hotel-management-system",
+        "financeflow",
+        "makersuite"
+      ],
+      "stats": {},
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Practice Overview"
+        },
+        {
+          "layout": "table",
+          "label": "Patient Records"
+        },
+        {
+          "layout": "chart",
+          "label": "Appointment Analytics"
+        }
+      ],
+      "order": 3,
+      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Dedicated Healthcare Cloud (HIPAA)",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Clinical Offline Resilience",
+          "multiTenant": "Dedicated Tenant Isolation",
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Granular Clinical Role Matrix",
+          "ssoSaml": true,
+          "encryption": "End-to-end Encrypted PHI / AES-256",
+          "auditTrail": "Full Immutable Access & Audit Trail",
+          "gdprCompliant": true,
+          "complianceCert": "HIPAA Compliant, HITECH, SOC 2",
+          "backups": "Continuous Point-in-time Recovery"
+        },
+        "workflows": {
+          "workflowBuilder": "Consultation & Clinical Pathways",
+          "customFields": "Custom EHR & Intake Templates",
+          "multiLocation": "Multi-clinic / Regional Network",
+          "taskDelegation": "Nurse, Doctor & Reception Routing",
+          "slaAlerts": "Critical Lab & Appointment Alerts"
+        },
+        "analytics": {
+          "realtimeDashboards": "Patient Volume, Waiting Times & Billing",
+          "customKpi": "Clinical Efficiency & No-Show Rates",
+          "scheduledExports": "Insurance Reconciliation & Regulatory",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "Secure Webhooks, HL7/FHIR Hooks",
+          "erpAccounting": "Medical Billing, QuickBooks, Xero",
+          "posHardware": "Barcode Scanners, Insurance Card Readers",
+          "paymentGateways": "HealthPay, Stripe, HSA/FSA Terminals",
+          "customSdk": "FHIR / REST Clinical API"
+        },
+        "support": {
+          "uptimeSla": "99.999% Mission Critical SLA",
+          "onboarding": "2-3 Weeks with EHR Data Migration",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Medical SLA Desk (<15m response)"
+        },
+        "commercial": {
+          "pricingModel": "Per Practitioner / Month",
+          "sandboxTrial": "Compliant Sandbox Environment",
+          "customEnterpriseTier": "Hospital Network & Enterprise"
+        }
+      }
+    },
+    {
+      "id": "financeflow",
+      "name": "FinanceFlow",
+      "tagline": "Financial operations, reporting, and compliance for growing businesses.",
+      "category": "Finance",
+      "status": "in-development",
+      "spotlight": false,
+      "featured": false,
+      "accent": "#2563eb",
+      "shortDescription": "A finance management platform covering accounting, reporting, compliance, and period close for finance teams in mid-market businesses.",
+      "fullDescription": "FinanceFlow is being built to give finance teams in growing businesses the tools they need to manage accounts, close books efficiently, and produce reliable reports without depending on enterprise systems that are too complex and too expensive.",
+      "problem": "Finance teams at growing businesses often outgrow basic accounting software before they are ready for enterprise ERP. They end up managing critical financial processes through spreadsheets, basic tools, and manual reconciliations — which creates risk, slows down close cycles, and limits visibility.",
+      "whatWeAreBuilding": [
+        "General ledger and chart of accounts management",
+        "Accounts payable and receivable workflows",
+        "Automated period close with task tracking",
+        "Financial reporting and custom dashboards",
+        "Audit trail and compliance controls",
+        "Multi-entity support for holding companies and subsidiaries"
+      ],
+      "keyFeatures": [
+        "Automated period close",
+        "Regulatory & audit reporting",
+        "Real-time financial analytics"
+      ],
+      "features": [
+        {
+          "icon": "chart",
+          "title": "Real-Time Analytics",
+          "description": "Interactive dashboards, custom KPIs, and drill-down reporting across entities."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Compliance Automation",
+          "description": "Audit trails, controlled journal entries, and automated report scheduling."
+        },
+        {
+          "icon": "shield",
+          "title": "Security & Access",
+          "description": "Role-based access controls and encryption to protect sensitive financial data."
+        },
+        {
+          "icon": "trend",
+          "title": "Smart Close",
+          "description": "Automated reconciliation, journal entry workflows, and period close task management."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "clock",
+          "title": "Shorter close cycles",
+          "description": "Automated workflows and real-time validation reduce the time spent on monthly and quarterly closes."
+        },
+        {
+          "icon": "trend",
+          "title": "Clearer financial picture",
+          "description": "Live dashboards give finance teams and management real-time visibility into financial position."
+        },
+        {
+          "icon": "star",
+          "title": "Audit-ready records",
+          "description": "Continuous controls and immutable audit trails reduce the burden of internal and external audits."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Mid-market businesses",
+          "description": "Companies that have outgrown basic accounting software but do not need full ERP."
+        },
+        {
+          "icon": "city",
+          "title": "Holding companies",
+          "description": "Businesses managing multiple entities or subsidiaries that need consolidated reporting."
+        },
+        {
+          "icon": "home",
+          "title": "Finance teams",
+          "description": "Controllers and FP&A teams responsible for close, reporting, and compliance."
+        }
+      ],
+      "relatedIds": [
+        "hotel-management-system",
+        "retailoptix",
+        "makersuite"
+      ],
+      "stats": {},
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Dashboard"
+        },
+        {
+          "layout": "table",
+          "label": "Ledger"
+        },
+        {
+          "layout": "chart",
+          "label": "Forecasting"
+        }
+      ],
+      "order": 4,
+      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "High-Throughput Financial Cloud",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": false,
+          "multiTenant": "VPC Isolated Multi-Tenant",
+          "realtimeSync": "Sub-millisecond Ledger Sync",
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Four-Eyes Principle / Maker-Checker",
+          "ssoSaml": true,
+          "encryption": "Hardware Security Module (HSM) / AES-256",
+          "auditTrail": "Cryptographically Sealed Audit Ledger",
+          "gdprCompliant": true,
+          "complianceCert": "SOC 1 Type II, SOC 2, ISO 27001",
+          "backups": "Multi-Region Real-time Replication"
+        },
+        "workflows": {
+          "workflowBuilder": "Period-Close & Journal Approval Trees",
+          "customFields": "Custom Chart of Accounts & Dimensions",
+          "multiLocation": "Multi-Entity / Global Subsidiaries",
+          "taskDelegation": "Close Checklist & Task Assignment",
+          "slaAlerts": "Reconciliation Variance & Anomaly Alerts"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Cashflow, EBITDA, Working Capital",
+          "customKpi": "Custom Formula & Financial Ratios",
+          "scheduledExports": "Automated Board Decks & Tax Filing",
+          "csvStream": true,
+          "multiEntityRollup": "Instant FX & Intercompany Elimination"
+        },
+        "integrations": {
+          "webhooksEcosystem": "Banking Webhooks, Slack Alerts",
+          "erpAccounting": "SAP, Oracle NetSuite, Dynamics 365",
+          "posHardware": "Bank Feed Connectors & Swift/SEPA",
+          "paymentGateways": "Automated ACH, Wire, Stripe B2B",
+          "customSdk": "Financial Ledger REST & GraphQL API"
+        },
+        "support": {
+          "uptimeSla": "99.995% Financial Grade SLA",
+          "onboarding": "2-4 Weeks with Historic Ledger Import",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Dedicated Financial Solutions Lead"
+        },
+        "commercial": {
+          "pricingModel": "Entity / Annual Volume Tiered",
+          "sandboxTrial": "Financial Simulation Sandbox",
+          "customEnterpriseTier": "Full Custom ERP Connectors"
+        }
+      }
+    },
+    {
+      "id": "makersuite",
+      "name": "MakerSuite",
+      "tagline": "Manufacturing execution, quality, and supply-chain orchestration.",
+      "category": "Manufacturing",
+      "status": "in-development",
+      "spotlight": false,
+      "featured": false,
+      "accent": "#10b981",
+      "shortDescription": "Connect the shop floor to management with real-time production tracking, quality control, and inventory visibility.",
+      "fullDescription": "MakerSuite is being built to give manufacturing businesses a clear, connected view of what is happening on their production floor and the tools to act on it.",
+      "problem": "Many manufacturers lack real-time visibility into what is happening on their production floor. Production status, quality issues, and inventory levels are tracked manually or in disconnected systems, making it hard to identify problems early or make informed decisions quickly.",
+      "whatWeAreBuilding": [
+        "Production order and work order management",
+        "Real-time floor tracking and status dashboards",
+        "Quality inspection and non-conformance tracking",
+        "Inventory and materials management with lot tracking",
+        "Maintenance scheduling and equipment downtime logging",
+        "Production performance reporting and OEE tracking"
+      ],
+      "keyFeatures": [
+        "Production planning & scheduling",
+        "Quality management (QMS)",
+        "Real-time inventory control"
+      ],
+      "features": [
+        {
+          "icon": "chart",
+          "title": "Production Visibility",
+          "description": "Live production dashboards, work order tracking, and progress monitoring across production lines."
+        },
+        {
+          "icon": "shield",
+          "title": "Quality Management",
+          "description": "Non-conformance tracking, inspection checklists, and corrective action workflows."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Inventory Control",
+          "description": "Materials tracking, lot management, and stock level visibility across the production process."
+        },
+        {
+          "icon": "clock",
+          "title": "Maintenance Logging",
+          "description": "Equipment maintenance schedules and downtime recording to support uptime planning."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "trend",
+          "title": "Better floor visibility",
+          "description": "Real-time status dashboards give managers a clear picture of production without walking the floor."
+        },
+        {
+          "icon": "star",
+          "title": "Earlier quality catches",
+          "description": "Structured inspection workflows help catch quality issues before they escalate."
+        },
+        {
+          "icon": "clock",
+          "title": "Less manual tracking",
+          "description": "Replacing paper-based tracking with a connected system reduces data errors and administrative time."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Discrete manufacturers",
+          "description": "Businesses producing components or finished goods in batches or continuous runs."
+        },
+        {
+          "icon": "villa",
+          "title": "Process manufacturers",
+          "description": "Food & beverage, chemicals, and similar industries with lot-based production."
+        },
+        {
+          "icon": "home",
+          "title": "Contract manufacturers",
+          "description": "Facilities producing goods for multiple clients that need per-order tracking."
+        }
+      ],
+      "relatedIds": [
+        "financeflow",
+        "retailoptix",
+        "healthcare-pro"
+      ],
+      "stats": {},
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Overview"
+        },
+        {
+          "layout": "table",
+          "label": "Work Orders"
+        },
+        {
+          "layout": "chart",
+          "label": "Performance"
+        }
+      ],
+      "order": 5,
+      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Edge + Cloud Hybrid Architecture",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Shop-Floor Offline Continuity",
+          "multiTenant": true,
+          "realtimeSync": "Real-time Telemetry Stream",
+          "mobileOptimized": "Tablet & Rugged Scanner Optimized"
+        },
+        "security": {
+          "rbac": "Floor Operator to Plant Director Roles",
+          "ssoSaml": true,
+          "encryption": "AES-256 & TLS 1.3",
+          "auditTrail": "Lot & Batch Traceability Ledger",
+          "gdprCompliant": true,
+          "complianceCert": "ISO 9001, AS9100 Ready, SOC 2",
+          "backups": "Daily Automated + Local Floor Snapshot"
+        },
+        "workflows": {
+          "workflowBuilder": "Work Order Routing & Kanban Flows",
+          "customFields": "BOM & Quality Inspection Checklists",
+          "multiLocation": "Multi-Plant & Warehouse Network",
+          "taskDelegation": "Machine Workcenter & Operator Dispatch",
+          "slaAlerts": "Downtime & Quality Scrap Alerts"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live OEE, Yield & Production Velocity",
+          "customKpi": "Machine Uptime & Scrap Loss Tracking",
+          "scheduledExports": "Batch Quality & Compliance Sheets",
+          "csvStream": true,
+          "multiEntityRollup": "Cross-Plant Benchmarking"
+        },
+        "integrations": {
+          "webhooksEcosystem": "PLC / SCADA Hooks, MQTT, REST",
+          "erpAccounting": "Infor, Epicor, NetSuite, SAP",
+          "posHardware": "Zebra Scanners, Industrial Scales, PLCs",
+          "paymentGateways": "B2B Purchase Orders & Invoicing",
+          "customSdk": "IoT Telemetry & MES REST API"
+        },
+        "support": {
+          "uptimeSla": "99.98% Plant Floor SLA",
+          "onboarding": "3-4 Weeks with Machine Integration",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Critical Plant Operations Desk"
+        },
+        "commercial": {
+          "pricingModel": "Per Facility / Production Line",
+          "sandboxTrial": "Simulated Manufacturing Dataset",
+          "customEnterpriseTier": "Enterprise Multi-Site License"
+        }
+      }
+    },
+    {
+      "id": "retailoptix",
+      "name": "RetailOptix",
+      "tagline": "Unified commerce, inventory, and customer intelligence for retail.",
+      "category": "Retail",
+      "status": "in-development",
+      "spotlight": false,
+      "featured": false,
+      "accent": "#f59e0b",
+      "shortDescription": "Manage inventory, pricing, and customer data consistently across physical stores and online channels.",
+      "fullDescription": "RetailOptix is being built for retailers who are managing inventory and customer data across multiple channels and need a single, reliable system to keep everything in sync.",
+      "problem": "Retailers operating across physical stores and online channels frequently deal with inventory discrepancies, inconsistent pricing, and customer data that lives in separate systems. This fragmentation leads to stockouts, oversells, and a customer experience that varies too much depending on the channel.",
+      "whatWeAreBuilding": [
+        "Unified inventory management across stores and online channels",
+        "Pricing and promotions management with rules-based logic",
+        "Customer profile and purchase history tracking",
+        "Store operations tools including task management",
+        "Sales reporting and inventory performance analytics",
+        "Integration hooks for ecommerce platforms and POS systems"
+      ],
+      "keyFeatures": [
+        "Unified inventory management",
+        "Dynamic pricing & promotions",
+        "Customer 360 & personalisation"
+      ],
+      "features": [
+        {
+          "icon": "chart",
+          "title": "Omnichannel Inventory",
+          "description": "A single inventory view across stores and channels with allocation and availability tracking."
+        },
+        {
+          "icon": "trend",
+          "title": "Pricing & Promotions",
+          "description": "Rules-based pricing management and promotion tracking across channels."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Store Operations",
+          "description": "Task management, store scheduling, and operational tools for store managers and teams."
+        },
+        {
+          "icon": "star",
+          "title": "Customer Intelligence",
+          "description": "Unified customer profiles with purchase history and preference tracking."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "trend",
+          "title": "Fewer inventory gaps",
+          "description": "A unified inventory view reduces stockouts and discrepancies across channels."
+        },
+        {
+          "icon": "star",
+          "title": "Consistent customer experience",
+          "description": "Shared customer data means the experience does not break down between channels."
+        },
+        {
+          "icon": "clock",
+          "title": "Less manual reconciliation",
+          "description": "Connected channels reduce the time spent reconciling data from separate systems."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "city",
+          "title": "Retail chains",
+          "description": "Multi-store retailers that need consistent inventory and pricing management."
+        },
+        {
+          "icon": "building",
+          "title": "Omnichannel retailers",
+          "description": "Businesses selling across physical stores and online channels."
+        },
+        {
+          "icon": "home",
+          "title": "Ecommerce brands",
+          "description": "Online-first brands expanding into physical retail that need unified operations."
+        }
+      ],
+      "relatedIds": [
+        "financeflow",
+        "makersuite",
+        "hotel-management-system"
+      ],
+      "stats": {},
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Overview"
+        },
+        {
+          "layout": "table",
+          "label": "Inventory"
+        },
+        {
+          "layout": "chart",
+          "label": "Insights"
+        }
+      ],
+      "matrix": {
+        "architecture": {
+          "deployment": "Global Edge CDN & Cloud Mesh",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "POS Offline Fallback Mode",
+          "multiTenant": true,
+          "realtimeSync": "Omnichannel Inventory Sync (<1s)",
+          "mobileOptimized": "Mobile POS & Store Associate App"
+        },
+        "security": {
+          "rbac": "Store Associate, Manager & HQ Roles",
+          "ssoSaml": true,
+          "encryption": "AES-256 & End-to-end Tokenization",
+          "auditTrail": "Cash Drawer & Price Adjustment Audit",
+          "gdprCompliant": true,
+          "complianceCert": "PCI-DSS Level 1 Validated",
+          "backups": "Hourly Cloud Sync & Snapshot"
+        },
+        "workflows": {
+          "workflowBuilder": "Dynamic Pricing & Fulfillment Rules",
+          "customFields": "Product Variants, Bundles & Loyalty",
+          "multiLocation": "Omnichannel Stores + Distribution Centers",
+          "taskDelegation": "BOPIS & Stock Transfer Routing",
+          "slaAlerts": "Low Stock & Shrinkage Anomaly Triggers"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live GMV, Conversion & Inventory Turnover",
+          "customKpi": "Basket Size, Sell-through & Margin",
+          "scheduledExports": "Daily Store Reconciliation & Audits",
+          "csvStream": true,
+          "multiEntityRollup": "Regional & Store Group Aggregation"
+        },
+        "integrations": {
+          "webhooksEcosystem": "Shopify, WooCommerce, Slack Hooks",
+          "erpAccounting": "QuickBooks Commerce, Brightpearl, NetSuite",
+          "posHardware": "Receipt Printers, Scanners, Cash Drawers",
+          "paymentGateways": "Stripe Terminal, Square, Clover",
+          "customSdk": "Omnichannel Headless Commerce API"
+        },
+        "support": {
+          "uptimeSla": "99.99% Peak Retail SLA",
+          "onboarding": "1-2 Weeks with Catalog Migration",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Retail Operations Desk (incl. Black Friday)"
+        },
+        "commercial": {
+          "pricingModel": "Per Store Location / Monthly",
+          "sandboxTrial": "14-Day Omnichannel Demo Sandbox",
+          "customEnterpriseTier": "Retail Chain Enterprise SLA"
+        }
+      }
+    }
+  ]
+}

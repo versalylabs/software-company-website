@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources, Case Studies & Engineering Insights — softify</title>
+    <meta name="description" content="Explore real-world case studies, architecture whitepapers, and operational guides from the software engineering team at softify.">
+    <link rel="canonical" href="https://softify.example.com/resources.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Resources, Case Studies & Engineering Insights — softify">
+    <meta property="og:description" content="Explore real-world case studies, architecture whitepapers, and operational guides.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:url" content="https://softify.example.com/resources.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/resources.css">
+</head>
+<body class="resources-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="resources.html" class="hn-link hn-link--active">Resources</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo →</a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="resources.html" class="nav-link nav-link--active">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link" data-track-cta="request_demo" data-track-location="mobile_nav">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <!-- ===== HERO ===== -->
+        <section class="rc-hero">
+            <div class="rc-hero__inner">
+                <span class="rc-hero__badge">📚 Knowledge & Insights Hub</span>
+                <h1 class="rc-hero__title">Engineering &amp; <span class="rc-hero__title-gradient">Operations Playbooks</span></h1>
+                <p class="rc-hero__sub">
+                    Practical architectural breakdowns, customer case studies, and operational frameworks to help your organization adopt modern software with zero friction.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== RESOURCES SECTION ===== -->
+        <section class="res-hub-section">
+            <div class="res-hub-container">
+
+                <!-- Filter and Search Bar -->
+                <div class="res-filter-bar">
+                    <div class="res-pills" id="res-filter-pills" role="tablist" aria-label="Resource Categories">
+                        <button class="res-pill-btn active" data-category="all" role="tab" aria-selected="true">All Resources</button>
+                        <button class="res-pill-btn" data-category="case-study" role="tab" aria-selected="false">Case Studies</button>
+                        <button class="res-pill-btn" data-category="whitepaper" role="tab" aria-selected="false">Whitepapers</button>
+                        <button class="res-pill-btn" data-category="guide" role="tab" aria-selected="false">Playbooks &amp; Guides</button>
+                        <button class="res-pill-btn" data-category="engineering" role="tab" aria-selected="false">Engineering Specs</button>
+                    </div>
+
+                    <div class="res-search-wrap">
+                        <svg class="res-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        <input type="text" id="res-search-input" class="res-search-input" placeholder="Search case studies &amp; guides..." aria-label="Search resources">
+                    </div>
+                </div>
+
+                <!-- Featured Case Study Spotlight -->
+                <div class="res-spotlight">
+                    <div>
+                        <span class="res-spotlight__tag">★ Featured Customer Spotlight</span>
+                        <h2 class="res-spotlight__title">How Grandview Suites Cut Room Turnover Lag by 42% with HotelFlow</h2>
+                        <p class="res-spotlight__desc">
+                            Learn how a 140-room boutique hotel unified their front desk reservations and real-time housekeeping queues into a single responsive web interface with zero software training lag.
+                        </p>
+                        <a href="request-demo.html?product=hotel-management-system" class="calc-cta-btn" style="display:inline-flex; width:auto;" data-track-cta="read_case_study" data-track-location="resources_featured">
+                            <span>Explore HotelFlow Case Study</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                    <div class="res-spotlight__stats">
+                        <div class="res-spot-stat">
+                            <strong>42%</strong>
+                            <span>Faster Turnover Velocity</span>
+                        </div>
+                        <div class="res-spot-stat">
+                            <strong>1.8 hrs</strong>
+                            <span>Daily Staff Time Saved</span>
+                        </div>
+                        <div class="res-spot-stat">
+                            <strong>0 ms</strong>
+                            <span>Downtime Deployments</span>
+                        </div>
+                        <div class="res-spot-stat">
+                            <strong>100%</strong>
+                            <span>Staff Adoption Day 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources Grid -->
+                <div class="res-grid" id="res-grid">
+
+                    <!-- Card 1 -->
+                    <article class="res-card" data-category="case-study" data-title="apex health group clinic scheduling transformation">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--case">Case Study</span>
+                                <span class="res-card__time">5 min read</span>
+                            </div>
+                            <h3 class="res-card__title">Apex Health Group: Streamlining Multi-Clinic Patient Encounters</h3>
+                            <p class="res-card__desc">
+                                Replacing legacy spreadsheet queues with ClinicOS's zero-latency encounter ledger reduced patient intake bottlenecks by 38% across 4 specialized outpatient clinics.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>Healthcare &amp; Clinical</span>
+                            <a href="request-demo.html?product=healthcare-pro" class="res-card__link">Read Case Study →</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="res-card" data-category="whitepaper" data-title="zero-pii architecture data privacy compliance gdpr">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--whitepaper">Whitepaper</span>
+                                <span class="res-card__time">8 min read</span>
+                            </div>
+                            <h3 class="res-card__title">The Zero-PII Software Blueprint: Practical Privacy by Design</h3>
+                            <p class="res-card__desc">
+                                A comprehensive technical paper detailing how modern enterprise applications can collect mission-critical telemetry and operational data without harvesting identifiable personal information.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>Architecture &amp; Security</span>
+                            <a href="docs.html" class="res-card__link">Download Blueprint →</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="res-card" data-category="guide" data-title="operational software evaluation guide checklist roi">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--guide">Playbook</span>
+                                <span class="res-card__time">6 min read</span>
+                            </div>
+                            <h3 class="res-card__title">The Operational Software Evaluation Checklist: Build vs Buy</h3>
+                            <p class="res-card__desc">
+                                A structured 7-step decision framework for operations executives evaluating whether off-the-shelf software or tailored industry platforms will yield higher long-term ROI.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>Operations &amp; Strategy</span>
+                            <a href="roi-calculator.html" class="res-card__link">Use Evaluation Tool →</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="res-card" data-category="engineering" data-title="cloud native micro-pipelines zero downtime deployments nodejs">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--tech">Engineering</span>
+                                <span class="res-card__time">7 min read</span>
+                            </div>
+                            <h3 class="res-card__title">Sub-Millisecond Query Ergonomics in High-Volume Ledger Pipelines</h3>
+                            <p class="res-card__desc">
+                                Deep dive into index tuning, memory-mapped data structures, and how our engineering team guarantees 99.99% operational uptime under burst traffic.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>Backend &amp; DevOps</span>
+                            <a href="docs.html" class="res-card__link">Read Engineering Spec →</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="res-card" data-category="case-study" data-title="crestline manufacturing supply chain real time inventory">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--case">Case Study</span>
+                                <span class="res-card__time">4 min read</span>
+                            </div>
+                            <h3 class="res-card__title">Crestline Industrial: Real-Time Floor Job-Costing &amp; Inventory</h3>
+                            <p class="res-card__desc">
+                                How Crestline eliminated physical counting errors and gained live visibility into raw material consumption without adding extra supervisory overhead.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>Supply &amp; Manufacturing</span>
+                            <a href="request-demo.html?product=makersuite" class="res-card__link">Read Case Study →</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="res-card" data-category="guide" data-title="keyboard first interaction design enterprise software ergonomics">
+                        <div>
+                            <div class="res-card__header">
+                                <span class="res-card__badge res-card__badge--guide">Playbook</span>
+                                <span class="res-card__time">5 min read</span>
+                            </div>
+                            <h3 class="res-card__title">Keyboard-First UI: Designing for High-Speed Operational Data Entry</h3>
+                            <p class="res-card__desc">
+                                Why mouse-heavy designs slow down back-office staff, and how full keyboard shortcut navigability accelerates throughput in high-volume environments.
+                            </p>
+                        </div>
+                        <div class="res-card__footer">
+                            <span>UI/UX &amp; Ergonomics</span>
+                            <a href="docs.html" class="res-card__link">View UI Guidelines →</a>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CTA CALLOUT ===== -->
+        <section class="custom-callout reveal" aria-label="Start a conversation">
+            <div class="custom-callout__inner">
+                <div>
+                    <span class="custom-callout__tag">CUSTOM SOLUTIONS</span>
+                    <h2 class="custom-callout__title">Have specific operational challenges not covered in these guides?</h2>
+                    <p class="custom-callout__text">
+                        Our software architects work directly with leadership teams to design tailored systems that fit unique business logic.
+                    </p>
+                </div>
+                <div class="custom-callout__actions">
+                    <a href="request-demo.html?goal=custom" class="custom-callout__btn" data-track-cta="discuss_custom_architecture" data-track-location="resources_footer">
+                        <span>Consult an Engineer</span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-enterprise" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-main-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-logo" aria-label="softify home">
+                        <span class="hn-logo" aria-hidden="true">S</span>
+                        <span class="hn-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Engineering purpose-built, cloud-native software systems that help businesses operate with clarity, speed, and continuous reliability.
+                    </p>
+                </div>
+
+                <!-- Column 2: Solutions & Tools -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions &amp; Tools</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="roi-calculator.html" class="footer-nav-link highlight">ROI Calculator ✨</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources & Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Resources &amp; Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="resources.html" class="footer-nav-link active">Case Studies &amp; Hub</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">Developer Docs</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Console -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support &amp; Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">API &amp; Developer Docs</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pills = document.querySelectorAll('.res-pill-btn');
+            const searchInput = document.getElementById('res-search-input');
+            const cards = document.querySelectorAll('.res-card');
+
+            function applyFilters() {
+                const activeCategory = (document.querySelector('.res-pill-btn.active') || {}).dataset?.category || 'all';
+                const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+                cards.forEach(card => {
+                    const cardCat = card.dataset.category || '';
+                    const cardTitle = (card.dataset.title || card.textContent).toLowerCase();
+
+                    const matchesCategory = (activeCategory === 'all' || cardCat === activeCategory);
+                    const matchesQuery = (!query || cardTitle.includes(query));
+
+                    if (matchesCategory && matchesQuery) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            pills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    pills.forEach(p => {
+                        p.classList.remove('active');
+                        p.setAttribute('aria-selected', 'false');
+                    });
+                    pill.classList.add('active');
+                    pill.setAttribute('aria-selected', 'true');
+                    applyFilters();
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', applyFilters);
+            }
+        });
+    </script>
+
+    <!-- Core Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

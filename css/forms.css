@@ -1,0 +1,476 @@
+﻿/* ==========================================================
+   FORMS.CSS — softify Lead Generation Design System
+   Accessible, responsive, high-conversion form styles
+   ========================================================== */
+
+/* ── Form Card Container ──────────────────────────────────── */
+.form-card {
+    background: #ffffff;
+    border: 1px solid #e8edf3;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+.form-card__header {
+    margin-bottom: 2rem;
+}
+
+.form-card__title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.4rem;
+    line-height: 1.2;
+}
+
+.form-card__subtitle {
+    font-size: 0.88rem;
+    color: #64748b;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.form-required-legend {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* ── Product Selection Callout ────────────────────────────── */
+.form-product-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.15rem;
+    background: #eef2ff;
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: #3730a3;
+}
+
+.form-product-banner__icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.form-product-banner strong {
+    color: #1e1b4b;
+    font-weight: 700;
+}
+
+/* ── Enquiry Type Selector Tabs ───────────────────────────── */
+.form-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    background: #f8fafc;
+    padding: 0.35rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.form-tab-btn {
+    border: none;
+    background: transparent;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #64748b;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: center;
+}
+
+.form-tab-btn:hover {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.form-tab-btn.active {
+    background: #ffffff;
+    color: #4f46e5;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    font-weight: 700;
+}
+
+/* ── Form Layout Grid ─────────────────────────────────────── */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+/* ── Labels & Inputs ──────────────────────────────────────── */
+.form-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.45rem;
+}
+
+.form-req {
+    color: #dc2626;
+    margin-left: 0.25rem;
+    font-weight: 700;
+}
+
+.form-opt {
+    font-size: 0.74rem;
+    font-weight: 400;
+    color: #94a3b8;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    min-height: 46px;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.92rem;
+    color: #0f172a;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #94a3b8;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    background: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.14);
+}
+
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid {
+    border-color: #dc2626;
+    background: #fff8f8;
+}
+
+.form-input.is-invalid:focus,
+.form-select.is-invalid:focus,
+.form-textarea.is-invalid:focus {
+    box-shadow: 0 0 0 3.5px rgba(220, 38, 38, 0.14);
+}
+
+/* Select wrapper for custom arrow */
+.form-select-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.form-select-wrap select {
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+.form-select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+/* ── Honeypot Anti-Bot Field (Hidden from Real Users) ── */
+.form-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    tabindex: -1 !important;
+}
+
+/* ── Server Error Alert Banner ────────────────────────────── */
+.form-server-error {
+    display: none;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.95rem 1.15rem;
+    background: #fef2f2;
+    border: 1.5px solid #fecaca;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 0.86rem;
+    color: #991b1b;
+    line-height: 1.5;
+}
+
+.form-server-error.is-visible {
+    display: flex;
+}
+
+.form-server-error__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #dc2626;
+}
+
+.form-server-error__text {
+    flex: 1;
+}
+
+.form-server-error__text strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+    color: #7f1d1d;
+}
+
+/* ── Error Messages ───────────────────────────────────────── */
+.form-error-msg {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #dc2626;
+    margin-top: 0.4rem;
+}
+
+.form-error-msg.is-visible {
+    display: flex;
+}
+
+/* ── Submit Button & Loading State ────────────────────────── */
+.form-submit-btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 0.95rem 2rem;
+    margin-top: 0.75rem;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
+}
+
+.form-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.36);
+}
+
+.form-submit-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: form-spin 0.75s linear infinite;
+}
+
+@keyframes form-spin {
+    to { transform: rotate(360deg); }
+}
+
+.form-submit-btn.is-loading .form-spinner {
+    display: inline-block;
+}
+
+/* ── Trust Footer ─────────────────────────────────────────── */
+.form-trust-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    font-size: 0.76rem;
+    color: #64748b;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.form-trust-note svg {
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+/* ── Success State Card ───────────────────────────────────── */
+.form-success-state {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.form-success-state.is-visible {
+    display: block;
+}
+
+.form-success-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 24px rgba(22, 163, 74, 0.18);
+}
+
+.form-success-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.form-success-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.65;
+    max-width: 28rem;
+    margin: 0 auto 1.75rem;
+}
+
+.form-success-recap {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    margin: 0 auto 2rem;
+    max-width: 28rem;
+}
+
+.form-success-recap__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.form-success-recap__item:last-child {
+    border-bottom: none;
+}
+
+.form-success-recap__label {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.form-success-recap__val {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.form-success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.form-btn-secondary:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+/* ── Responsive Rules ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .form-card {
+        padding: 2rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .form-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+

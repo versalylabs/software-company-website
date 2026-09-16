@@ -1,0 +1,103 @@
+[
+  {
+    "id": "act_1789426070303_1ccbac",
+    "timestamp": "2026-09-14T22:47:50.303Z",
+    "action": "lead_received",
+    "category": "leads",
+    "details": {
+      "ref_id": "softify-2026-8C7B7C",
+      "name": "Ted Khalwale",
+      "form_type": "demo_request",
+      "product": "FinanceFlow"
+    },
+    "user": "leads",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388298210_1a9805",
+    "timestamp": "2026-09-14T12:18:18.210Z",
+    "action": "notifications_cleared",
+    "category": "system",
+    "details": {
+      "count": 0
+    },
+    "user": "system",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388298181_b00258",
+    "timestamp": "2026-09-14T12:18:18.181Z",
+    "action": "webhook_deleted",
+    "category": "system",
+    "details": {
+      "webhook_id": "wh_1789388298047_61a00d",
+      "name": "Slack Alerts Integration Enterprise"
+    },
+    "user": "settings",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388298148_b08255",
+    "timestamp": "2026-09-14T12:18:18.148Z",
+    "action": "webhook_tested",
+    "category": "system",
+    "details": {
+      "webhook_id": "wh_1789388298047_61a00d",
+      "name": "Slack Alerts Integration Enterprise",
+      "status": 405
+    },
+    "user": "settings",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388298087_db23e7",
+    "timestamp": "2026-09-14T12:18:18.087Z",
+    "action": "webhook_updated",
+    "category": "system",
+    "details": {
+      "webhook_id": "wh_1789388298047_61a00d",
+      "name": "Slack Alerts Integration Enterprise"
+    },
+    "user": "settings",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388298057_160b48",
+    "timestamp": "2026-09-14T12:18:18.057Z",
+    "action": "webhook_created",
+    "category": "system",
+    "details": {
+      "webhook_id": "wh_1789388298047_61a00d",
+      "name": "Slack Alerts Integration",
+      "type": "slack",
+      "url": "http://localhost:3456/api/health"
+    },
+    "user": "settings",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388297912_9ca178",
+    "timestamp": "2026-09-14T12:18:17.912Z",
+    "action": "lead_received",
+    "category": "leads",
+    "details": {
+      "ref_id": "softify-2026-384602",
+      "name": "Webhook Verification Lead",
+      "form_type": "contact",
+      "product": "General"
+    },
+    "user": "leads",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1789388297858_c1dbdc",
+    "timestamp": "2026-09-14T12:18:17.858Z",
+    "action": "audit_log_cleared",
+    "category": "system",
+    "details": {
+      "cleared_at": "2026-09-14T12:18:17.857Z"
+    },
+    "user": "admin",
+    "ip": "::1"
+  }
+]

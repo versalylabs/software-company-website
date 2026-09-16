@@ -1,0 +1,65 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cl-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022c22" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cl-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#cl-bg)"/>
+  <!-- Top Header -->
+  <rect x="0" y="0" width="1200" height="64" fill="#134e4a" opacity="0.9"/>
+  <circle cx="36" cy="32" r="14" fill="url(#cl-accent)"/>
+  <text x="64" y="38" fill="#f0fdfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">ClinicOS EHR &amp; Clinical Management</text>
+  <rect x="990" y="18" width="170" height="30" rx="6" fill="#0d9488" opacity="0.3"/>
+  <text x="1075" y="38" fill="#5eead4" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">HIPAA Compliant Cloud</text>
+
+  <!-- Sidebar -->
+  <rect x="0" y="64" width="220" height="686" fill="#042f2e"/>
+  <rect x="16" y="86" width="188" height="36" rx="6" fill="#0d9488" opacity="0.25"/>
+  <text x="54" y="109" fill="#99f6e4" font-family="sans-serif" font-size="14" font-weight="600">Patient Encounters</text>
+  <text x="54" y="153" fill="#94a3b8" font-family="sans-serif" font-size="14">Appointments &amp; Queue</text>
+  <text x="54" y="197" fill="#94a3b8" font-family="sans-serif" font-size="14">Electronic Prescriptions</text>
+  <text x="54" y="241" fill="#94a3b8" font-family="sans-serif" font-size="14">Insurance Claims</text>
+
+  <!-- Main Patient Card -->
+  <g transform="translate(244, 86)">
+    <rect width="912" height="150" rx="12" fill="#1e293b" stroke="#334155"/>
+    <circle cx="50" cy="50" r="28" fill="#0f766e"/>
+    <text x="50" y="58" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">JS</text>
+    <text x="96" y="44" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="700">Jonathan Sanders (48 yrs)</text>
+    <text x="96" y="66" fill="#94a3b8" font-family="sans-serif" font-size="13">MRN: #HC-882109 • DOB: 14 May 1978 • Blood: O+ • Allergy: Penicillin</text>
+    
+    <rect x="96" y="90" width="110" height="28" rx="6" fill="#059669" opacity="0.2"/>
+    <text x="151" y="108" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Status: In Room 3</text>
+    
+    <rect x="220" y="90" width="130" height="28" rx="6" fill="#0284c7" opacity="0.2"/>
+    <text x="285" y="108" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Provider: Dr. Vance</text>
+  </g>
+
+  <!-- Clinical Charting Tabs -->
+  <g transform="translate(244, 256)">
+    <rect width="912" height="464" rx="12" fill="#1e293b" stroke="#334155"/>
+    <rect width="912" height="44" rx="12" fill="#0f172a"/>
+    <text x="24" y="28" fill="#5eead4" font-family="sans-serif" font-size="14" font-weight="700">SOAP Note Entry</text>
+    <text x="180" y="28" fill="#94a3b8" font-family="sans-serif" font-size="14">Vital Signs History</text>
+    <text x="340" y="28" fill="#94a3b8" font-family="sans-serif" font-size="14">Lab Orders</text>
+    <text x="460" y="28" fill="#94a3b8" font-family="sans-serif" font-size="14">Medications</text>
+
+    <!-- Note sections -->
+    <text x="24" y="80" fill="#2dd4bf" font-family="sans-serif" font-size="13" font-weight="700">SUBJECTIVE</text>
+    <rect x="24" y="94" width="864" height="64" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="40" y="124" fill="#cbd5e1" font-family="sans-serif" font-size="13">Patient reports 4-day history of seasonal rhinorrhea and mild dry cough. Denies shortness of breath or fever.</text>
+
+    <text x="24" y="190" fill="#2dd4bf" font-family="sans-serif" font-size="13" font-weight="700">OBJECTIVE &amp; VITALS</text>
+    <rect x="24" y="204" width="864" height="64" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="40" y="234" fill="#cbd5e1" font-family="sans-serif" font-size="13">BP: 124/82 mmHg • HR: 72 bpm • SpO2: 99% on room air • Temp: 98.4°F • Clear breath sounds bilaterally.</text>
+
+    <text x="24" y="300" fill="#2dd4bf" font-family="sans-serif" font-size="13" font-weight="700">ASSESSMENT &amp; PLAN</text>
+    <rect x="24" y="314" width="864" height="64" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="40" y="344" fill="#cbd5e1" font-family="sans-serif" font-size="13">Acute upper respiratory tract irritation (J00). Supportive therapy, hydration, follow-up in 10 days if symptoms persist.</text>
+  </g>
+</svg>

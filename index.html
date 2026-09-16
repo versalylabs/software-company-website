@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>softify — Purpose-Built Business Software Solutions</title>
+    <meta name="description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail. Explore our systems in development or request a demo.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://softify.example.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://softify.example.com/">
+    <meta property="og:title" content="softify — Purpose-Built Business Software Solutions">
+    <meta property="og:description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:site_name" content="softify">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://softify.example.com/">
+    <meta name="twitter:title" content="softify — Purpose-Built Business Software Solutions">
+    <meta name="twitter:description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
+    <meta name="twitter:image" content="https://softify.example.com/assets/images/og-preview.svg">
+
+    <!-- Favicon & Brand Meta -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://softify.example.com/#organization",
+          "name": "softify",
+          "url": "https://softify.example.com/",
+          "logo": "https://softify.example.com/assets/icons/favicon.svg",
+          "description": "softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.",
+          "email": "hello@softify.io",
+          "sameAs": [
+            "https://twitter.com/softify",
+            "https://linkedin.com/company/softify"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://softify.example.com/#website",
+          "url": "https://softify.example.com/",
+          "name": "softify",
+          "description": "Purpose-built business software for modern industries.",
+          "publisher": {
+            "@id": "https://softify.example.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <style>
+        /* ── GSAP SHOWREEL THEATER STYLES (CRITICAL EMBEDDED) ── */
+        .hh-how {
+            background: #ffffff;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #e8edf3;
+        }
+        .hh-how__inner {
+            max-width: 76rem;
+            margin-inline: auto;
+        }
+        .hh-how__title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            margin: 0.5rem 0 2.5rem;
+            line-height: 1.2;
+        }
+
+        .how-showreel {
+            margin-top: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+            text-align: left;
+        }
+        .showreel-nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .showreel-tab {
+            background: transparent;
+            border: none;
+            border-right: 1px solid #e2e8f0;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+            transition: background 0.2s ease, color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .showreel-tab:last-child { border-right: none; }
+        .showreel-tab:hover { background: #f1f5f9; }
+        .showreel-tab.active { background: #ffffff; }
+        .showreel-tab__num {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #94a3b8;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+        }
+        .showreel-tab.active .showreel-tab__num { color: #4f46e5; }
+        .showreel-tab__name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+        }
+        .showreel-tab.active .showreel-tab__name { color: #4f46e5; }
+        .showreel-tab__tag {
+            font-size: 0.74rem;
+            color: #64748b;
+        }
+        .showreel-tab__progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+        }
+        .showreel-tab.active .showreel-tab__progress { background: #e0e7ff; }
+        .showreel-tab__progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transition: width 0.1s linear;
+        }
+
+        .showreel-theater {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            padding: 3rem;
+            align-items: center;
+            min-height: 460px;
+            background: #ffffff;
+        }
+        .showreel-pane-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            text-align: left;
+        }
+        .showreel-badge {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #4f46e5;
+            background: #eef2ff;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+        .showreel-heading {
+            font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.03em;
+            line-height: 1.25;
+            margin: 0;
+            text-align: left;
+        }
+        .showreel-desc {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #475569;
+            margin: 0;
+            text-align: left;
+        }
+        .showreel-milestones {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            text-align: left;
+        }
+        .showreel-milestones li {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.88rem;
+            color: #334155;
+            font-weight: 500;
+            text-align: left;
+        }
+        .showreel-milestones li svg {
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .showreel-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #f1f5f9;
+            position: relative;
+            z-index: 15;
+        }
+        .showreel-ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            transition: all 0.15s ease;
+        }
+        .showreel-ctrl-btn * {
+            pointer-events: none;
+        }
+        .showreel-ctrl-btn:hover {
+            background: #4f46e5;
+            color: #ffffff;
+            border-color: #4f46e5;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+        }
+        .showreel-ctrl-btn:active {
+            transform: scale(0.95);
+        }
+        .showreel-tab * {
+            pointer-events: none;
+        }
+        .showreel-step-counter {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #94a3b8;
+        }
+        .showreel-step-counter span { color: #4f46e5; }
+
+        .showreel-pane-right { position: relative; }
+        .showreel-viewport {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+        .showreel-viewport__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+        .showreel-viewport__dots { display: flex; gap: 6px; }
+        .showreel-viewport__dots .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot--red { background: #ef4444; }
+        .dot--yellow { background: #f59e0b; }
+        .dot--green { background: #10b981; }
+        .showreel-viewport__uri {
+            font-size: 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: #94a3b8;
+        }
+        .showreel-viewport__status {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            letter-spacing: 0.08em;
+        }
+        .sr-pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
+        .showreel-viewport__body {
+            padding: 1.75rem;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sr-visual-card { width: 100%; }
+        .sr-topology-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .sr-topology-node {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .sr-topology-node.active {
+            border-color: #4f46e5;
+            box-shadow: 0 0 16px rgba(79, 70, 229, 0.35);
+        }
+        .sr-topology-node__icon { font-size: 1.3rem; margin-bottom: 0.35rem; }
+        .sr-topology-node__title { font-size: 0.8rem; font-weight: 700; color: #f1f5f9; }
+        .sr-topology-node__sub { font-size: 0.68rem; color: #94a3b8; }
+        .sr-terminal-line {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: left;
+        }
+        .sr-terminal-line.success { color: #34d399; }
+        .sr-terminal-line.highlight { color: #818cf8; }
+        .sr-terminal-box {
+            background: #090e1a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            text-align: left;
+        }
+        .sr-metric-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.78rem;
+            color: #94a3b8;
+        }
+        .sr-progress-track {
+            width: 100%;
+            height: 6px;
+            background: #1e293b;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 0.3rem;
+        }
+        .sr-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5, #06b6d4);
+            border-radius: 999px;
+        }
+
+        @media (max-width: 960px) {
+            .showreel-theater {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+                gap: 2rem;
+            }
+            .showreel-nav { grid-template-columns: repeat(2, 1fr); }
+            .showreel-tab:nth-child(2) { border-right: none; }
+            .showreel-tab:nth-child(1),
+            .showreel-tab:nth-child(2) { border-bottom: 1px solid #e2e8f0; }
+        }
+        @media (max-width: 600px) {
+            .showreel-nav { grid-template-columns: 1fr; }
+            .showreel-tab { border-right: none !important; border-bottom: 1px solid #e2e8f0; }
+            .showreel-tab:last-child { border-bottom: none; }
+        }
+    </style>
+</head>
+<body class="home-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="#" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="#" class="hn-link hn-link--active">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="resources.html" class="hn-link">Resources</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo →</a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="#" class="nav-link nav-link--active">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link" data-track-cta="request_demo" data-track-location="mobile_nav">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+
+        <!-- ===== HERO ===== -->
+        <section class="hh-hero">
+            <div class="hh-hero__blob" aria-hidden="true"></div>
+            <div class="hh-hero__inner">
+
+                <!-- LEFT: copy -->
+                <div class="hh-hero__copy motion-fade-up">
+                    <p class="hh-eyebrow">SOFTWARE SOLUTIONS FOR MODERN BUSINESSES</p>
+                    <h1 class="hh-title">
+                        Software that works<br>
+                        the way <span class="hh-title__accent">your business does.</span>
+                    </h1>
+                    <p class="hh-subtitle">We build practical, scalable software solutions that help businesses work smarter, serve better and grow with confidence.</p>
+
+                    <div class="hh-actions">
+                        <a href="products.html" class="hh-btn-primary" data-track-cta="explore_products" data-track-location="homepage_hero">Explore Our Products →</a>
+                        <a href="request-demo.html" class="hh-btn-outline" data-track-cta="request_demo" data-track-location="homepage_hero">Request a Demo</a>
+                    </div>
+
+                    <div class="hh-trust motion-stagger">
+                        <div class="hh-trust__item">
+                            <span class="hh-trust__icon" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5.5V10c0 4.1 2.9 7.9 7 9 4.1-1.1 7-4.9 7-9V5.5L10 2z" stroke="#4f46e5" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span>Thoughtful by design</span>
+                        </div>
+                        <div class="hh-trust__item">
+                            <span class="hh-trust__icon" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="7.5" stroke="#4f46e5" stroke-width="1.6"/><path d="M7 10h6M10 7v6" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round"/></svg>
+                            </span>
+                            <span>Practical by nature</span>
+                        </div>
+                        <div class="hh-trust__item">
+                            <span class="hh-trust__icon" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round"/><path d="M3 13.5c0 1.9 1.6 3.5 3.5 3.5S10 15.4 10 13.5 8.4 10 6.5 10 3 11.6 3 13.5z" stroke="#4f46e5" stroke-width="1.6"/></svg>
+                            </span>
+                            <span>Built to evolve</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: dashboard mockup -->
+                <div class="hh-hero__visual" aria-hidden="true">
+                    <!-- background blob -->
+                    <div class="hh-visual__bg"></div>
+
+                    <!-- floating badge top-left -->
+                    <div class="hh-badge hh-badge--tl">
+                        <span class="hh-badge__icon">
+                            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4f46e5" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                        <span>Automate<br>Operations</span>
+                    </div>
+
+                    <!-- dashboard window -->
+                    <div class="hh-dashboard">
+                        <!-- window chrome -->
+                        <div class="hh-dash__bar">
+                            <div class="hh-dash__dots"><span></span><span></span><span></span></div>
+                            <div class="hh-dash__search">
+                                <svg viewBox="0 0 16 16" fill="none" width="12" height="12"><circle cx="7" cy="7" r="5" stroke="#94a3b8" stroke-width="1.5"/><path d="M11 11l2.5 2.5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                <span>Search anything...</span>
+                            </div>
+                            <div class="hh-dash__avatar">A</div>
+                        </div>
+                        <div class="hh-dash__body">
+                            <!-- sidebar -->
+                            <aside class="hh-dash__sidebar">
+                                <div class="hh-dash__sb-logo">
+                                    <span class="hh-dash__sb-icon">S</span>
+                                    <strong>Softify</strong>
+                                </div>
+                                <nav class="hh-dash__sb-nav">
+                                    <a class="hh-dash__sb-item hh-dash__sb-item--active">
+                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                                        Dashboard
+                                    </a>
+                                    <a class="hh-dash__sb-item">
+                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v2M11 1v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                        Reservations
+                                    </a>
+                                    <a class="hh-dash__sb-item">
+                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                        Customers
+                                    </a>
+                                    <a class="hh-dash__sb-item">
+                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 4h10M3 8h10M3 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                        Reports
+                                    </a>
+                                    <a class="hh-dash__sb-item">
+                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                        Settings
+                                    </a>
+                                </nav>
+                            </aside>
+
+                            <!-- main content -->
+                            <div class="hh-dash__main">
+                                <div class="hh-dash__page-title">
+                                    <h2>Dashboard</h2>
+                                    <p>Welcome back, here's what's happening today.</p>
+                                </div>
+
+                                <!-- metric cards -->
+                                <div class="hh-metrics">
+                                    <div class="hh-metric">
+                                        <span class="hh-metric__label">Total Bookings</span>
+                                        <span class="hh-metric__val">248</span>
+                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 12%</span>
+                                    </div>
+                                    <div class="hh-metric">
+                                        <span class="hh-metric__label">Active Guests</span>
+                                        <span class="hh-metric__val">186</span>
+                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 8%</span>
+                                    </div>
+                                    <div class="hh-metric">
+                                        <span class="hh-metric__label">Occupancy Rate</span>
+                                        <span class="hh-metric__val">78%</span>
+                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 4%</span>
+                                    </div>
+                                </div>
+
+                                <!-- chart area -->
+                                <div class="hh-chart-area">
+                                    <div class="hh-chart-header">
+                                        <span class="hh-chart-label">Bookings Overview</span>
+                                    </div>
+                                    <div class="hh-chart">
+                                        <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                            <defs>
+                                                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.18"/>
+                                                    <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M0 65 C30 58, 50 70, 75 55 S110 35, 140 42 S180 28, 210 22 S240 30, 260 18" stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                            <path d="M0 65 C30 58, 50 70, 75 55 S110 35, 140 42 S180 28, 210 22 S240 30, 260 18 V80 H0Z" fill="url(#chartFill)"/>
+                                            <circle cx="210" cy="22" r="4" fill="#4f46e5"/>
+                                            <circle cx="140" cy="42" r="3" fill="#4f46e5" opacity="0.5"/>
+                                            <circle cx="75" cy="55" r="3" fill="#4f46e5" opacity="0.5"/>
+                                        </svg>
+                                        <div class="hh-chart-days">
+                                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- recent activity -->
+                                <div class="hh-activity">
+                                    <span class="hh-activity__label">Recent Activity</span>
+                                    <div class="hh-activity__item">
+                                        <span class="hh-activity__dot hh-activity__dot--blue"></span>
+                                        <span>New booking received</span>
+                                        <span class="hh-activity__time">2h ago</span>
+                                    </div>
+                                    <div class="hh-activity__item">
+                                        <span class="hh-activity__dot hh-activity__dot--green"></span>
+                                        <span>Guest checked in</span>
+                                        <span class="hh-activity__time">3h ago</span>
+                                    </div>
+                                    <div class="hh-activity__item">
+                                        <span class="hh-activity__dot hh-activity__dot--orange"></span>
+                                        <span>Payment received</span>
+                                        <span class="hh-activity__time">5h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- floating badge bottom-left -->
+                    <div class="hh-badge hh-badge--bl">
+                        <span class="hh-badge__icon hh-badge__icon--green">
+                            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="4" stroke="#16a34a" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                        <span>Improve<br>Guest Experience</span>
+                    </div>
+
+                    <!-- floating badge bottom-right -->
+                    <div class="hh-badge hh-badge--br">
+                        <span class="hh-badge__icon hh-badge__icon--violet">
+                            <svg viewBox="0 0 20 20" fill="none"><path d="M4 16L10 4l6 12" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 11h7" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                        <span>Drive<br>Business Growth</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW WE WORK (GSAP Showreel Showcase) ===== -->
+        <section class="hh-how reveal" id="how-we-work">
+            <div class="hh-how__inner">
+                <p class="hh-eyebrow" style="text-align:center;display:block;margin-bottom:0.75rem;">HOW WE WORK</p>
+                <h2 class="hh-how__title">From problem to working software,<br>step by step.</h2>
+
+                <!-- GSAP Interactive Showreel -->
+                <div class="how-showreel" id="how-showreel">
+                    <!-- Stage Tab Track -->
+                    <div class="showreel-nav" role="tablist" aria-label="Development stages">
+                        <button type="button" class="showreel-tab active" data-stage="0" role="tab" aria-selected="true" aria-controls="showreel-content">
+                            <span class="showreel-tab__num">01</span>
+                            <span class="showreel-tab__name">Understand</span>
+                            <span class="showreel-tab__tag">Discovery &amp; Scope</span>
+                            <div class="showreel-tab__progress"><div class="showreel-tab__progress-bar"></div></div>
+                        </button>
+                        <button type="button" class="showreel-tab" data-stage="1" role="tab" aria-selected="false" aria-controls="showreel-content">
+                            <span class="showreel-tab__num">02</span>
+                            <span class="showreel-tab__name">Design</span>
+                            <span class="showreel-tab__tag">Architecture &amp; UX</span>
+                            <div class="showreel-tab__progress"><div class="showreel-tab__progress-bar"></div></div>
+                        </button>
+                        <button type="button" class="showreel-tab" data-stage="2" role="tab" aria-selected="false" aria-controls="showreel-content">
+                            <span class="showreel-tab__num">03</span>
+                            <span class="showreel-tab__name">Build</span>
+                            <span class="showreel-tab__tag">Iterative Engine</span>
+                            <div class="showreel-tab__progress"><div class="showreel-tab__progress-bar"></div></div>
+                        </button>
+                        <button type="button" class="showreel-tab" data-stage="3" role="tab" aria-selected="false" aria-controls="showreel-content">
+                            <span class="showreel-tab__num">04</span>
+                            <span class="showreel-tab__name">Improve</span>
+                            <span class="showreel-tab__tag">Telemetry &amp; Scale</span>
+                            <div class="showreel-tab__progress"><div class="showreel-tab__progress-bar"></div></div>
+                        </button>
+                    </div>
+
+                    <!-- Showreel Theater Viewport -->
+                    <div class="showreel-theater" id="showreel-content" role="tabpanel">
+                        <!-- Left Pane: Narrative & Checklist -->
+                        <div class="showreel-pane-left">
+                            <div class="showreel-badge" id="sr-stage-badge">STAGE 01 OF 04 • DISCOVERY &amp; WORKFLOW ARCHITECTURE</div>
+                            <h3 class="showreel-heading" id="sr-stage-title">Understand the Real-World Bottleneck</h3>
+                            <p class="showreel-desc" id="sr-stage-desc">
+                                We learn your workflow, your users, and the exact problem worth solving before writing a single line of code. No bloated generic templates.
+                            </p>
+                            
+                            <ul class="showreel-milestones" id="sr-stage-milestones">
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Field interviews &amp; operational process mapping</span>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Constraint identification &amp; zero-assumption data schemas</span>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Functional prototype alignment with key stakeholders</span>
+                                </li>
+                            </ul>
+
+                            <div class="showreel-controls">
+                                <button type="button" class="showreel-ctrl-btn" id="sr-prev-btn" aria-label="Previous stage">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                                    <span>Previous</span>
+                                </button>
+                                <div class="showreel-step-counter"><span id="sr-current-num">01</span> / 04</div>
+                                <button type="button" class="showreel-ctrl-btn" id="sr-next-btn" aria-label="Next stage">
+                                    <span>Next Stage</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Pane: Interactive Live Terminal & Visual Graphic -->
+                        <div class="showreel-pane-right">
+                            <div class="showreel-viewport">
+                                <div class="showreel-viewport__bar">
+                                    <div class="showreel-viewport__dots">
+                                        <span class="dot dot--red"></span>
+                                        <span class="dot dot--yellow"></span>
+                                        <span class="dot dot--green"></span>
+                                    </div>
+                                    <div class="showreel-viewport__uri" id="sr-uri-label">softify://pipeline/01-understand.flow</div>
+                                    <div class="showreel-viewport__status"><span class="sr-pulse"></span> ACTIVE</div>
+                                </div>
+                                <div class="showreel-viewport__body" id="sr-graphic-container">
+                                    <!-- Populated dynamically and animated by GSAP -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero -->
+        <section class="pg-hero">
+            <span class="pg-hero__eyebrow">ABOUT softify</span>
+            <h1 class="pg-hero__title">Building software that works for real businesses.</h1>
+            <p class="pg-hero__sub">We are a focused software development company building practical, industry-specific products and custom solutions that help businesses operate with clarity and efficiency.</p>
+        </section>
+
+        <!-- ===== PRODUCTS ===== -->
+        <section class="hh-products reveal" id="products">
+            <div class="hh-products__inner">
+
+                <!-- left: text -->
+                <div class="hh-products__copy">
+                    <p class="hh-eyebrow">OUR PRODUCTS</p>
+                    <h2 class="hh-products__title">Software for every industry</h2>
+                    <p class="hh-products__sub">Purpose-built solutions designed to meet the unique needs of different industries and business environments.</p>
+                    <a href="products.html" class="hh-btn-outline hh-btn-outline--sm">View All Products →</a>
+                </div>
+
+                <!-- right: product cards -->
+                <div class="hh-prod-grid motion-stagger">
+
+                    <article class="hh-prod-card">
+                        <div class="hh-prod-card__icon hh-prod-card__icon--indigo">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path d="M4 11V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M2 11L12 3L22 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21" stroke="currentColor" stroke-width="1.8"/>
+                            </svg>
+                        </div>
+                        <h3 class="hh-prod-card__name">HotelFlow</h3>
+                        <span class="hh-badge-pill">In Development</span>
+                        <p class="hh-prod-card__desc">All-in-one operations for independent hotels — front desk, housekeeping &amp; billing.</p>
+                        <a href="product.html?id=hotel-management-system" class="hh-prod-card__link">View Product →</a>
+                    </article>
+
+                    <article class="hh-prod-card">
+                        <div class="hh-prod-card__icon hh-prod-card__icon--teal">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path d="M12 2L3 7v8c0 4.4 3.9 8.5 9 9.9 5.1-1.4 9-5.5 9-9.9V7l-9-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="hh-prod-card__name">Clinic Management System</h3>
+                        <span class="hh-badge-pill">In Development</span>
+                        <p class="hh-prod-card__desc">Simplify patient care, appointments and clinic operations.</p>
+                        <a href="products.html" class="hh-prod-card__link">Learn More →</a>
+                    </article>
+
+                    <article class="hh-prod-card">
+                        <div class="hh-prod-card__icon hh-prod-card__icon--blue">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <rect x="2" y="2" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+                                <rect x="13" y="2" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+                                <rect x="2" y="13" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+                                <rect x="13" y="13" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
+                            </svg>
+                        </div>
+                        <h3 class="hh-prod-card__name">Business Intelligence</h3>
+                        <span class="hh-badge-pill">In Development</span>
+                        <p class="hh-prod-card__desc">Turn your data into clear insights and better decisions.</p>
+                        <a href="products.html" class="hh-prod-card__link">Learn More →</a>
+                    </article>
+
+                    <article class="hh-prod-card">
+                        <div class="hh-prod-card__icon hh-prod-card__icon--orange">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path d="M4 4h4v4H4zM10 4h4v4h-4zM16 4h4v4h-4zM4 10h4v4H4zM10 10h4v4h-4zM16 10h4v4h-4zM4 16h4v4H4zM10 16h4v4h-4zM16 16h4v4h-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="hh-prod-card__name">Inventory Management</h3>
+                        <span class="hh-badge-pill">In Development</span>
+                        <p class="hh-prod-card__desc">Track stock, reduce waste and keep your operations running.</p>
+                        <a href="products.html" class="hh-prod-card__link">Learn More →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT TEASER ===== -->
+        <section class="hh-about reveal">
+            <div class="hh-about__inner">
+                <div class="hh-about__copy">
+                    <p class="hh-eyebrow">ABOUT softify</p>
+                    <h2 class="hh-about__title">Built by people who understand business operations.</h2>
+                    <p class="hh-about__sub">We are a focused software development company. We don't try to be everything to everyone &mdash; we build specific, high-quality products for specific industries. No bloat, no generic templates, just software that works.</p>
+                    <div class="hh-about__stats">
+                        <div class="hh-about__stat">
+                            <strong>5+</strong>
+                            <span>Products in development</span>
+                        </div>
+                        <div class="hh-about__stat">
+                            <strong>5</strong>
+                            <span>Industries served</span>
+                        </div>
+                        <div class="hh-about__stat">
+                            <strong>100%</strong>
+                            <span>Cloud-native</span>
+                        </div>
+                    </div>
+                    <a href="about.html" class="hh-btn-outline">Learn About Us →</a>
+                </div>
+                <div class="hh-about__values motion-stagger">
+                    <div class="hh-val-card">
+                        <div class="hh-val-card__icon hh-val-card__icon--indigo">
+                            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Useful over flashy</h4>
+                            <p>Every feature earns its place by helping someone do their job better.</p>
+                        </div>
+                    </div>
+                    <div class="hh-val-card">
+                        <div class="hh-val-card__icon hh-val-card__icon--teal">
+                            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M9 13l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Simple by design</h4>
+                            <p>We remove complexity so teams adopt and use the system with confidence.</p>
+                        </div>
+                    </div>
+                    <div class="hh-val-card">
+                        <div class="hh-val-card__icon hh-val-card__icon--violet">
+                            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2L3 5v6c0 5 4 9 9 11 5-2 9-6 9-11V5l-9-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Built to evolve</h4>
+                            <p>Foundations that grow with new features, users and integrations over time.</p>
+                        </div>
+                    </div>
+                    <div class="hh-val-card">
+                        <div class="hh-val-card__icon hh-val-card__icon--orange">
+                            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        </div>
+                        <div>
+                            <h4>Built with people</h4>
+                            <p>Real users and real workflows shape every design and improvement decision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CUSTOM SOFTWARE CALLOUT ===== -->
+        <section class="custom-callout reveal" aria-label="Custom Software Services">
+            <div class="custom-callout__inner">
+                <div>
+                    <span class="custom-callout__tag">TAILORED SOLUTIONS</span>
+                    <h2 class="custom-callout__title">Don't see what you need?<br>We can build software around your business.</h2>
+                    <p class="custom-callout__text">
+                        If your operational model doesn't fit standard off-the-shelf products, our software team can design and build a tailored solution for your specific industry workflows.
+                    </p>
+                </div>
+                <div class="custom-callout__actions">
+                    <a href="request-demo.html?goal=custom" class="custom-callout__btn" data-track-cta="custom_software_enquiry" data-track-location="homepage_custom_callout">
+                        <span>Discuss Custom Development</span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <span class="custom-callout__note">Direct conversation &bull; No commitment required</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS & TRUST PROOF ===== -->
+        <section class="hh-testimonials-section reveal" id="testimonials" aria-label="Client Testimonials">
+            <div class="hh-testimonials-inner">
+                <div class="hh-testimonials-header">
+                    <p class="hh-eyebrow">CLIENT VOICES &amp; FEEDBACK</p>
+                    <h2 class="hh-testimonials-title">Trusted by forward-thinking teams.</h2>
+                    <p class="hh-testimonials-sub">See how softify's purpose-built platforms empower real businesses to operate with clarity and confidence.</p>
+                </div>
+                
+                <div class="hh-testimonials-grid motion-stagger" id="testimonials-grid">
+                    <div class="hh-test-card">
+                        <div>
+                            <div class="hh-test-card__stars">★★★★★</div>
+                            <p class="hh-test-card__quote">"HotelFlow eliminated hours of daily manual sync between our front desk and housekeeping teams. The workflow clarity is unmatched."</p>
+                        </div>
+                        <div class="hh-test-card__author-box">
+                            <img src="/assets/icons/favicon.svg" alt="Marcus Vance" class="hh-test-card__avatar">
+                            <div>
+                                <div class="hh-test-card__author-name">Marcus Vance</div>
+                                <div class="hh-test-card__author-role">General Manager, Grandview Suites</div>
+                                <span class="hh-test-card__prod-badge">HotelFlow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hh-test-card">
+                        <div>
+                            <div class="hh-test-card__stars">★★★★★</div>
+                            <p class="hh-test-card__quote">"The clinical scheduling and encounter notes feel purpose-built for our doctors rather than retrofitted from an accounting package."</p>
+                        </div>
+                        <div class="hh-test-card__author-box">
+                            <img src="/assets/icons/favicon.svg" alt="Dr. Elena Rostova" class="hh-test-card__avatar">
+                            <div>
+                                <div class="hh-test-card__author-name">Dr. Elena Rostova</div>
+                                <div class="hh-test-card__author-role">Medical Director, Apex Health Group</div>
+                                <span class="hh-test-card__prod-badge">Clinic Management System</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hh-test-card">
+                        <div>
+                            <div class="hh-test-card__stars">★★★★★</div>
+                            <p class="hh-test-card__quote">"Real-time visibility into job-costing and production flow gave us the exact data we needed to scale without adding administrative headcount."</p>
+                        </div>
+                        <div class="hh-test-card__author-box">
+                            <img src="/assets/icons/favicon.svg" alt="David Chen" class="hh-test-card__avatar">
+                            <div>
+                                <div class="hh-test-card__author-name">David Chen</div>
+                                <div class="hh-test-card__author-role">VP of Operations, Crestline Mfg</div>
+                                <span class="hh-test-card__prod-badge">Inventory Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hh-partners-strip" id="partners-strip">
+                    <div class="hh-partners-label">Powering Operations Across Diverse Industries</div>
+                    <div class="hh-partners-logos" id="partners-logos-container">
+                        <div class="hh-partner-item">
+                            <img src="/assets/icons/favicon.svg" alt="Grandview Hospitality">
+                            <span>Grandview Hospitality</span>
+                        </div>
+                        <div class="hh-partner-item">
+                            <img src="/assets/icons/favicon.svg" alt="Apex Health Alliance">
+                            <span>Apex Health</span>
+                        </div>
+                        <div class="hh-partner-item">
+                            <img src="/assets/icons/favicon.svg" alt="Crestline Industrial">
+                            <span>Crestline Industrial</span>
+                        </div>
+                        <div class="hh-partner-item">
+                            <img src="/assets/icons/favicon.svg" alt="Solaria Retail Network">
+                            <span>Solaria Retail</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GRADIENT CTA ===== -->
+        <section class="hh-cta-banner reveal">
+            <div class="hh-cta-banner__inner">
+                <div>
+                    <h2 class="hh-cta-banner__title">Ready to transform your operations?</h2>
+                    <p class="hh-cta-banner__sub">Have a business problem worth solving? Tell us what you're trying to improve and let's find the right software approach.</p>
+                </div>
+                <div class="hh-cta-banner__actions">
+                    <a href="request-demo.html" class="hh-cta-banner__btn-primary" data-track-cta="request_demo" data-track-location="homepage_cta_banner">Request a Demo →</a>
+                    <a href="contact.html" class="hh-cta-banner__btn-outline" data-track-cta="contact_us" data-track-location="homepage_cta_banner">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <!-- Newsletter Banner -->
+            <div class="footer-newsletter">
+                <div class="footer-newsletter__info">
+                    <span class="footer-newsletter__eyebrow">Stay Connected</span>
+                    <h3 class="footer-newsletter__heading">Subscribe to softify Product Updates</h3>
+                    <p class="footer-newsletter__desc">Get quarterly insights on modern enterprise workflows, new feature releases, and engineering updates.</p>
+                </div>
+                <form class="footer-newsletter__form" id="footer-newsletter-form">
+                    <div class="footer-newsletter__input-group">
+                        <input type="email" class="footer-newsletter__input" id="footer-email" placeholder="Enter your work email..." required aria-label="Work email address">
+                        <button type="submit" class="footer-newsletter__btn" id="footer-subscribe-btn">
+                            <span>Subscribe</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="footer-newsletter__feedback" id="footer-newsletter-success">✓ Thank you for subscribing! Check your inbox soon.</div>
+                </form>
+            </div>
+
+            <!-- Main Navigation Grid -->
+            <div class="footer-main-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-link">
+                        <div class="footer-brand-logo">S</div>
+                        <span class="footer-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-tagline">Practical, high-performance business software built around real workflows and industry-specific operations.</p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.5 2.48 2.5zM0 8h5v16H0zm7 0h4.8v2.05h.07c.67-1.28 2.3-2.65 4.72-2.65 5.05 0 5.98 3.32 5.98 7.62V24h-5v-8.5c0-2.04-.03-4.67-2.85-4.67-2.85 0-3.28 2.22-3.28 4.5V24H7z"/></svg></a>
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 0 9.032H12.6L6.77 19.5H3.326l6.98-8.02L3.12 2.25H6.5l6.6 9.027L19.02 2.25Zm-2.67 15.29h.01-5.05L9.2 15.5l-2.5-2.85V4.75l5.05 6.15 2.65-6.15h3.55l-4.2 5.95 3.96 7.45Z"/></svg></a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.802 8.205 11.385.6.113.82-.26.82-.58 0-.29-.01-1.14-.017-2.04-3.338.726-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.094-.745.084-.73.084-.73 1.21.086 1.846 1.246 1.846 1.246 1.07 1.835 2.81 1.312 3.497.999.108-.775.417-1.312.764-1.61-2.665-.304-5.467-1.334-5.467-5.934 0-1.31.47-2.38 1.24-3.22-.124-.304-.535-1.527.117-3.182 0 0 1.008-.323 3.3 1.23.956-.266 1.98-.399 3-.404 1.013.005 2.037.138 3 .404 2.29-1.553 3.296-1.23 3.296-1.23.653 1.655.242 2.878.118 3.182.77.84 1.237 1.91 1.237 3.22 0 4.61-2.807 5.622-5.478 5.921.43.37.813 1.104.813 2.224 0 1.606-.015 2.898-.015 3.29-0.005.322.21.702.825.58A12.002 12.002 0 0 0 24 12.286c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 1: Products -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Products</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html" class="footer-nav-link">All Products</a></li>
+                        <li><a href="product.html?id=hotel-management-system" class="footer-nav-link">HotelFlow <span class="footer-badge">Hospitality</span></a></li>
+                        <li><a href="product.html?id=healthcare-pro" class="footer-nav-link">ClinicOS <span class="footer-badge">Health</span></a></li>
+                        <li><a href="product.html?id=financeflow" class="footer-nav-link">FinanceFlow <span class="footer-badge">Finance</span></a></li>
+                        <li><a href="product.html?id=makersuite" class="footer-nav-link">MakerSuite <span class="footer-badge">Mfg</span></a></li>
+                        <li><a href="product.html?id=retailoptix" class="footer-nav-link">RetailOptix <span class="footer-badge">Retail</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Solutions & Tools -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions &amp; Tools</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="roi-calculator.html" class="footer-nav-link highlight">ROI Calculator ✨</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources & Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Resources &amp; Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="resources.html" class="footer-nav-link">Case Studies &amp; Hub</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">Developer Docs</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Support & Console -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support &amp; Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">API &amp; Developer Docs</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">System Reliability</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

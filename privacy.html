@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — softify | Data Protection &amp; Compliance</title>
+    <meta name="description" content="Learn how softify protects your data. Read our commitment to privacy, data minimization, security standards, GDPR/CCPA compliance, and zero-resale policy.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://softify.example.com/privacy.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://softify.example.com/privacy.html">
+    <meta property="og:title" content="Privacy Policy — softify | Data Protection &amp; Compliance">
+    <meta property="og:description" content="Learn how softify protects your data. Read our commitment to privacy, data minimization, security standards, and GDPR/CCPA compliance.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:site_name" content="softify">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://softify.example.com/privacy.html">
+    <meta name="twitter:title" content="Privacy Policy — softify | Data Protection &amp; Compliance">
+    <meta name="twitter:description" content="Learn how softify protects your data. Read our commitment to privacy, data minimization, security standards, and GDPR/CCPA compliance.">
+    <meta name="twitter:image" content="https://softify.example.com/assets/images/og-preview.svg">
+
+    <!-- Favicon & Brand Meta -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy — softify",
+      "url": "https://softify.example.com/privacy.html",
+      "description": "softify data protection guidelines, GDPR/CCPA compliance, and customer privacy terms.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "softify",
+        "url": "https://softify.example.com/",
+        "logo": "https://softify.example.com/assets/icons/favicon.svg"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/motion.css">
+    <style>
+        body.legal-page { background: #f8fafc; color: #0f172a; }
+        .legal-hero {
+            background: #eef2ff;
+            padding: 5rem 2rem 3.5rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+        .legal-hero__inner {
+            max-width: 52rem;
+            margin: 0 auto;
+        }
+        .legal-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #4f46e5;
+            background: #ffffff;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(79, 70, 229, 0.15);
+        }
+        .legal-title {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #0f172a;
+            margin: 0 0 1rem;
+            line-height: 1.15;
+        }
+        .legal-sub {
+            font-size: 1.05rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 1.25rem;
+        }
+        .legal-meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #475569;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* 2-Column Document Layout */
+        .legal-layout {
+            max-width: 76rem;
+            margin: 3.5rem auto 6rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+        .legal-sidebar {
+            position: sticky;
+            top: 5rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+        }
+        .legal-sidebar__heading {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin: 0 0 1rem;
+        }
+        .legal-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .legal-nav-link {
+            display: block;
+            font-size: 0.86rem;
+            color: #475569;
+            text-decoration: none;
+            padding: 0.45rem 0.65rem;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+            line-height: 1.4;
+        }
+        .legal-nav-link:hover {
+            color: #4f46e5;
+            background: #eef2ff;
+        }
+
+        .legal-content {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 3.5rem 3rem;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+            line-height: 1.75;
+            color: #334155;
+        }
+        .legal-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .legal-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .legal-section h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .legal-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .legal-section p {
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
+        }
+        .legal-section ul {
+            margin: 0 0 1.25rem 1.25rem;
+            padding: 0;
+        }
+        .legal-section li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .legal-highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid #4f46e5;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.25rem 0;
+            font-size: 0.92rem;
+            color: #1e293b;
+        }
+
+        @media (max-width: 960px) {
+            .legal-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin: 2rem auto 4rem;
+                padding: 0 1.25rem;
+            }
+            .legal-sidebar {
+                position: static;
+                top: auto;
+            }
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="legal-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="request-demo.html" class="hn-cta">Request a Demo &rarr;</a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="legal-hero">
+        <div class="legal-hero__inner motion-fade-up">
+            <span class="legal-eyebrow">Trust &amp; Compliance</span>
+            <h1 class="legal-title">Privacy Policy</h1>
+            <p class="legal-sub">Our commitment to transparency, data minimization, and privacy-by-design across all softify systems.</p>
+            <div class="legal-meta-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Last Updated: September 10, 2026 • Effective Worldwide</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LEGAL CONTENT -->
+    <main id="main" class="legal-layout">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="legal-sidebar" aria-label="Document Contents">
+            <h2 class="legal-sidebar__heading">Contents</h2>
+            <ul class="legal-nav-list">
+                <li><a href="#overview" class="legal-nav-link">1. Overview &amp; Principles</a></li>
+                <li><a href="#collection" class="legal-nav-link">2. Information We Collect</a></li>
+                <li><a href="#usage" class="legal-nav-link">3. How We Use Data</a></li>
+                <li><a href="#zero-resale" class="legal-nav-link">4. Zero-Resale Policy</a></li>
+                <li><a href="#security" class="legal-nav-link">5. Security Standards</a></li>
+                <li><a href="#cookies" class="legal-nav-link">6. Cookies &amp; Telemetry</a></li>
+                <li><a href="#rights" class="legal-nav-link">7. Your Privacy Rights</a></li>
+                <li><a href="#transfers" class="legal-nav-link">8. International Transfers</a></li>
+                <li><a href="#contact" class="legal-nav-link">9. Data Protection Contact</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Document Body -->
+        <article class="legal-content">
+            <!-- 1. Overview -->
+            <section id="overview" class="legal-section">
+                <h2>1. Overview &amp; Principles</h2>
+                <p>
+                    softify Inc. ("softify", "we", "us", or "our") builds purpose-built, industry-specific business software. We respect your personal privacy and are committed to safeguarding data entrusted to us.
+                </p>
+                <div class="legal-highlight-box">
+                    <strong>Our Core Privacy Promise:</strong> We adhere strictly to data minimization principles. We only collect the minimal contact and usage data necessary to facilitate product evaluation, software demos, and system operations. We never monetize, sell, or rent customer information.
+                </div>
+                <p>
+                    This Privacy Policy applies to our website (<a href="index.html">softify.example.com</a>), demo walkthroughs, and related communication channels.
+                </p>
+            </section>
+
+            <!-- 2. Information We Collect -->
+            <section id="collection" class="legal-section">
+                <h2>2. Information We Collect</h2>
+                <p>We collect information in three distinct categories:</p>
+                
+                <h3>A. Information You Provide Directly</h3>
+                <ul>
+                    <li><strong>Contact Inquiries:</strong> Name, professional email address, company name, subject line, and inquiry message submitted via our contact forms.</li>
+                    <li><strong>Demo Requests:</strong> Work email, company organization, estimated operational requirements, and product module preferences.</li>
+                    <li><strong>Newsletter Subscriptions:</strong> Corporate email address for product engineering updates.</li>
+                </ul>
+
+                <h3>B. Automated Technical Telemetry</h3>
+                <ul>
+                    <li><strong>Server Log Data:</strong> Anonymized IP addresses, HTTP request timestamps, browser user agent strings, and HTTP response codes to maintain uptime and mitigate denial-of-service threats.</li>
+                    <li><strong>Functional Telemetry:</strong> Aggregated interaction metrics (e.g., CTA click events, product filter toggles) used exclusively to evaluate UX performance.</li>
+                </ul>
+            </section>
+
+            <!-- 3. Usage -->
+            <section id="usage" class="legal-section">
+                <h2>3. How We Use Data</h2>
+                <p>Your information is processed strictly for legitimate business purposes, including:</p>
+                <ul>
+                    <li>Scheduling and conducting personalized product walkthroughs tailored to your industry workflows.</li>
+                    <li>Responding promptly to technical inquiries, partnership queries, and customer service requests.</li>
+                    <li>Auditing server performance, security hardening, and protecting against unauthorized or automated bot traffic.</li>
+                    <li>Transmitting relevant product release announcements (with one-click unsubscribe in every transmission).</li>
+                </ul>
+            </section>
+
+            <!-- 4. Zero-Resale -->
+            <section id="zero-resale" class="legal-section">
+                <h2>4. Zero-Resale &amp; Third-Party Policy</h2>
+                <p>
+                    <strong>We do not sell, rent, or trade your personal data.</strong> We do not share customer contact records with ad exchanges, data brokers, or third-party behavioral advertising networks.
+                </p>
+                <p>
+                    Data is only processed by essential infrastructure providers (such as cloud hosting and transactional email transport) under strict confidentiality agreements and Data Processing Addendums (DPAs).
+                </p>
+            </section>
+
+            <!-- 5. Security Standards -->
+            <section id="security" class="legal-section">
+                <h2>5. Security Safeguards</h2>
+                <p>softify maintains robust organizational, physical, and technical safeguards:</p>
+                <ul>
+                    <li><strong>Encryption:</strong> All data in transit is encrypted using modern TLS 1.3 encryption. Data at rest is secured via AES-256 encryption.</li>
+                    <li><strong>Input Sanitization &amp; Rate Limiting:</strong> All public endpoints incorporate layered rate-limiting and cryptographic token validation to prevent brute-force attacks and cross-site scripting (XSS).</li>
+                    <li><strong>Access Control:</strong> Administrative console access requires multi-factor session authentication and is restricted solely to authorized engineering personnel.</li>
+                </ul>
+            </section>
+
+            <!-- 6. Cookies & Telemetry -->
+            <section id="cookies" class="legal-section">
+                <h2>6. Cookies &amp; Tracking Technologies</h2>
+                <p>
+                    softify takes an anti-bloat stance on web trackers. We utilize only essential and privacy-first functional mechanisms:
+                </p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Ephemeral session tokens required for security authentication and CSRF protection.</li>
+                    <li><strong>Zero Cross-Site Trackers:</strong> We do not embed intrusive third-party retargeting pixels or ad-tracking scripts on our marketing pages.</li>
+                </ul>
+            </section>
+
+            <!-- 7. Your Privacy Rights -->
+            <section id="rights" class="legal-section">
+                <h2>7. Your Privacy Rights (GDPR &amp; CCPA/CPRA)</h2>
+                <p>Depending on your jurisdiction, you possess the following rights regarding your personal information:</p>
+                <ul>
+                    <li><strong>Right to Access:</strong> Request a copy of the specific personal data we hold about you.</li>
+                    <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete records.</li>
+                    <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> Request immediate permanent deletion of your contact records.</li>
+                    <li><strong>Right to Object &amp; Opt-Out:</strong> Opt out of communications or request processing limitations at any time.</li>
+                </ul>
+                <p>
+                    To exercise any of these rights, simply email our compliance team at <a href="mailto:privacy@softify.io">privacy@softify.io</a>. Requests are fulfilled within 30 calendar days at zero cost.
+                </p>
+            </section>
+
+            <!-- 8. International Transfers -->
+            <section id="transfers" class="legal-section">
+                <h2>8. International Transfers</h2>
+                <p>
+                    softify infrastructure is hosted in enterprise-grade, ISO 27001-certified cloud facilities. When transferring data across international boundaries, we ensure adequate protection through Standard Contractual Clauses (SCCs) and GDPR-aligned adequacy frameworks.
+                </p>
+            </section>
+
+            <!-- 9. Contact -->
+            <section id="contact" class="legal-section">
+                <h2>9. Data Protection Contact</h2>
+                <p>
+                    If you have questions, feedback, or concerns regarding our privacy practices or data governance, please reach out to our privacy office:
+                </p>
+                <div class="legal-highlight-box">
+                    <strong>softify Data Privacy Office</strong><br>
+                    Email: <a href="mailto:privacy@softify.io">privacy@softify.io</a><br>
+                    General Inquiries: <a href="mailto:hello@softify.io">hello@softify.io</a><br>
+                    Website: <a href="contact.html">softify.example.com/contact.html</a>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <!-- Newsletter Banner -->
+            <div class="footer-newsletter">
+                <div class="footer-newsletter__info">
+                    <span class="footer-newsletter__eyebrow">Stay Connected</span>
+                    <h3 class="footer-newsletter__heading">Subscribe to softify Product Updates</h3>
+                    <p class="footer-newsletter__desc">Get quarterly insights on modern enterprise workflows, new feature releases, and engineering updates.</p>
+                </div>
+                <form class="footer-newsletter__form" id="footer-newsletter-form">
+                    <div class="footer-newsletter__input-group">
+                        <input type="email" class="footer-newsletter__input" id="footer-email" placeholder="Enter your work email..." required aria-label="Work email address">
+                        <button type="submit" class="footer-newsletter__btn" id="footer-subscribe-btn">
+                            <span>Subscribe</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                    <div class="footer-newsletter__feedback" id="footer-newsletter-success">✓ Thank you for subscribing! Check your inbox soon.</div>
+                </form>
+            </div>
+
+            <!-- Main Navigation Grid -->
+            <div class="footer-main-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-link">
+                        <div class="footer-brand-logo">S</div>
+                        <span class="footer-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-tagline">Practical, high-performance business software built around real workflows and industry-specific operations.</p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.5 2.48 2.5zM0 8h5v16H0zm7 0h4.8v2.05h.07c.67-1.28 2.3-2.65 4.72-2.65 5.05 0 5.98 3.32 5.98 7.62V24h-5v-8.5c0-2.04-.03-4.67-2.85-4.67-2.85 0-3.28 2.22-3.28 4.5V24H7z"/></svg></a>
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 0 9.032H12.6L6.77 19.5H3.326l6.98-8.02L3.12 2.25H6.5l6.6 9.027L19.02 2.25Zm-2.67 15.29h.01-5.05L9.2 15.5l-2.5-2.85V4.75l5.05 6.15 2.65-6.15h3.55l-4.2 5.95 3.96 7.45Z"/></svg></a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.802 8.205 11.385.6.113.82-.26.82-.58 0-.29-.01-1.14-.017-2.04-3.338.726-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.094-.745.084-.73.084-.73 1.21.086 1.846 1.246 1.846 1.246 1.07 1.835 2.81 1.312 3.497.999.108-.775.417-1.312.764-1.61-2.665-.304-5.467-1.334-5.467-5.934 0-1.31.47-2.38 1.24-3.22-.124-.304-.535-1.527.117-3.182 0 0 1.008-.323 3.3 1.23.956-.266 1.98-.399 3-.404 1.013.005 2.037.138 3 .404 2.29-1.553 3.296-1.23 3.296-1.23.653 1.655.242 2.878.118 3.182.77.84 1.237 1.91 1.237 3.22 0 4.61-2.807 5.622-5.478 5.921.43.37.813 1.104.813 2.224 0 1.606-.015 2.898-.015 3.29-0.005.322.21.702.825.58A12.002 12.002 0 0 0 24 12.286c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 1: Products -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Products</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html" class="footer-nav-link">All Products</a></li>
+                        <li><a href="product.html?id=hotel-management-system" class="footer-nav-link">HotelFlow <span class="footer-badge">Hospitality</span></a></li>
+                        <li><a href="product.html?id=healthcare-pro" class="footer-nav-link">ClinicOS <span class="footer-badge">Health</span></a></li>
+                        <li><a href="product.html?id=financeflow" class="footer-nav-link">FinanceFlow <span class="footer-badge">Finance</span></a></li>
+                        <li><a href="product.html?id=makersuite" class="footer-nav-link">MakerSuite <span class="footer-badge">Mfg</span></a></li>
+                        <li><a href="product.html?id=retailoptix" class="footer-nav-link">RetailOptix <span class="footer-badge">Retail</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Solutions -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="products.html?filter=manufacturing" class="footer-nav-link">Supply & Inventory</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">FAQ</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                        <li><a href="request-demo.html" class="footer-nav-link">Request Demo</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Support & Admin -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support & Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">API & Developer Docs</a></li>
+                        <li><a href="about.html#faq" class="footer-nav-link">System Reliability</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

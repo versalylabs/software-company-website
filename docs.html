@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer & API Documentation — softify</title>
+    <meta name="description" content="Technical integration guides, REST API endpoints, webhooks, and schemas for engineers and developers integrating softify platforms.">
+    <link rel="canonical" href="https://softify.example.com/docs.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Developer & API Documentation — softify">
+    <meta property="og:description" content="Technical integration guides, REST API endpoints, and webhooks.">
+    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta property="og:url" content="https://softify.example.com/docs.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/resources.css">
+</head>
+<body class="docs-page">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="hn-bar" role="banner">
+        <div class="hn-inner">
+            <a href="index.html" class="hn-brand" aria-label="softify home">
+                <span class="hn-logo" aria-hidden="true">S</span>
+                <span class="hn-brand-name">softify</span>
+            </a>
+
+            <nav aria-label="Primary navigation">
+                <ul class="hn-menu" id="primary-navigation">
+                    <li><a href="index.html" class="hn-link">Home</a></li>
+                    <li><a href="products.html" class="hn-link">Products</a></li>
+                    <li><a href="about.html" class="hn-link">About</a></li>
+                    <li><a href="resources.html" class="hn-link">Resources</a></li>
+                    <li><a href="contact.html" class="hn-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo →</a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="request-demo.html" class="nav-link" data-track-cta="request_demo" data-track-location="mobile_nav">Request a Demo</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <!-- ===== HERO ===== -->
+        <section class="rc-hero">
+            <div class="rc-hero__inner">
+                <span class="rc-hero__badge">⚡ Developer & Integration Center</span>
+                <h1 class="rc-hero__title">Developer &amp; <span class="rc-hero__title-gradient">API Documentation</span></h1>
+                <p class="rc-hero__sub">
+                    Integrate Softify platforms with your internal ERPs, electronic health record databases, accounting ledgers, and custom webhook dispatchers.
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== DOCS SECTION ===== -->
+        <section class="docs-section">
+            <div class="docs-layout">
+                
+                <!-- Sidebar Navigation -->
+                <aside class="docs-sidebar">
+                    <div>
+                        <div class="docs-nav-group-title">Getting Started</div>
+                        <ul class="docs-nav-list">
+                            <li><a href="#overview" class="docs-nav-link active">Architecture Overview</a></li>
+                            <li><a href="#authentication" class="docs-nav-link">Authentication &amp; API Keys</a></li>
+                            <li><a href="#rate-limits" class="docs-nav-link">Rate Limiting &amp; Security</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="docs-nav-group-title">Core Endpoints</div>
+                        <ul class="docs-nav-list">
+                            <li><a href="#endpoint-submit" class="docs-nav-link">POST /api/submit</a></li>
+                            <li><a href="#endpoint-products" class="docs-nav-link">GET /api/products</a></li>
+                            <li><a href="#endpoint-health" class="docs-nav-link">GET /api/health</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="docs-nav-group-title">Webhooks &amp; Events</div>
+                        <ul class="docs-nav-list">
+                            <li><a href="#webhooks" class="docs-nav-link">Outbound Webhook Format</a></li>
+                            <li><a href="#zero-pii" class="docs-nav-link">Zero-PII Compliance</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Documentation Content -->
+                <div class="docs-content">
+
+                    <!-- Section: Overview -->
+                    <article class="docs-article" id="overview">
+                        <h2>Architecture &amp; Principles</h2>
+                        <p>
+                            Softify APIs are designed around predictability, zero runtime bloat, and sub-10ms response times. All endpoints accept and return UTF-8 JSON payloads over HTTPS.
+                        </p>
+                        <p>
+                            Our REST endpoints follow standard HTTP response code semantics: <code>200 OK</code> for successful retrieval, <code>201 Created</code> for resource creation, <code>400 Bad Request</code> for malformed payloads, <code>401 Unauthorized</code> for invalid authentication tokens, and <code>422 Unprocessable Entity</code> for schema validation errors.
+                        </p>
+                    </article>
+
+                    <!-- Section: Authentication -->
+                    <article class="docs-article" id="authentication">
+                        <h2>Authentication &amp; Tokens</h2>
+                        <p>
+                            Public catalog and health endpoints require no credentials. Administrative endpoints, CRM updates, and internal ingestion pipelines require a Bearer token in the <code>Authorization</code> header:
+                        </p>
+
+                        <div class="docs-code-box">
+                            <div class="docs-code-tabs">
+                                <div class="docs-tab-group">
+                                    <button class="docs-code-tab active" data-lang="curl">cURL</button>
+                                    <button class="docs-code-tab" data-lang="js">Node.js</button>
+                                    <button class="docs-code-tab" data-lang="py">Python</button>
+                                </div>
+                                <button class="docs-copy-btn" onclick="copyCodeBlock(this)">Copy</button>
+                            </div>
+                            <pre class="docs-code-body"><code>curl -X GET "https://softify.example.com/api/admin/stats" \
+  -H "Authorization: Bearer YOUR_ADMIN_TOKEN" \
+  -H "Accept: application/json"</code></pre>
+                        </div>
+                    </article>
+
+                    <!-- Section: POST /api/submit -->
+                    <article class="docs-article" id="endpoint-submit">
+                        <h2>Submit Inquiries &amp; Demo Requests</h2>
+                        <div class="docs-endpoint-badge">
+                            <span class="docs-method docs-method--post">POST</span>
+                            <span>/api/submit</span>
+                        </div>
+                        <p>
+                            Receives structured prospective customer inquiries, demo requests, and custom development leads. Submissions are filtered through automated bot honeypots and time-to-submit verification.
+                        </p>
+
+                        <div class="docs-code-box">
+                            <div class="docs-code-tabs">
+                                <div class="docs-tab-group">
+                                    <button class="docs-code-tab active" data-lang="curl">cURL</button>
+                                    <button class="docs-code-tab" data-lang="js">JavaScript (Fetch)</button>
+                                    <button class="docs-code-tab" data-lang="py">Python (requests)</button>
+                                </div>
+                                <button class="docs-copy-btn" onclick="copyCodeBlock(this)">Copy</button>
+                            </div>
+                            <pre class="docs-code-body"><code>curl -X POST "https://softify.example.com/api/submit" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "form_type": "demo_request",
+    "name": "Alex Mercer",
+    "email": "alex@apexlogistics.io",
+    "company": "Apex Logistics",
+    "product": "makersuite",
+    "message": "Evaluating warehouse inventory telemetry.",
+    "_ts": 1789345000000,
+    "_hp_company": ""
+  }'</code></pre>
+                        </div>
+                    </article>
+
+                    <!-- Section: GET /api/products -->
+                    <article class="docs-article" id="endpoint-products">
+                        <h2>Retrieve Products Catalogue</h2>
+                        <div class="docs-endpoint-badge">
+                            <span class="docs-method docs-method--get">GET</span>
+                            <span>/api/products</span>
+                        </div>
+                        <p>
+                            Returns an array of published products, their industry classifications, current release status, feature highlights, and screenshot gallery metadata.
+                        </p>
+
+                        <div class="docs-code-box">
+                            <div class="docs-code-tabs">
+                                <div class="docs-tab-group">
+                                    <button class="docs-code-tab active" data-lang="curl">cURL</button>
+                                    <button class="docs-code-tab" data-lang="js">JavaScript</button>
+                                </div>
+                                <button class="docs-copy-btn" onclick="copyCodeBlock(this)">Copy</button>
+                            </div>
+                            <pre class="docs-code-body"><code>curl -X GET "https://softify.example.com/api/products" \
+  -H "Accept: application/json"</code></pre>
+                        </div>
+                    </article>
+
+                    <!-- Section: Webhooks -->
+                    <article class="docs-article" id="webhooks">
+                        <h2>Outbound Webhooks</h2>
+                        <p>
+                            When configured via <code>WEBHOOK_URL</code> in <code>.env</code>, Softify forwards real-time lead submissions to your Slack channel, Zapier pipeline, or CRM endpoint in the following JSON schema:
+                        </p>
+
+                        <div class="docs-code-box">
+                            <div class="docs-code-tabs">
+                                <span style="font-size:0.75rem; font-weight:700; color:#94a3b8; padding:0.6rem 0.5rem;">JSON Payload Schema</span>
+                                <button class="docs-copy-btn" onclick="copyCodeBlock(this)">Copy</button>
+                            </div>
+                            <pre class="docs-code-body"><code>{
+  "event": "lead_submitted",
+  "ref_id": "softify-2026-X8K9L2",
+  "timestamp": "2026-09-14T04:30:00.000Z",
+  "contact": {
+    "name": "Sarah Connor",
+    "email": "sarah@cyberdyne-health.com",
+    "company": "Cyberdyne Health"
+  },
+  "details": {
+    "product_name": "ClinicOS",
+    "industry": "Healthcare & Clinical",
+    "goal": "Replacing legacy EMR software"
+  }
+}</code></pre>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-enterprise" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-main-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-brand-logo" aria-label="softify home">
+                        <span class="hn-logo" aria-hidden="true">S</span>
+                        <span class="hn-brand-name">softify</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Engineering purpose-built, cloud-native software systems that help businesses operate with clarity, speed, and continuous reliability.
+                    </p>
+                </div>
+
+                <!-- Column 2: Solutions & Tools -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Solutions &amp; Tools</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="products.html?filter=hospitality" class="footer-nav-link">Hospitality Suites</a></li>
+                        <li><a href="products.html?filter=healthcare" class="footer-nav-link">Clinical Practice</a></li>
+                        <li><a href="products.html?filter=finance" class="footer-nav-link">Financial Analytics</a></li>
+                        <li><a href="roi-calculator.html" class="footer-nav-link highlight">ROI Calculator ✨</a></li>
+                        <li><a href="request-demo.html?goal=custom" class="footer-nav-link highlight">Custom Engineering →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources & Company -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Resources &amp; Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="resources.html" class="footer-nav-link">Case Studies &amp; Hub</a></li>
+                        <li><a href="docs.html" class="footer-nav-link active">Developer Docs</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
+                        <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Console -->
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-heading">Support &amp; Console</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="contact.html" class="footer-nav-link">Customer Helpdesk</a></li>
+                        <li><a href="docs.html" class="footer-nav-link">API &amp; Developer Docs</a></li>
+                        <li><a href="admin.html" class="footer-nav-link admin-link" target="_blank" rel="noopener noreferrer">🔐 Internal Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <div class="footer-legal-links">
+                    <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+                    <span class="footer-dot-divider">•</span>
+                    <a href="contact.html" class="footer-legal-link">Security Center</a>
+                </div>
+                <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Back to top">
+                    <span>Back to top</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copy Snippet Helper -->
+    <script>
+        function copyCodeBlock(btn) {
+            const pre = btn.closest('.docs-code-box').querySelector('pre');
+            if (pre) {
+                navigator.clipboard.writeText(pre.textContent).then(() => {
+                    const originalText = btn.textContent;
+                    btn.textContent = '✓ Copied';
+                    setTimeout(() => { btn.textContent = originalText; }, 1800);
+                });
+            }
+        }
+    </script>
+
+    <!-- Core Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/gsap-init.js"></script>
+    <script src="js/motion.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
