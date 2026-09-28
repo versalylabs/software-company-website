@@ -1084,9 +1084,18 @@ function requestHandler(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-admin-token');
 
-    if (req.method === 'OPTIONS') {
-        res.writeHead(204);
-        res.end();
+    console.log('[DEBUG REQ]', req.method, req.url, req.headers['x-matched-path'], req.headers['x-vercel-matched-path']);
+
+    if (pathname === '/api/debug' || pathname.endsWith('/debug')) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            url: req.url,
+            pathname: pathname,
+            headers: req.headers,
+            cwd: process.cwd(),
+            dirname: __dirname,
+            files: fs.existsSync(__dirname) ? fs.readdirSync(__dirname) : []
+        }));
         return;
     }
 
@@ -3463,10 +3472,9 @@ if (require.main === module) {
     startServer();
 }
 
-module.exports = {
-    startServer,
-    requestHandler,
-    processFormSubmission,
-    CONFIG
-};
+module.exports = requestHandler;
+module.exports.requestHandler = requestHandler;
+module.exports.startServer = startServer;
+module.exports.processFormSubmission = processFormSubmission;
+module.exports.CONFIG = CONFIG;
 

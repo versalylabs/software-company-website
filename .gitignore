@@ -9,3 +9,5 @@ build/
 .vscode/
 .idea/
 .vercel/
+.vercel
+.env*
