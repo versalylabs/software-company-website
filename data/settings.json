@@ -1,22 +1,22 @@
 {
   "company": {
-    "name": "Softify Technologies Inc.",
-    "legalName": "softify Inc.",
+    "name": "Versaly Technologies Inc.",
+    "legalName": "versaly Inc.",
     "tagline": "Enterprise Industry-Grade Software Systems",
-    "supportEmail": "support@softify.example.com",
-    "salesEmail": "sales@softify.example.com",
+    "supportEmail": "support@versaly.example.com",
+    "salesEmail": "sales@versaly.example.com",
     "phone": "+1 (800) 555-0199",
     "address": "100 Innovation Parkway, Suite 400, San Francisco, CA",
     "linkedin": "https://linkedin.com",
     "twitter": "https://x.com",
     "github": "https://github.com",
-    "linkedinUrl": "https://linkedin.com/company/softify",
-    "twitterUrl": "https://x.com/softify",
-    "githubUrl": "https://github.com/softify"
+    "linkedinUrl": "https://linkedin.com/company/versaly",
+    "twitterUrl": "https://x.com/versaly",
+    "githubUrl": "https://github.com/versaly"
   },
   "notifications": {
     "emailAlerts": true,
-    "recipientEmail": "alerts@softify.example.com",
+    "recipientEmail": "alerts@versaly.example.com",
     "webhookEnabled": true,
     "webhookUrl": "https://hooks.slack.com/services/T00/B00/X00"
   },
@@ -25,7 +25,7 @@
     "gtmContainerId": "GTM-XXXXXXX",
     "privacyBanner": true,
     "ga4Id": "G-ENTERPRISE99",
-    "gtmId": "GTM-SOFTIFY1",
+    "gtmId": "GTM-VERSALY1",
     "enforcePrivacyBanner": true
   },
   "system": {
@@ -34,5 +34,5 @@
     "statusIndicator": "All Systems Operational",
     "statusPillText": "All Systems Operational (99.98% SLA)"
   },
-  "updatedAt": "2026-09-14T12:18:16.794Z"
+  "updatedAt": "2026-09-28T22:49:19.256Z"
 }

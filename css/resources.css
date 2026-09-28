@@ -1,5 +1,5 @@
-﻿/* ==========================================================================
-   softify Platform Expansion Styles (css/resources.css) — Phase 13
+/* ==========================================================================
+   versaly Platform Expansion Styles (css/resources.css) — Phase 13
    Styles for ROI Calculator, Knowledge Hub / Case Studies & Developer Docs
    ========================================================================== */
 
@@ -7,7 +7,7 @@
 .rc-hero {
     background: #f8fafc;
     border-bottom: 1px solid #e2e8f0;
-    padding: 4.5rem 1.5rem 3.5rem;
+    padding: 9.5rem 1.5rem 4rem;
     text-align: center;
 }
 .rc-hero__inner {
@@ -21,23 +21,24 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: #4f46e5;
-    background: #eef2ff;
+    color: #fca311;
+    background: #f8f9fc;
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
     margin-bottom: 1.25rem;
     text-transform: uppercase;
 }
 .rc-hero__title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 800;
+    font-family: 'Glorase', 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 400;
     color: #0f172a;
     line-height: 1.2;
     margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 .rc-hero__title-gradient {
-    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    background: linear-gradient(135deg, #fca311, #06b6d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -95,8 +96,8 @@
 .calc-val-pill {
     font-size: 1.1rem;
     font-weight: 800;
-    color: #4f46e5;
-    background: #eef2ff;
+    color: #fca311;
+    background: #f8f9fc;
     padding: 0.25rem 0.75rem;
     border-radius: 8px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -119,23 +120,23 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #4f46e5;
+    background: #fca311;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 2px 8px rgba(252, 163, 17, 0.4);
     border: 3px solid #ffffff;
     transition: transform 0.15s, background 0.15s;
 }
 .calc-slider::-webkit-slider-thumb:hover {
     transform: scale(1.15);
-    background: #4338ca;
+    background: #e5920a;
 }
 .calc-slider::-moz-range-thumb {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #4f46e5;
+    background: #fca311;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 2px 8px rgba(252, 163, 17, 0.4);
     border: 3px solid #ffffff;
 }
 
@@ -162,8 +163,8 @@
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 .calc-select:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    border-color: #fca311;
+    box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.15);
 }
 
 /* Results Output Card */
@@ -207,8 +208,8 @@
 }
 .calc-kpi-box--full {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.25), rgba(6, 182, 212, 0.15));
-    border-color: rgba(99, 102, 241, 0.35);
+    background: linear-gradient(135deg, rgba(252, 163, 17, 0.25), rgba(6, 182, 212, 0.15));
+    border-color: rgba(252, 163, 17, 0.35);
 }
 .calc-kpi-lbl {
     font-size: 0.78rem;
@@ -246,20 +247,20 @@
     gap: 0.6rem;
     width: 100%;
     padding: 1rem 1.75rem;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #ffffff;
     font-size: 0.95rem;
     font-weight: 700;
     border-radius: 12px;
     text-decoration: none;
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 8px 20px rgba(252, 163, 17, 0.35);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
     border: none;
 }
 .calc-cta-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.45);
+    box-shadow: 0 12px 28px rgba(252, 163, 17, 0.45);
 }
 .calc-disclaimer {
     font-size: 0.72rem;
@@ -272,6 +273,9 @@
 .res-hub-section {
     padding: 3rem 1.5rem 5rem;
     background: #ffffff;
+}
+[data-theme="dark"] .res-hub-section {
+    background: #0b0f19;
 }
 .res-hub-container {
     max-width: 76rem;
@@ -309,10 +313,10 @@
     background: #f8fafc;
 }
 .res-pill-btn.active {
-    background: #4f46e5;
+    background: #fca311;
     color: #ffffff;
-    border-color: #4f46e5;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    border-color: #fca311;
+    box-shadow: 0 4px 12px rgba(252, 163, 17, 0.2);
 }
 
 .res-search-wrap {
@@ -331,7 +335,7 @@
     transition: border-color 0.2s;
 }
 .res-search-input:focus {
-    border-color: #4f46e5;
+    border-color: #fca311;
     background: #ffffff;
 }
 .res-search-icon {
@@ -355,6 +359,7 @@
     align-items: center;
     margin-bottom: 3.5rem;
     box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .res-spotlight__tag {
     display: inline-block;
@@ -441,7 +446,7 @@
     border-radius: 6px;
     text-transform: uppercase;
 }
-.res-card__badge--case { background: #e0e7ff; color: #4338ca; }
+.res-card__badge--case { background: #e0e7ff; color: #e5920a; }
 .res-card__badge--whitepaper { background: #fef3c7; color: #92400e; }
 .res-card__badge--guide { background: #dcfce7; color: #15803d; }
 .res-card__badge--tech { background: #f3e8ff; color: #6b21a8; }
@@ -475,10 +480,39 @@
 }
 .res-card__link {
     font-weight: 700;
-    color: #4f46e5;
+    color: #fca311;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+}
+
+/* Empty State */
+.res-empty-state {
+    display: none;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: #ffffff;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 16px;
+    margin: 1rem 0;
+}
+.res-empty-state__icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+}
+.res-empty-state__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+.res-empty-state__desc {
+    color: #64748b;
+    font-size: 0.95rem;
+    max-width: 28rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
 }
 
 /* ─── 4. DEVELOPER & API DOCUMENTATION ─── */
@@ -533,8 +567,8 @@
     background: #f1f5f9;
 }
 .docs-nav-link.active {
-    color: #4f46e5;
-    background: #eef2ff;
+    color: #fca311;
+    background: #f8f9fc;
     font-weight: 700;
 }
 

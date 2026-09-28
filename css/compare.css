@@ -1,14 +1,14 @@
 /* ==========================================================
-   softify — Product Comparison & Feature Matrix Stylesheet
+   versaly — Product Comparison & Feature Matrix Stylesheet
    Phase 19: Product Comparison & Interactive Feature Matrix
    ========================================================== */
 
 :root {
-  --cmp-primary: #4f46e5;
-  --cmp-primary-hover: #4338ca;
-  --cmp-primary-light: #eef2ff;
+  --cmp-primary: #fca311;
+  --cmp-primary-hover: #e5920a;
+  --cmp-primary-light: #f8f9fc;
   --cmp-accent-cyan: #06b6d4;
-  --cmp-accent-purple: #7c3aed;
+  --cmp-accent-purple: #e5920a;
   --cmp-text-dark: #0f172a;
   --cmp-text-body: #334155;
   --cmp-text-muted: #64748b;
@@ -41,8 +41,8 @@ body.compare-page {
 
 /* ── HERO SECTION ─────────────────────────────────────────── */
 .cmp-hero {
-  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
-  padding: 4.5rem 1.5rem 2.5rem;
+  background: linear-gradient(180deg, #f8f9fc 0%, #f8fafc 100%);
+  padding: 9.5rem 1.5rem 3.5rem;
   text-align: center;
   position: relative;
   border-bottom: 1px solid var(--cmp-border);
@@ -56,7 +56,7 @@ body.compare-page {
   transform: translateX(-50%);
   width: 45rem;
   height: 45rem;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(252, 163, 17, 0.08), transparent 70%);
   pointer-events: none;
 }
 
@@ -76,23 +76,24 @@ body.compare-page {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cmp-primary);
-  background: rgba(79, 70, 229, 0.09);
+  background: rgba(252, 163, 17, 0.09);
   padding: 0.35rem 0.85rem;
   border-radius: var(--cmp-radius-pill);
   margin-bottom: 1rem;
 }
 
 .cmp-hero-title {
+  font-family: 'Glorase', 'Playfair Display', Georgia, serif;
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--cmp-text-dark);
   line-height: 1.15;
   margin: 0 0 1rem;
 }
 
 .cmp-hero-title .gradient-text {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+  background: linear-gradient(135deg, #fca311 0%, #e5920a 50%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -344,7 +345,7 @@ body.compare-page {
 
 .cmp-search-input:focus {
   border-color: var(--cmp-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.12);
   width: 220px;
 }
 
@@ -544,7 +545,7 @@ body.compare-page {
 .cmp-btn-prod-demo {
   flex: 1;
   text-align: center;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  background: linear-gradient(135deg, #fca311, #e5920a);
   color: #ffffff;
   border: none;
   border-radius: var(--cmp-radius-sm);
@@ -751,7 +752,7 @@ body.compare-page {
 
 /* ── CTA CONVERSION BANNER ────────────────────────────────── */
 .cmp-cta-banner {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #fca311 0%, #e5920a 100%);
   border-radius: var(--cmp-radius);
   padding: 3.5rem 2rem;
   text-align: center;
@@ -773,9 +774,11 @@ body.compare-page {
 }
 
 .cmp-cta-title {
+  font-family: 'Glorase', 'Playfair Display', Georgia, serif;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  color: #fca311;
+  letter-spacing: -0.01em;
   margin: 0 0 0.75rem;
 }
 

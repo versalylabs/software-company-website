@@ -1,5 +1,5 @@
 /* ==========================================================
-   softify Motion System
+   versaly Motion System
    Subtle, premium, restrained animation and interaction styles
    ========================================================== */
 
@@ -53,88 +53,230 @@
 .motion-stagger > *:nth-child(6) { transition-delay: 0.29s; }
 
 /* ── 2. BUTTONS & CTA MICRO-INTERACTIONS ─────────────────── */
+/* Primary Buttons & Gradient CTAs */
 .hn-cta,
 .hh-btn-primary,
-.hh-btn-secondary,
 .btn-primary,
-.admin-btn,
-.admin-btn-action,
-.px-filter-btn {
-    transition: transform var(--motion-duration-fast) var(--motion-ease-spring),
-                box-shadow var(--motion-duration-fast) var(--motion-ease-smooth),
-                background-color var(--motion-duration-fast) ease,
-                border-color var(--motion-duration-fast) ease,
-                color var(--motion-duration-fast) ease !important;
+.calc-cta-btn,
+.custom-callout__btn,
+.form-submit-btn,
+.pd-hero__btn-primary,
+.cmp-btn-cta,
+.docs-cta-btn,
+.demo-form__submit,
+.admin-btn-primary,
+.pg-cta__btn,
+.footer-newsletter__btn {
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200% !important;
+    background-position: 0% 50%;
+    transition: transform 0.28s var(--motion-ease-spring),
+                box-shadow 0.28s var(--motion-ease-smooth),
+                background-position 0.45s ease,
+                border-color 0.25s ease !important;
+    will-change: transform, box-shadow;
 }
 
+/* Fluid Gradient Flow & Luminous Backlight on Hover */
 .hn-cta:hover,
 .hh-btn-primary:hover,
 .btn-primary:hover,
-.admin-btn:hover {
-    transform: translateY(-1.5px);
-    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.28);
+.calc-cta-btn:hover,
+.custom-callout__btn:hover,
+.form-submit-btn:hover,
+.pd-hero__btn-primary:hover,
+.cmp-btn-cta:hover,
+.docs-cta-btn:hover,
+.demo-form__submit:hover,
+.admin-btn-primary:hover,
+.pg-cta__btn:hover,
+.footer-newsletter__btn:hover {
+    background-position: 100% 50% !important;
+    transform: translateY(-2.5px) scale(1.015);
+    box-shadow: 0 12px 28px -3px rgba(252, 163, 17, 0.45), 0 0 18px rgba(124, 58, 237, 0.3) !important;
+    color: #14213d !important;
 }
 
+/* Tactile Active/Press feedback */
 .hn-cta:active,
 .hh-btn-primary:active,
 .btn-primary:active,
-.admin-btn:active {
-    transform: translateY(0.5px) scale(0.985);
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+.calc-cta-btn:active,
+.custom-callout__btn:active,
+.form-submit-btn:active,
+.pd-hero__btn-primary:active,
+.cmp-btn-cta:active,
+.docs-cta-btn:active,
+.demo-form__submit:active,
+.admin-btn-primary:active,
+.pg-cta__btn:active,
+.footer-newsletter__btn:active {
+    transform: translateY(0.5px) scale(0.975) !important;
+    box-shadow: 0 3px 10px rgba(252, 163, 17, 0.22) !important;
+    color: #14213d !important;
 }
 
+/* Secondary & Outline Buttons */
+.hh-btn-outline,
+.hh-btn-secondary,
+.btn-secondary,
+.btn-outline,
+.admin-btn-secondary,
+.footer-back-to-top,
+.form-btn-secondary,
+.cmp-btn-secondary,
+.docs-btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.28s var(--motion-ease-spring),
+                box-shadow 0.28s var(--motion-ease-smooth),
+                background 0.3s ease,
+                border-color 0.25s ease,
+                color 0.25s ease !important;
+}
+
+.hh-btn-outline:hover,
 .hh-btn-secondary:hover,
-.admin-btn-secondary:hover {
-    transform: translateY(-1px);
+.btn-secondary:hover,
+.btn-outline:hover,
+.admin-btn-secondary:hover,
+.footer-back-to-top:hover,
+.form-btn-secondary:hover,
+.cmp-btn-secondary:hover,
+.docs-btn-secondary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #f8fafc 0%, #f8f9fc 100%) !important;
+    border-color: #fca311 !important;
+    color: #fca311 !important;
+    box-shadow: 0 8px 22px rgba(252, 163, 17, 0.18), 0 0 10px rgba(252, 163, 17, 0.08) !important;
 }
 
+[data-theme="dark"] .hh-btn-outline,
+[data-theme="dark"] .hh-btn-secondary,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .btn-outline,
+[data-theme="dark"] .admin-btn-secondary,
+[data-theme="dark"] .footer-back-to-top,
+[data-theme="dark"] .form-btn-secondary,
+[data-theme="dark"] .cmp-btn-secondary,
+[data-theme="dark"] .docs-btn-secondary {
+    background: #141c2e !important;
+    border-color: #27354f !important;
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .hh-btn-outline:hover,
+[data-theme="dark"] .hh-btn-secondary:hover,
+[data-theme="dark"] .btn-secondary:hover,
+[data-theme="dark"] .btn-outline:hover,
+[data-theme="dark"] .admin-btn-secondary:hover,
+[data-theme="dark"] .footer-back-to-top:hover,
+[data-theme="dark"] .form-btn-secondary:hover,
+[data-theme="dark"] .cmp-btn-secondary:hover,
+[data-theme="dark"] .docs-btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(252, 163, 17, 0.28) 0%, rgba(252, 163, 17, 0.16) 100%) !important;
+    border-color: #ffd17a !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 24px rgba(252, 163, 17, 0.35), 0 0 14px rgba(252, 163, 17, 0.2) !important;
+}
+
+.hh-btn-outline:active,
 .hh-btn-secondary:active,
-.admin-btn-secondary:active {
-    transform: translateY(0.5px) scale(0.985);
+.btn-secondary:active,
+.btn-outline:active,
+.admin-btn-secondary:active,
+.footer-back-to-top:active {
+    transform: translateY(0.5px) scale(0.98) !important;
 }
 
-/* Arrow slide on CTA hover */
+/* Arrow slide and bounce on hover */
 .hn-cta svg,
 .hh-btn-primary svg,
 .btn-primary svg,
-.cta-arrow {
-    transition: transform var(--motion-duration-fast) var(--motion-ease-out-quint);
+.calc-cta-btn svg,
+.custom-callout__btn svg,
+.form-submit-btn svg,
+.cta-arrow,
+.hh-btn-outline svg {
+    transition: transform 0.28s var(--motion-ease-spring) !important;
 }
 
 .hn-cta:hover svg,
 .hh-btn-primary:hover svg,
 .btn-primary:hover svg,
-.cta-arrow:hover {
-    transform: translateX(3px);
+.calc-cta-btn:hover svg,
+.custom-callout__btn:hover svg,
+.form-submit-btn:hover svg,
+.cta-arrow:hover,
+.hh-btn-outline:hover svg {
+    transform: translateX(4px);
 }
 
-/* ── 3. PRODUCT CARDS & VISUAL INTERACTION ────────────────── */
-.product-card,
-.hh-product-card,
-.hh-spotlight-card,
-.hh-value-card,
-.about-mission-card,
-.about-why-card,
-.admin-metric-card,
-.admin-card {
-    transition: transform var(--motion-duration-normal) var(--motion-ease-spring),
-                box-shadow var(--motion-duration-normal) var(--motion-ease-smooth),
-                border-color var(--motion-duration-normal) var(--motion-ease-smooth) !important;
+/* Filter Pills & Matrix Presets Hover */
+.res-pill-btn,
+.px-filter-btn,
+.cmp-preset-btn,
+.form-tab-btn {
+    transition: transform 0.25s var(--motion-ease-spring),
+                box-shadow 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease !important;
 }
 
-.product-card:hover,
-.hh-product-card:hover,
-.about-why-card:hover,
-.hh-value-card:hover {
-    transform: translateY(-3.5px);
-    box-shadow: 0 14px 30px -8px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
-    border-color: rgba(79, 70, 229, 0.35);
+.res-pill-btn:not(.active):hover,
+.px-filter-btn:not(.active):hover,
+.cmp-preset-btn:not(.active):hover,
+.form-tab-btn:not(.active):hover {
+    transform: translateY(-2px);
+    border-color: #fca311 !important;
+    color: #fca311 !important;
+    box-shadow: 0 6px 16px rgba(252, 163, 17, 0.16) !important;
 }
 
-.product-card:hover .product-icon-wrap,
-.hh-product-card:hover .hh-product-card__icon {
-    transform: scale(1.06);
-    transition: transform var(--motion-duration-fast) var(--motion-ease-spring);
+[data-theme="dark"] .res-pill-btn:not(.active):hover,
+[data-theme="dark"] .px-filter-btn:not(.active):hover,
+[data-theme="dark"] .cmp-preset-btn:not(.active):hover,
+[data-theme="dark"] .form-tab-btn:not(.active):hover {
+    background: #1e293b !important;
+    border-color: #ffd17a !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(252, 163, 17, 0.3) !important;
+}
+
+.res-pill-btn.active,
+.px-filter-btn.active,
+.cmp-preset-btn.active {
+    box-shadow: 0 6px 20px rgba(252, 163, 17, 0.4) !important;
+}
+
+/* Interactive Theme Toggle */
+.theme-toggle {
+    transition: transform 0.35s var(--motion-ease-spring),
+                box-shadow 0.3s ease,
+                border-color 0.25s ease,
+                background-color 0.25s ease !important;
+}
+.theme-toggle:hover {
+    transform: rotate(22deg) scale(1.12);
+    box-shadow: 0 6px 18px rgba(252, 163, 17, 0.3);
+    border-color: #fca311 !important;
+}
+.theme-toggle:active {
+    transform: scale(0.92) rotate(-10deg);
+}
+
+/* Social Link Hover */
+.social-link {
+    transition: transform 0.25s var(--motion-ease-spring),
+                color 0.2s ease,
+                box-shadow 0.25s ease,
+                background-color 0.2s ease !important;
+}
+.social-link:hover {
+    transform: translateY(-3px) scale(1.12);
+    color: #fca311 !important;
 }
 
 /* Product screenshot hover scale */
@@ -178,7 +320,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: #4f46e5;
+    background: #fca311;
     border-radius: 999px;
     transform: scaleX(0);
     transform-origin: right;
@@ -223,21 +365,31 @@
 .form-select,
 .form-textarea,
 .admin-input,
-.contact-input {
+.contact-input,
+.res-search-input,
+.footer-newsletter__input {
     transition: border-color var(--motion-duration-fast) ease,
                 box-shadow var(--motion-duration-fast) var(--motion-ease-spring),
-                background-color var(--motion-duration-fast) ease !important;
+                background-color var(--motion-duration-fast) ease,
+                transform var(--motion-duration-fast) var(--motion-ease-spring) !important;
 }
 
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus,
-.admin-input:focus {
-    transform: translateY(-0.5px);
+.admin-input:focus,
+.contact-input:focus,
+.res-search-input:focus,
+.footer-newsletter__input:focus {
+    transform: translateY(-1px);
+    border-color: #fca311 !important;
+    box-shadow: 0 0 0 4px rgba(252, 163, 17, 0.18), 0 4px 14px rgba(252, 163, 17, 0.08) !important;
 }
 
 /* Subtle badge pulse on filter activate */
-.px-filter-btn.active {
+.px-filter-btn.active,
+.res-pill-btn.active,
+.cmp-preset-btn.active {
     animation: motion-subtle-pop 0.25s var(--motion-ease-spring);
 }
 
@@ -287,7 +439,12 @@
     .hh-btn-primary:hover,
     .btn-primary:hover,
     .product-card:hover,
-    .hh-product-card:hover {
+    .hh-product-card:hover,
+    .ct-card:hover,
+    .ct-card__btn:hover,
+    .ct-card__icon,
+    .theme-toggle:hover,
+    .social-link:hover {
         transform: none !important;
     }
 }

@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>softify — Purpose-Built Business Software Solutions</title>
-    <meta name="description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail. Explore our systems in development or request a demo.">
+    <title>versaly — Purpose-Built Business Software Solutions</title>
+    <meta name="description" content="versaly builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail. Explore our systems in development or request a demo.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://softify.example.com/">
+    <link rel="canonical" href="https://versaly.example.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://softify.example.com/">
-    <meta property="og:title" content="softify — Purpose-Built Business Software Solutions">
-    <meta property="og:description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
-    <meta property="og:image" content="https://softify.example.com/assets/images/og-preview.svg">
-    <meta property="og:site_name" content="softify">
+    <meta property="og:url" content="https://versaly.example.com/">
+    <meta property="og:title" content="versaly — Purpose-Built Business Software Solutions">
+    <meta property="og:description" content="versaly builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
+    <meta property="og:image" content="https://versaly.example.com/assets/images/og-preview.svg">
+    <meta property="og:site_name" content="versaly">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://softify.example.com/">
-    <meta name="twitter:title" content="softify — Purpose-Built Business Software Solutions">
-    <meta name="twitter:description" content="softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
-    <meta name="twitter:image" content="https://softify.example.com/assets/images/og-preview.svg">
+    <meta name="twitter:url" content="https://versaly.example.com/">
+    <meta name="twitter:title" content="versaly — Purpose-Built Business Software Solutions">
+    <meta name="twitter:description" content="versaly builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.">
+    <meta name="twitter:image" content="https://versaly.example.com/assets/images/og-preview.svg">
 
     <!-- Favicon & Brand Meta -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#14213d">
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -36,34 +36,50 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://softify.example.com/#organization",
-          "name": "softify",
-          "url": "https://softify.example.com/",
-          "logo": "https://softify.example.com/assets/icons/favicon.svg",
-          "description": "softify builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.",
-          "email": "hello@softify.io",
+          "@id": "https://versaly.example.com/#organization",
+          "name": "versaly",
+          "url": "https://versaly.example.com/",
+          "logo": "https://versaly.example.com/assets/icons/favicon.svg",
+          "description": "versaly builds modern, cloud-native business software tailored for healthcare, finance, manufacturing, hospitality, and retail.",
+          "email": "hello@versaly.io",
           "sameAs": [
-            "https://twitter.com/softify",
-            "https://linkedin.com/company/softify"
+            "https://twitter.com/versaly",
+            "https://linkedin.com/company/versaly"
           ]
         },
         {
           "@type": "WebSite",
-          "@id": "https://softify.example.com/#website",
-          "url": "https://softify.example.com/",
-          "name": "softify",
+          "@id": "https://versaly.example.com/#website",
+          "url": "https://versaly.example.com/",
+          "name": "versaly",
           "description": "Purpose-built business software for modern industries.",
           "publisher": {
-            "@id": "https://softify.example.com/#organization"
+            "@id": "https://versaly.example.com/#organization"
           }
         }
       ]
     }
     </script>
 
+    <!-- Preload Glorase Custom Serif Font matching UI design -->
+    <link rel="preload" href="assets/fonts/Glorase.otf" as="font" type="font/otf" crossorigin>
+
+    <!-- Google Fonts for Typography matching Design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/motion.css">
+    <link rel="stylesheet" href="css/dark.css">
+    <script>
+      (function(){try{/* Enforce dark-only system; prefers-color-scheme legacy check */
+        document.documentElement.setAttribute('data-theme','dark');
+        if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){}
+        localStorage.setItem('versaly-theme','dark');
+      }catch(e){}})();
+    </script>
     <style>
         /* ── GSAP SHOWREEL THEATER STYLES (CRITICAL EMBEDDED) ── */
         .hh-how {
@@ -71,19 +87,20 @@
             padding: 6rem 2rem;
             text-align: center;
             position: relative;
-            border-bottom: 1px solid #e8edf3;
+            border-bottom: 1px solid #e5e5e5;
         }
         .hh-how__inner {
             max-width: 76rem;
             margin-inline: auto;
         }
         .hh-how__title {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            color: #0f172a;
+            font-family: 'Glorase', 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: #fca311;
             margin: 0.5rem 0 2.5rem;
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
         .how-showreel {
@@ -124,14 +141,14 @@
             letter-spacing: 0.1em;
             transition: color 0.2s ease;
         }
-        .showreel-tab.active .showreel-tab__num { color: #4f46e5; }
+        .showreel-tab.active .showreel-tab__num { color: #fca311; }
         .showreel-tab__name {
             font-size: 0.95rem;
             font-weight: 700;
             color: #1e293b;
             letter-spacing: -0.02em;
         }
-        .showreel-tab.active .showreel-tab__name { color: #4f46e5; }
+        .showreel-tab.active .showreel-tab__name { color: #fca311; }
         .showreel-tab__tag {
             font-size: 0.74rem;
             color: #64748b;
@@ -148,7 +165,7 @@
         .showreel-tab__progress-bar {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            background: linear-gradient(90deg, #fca311, #e5920a);
             transition: width 0.1s linear;
         }
 
@@ -174,11 +191,11 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #4f46e5;
-            background: #eef2ff;
+            color: #fca311;
+            background: #f8f9fc;
             padding: 0.35rem 0.85rem;
             border-radius: 999px;
-            border: 1px solid rgba(79, 70, 229, 0.2);
+            border: 1px solid rgba(252, 163, 17, 0.2);
         }
         .showreel-heading {
             font-size: clamp(1.4rem, 2.5vw, 1.85rem);
@@ -250,10 +267,10 @@
             pointer-events: none;
         }
         .showreel-ctrl-btn:hover {
-            background: #4f46e5;
+            background: #fca311;
             color: #ffffff;
-            border-color: #4f46e5;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+            border-color: #fca311;
+            box-shadow: 0 4px 12px rgba(252, 163, 17, 0.25);
         }
         .showreel-ctrl-btn:active {
             transform: scale(0.95);
@@ -266,7 +283,7 @@
             font-weight: 700;
             color: #94a3b8;
         }
-        .showreel-step-counter span { color: #4f46e5; }
+        .showreel-step-counter span { color: #fca311; }
 
         .showreel-pane-right { position: relative; }
         .showreel-viewport {
@@ -335,8 +352,8 @@
             transition: border-color 0.2s;
         }
         .sr-topology-node.active {
-            border-color: #4f46e5;
-            box-shadow: 0 0 16px rgba(79, 70, 229, 0.35);
+            border-color: #fca311;
+            box-shadow: 0 0 16px rgba(252, 163, 17, 0.35);
         }
         .sr-topology-node__icon { font-size: 1.3rem; margin-bottom: 0.35rem; }
         .sr-topology-node__title { font-size: 0.8rem; font-weight: 700; color: #f1f5f9; }
@@ -352,7 +369,7 @@
             text-align: left;
         }
         .sr-terminal-line.success { color: #34d399; }
-        .sr-terminal-line.highlight { color: #818cf8; }
+        .sr-terminal-line.highlight { color: #ffd17a; }
         .sr-terminal-box {
             background: #090e1a;
             border: 1px solid #1e293b;
@@ -379,7 +396,7 @@
         }
         .sr-progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #4f46e5, #06b6d4);
+            background: linear-gradient(90deg, #fca311, #06b6d4);
             border-radius: 999px;
         }
 
@@ -404,17 +421,17 @@
 <body class="home-page">
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- ===== FLOATING CAPSULE NAVBAR ===== -->
     <header class="hn-bar" role="banner">
         <div class="hn-inner">
-            <a href="#" class="hn-brand" aria-label="softify home">
-                <span class="hn-logo" aria-hidden="true">S</span>
-                <span class="hn-brand-name">softify</span>
+            <a href="index.html" class="hn-brand" aria-label="versaly home">
+                <span class="hn-logo" aria-hidden="true">V</span>
+                <span class="hn-brand-name">Versaly</span>
             </a>
 
             <nav aria-label="Primary navigation">
                 <ul class="hn-menu" id="primary-navigation">
-                    <li><a href="#" class="hn-link hn-link--active">Home</a></li>
+                    <li><a href="index.html" class="hn-link hn-link--active">Home</a></li>
                     <li><a href="products.html" class="hn-link">Products</a></li>
                     <li><a href="about.html" class="hn-link">About</a></li>
                     <li><a href="resources.html" class="hn-link">Resources</a></li>
@@ -422,11 +439,22 @@
                 </ul>
             </nav>
 
-            <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo →</a>
+            <div class="hn-actions">
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme" style="display: none !important;">
+                    <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
 
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
-                <span class="hamburger"></span>
-            </button>
+                <a href="admin.html" class="hn-glass-ctrl hn-admin-login" aria-label="Log in to admin" title="Log in to admin">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+
+                <a href="request-demo.html" class="hn-cta" data-track-cta="request_demo" data-track-location="navbar">Request a Demo</a>
+
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -434,203 +462,81 @@
 
     <nav class="nav-panel" id="mobile-menu" aria-label="Mobile menu">
         <ul class="nav-menu">
-            <li><a href="#" class="nav-link nav-link--active">Home</a></li>
+            <li><a href="index.html" class="nav-link nav-link--active">Home</a></li>
             <li><a href="products.html" class="nav-link">Products</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="resources.html" class="nav-link">Resources</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
             <li><a href="request-demo.html" class="nav-link" data-track-cta="request_demo" data-track-location="mobile_nav">Request a Demo</a></li>
+            <li><a href="admin.html" class="nav-link nav-link--admin" style="color: #fca311;">Log in to Admin</a></li>
         </ul>
+        <button type="button" class="theme-toggle mobile-theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" title="Toggle theme" style="display: none !important;">
+            <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <span>Toggle Dark Mode</span>
+        </button>
     </nav>
 
     <main id="main">
 
         <!-- ===== HERO ===== -->
         <section class="hh-hero">
-            <div class="hh-hero__blob" aria-hidden="true"></div>
-            <div class="hh-hero__inner">
+            <div class="hh-hero__inner motion-fade-up">
 
-                <!-- LEFT: copy -->
-                <div class="hh-hero__copy motion-fade-up">
-                    <p class="hh-eyebrow">SOFTWARE SOLUTIONS FOR MODERN BUSINESSES</p>
-                    <h1 class="hh-title">
-                        Software that works<br>
-                        the way <span class="hh-title__accent">your business does.</span>
-                    </h1>
-                    <p class="hh-subtitle">We build practical, scalable software solutions that help businesses work smarter, serve better and grow with confidence.</p>
+                <!-- Eyebrow Badge -->
+                <div class="hh-hero-badge-wrap">
+                    <span class="hh-hero-badge">SOFTWARE SOLUTIONS FOR MODERN BUSINESSES</span>
+                </div>
 
-                    <div class="hh-actions">
-                        <a href="products.html" class="hh-btn-primary" data-track-cta="explore_products" data-track-location="homepage_hero">Explore Our Products →</a>
-                        <a href="request-demo.html" class="hh-btn-outline" data-track-cta="request_demo" data-track-location="homepage_hero">Request a Demo</a>
+                <!-- Main Heading (Editorial Serif) -->
+                <h1 class="hh-hero-title">
+                    <span class="hh-title-gold">Software</span> <span class="hh-title-white">that works the</span><br>
+                    <span class="hh-title-white">way your</span> <span class="hh-title-gold">business</span> <span class="hh-title-white">does</span>
+                </h1>
+
+                <!-- Subtitle with Gold Keyword Accents -->
+                <p class="hh-hero-subtitle">
+                    We build <span class="hh-sub-gold">practical</span>, <span class="hh-sub-gold">scalable</span> software solutions that help businesses work smarter, serve better and <span class="hh-sub-gold">grow</span> with <span class="hh-sub-gold">confidence</span>.
+                </p>
+
+                <!-- CTA Action Buttons -->
+                <div class="hh-hero-actions">
+                    <a href="products.html" class="hh-btn-primary" data-track-cta="explore_products" data-track-location="homepage_hero">Export Our Products</a>
+                    <a href="request-demo.html" class="hh-btn-outline hh-btn-hero-outline" data-track-cta="request_demo" data-track-location="homepage_hero">Request a Demo</a>
+                </div>
+
+                <!-- Three Bottom Feature Cards with Necessary Icons -->
+                <div class="hh-hero-cards motion-stagger">
+                    <div class="hh-hero-card">
+                        <div class="hh-card-icon-box" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14213d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                        <span class="hh-card-title">Thoughtful by design</span>
                     </div>
 
-                    <div class="hh-trust motion-stagger">
-                        <div class="hh-trust__item">
-                            <span class="hh-trust__icon" aria-hidden="true">
-                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5.5V10c0 4.1 2.9 7.9 7 9 4.1-1.1 7-4.9 7-9V5.5L10 2z" stroke="#4f46e5" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </span>
-                            <span>Thoughtful by design</span>
+                    <div class="hh-hero-card">
+                        <div class="hh-card-icon-box" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14213d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
                         </div>
-                        <div class="hh-trust__item">
-                            <span class="hh-trust__icon" aria-hidden="true">
-                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="7.5" stroke="#4f46e5" stroke-width="1.6"/><path d="M7 10h6M10 7v6" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round"/></svg>
-                            </span>
-                            <span>Practical by nature</span>
+                        <span class="hh-card-title">Practical by nature</span>
+                    </div>
+
+                    <div class="hh-hero-card">
+                        <div class="hh-card-icon-box" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14213d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
                         </div>
-                        <div class="hh-trust__item">
-                            <span class="hh-trust__icon" aria-hidden="true">
-                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7" stroke="#4f46e5" stroke-width="1.6" stroke-linecap="round"/><path d="M3 13.5c0 1.9 1.6 3.5 3.5 3.5S10 15.4 10 13.5 8.4 10 6.5 10 3 11.6 3 13.5z" stroke="#4f46e5" stroke-width="1.6"/></svg>
-                            </span>
-                            <span>Built to evolve</span>
-                        </div>
+                        <span class="hh-card-title">Built to evolve</span>
                     </div>
                 </div>
 
-                <!-- RIGHT: dashboard mockup -->
-                <div class="hh-hero__visual" aria-hidden="true">
-                    <!-- background blob -->
-                    <div class="hh-visual__bg"></div>
-
-                    <!-- floating badge top-left -->
-                    <div class="hh-badge hh-badge--tl">
-                        <span class="hh-badge__icon">
-                            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4f46e5" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        </span>
-                        <span>Automate<br>Operations</span>
-                    </div>
-
-                    <!-- dashboard window -->
-                    <div class="hh-dashboard">
-                        <!-- window chrome -->
-                        <div class="hh-dash__bar">
-                            <div class="hh-dash__dots"><span></span><span></span><span></span></div>
-                            <div class="hh-dash__search">
-                                <svg viewBox="0 0 16 16" fill="none" width="12" height="12"><circle cx="7" cy="7" r="5" stroke="#94a3b8" stroke-width="1.5"/><path d="M11 11l2.5 2.5" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                <span>Search anything...</span>
-                            </div>
-                            <div class="hh-dash__avatar">A</div>
-                        </div>
-                        <div class="hh-dash__body">
-                            <!-- sidebar -->
-                            <aside class="hh-dash__sidebar">
-                                <div class="hh-dash__sb-logo">
-                                    <span class="hh-dash__sb-icon">S</span>
-                                    <strong>Softify</strong>
-                                </div>
-                                <nav class="hh-dash__sb-nav">
-                                    <a class="hh-dash__sb-item hh-dash__sb-item--active">
-                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-                                        Dashboard
-                                    </a>
-                                    <a class="hh-dash__sb-item">
-                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v2M11 1v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                        Reservations
-                                    </a>
-                                    <a class="hh-dash__sb-item">
-                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                        Customers
-                                    </a>
-                                    <a class="hh-dash__sb-item">
-                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 4h10M3 8h10M3 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                        Reports
-                                    </a>
-                                    <a class="hh-dash__sb-item">
-                                        <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                        Settings
-                                    </a>
-                                </nav>
-                            </aside>
-
-                            <!-- main content -->
-                            <div class="hh-dash__main">
-                                <div class="hh-dash__page-title">
-                                    <h2>Dashboard</h2>
-                                    <p>Welcome back, here's what's happening today.</p>
-                                </div>
-
-                                <!-- metric cards -->
-                                <div class="hh-metrics">
-                                    <div class="hh-metric">
-                                        <span class="hh-metric__label">Total Bookings</span>
-                                        <span class="hh-metric__val">248</span>
-                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 12%</span>
-                                    </div>
-                                    <div class="hh-metric">
-                                        <span class="hh-metric__label">Active Guests</span>
-                                        <span class="hh-metric__val">186</span>
-                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 8%</span>
-                                    </div>
-                                    <div class="hh-metric">
-                                        <span class="hh-metric__label">Occupancy Rate</span>
-                                        <span class="hh-metric__val">78%</span>
-                                        <span class="hh-metric__delta hh-metric__delta--up">↑ 4%</span>
-                                    </div>
-                                </div>
-
-                                <!-- chart area -->
-                                <div class="hh-chart-area">
-                                    <div class="hh-chart-header">
-                                        <span class="hh-chart-label">Bookings Overview</span>
-                                    </div>
-                                    <div class="hh-chart">
-                                        <svg viewBox="0 0 260 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                                            <defs>
-                                                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.18"/>
-                                                    <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
-                                                </linearGradient>
-                                            </defs>
-                                            <path d="M0 65 C30 58, 50 70, 75 55 S110 35, 140 42 S180 28, 210 22 S240 30, 260 18" stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                            <path d="M0 65 C30 58, 50 70, 75 55 S110 35, 140 42 S180 28, 210 22 S240 30, 260 18 V80 H0Z" fill="url(#chartFill)"/>
-                                            <circle cx="210" cy="22" r="4" fill="#4f46e5"/>
-                                            <circle cx="140" cy="42" r="3" fill="#4f46e5" opacity="0.5"/>
-                                            <circle cx="75" cy="55" r="3" fill="#4f46e5" opacity="0.5"/>
-                                        </svg>
-                                        <div class="hh-chart-days">
-                                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- recent activity -->
-                                <div class="hh-activity">
-                                    <span class="hh-activity__label">Recent Activity</span>
-                                    <div class="hh-activity__item">
-                                        <span class="hh-activity__dot hh-activity__dot--blue"></span>
-                                        <span>New booking received</span>
-                                        <span class="hh-activity__time">2h ago</span>
-                                    </div>
-                                    <div class="hh-activity__item">
-                                        <span class="hh-activity__dot hh-activity__dot--green"></span>
-                                        <span>Guest checked in</span>
-                                        <span class="hh-activity__time">3h ago</span>
-                                    </div>
-                                    <div class="hh-activity__item">
-                                        <span class="hh-activity__dot hh-activity__dot--orange"></span>
-                                        <span>Payment received</span>
-                                        <span class="hh-activity__time">5h ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- floating badge bottom-left -->
-                    <div class="hh-badge hh-badge--bl">
-                        <span class="hh-badge__icon hh-badge__icon--green">
-                            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="4" stroke="#16a34a" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        </span>
-                        <span>Improve<br>Guest Experience</span>
-                    </div>
-
-                    <!-- floating badge bottom-right -->
-                    <div class="hh-badge hh-badge--br">
-                        <span class="hh-badge__icon hh-badge__icon--violet">
-                            <svg viewBox="0 0 20 20" fill="none"><path d="M4 16L10 4l6 12" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 11h7" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        </span>
-                        <span>Drive<br>Business Growth</span>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -717,7 +623,7 @@
                                         <span class="dot dot--yellow"></span>
                                         <span class="dot dot--green"></span>
                                     </div>
-                                    <div class="showreel-viewport__uri" id="sr-uri-label">softify://pipeline/01-understand.flow</div>
+                                    <div class="showreel-viewport__uri" id="sr-uri-label">versaly://pipeline/01-understand.flow</div>
                                     <div class="showreel-viewport__status"><span class="sr-pulse"></span> ACTIVE</div>
                                 </div>
                                 <div class="showreel-viewport__body" id="sr-graphic-container">
@@ -730,9 +636,9 @@
             </div>
         </section>
 
-        <!-- Hero -->
-        <section class="pg-hero">
-            <span class="pg-hero__eyebrow">ABOUT softify</span>
+        <!-- About Versaly Hero -->
+        <section class="pg-hero home-about-hero motion-fade-up">
+            <span class="pg-hero__eyebrow">ABOUT VERSALY</span>
             <h1 class="pg-hero__title">Building software that works for real businesses.</h1>
             <p class="pg-hero__sub">We are a focused software development company building practical, industry-specific products and custom solutions that help businesses operate with clarity and efficiency.</p>
         </section>
@@ -814,7 +720,7 @@
         <section class="hh-about reveal">
             <div class="hh-about__inner">
                 <div class="hh-about__copy">
-                    <p class="hh-eyebrow">ABOUT softify</p>
+                    <p class="hh-eyebrow">ABOUT versaly</p>
                     <h2 class="hh-about__title">Built by people who understand business operations.</h2>
                     <p class="hh-about__sub">We are a focused software development company. We don't try to be everything to everyone &mdash; we build specific, high-quality products for specific industries. No bloat, no generic templates, just software that works.</p>
                     <div class="hh-about__stats">
@@ -900,7 +806,7 @@
                 <div class="hh-testimonials-header">
                     <p class="hh-eyebrow">CLIENT VOICES &amp; FEEDBACK</p>
                     <h2 class="hh-testimonials-title">Trusted by forward-thinking teams.</h2>
-                    <p class="hh-testimonials-sub">See how softify's purpose-built platforms empower real businesses to operate with clarity and confidence.</p>
+                    <p class="hh-testimonials-sub">See how versaly's purpose-built platforms empower real businesses to operate with clarity and confidence.</p>
                 </div>
                 
                 <div class="hh-testimonials-grid motion-stagger" id="testimonials-grid">
@@ -996,7 +902,7 @@
             <div class="footer-newsletter">
                 <div class="footer-newsletter__info">
                     <span class="footer-newsletter__eyebrow">Stay Connected</span>
-                    <h3 class="footer-newsletter__heading">Subscribe to softify Product Updates</h3>
+                    <h3 class="footer-newsletter__heading">Subscribe to versaly Product Updates</h3>
                     <p class="footer-newsletter__desc">Get quarterly insights on modern enterprise workflows, new feature releases, and engineering updates.</p>
                 </div>
                 <form class="footer-newsletter__form" id="footer-newsletter-form">
@@ -1016,8 +922,8 @@
                 <!-- Brand Column -->
                 <div class="footer-brand-col">
                     <a href="index.html" class="footer-brand-link">
-                        <div class="footer-brand-logo">S</div>
-                        <span class="footer-brand-name">softify</span>
+                        <div class="footer-brand-logo">V</div>
+                        <span class="footer-brand-name">versaly</span>
                     </a>
                     <p class="footer-brand-tagline">Practical, high-performance business software built around real workflows and industry-specific operations.</p>
                     <div class="footer-status-pill">
@@ -1062,7 +968,7 @@
                     <ul class="footer-nav-list">
                         <li><a href="resources.html" class="footer-nav-link">Case Studies &amp; Hub</a></li>
                         <li><a href="docs.html" class="footer-nav-link">Developer Docs</a></li>
-                        <li><a href="about.html" class="footer-nav-link">About softify</a></li>
+                        <li><a href="about.html" class="footer-nav-link">About versaly</a></li>
                         <li><a href="about.html#values" class="footer-nav-link">Our Values</a></li>
                         <li><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
                     </ul>
@@ -1082,7 +988,7 @@
 
             <!-- Bottom Legal Bar -->
             <div class="footer-bottom-bar">
-                <p class="footer-copyright">© 2026 softify Inc. Built for enterprise performance.</p>
+                <p class="footer-copyright">© 2026 versaly Inc. Built for enterprise performance.</p>
                 <div class="footer-legal-links">
                     <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
                     <span class="footer-dot-divider">•</span>
@@ -1103,6 +1009,7 @@
     <script src="js/vendor/ScrollTrigger.min.js"></script>
     <script src="js/gsap-init.js"></script>
     <script src="js/motion.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

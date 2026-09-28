@@ -1,12 +1,12 @@
 /**
- * softify Admin Control Center
+ * versaly Admin Control Center
  * Phase 7 — Product Management CMS & Conversion Intelligence
  */
 
 (function () {
     'use strict';
 
-    const TOKEN_KEY = 'softify_admin_token';
+    const TOKEN_KEY = 'versaly_admin_token';
 
     // App State
     let currentSubmissions = [];
@@ -2794,9 +2794,9 @@
         // Mailto setup
         const custEmail = lead.contact && lead.contact.email ? lead.contact.email : '';
         const custName = lead.contact && lead.contact.name ? lead.contact.name.split(' ')[0] : 'there';
-        const prodName = lead.details && lead.details.product_name ? lead.details.product_name : (lead.details && lead.details.subject ? lead.details.subject : 'Softify Solutions');
+        const prodName = lead.details && lead.details.product_name ? lead.details.product_name : (lead.details && lead.details.subject ? lead.details.subject : 'Versaly Solutions');
         const mailtoSubject = encodeURIComponent(`Re: Inquiry for ${prodName} [${lead.ref_id}]`);
-        const mailtoBody = encodeURIComponent(`Hi ${custName},\n\nThank you for reaching out to Softify regarding ${prodName}.\n\nI would love to schedule a quick 15-minute walkthrough or answer any specific questions you have.\n\nBest regards,\nSoftify Team`);
+        const mailtoBody = encodeURIComponent(`Hi ${custName},\n\nThank you for reaching out to Versaly regarding ${prodName}.\n\nI would love to schedule a quick 15-minute walkthrough or answer any specific questions you have.\n\nBest regards,\nVersaly Team`);
         if (drawerBtnQuickEmail) {
             drawerBtnQuickEmail.href = `mailto:${custEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
         }
@@ -3046,7 +3046,7 @@
     async function saveSettings() {
         const payload = {
             company: {
-                name: setCompanyName ? setCompanyName.value.trim() : 'Softify',
+                name: setCompanyName ? setCompanyName.value.trim() : 'Versaly',
                 tagline: setCompanyTagline ? setCompanyTagline.value.trim() : '',
                 supportEmail: setSupportEmail ? setSupportEmail.value.trim() : '',
                 salesEmail: setSalesEmail ? setSalesEmail.value.trim() : '',
@@ -3657,7 +3657,7 @@
                 const a = document.createElement('a');
                 a.href = url;
                 const today = new Date().toISOString().slice(0, 10);
-                a.download = 'softify-leads-' + today + '.csv';
+                a.download = 'versaly-leads-' + today + '.csv';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -3728,7 +3728,7 @@
                 const a = document.createElement('a');
                 a.href = url;
                 const today = new Date().toISOString().slice(0, 10);
-                a.download = 'softify-executive-report-' + today + '.json';
+                a.download = 'versaly-executive-report-' + today + '.json';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -3774,7 +3774,7 @@
                 const a = document.createElement('a');
                 a.href = url;
                 const today = new Date().toISOString().slice(0, 10);
-                a.download = 'softify-audit-log-' + today + '.csv';
+                a.download = 'versaly-audit-log-' + today + '.csv';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -4052,6 +4052,17 @@
         }
 
         if (mediaDropzone) {
+            mediaDropzone.addEventListener('click', (e) => {
+                if (mediaFileInput) mediaFileInput.click();
+            });
+
+            mediaDropzone.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (mediaFileInput) mediaFileInput.click();
+                }
+            });
+
             ['dragenter', 'dragover'].forEach(evtName => {
                 mediaDropzone.addEventListener(evtName, (e) => {
                     e.preventDefault();

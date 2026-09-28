@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Control Center | softify</title>
+    <title>Admin Control Center | versaly</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/motion.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/dark.css">
 </head>
 <body class="admin-body">
 
     <!-- 1. LOGIN SCREEN -->
     <div id="admin-login-view" class="admin-login-wrap">
         <div class="admin-login-card">
-            <div class="admin-login-logo">⚡</div>
-            <h1 class="admin-login-title">softify Control Center</h1>
+            <div class="admin-login-logo" aria-hidden="true">V</div>
+            <h1 class="admin-login-title">versaly Control Center</h1>
             <p class="admin-login-desc">Enter your administrative master password to access product CMS, conversion metrics, and client inquiries.</p>
             
             <div id="login-error" class="admin-login-error" role="alert"></div>
@@ -42,9 +43,9 @@
         <!-- Sidebar Navigation -->
         <aside class="admin-sidebar" id="admin-sidebar">
             <div class="admin-sidebar__brand">
-                <div class="admin-nav__logo">⚡</div>
+                <div class="admin-nav__logo" aria-hidden="true">V</div>
                 <div class="admin-sidebar__title-wrap">
-                    <div class="admin-nav__title">softify</div>
+                    <div class="admin-nav__title">versaly</div>
                     <span class="admin-nav__badge">Admin Center</span>
                 </div>
                 <button class="admin-sidebar__close-mobile" id="sidebar-close-mobile" aria-label="Close menu">&times;</button>
@@ -195,7 +196,7 @@
                         <div class="admin-metric-card">
                             <div class="admin-metric__lbl">
                                 <span>Total Products</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffd17a" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                             </div>
                             <div id="metric-products-total" class="admin-metric__val">0</div>
                             <div class="admin-metric__sub" id="metric-products-sub">0 live • 0 in development</div>
@@ -235,13 +236,13 @@
                             <div>
                                 <h3 class="admin-card__title" style="margin-bottom:0.2rem;">
                                     <span>Acquisition Velocity &amp; Demo Conversion Trajectory</span>
-                                    <span id="chart-range-label" style="font-size:0.75rem; color:#818cf8; font-weight:600; margin-left:0.5rem;">Past 30 Days</span>
+                                    <span id="chart-range-label" style="font-size:0.75rem; color:#ffd17a; font-weight:600; margin-left:0.5rem;">Past 30 Days</span>
                                 </h3>
                                 <p style="font-size:0.8rem; color:var(--adm-text-muted); margin:0;">Daily breakdown of inbound inquiry volume, demo request conversions, and pipeline growth.</p>
                             </div>
                             <div style="display:flex; gap:1rem; font-size:0.78rem; align-items:center; flex-wrap:wrap;">
                                 <div style="display:flex; align-items:center; gap:0.35rem;">
-                                    <span style="width:10px; height:10px; border-radius:50%; background:#6366f1; display:inline-block;"></span>
+                                    <span style="width:10px; height:10px; border-radius:50%; background:#fca311; display:inline-block;"></span>
                                     <span>Total Inquiries</span>
                                 </div>
                                 <div style="display:flex; align-items:center; gap:0.35rem;">
@@ -558,7 +559,7 @@
                         <div class="admin-metric-card">
                             <div class="admin-metric__lbl">
                                 <span>Total Media Assets</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffd17a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                             </div>
                             <div id="metric-media-total" class="admin-metric__val">0</div>
                             <div class="admin-metric__sub" id="metric-media-total-sub">0 SVGs • 0 raster images</div>
@@ -586,7 +587,7 @@
                     <!-- Drag & Drop Upload Zone -->
                     <div id="media-dropzone" class="admin-dropzone" tabindex="0" role="button" aria-label="Drop files here or click to upload">
                         <div class="admin-dropzone__icon">
-                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffd17a" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                         </div>
                         <div class="admin-dropzone__text">
                             <strong>Drop screenshots or mockups here</strong>, or <span class="admin-dropzone__browse">browse files</span>
@@ -704,16 +705,16 @@
                         <div class="admin-card">
                             <h3 class="admin-card__title">
                                 <span>1. Company Profile &amp; Identity</span>
-                                <span style="font-size:0.75rem; color:#818cf8;">Public Metadata</span>
+                                <span style="font-size:0.75rem; color:#ffd17a;">Public Metadata</span>
                             </h3>
                             <div class="admin-form-grid-2">
                                 <div class="admin-form-group">
                                     <label class="admin-form-label" for="set-company-name">Brand Name</label>
-                                    <input type="text" id="set-company-name" class="admin-input" placeholder="e.g. softify">
+                                    <input type="text" id="set-company-name" class="admin-input" placeholder="e.g. versaly">
                                 </div>
                                 <div class="admin-form-group">
                                     <label class="admin-form-label" for="set-company-legal">Legal Entity Name</label>
-                                    <input type="text" id="set-company-legal" class="admin-input" placeholder="e.g. softify Inc.">
+                                    <input type="text" id="set-company-legal" class="admin-input" placeholder="e.g. versaly Inc.">
                                 </div>
                             </div>
                             <div class="admin-form-group">
@@ -723,11 +724,11 @@
                             <div class="admin-form-grid-2">
                                 <div class="admin-form-group">
                                     <label class="admin-form-label" for="set-support-email">Support Email</label>
-                                    <input type="email" id="set-support-email" class="admin-input" placeholder="support@softify.example.com">
+                                    <input type="email" id="set-support-email" class="admin-input" placeholder="support@versaly.example.com">
                                 </div>
                                 <div class="admin-form-group">
                                     <label class="admin-form-label" for="set-sales-email">Sales Email</label>
-                                    <input type="email" id="set-sales-email" class="admin-input" placeholder="sales@softify.example.com">
+                                    <input type="email" id="set-sales-email" class="admin-input" placeholder="sales@versaly.example.com">
                                 </div>
                             </div>
                             <div class="admin-form-grid-2">
@@ -776,7 +777,7 @@
                                         <span style="font-weight:600; color:var(--adm-text);">Enable Lead Email Notifications</span>
                                     </label>
                                     <label class="admin-form-label" for="set-recipient-email">Notification Target Email</label>
-                                    <input type="email" id="set-recipient-email" class="admin-input" placeholder="leads@softify.example.com">
+                                    <input type="email" id="set-recipient-email" class="admin-input" placeholder="leads@versaly.example.com">
                                 </div>
                                 <div class="admin-form-group">
                                     <label class="admin-checkbox-label" style="margin-bottom:0.75rem;">
@@ -955,8 +956,8 @@
                             <div class="admin-form-group">
                                 <label class="admin-form-label" for="prod-accent">Accent Color</label>
                                 <div style="display:flex; gap:0.5rem; align-items:center;">
-                                    <input type="color" id="prod-accent-picker" value="#4f46e5" class="admin-color-picker">
-                                    <input type="text" id="prod-accent" class="admin-input" value="#4f46e5" style="font-family:monospace; padding:0.6rem 0.75rem;">
+                                    <input type="color" id="prod-accent-picker" value="#fca311" class="admin-color-picker">
+                                    <input type="text" id="prod-accent" class="admin-input" value="#fca311" style="font-family:monospace; padding:0.6rem 0.75rem;">
                                 </div>
                             </div>
                         </div>
@@ -1517,7 +1518,7 @@
 
                         <div class="admin-form-group">
                             <label class="admin-form-label" for="faq-question">Question <span class="required">*</span></label>
-                            <input type="text" id="faq-question" class="admin-input" placeholder="e.g. Can Softify integrate with existing ERPs?">
+                            <input type="text" id="faq-question" class="admin-input" placeholder="e.g. Can Versaly integrate with existing ERPs?">
                         </div>
 
                         <div class="admin-form-group">
@@ -1689,7 +1690,7 @@
                             <input type="text" id="hook-secret" class="admin-input" placeholder="Secret key used to generate sha256 signature">
                             <button type="button" id="btn-generate-secret" class="admin-btn-secondary" style="white-space:nowrap; padding:0.5rem 0.75rem; font-size:0.8rem;">Generate</button>
                         </div>
-                        <span style="font-size:0.75rem; color:var(--adm-text-muted); margin-top:0.25rem; display:block;">If provided, headers will include <code>X-Softify-Signature: sha256=...</code></span>
+                        <span style="font-size:0.75rem; color:var(--adm-text-muted); margin-top:0.25rem; display:block;">If provided, headers will include <code>X-Versaly-Signature: sha256=...</code></span>
                     </div>
 
                     <div class="admin-form-group">
@@ -1732,6 +1733,7 @@
     </div>
 
     <script src="js/motion.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/admin.js?v=20260914-phase18"></script>
 </body>
 </html>

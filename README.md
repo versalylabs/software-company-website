@@ -1,4 +1,4 @@
-﻿# softify
+﻿# versaly
 
 A modern, premium website foundation for a software development company that builds purpose-built business software for healthcare, finance, manufacturing, hospitality, and retail.
 
@@ -82,9 +82,9 @@ cp .env.example .env
 | Variable | Default | Description |
 |---|---|---|
 | `PORT` | `3000` | Port for the HTTP server |
-| `NOTIFICATION_EMAIL` | `leads@softify.example.com` | Business inbox to receive leads |
+| `NOTIFICATION_EMAIL` | `leads@versaly.example.com` | Business inbox to receive leads |
 | `STORAGE_FILE` | `data/submissions.json` | Path to persistent JSON submission file |
-| `ADMIN_PASSWORD` | `softify_admin_2026` | Password for accessing the internal admin portal |
+| `ADMIN_PASSWORD` | `versaly_admin_2026` | Password for accessing the internal admin portal |
 | `RATE_LIMIT_MAX` | `15` | Max submissions per IP window |
 | `RATE_LIMIT_WINDOW_MS` | `900000` (15m) | Rate limiting sliding window duration |
 | `WEBHOOK_URL` | *(empty)* | Optional webhook URL (Slack, Zapier, Make, CRM) |
@@ -93,7 +93,7 @@ cp .env.example .env
 | `SMTP_SECURE` | `false` | Enable TLS/SSL (`true` or `false`) |
 | `SMTP_USER` | *(empty)* | SMTP Username |
 | `SMTP_PASS` | *(empty)* | SMTP Password / App Token |
-| `SMTP_FROM` | `"softify Inquiries <no-reply@softify.example.com>"` | Sender name & email |
+| `SMTP_FROM` | `"versaly Inquiries <no-reply@versaly.example.com>"` | Sender name & email |
 
 ---
 
@@ -123,7 +123,7 @@ When an enquiry or demo request is submitted, a structured JSON record is saved 
 
 ```json
 {
-  "ref_id": "softify-2026-A1B2C3",
+  "ref_id": "versaly-2026-A1B2C3",
   "form_type": "demo_request",
   "submitted_at": "2026-09-10T04:30:00.000Z",
   "contact": {
@@ -159,9 +159,9 @@ When an enquiry or demo request is submitted, a structured JSON record is saved 
 The entire website implements modern technical SEO and accessibility standards across every public page.
 
 ### 1. Per-Page Metadata
-- **Page Titles**: Unique, descriptive titles with consistent brand suffix (`Page Title — softify`).
+- **Page Titles**: Unique, descriptive titles with consistent brand suffix (`Page Title — versaly`).
 - **Meta Descriptions**: Compelling, human-written descriptions tailored to each page's specific purpose without generic filler.
-- **Canonical URLs**: Explicit `<link rel="canonical">` tags configured for production indexing (`https://softify.example.com`).
+- **Canonical URLs**: Explicit `<link rel="canonical">` tags configured for production indexing (`https://versaly.example.com`).
 - **Robots Directives**: Standard `index, follow` across public pages; `noindex, follow` on error pages (`404.html`).
 - **Open Graph & Twitter / X Cards**: Full social sharing cards (`og:title`, `og:description`, `og:image`, `og:url`, `og:site_name`, `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`) using a high-resolution SVG preview card (`assets/images/og-preview.svg`).
 
@@ -174,7 +174,7 @@ Rich semantic schemas are embedded on relevant pages:
 - **Enquiry Pages (`contact.html`, `request-demo.html`)**: `ContactPage` schema.
 
 ### 3. Favicon & Web Manifest
-- Modern SVG favicon with softify brand gradient (`assets/icons/favicon.svg`).
+- Modern SVG favicon with versaly brand gradient (`assets/icons/favicon.svg`).
 - Apple touch icon (`assets/icons/apple-touch-icon.svg`).
 - PWA Web Manifest (`site.webmanifest`) with `#4f46e5` theme color and responsive icon declarations (192px and 512px).
 
@@ -198,7 +198,7 @@ Rich semantic schemas are embedded on relevant pages:
 
 ## 📊 Analytics, Conversion Tracking & Privacy
 
-softify includes a built-in, lightweight analytics and conversion tracking engine (`js/analytics.js`) designed for Google Analytics 4 (GA4) or custom tracking providers with **strict zero-PII guarantees**.
+versaly includes a built-in, lightweight analytics and conversion tracking engine (`js/analytics.js`) designed for Google Analytics 4 (GA4) or custom tracking providers with **strict zero-PII guarantees**.
 
 ### 1. Zero-PII Guarantee
 The engine features a parameter sanitizer that blocks all personally identifiable information:
@@ -239,11 +239,11 @@ var DEFAULT_CONFIG = {
     respectDoNotTrack: true        // Respects browser DNT: 1 header
 };
 ```
-3. Or configure dynamically via `window.softifyAnalyticsConfig` before script load.
+3. Or configure dynamically via `window.versalyAnalyticsConfig` before script load.
 
 ### 4. Privacy & Consent Control
 - **Do Not Track (DNT)**: If the user's browser has `Do Not Track` enabled (`DNT: 1`), external tracking scripts are blocked by default.
-- **Consent API**: If operating under GDPR/ePrivacy, set `requireConsent: true` and call `softifyAnalytics.setConsent(true)` upon receiving user opt-in through your consent management platform (CMP).
+- **Consent API**: If operating under GDPR/ePrivacy, set `requireConsent: true` and call `versalyAnalytics.setConsent(true)` upon receiving user opt-in through your consent management platform (CMP).
 
 ---
 
@@ -254,7 +254,7 @@ var DEFAULT_CONFIG = {
 ```bash
 # Using PM2 process manager
 npm install -g pm2
-pm2 start server.js --name "softify-site"
+pm2 start server.js --name "versaly-site"
 pm2 save
 ```
 
@@ -276,7 +276,7 @@ CMD ["npm", "start"]
 Access the administrative interface at **`http://localhost:3000/admin.html`** (or click the admin route in production).
 
 ### Default Credentials
-- **Password**: `softify_admin_2026` *(Configurable via `ADMIN_PASSWORD` in `.env`)*
+- **Password**: `versaly_admin_2026` *(Configurable via `ADMIN_PASSWORD` in `.env`)*
 
 ### Admin Capabilities
 1. **Conversion Analytics & KPIs**:

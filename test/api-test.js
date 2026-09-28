@@ -1,5 +1,5 @@
 /**
- * Automated Test Suite for softify Form Submission, Security & CMS Engine
+ * Automated Test Suite for versaly Form Submission, Security & CMS Engine
  * Tests API responses, payload validation, spam filters, storage persistence, rate limiting, and Phase 7 Product CMS.
  */
 
@@ -19,7 +19,7 @@ function postJson(path, data) {
             headers: {
                 'Content-Type': 'application/json',
                 'Content-Length': Buffer.byteLength(payload),
-                'User-Agent': 'softify-Test-Runner/1.0'
+                'User-Agent': 'versaly-Test-Runner/1.0'
             }
         }, res => {
             let body = '';
@@ -78,7 +78,7 @@ function authRequest(method, path, data = null, token = null) {
 }
 
 async function runTests() {
-    console.log('🚀 Starting softify Automated Test Suite...\n');
+    console.log('🚀 Starting versaly Automated Test Suite...\n');
     let server = startServer(TEST_PORT);
     let passed = 0;
     let failed = 0;
@@ -100,7 +100,7 @@ async function runTests() {
 
         // Test 2: Static File Serving
         const home = await get('/');
-        assert('Serve Homepage (GET /)', home.status === 200 && home.body.includes('softify'));
+        assert('Serve Homepage (GET /)', home.status === 200 && home.body.includes('versaly'));
 
         const about = await get('/about.html');
         assert('Serve About Page (GET /about.html)', about.status === 200 && about.body.includes('About'));
@@ -226,13 +226,13 @@ async function runTests() {
 
         // Test 11: SEO Sitemap and Robots
         const sitemap = await get('/sitemap.xml');
-        assert('SEO Sitemap (GET /sitemap.xml)', sitemap.status === 200 && sitemap.body.includes('<urlset') && sitemap.body.includes('https://softify.example.com/'));
+        assert('SEO Sitemap (GET /sitemap.xml)', sitemap.status === 200 && sitemap.body.includes('<urlset') && sitemap.body.includes('https://versaly.example.com/'));
 
         const robots = await get('/robots.txt');
         assert('SEO Robots Directives (GET /robots.txt)', robots.status === 200 && robots.body.includes('Disallow: /data/') && robots.body.includes('Sitemap:'));
 
         const manifest = await get('/site.webmanifest');
-        assert('PWA Web Manifest (GET /site.webmanifest)', manifest.status === 200 && manifest.body.includes('softify'));
+        assert('PWA Web Manifest (GET /site.webmanifest)', manifest.status === 200 && manifest.body.includes('versaly'));
 
         const favicon = await get('/assets/icons/favicon.svg');
         assert('Favicon Vector (GET /assets/icons/favicon.svg)', favicon.status === 200 && favicon.body.includes('<svg'));
@@ -254,14 +254,14 @@ async function runTests() {
 
         // Test 13: Analytics Asset Delivery
         const analyticsAsset = await get('/js/analytics.js');
-        assert('Analytics JS Served (GET /js/analytics.js)', analyticsAsset.status === 200 && analyticsAsset.body.includes('softifyAnalytics'));
+        assert('Analytics JS Served (GET /js/analytics.js)', analyticsAsset.status === 200 && analyticsAsset.body.includes('versalyAnalytics'));
 
         // Test 14: Analytics Module Functionality & Zero-PII Unit Verification
         const analyticsCode = fs.readFileSync(path.join(__dirname, '..', 'js', 'analytics.js'), 'utf8');
         const mockWindow = {
             location: { pathname: '/request-demo.html', search: '?product=healthcare-pro' },
             document: {
-                title: 'Request a Demo — softify',
+                title: 'Request a Demo — versaly',
                 readyState: 'complete',
                 addEventListener: () => {},
                 createElement: () => ({ setAttribute: () => {} }),
@@ -279,9 +279,9 @@ async function runTests() {
         const context = vm.createContext(mockWindow);
         vm.runInContext(analyticsCode, context);
 
-        assert('softifyAnalytics object defined on window', typeof context.softifyAnalytics === 'object' && typeof context.softifyAnalytics.trackEvent === 'function');
+        assert('versalyAnalytics object defined on window', typeof context.versalyAnalytics === 'object' && typeof context.versalyAnalytics.trackEvent === 'function');
 
-        context.softifyAnalytics.init({
+        context.versalyAnalytics.init({
             enabled: true,
             measurementId: 'G-TESTID1234',
             debug: false
@@ -295,7 +295,7 @@ async function runTests() {
             if (context.dataLayer) context.dataLayer.push(arguments);
         };
 
-        context.softifyAnalytics.trackFormSubmitted('demo_request', {
+        context.versalyAnalytics.trackFormSubmitted('demo_request', {
             product_id: 'healthcare-pro',
             product_name: 'ClinicOS',
             industry: 'Healthcare & Medical',
@@ -315,10 +315,10 @@ async function runTests() {
 
         assert('Zero-PII Filter: Strictly strips all personal information', !hasLeakedPII && hasSafeData, `Leaked: ${hasLeakedPII}, SafeData: ${hasSafeData}, Keys: ${safeKeys.join(',')}`);
 
-        context.softifyAnalytics.trackCTA('request_demo', 'homepage_hero', { product_id: 'healthcare-pro' });
+        context.versalyAnalytics.trackCTA('request_demo', 'homepage_hero', { product_id: 'healthcare-pro' });
         assert('CTA Tracking: Correct event and params dispatched', lastDispatchedEvent === 'cta_click' && lastDispatchedParams.cta_name === 'request_demo' && lastDispatchedParams.cta_location === 'homepage_hero');
 
-        context.softifyAnalytics.trackProductView({ id: 'financeflow', name: 'FinanceFlow', category: 'Finance', status: 'in-development' });
+        context.versalyAnalytics.trackProductView({ id: 'financeflow', name: 'FinanceFlow', category: 'Finance', status: 'in-development' });
         assert('Product Interest: Product view metrics tracked', lastDispatchedEvent === 'product_view' && lastDispatchedParams.product_id === 'financeflow' && lastDispatchedParams.product_name === 'FinanceFlow');
 
         // ==========================================
@@ -328,7 +328,7 @@ async function runTests() {
 
         // Admin Test 1: Static admin assets serving
         const adminPage = await get('/admin.html');
-        assert('Serve Admin Dashboard (GET /admin.html)', adminPage.status === 200 && adminPage.body.includes('softify') && adminPage.body.includes('id="admin-dashboard-view"'));
+        assert('Serve Admin Dashboard (GET /admin.html)', adminPage.status === 200 && adminPage.body.includes('versaly') && adminPage.body.includes('id="admin-dashboard-view"'));
 
         const adminCss = await get('/css/admin.css');
         assert('Serve Admin CSS (GET /css/admin.css)', adminCss.status === 200 && adminCss.body.includes('--adm-primary'));
@@ -348,7 +348,7 @@ async function runTests() {
         assert('Admin Login: Reject incorrect password (401)', badLogin.status === 401 && badLogin.body.success === false);
 
         // Admin Test 4: Successful Login
-        const validLogin = await authRequest('POST', '/api/admin/login', { password: 'softify_admin_2026' });
+        const validLogin = await authRequest('POST', '/api/admin/login', { password: 'versaly_admin_2026' });
         const adminToken = validLogin.body && validLogin.body.token;
         assert('Admin Login: Authenticate with valid password (200 + token)', validLogin.status === 200 && validLogin.body.success === true && typeof adminToken === 'string' && adminToken.length > 20);
 
@@ -633,25 +633,25 @@ async function runTests() {
         // CRM Test 3: Admin Settings Update (PUT /api/admin/settings)
         const updateSettingsPayload = {
             company: {
-                name: 'Softify Technologies Inc.',
+                name: 'Versaly Technologies Inc.',
                 tagline: 'Enterprise Industry-Grade Software Systems',
-                supportEmail: 'support@softify.example.com',
-                salesEmail: 'sales@softify.example.com',
+                supportEmail: 'support@versaly.example.com',
+                salesEmail: 'sales@versaly.example.com',
                 phone: '+1 (800) 555-0199',
                 address: '100 Innovation Parkway, Suite 400, San Francisco, CA',
-                linkedinUrl: 'https://linkedin.com/company/softify',
-                twitterUrl: 'https://x.com/softify',
-                githubUrl: 'https://github.com/softify'
+                linkedinUrl: 'https://linkedin.com/company/versaly',
+                twitterUrl: 'https://x.com/versaly',
+                githubUrl: 'https://github.com/versaly'
             },
             notifications: {
                 emailAlerts: true,
-                recipientEmail: 'alerts@softify.example.com',
+                recipientEmail: 'alerts@versaly.example.com',
                 webhookEnabled: true,
                 webhookUrl: 'https://hooks.slack.com/services/T00/B00/X00'
             },
             analytics: {
                 ga4Id: 'G-ENTERPRISE99',
-                gtmId: 'GTM-SOFTIFY1',
+                gtmId: 'GTM-VERSALY1',
                 enforcePrivacyBanner: true
             },
             system: {
@@ -661,7 +661,7 @@ async function runTests() {
             }
         };
         const updateSettingsRes = await authRequest('PUT', '/api/admin/settings', updateSettingsPayload, adminToken);
-        assert('Settings: Update Configuration (PUT /api/admin/settings -> 200)', updateSettingsRes.status === 200 && updateSettingsRes.body.success && updateSettingsRes.body.settings.company.name === 'Softify Technologies Inc.' && updateSettingsRes.body.settings.notifications.webhookEnabled === true);
+        assert('Settings: Update Configuration (PUT /api/admin/settings -> 200)', updateSettingsRes.status === 200 && updateSettingsRes.body.success && updateSettingsRes.body.settings.company.name === 'Versaly Technologies Inc.' && updateSettingsRes.body.settings.notifications.webhookEnabled === true);
 
         // CRM Test 4: Find an inquiry ref_id to test CRM pipeline
         const allSubsRes = await authRequest('GET', '/api/admin/submissions', null, adminToken);
@@ -705,7 +705,7 @@ async function runTests() {
         }, adminToken);
         assert('Settings Security: Reject Invalid Current Password (400)', invalidPwdChangeRes.status === 400 && invalidPwdChangeRes.body.success === false);
 
-        const currentEnvPassword = CONFIG.adminPassword || process.env.ADMIN_PASSWORD || 'softify_admin_2026';
+        const currentEnvPassword = CONFIG.adminPassword || process.env.ADMIN_PASSWORD || 'versaly_admin_2026';
         const validPwdChangeRes = await authRequest('POST', '/api/admin/settings/change-password', {
             currentPassword: currentEnvPassword,
             newPassword: 'TemporaryTestPassword2026!'
@@ -796,7 +796,7 @@ async function runTests() {
         const gsapInitRes = await get('/js/gsap-init.js');
         assert('GSAP: Serve js/gsap-init.js (200)', gsapInitRes.status === 200);
         assert('GSAP: Contains hero choreography, reveals, and reduced motion safety',
-            gsapInitRes.body.includes('softifyGSAP') &&
+            gsapInitRes.body.includes('versalyGSAP') &&
             gsapInitRes.body.includes('initHeroChoreography') &&
             gsapInitRes.body.includes('initSectionReveals') &&
             gsapInitRes.body.includes('initProductShowcase') &&
@@ -900,7 +900,7 @@ async function runTests() {
         console.log('\n📈 Testing Phase 17 — Admin Audit Logs & Analytics Reporting...');
 
         // Authenticate fresh session for Phase 17
-        const phase17Login = await authRequest('POST', '/api/admin/login', { password: 'softify_admin_2026' });
+        const phase17Login = await authRequest('POST', '/api/admin/login', { password: 'versaly_admin_2026' });
         const phase17Token = phase17Login.body && phase17Login.body.token;
 
         // Phase 17 Test 1: Analytics Trends (30d default)
@@ -1193,6 +1193,83 @@ async function runTests() {
             comparePageRes.body.includes('js/vendor/ScrollTrigger.min.js') &&
             comparePageRes.body.includes('js/gsap-init.js');
         assert('Phase 19: compare.html includes GSAP animation scripts', compareHasGsap);
+
+        // ==========================================
+        // PHASE 20: SITE-WIDE DARK MODE TESTS
+        // ==========================================
+        console.log('\n--- Phase 20: Site-Wide Dark Mode Tests ---');
+
+        // Test 1: dark.css stylesheet served with valid mime & content
+        const darkCssRes = await get('/css/dark.css');
+        assert('Phase 20: Dark Mode Stylesheet (GET /css/dark.css -> 200)',
+            darkCssRes.status === 200 &&
+            darkCssRes.body.includes('data-theme="dark"') &&
+            darkCssRes.body.includes('--bg-primary')
+        );
+
+        // Test 2: theme.js script served with valid mime & theme engine logic
+        const themeJsRes = await get('/js/theme.js');
+        assert('Phase 20: Dark Mode Engine Script (GET /js/theme.js -> 200)',
+            themeJsRes.status === 200 &&
+            themeJsRes.body.includes('versaly-theme') &&
+            themeJsRes.body.includes('toggleTheme')
+        );
+
+        // Test 3: Public & system pages all include dark.css, theme.js, and anti-FOUT script
+        const themePages = [
+            '/',
+            '/products.html',
+            '/compare.html',
+            '/about.html',
+            '/contact.html',
+            '/product.html?id=hotel-management-system',
+            '/roi-calculator.html',
+            '/resources.html',
+            '/docs.html',
+            '/support.html',
+            '/request-demo.html',
+            '/privacy.html',
+            '/terms.html',
+            '/404.html',
+            '/admin.html'
+        ];
+
+        let allPagesHaveDarkAssets = true;
+        let missingAssetDetails = [];
+
+        for (const pagePath of themePages) {
+            const pageRes = await get(pagePath);
+            const hasCss = pageRes.body.includes('css/dark.css');
+            const hasJs = pageRes.body.includes('js/theme.js');
+            if (!hasCss || !hasJs) {
+                allPagesHaveDarkAssets = false;
+                missingAssetDetails.push(`${pagePath} (css:${hasCss}, js:${hasJs})`);
+            }
+        }
+        assert('Phase 20: All 15 Pages Include css/dark.css and js/theme.js',
+            allPagesHaveDarkAssets,
+            missingAssetDetails.join(', ')
+        );
+
+        // Test 4: Verify anti-FOUT inline script exists in head of primary pages
+        const indexRes = await get('/');
+        const hasFoutScript = indexRes.body.includes("document.documentElement.setAttribute('data-theme'") &&
+            indexRes.body.includes('prefers-color-scheme');
+        assert('Phase 20: Zero-FOUT Inline Theme Script in <head>', hasFoutScript);
+
+        // Test 5: Verify theme toggles exist in navigation bars
+        const hasThemeToggle = indexRes.body.includes('class="theme-toggle"');
+        const hasMobileToggle = indexRes.body.includes('mobile-theme-toggle');
+        assert('Phase 20: Desktop & Mobile Accessible Theme Toggles Present in DOM',
+            hasThemeToggle && hasMobileToggle
+        );
+
+        // Test 6: Verify Dark Mode Contrast Palettes & WCAG AA/AAA variables in dark.css
+        const darkHasContrastRules = darkCssRes.body.includes('--text-primary: #f8fafc') &&
+            darkCssRes.body.includes('--bg-primary: #0b0f19') &&
+            darkCssRes.body.includes('--card-bg: #111827') &&
+            darkCssRes.body.includes('--border-color: rgba(255, 255, 255, 0.12)');
+        assert('Phase 20: Dark Mode WCAG Compliant Contrast Variables Defined', darkHasContrastRules);
 
         console.log(`\n=================================================`);
         console.log(`Test Results: ${passed} Passed, ${failed} Failed`);

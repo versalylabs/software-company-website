@@ -1,12 +1,12 @@
 ﻿/* ==========================================================
-   FORMS.CSS — softify Lead Generation Design System
+   FORMS.CSS — versaly Lead Generation Design System
    Accessible, responsive, high-conversion form styles
    ========================================================== */
 
 /* ── Form Card Container ──────────────────────────────────── */
 .form-card {
     background: #ffffff;
-    border: 1px solid #e8edf3;
+    border: 1px solid #e5e5e5;
     border-radius: 20px;
     padding: 2.5rem;
     box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
@@ -47,8 +47,8 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.85rem 1.15rem;
-    background: #eef2ff;
-    border: 1px solid rgba(79, 70, 229, 0.2);
+    background: #f8f9fc;
+    border: 1px solid rgba(252, 163, 17, 0.2);
     border-radius: 12px;
     margin-bottom: 1.5rem;
     font-size: 0.85rem;
@@ -59,7 +59,7 @@
     width: 28px;
     height: 28px;
     border-radius: 8px;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #fff;
     display: grid;
     place-items: center;
@@ -104,7 +104,7 @@
 
 .form-tab-btn.active {
     background: #ffffff;
-    color: #4f46e5;
+    color: #fca311;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
     font-weight: 700;
 }
@@ -177,8 +177,8 @@
 .form-select:focus,
 .form-textarea:focus {
     background: #ffffff;
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3.5px rgba(79, 70, 229, 0.14);
+    border-color: #fca311;
+    box-shadow: 0 0 0 3.5px rgba(252, 163, 17, 0.14);
 }
 
 .form-input.is-invalid,
@@ -296,7 +296,7 @@
     min-height: 50px;
     padding: 0.95rem 2rem;
     margin-top: 0.75rem;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #ffffff;
     border: none;
     border-radius: 10px;
@@ -309,12 +309,12 @@
     justify-content: center;
     gap: 0.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
+    box-shadow: 0 4px 14px rgba(252, 163, 17, 0.28);
 }
 
 .form-submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.36);
+    box-shadow: 0 8px 24px rgba(252, 163, 17, 0.36);
 }
 
 .form-submit-btn:disabled {

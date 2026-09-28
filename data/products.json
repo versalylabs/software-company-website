@@ -106,7 +106,7 @@
         }
       ],
       "order": 2,
-      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "updatedAt": "2026-09-28T22:49:19.111Z",
       "matrix": {
         "architecture": {
           "deployment": "Cloud Native (AWS/GCP)",
@@ -162,10 +162,10 @@
     },
     {
       "id": "healthcare-pro",
-      "name": "ClinicOS",
+      "name": "Pulse Gym MS",
       "tagline": "Clinic management built for the way medical teams actually work.",
-      "category": "Healthcare",
-      "status": "in-development",
+      "category": "Custom",
+      "status": "live",
       "spotlight": true,
       "featured": true,
       "accent": "#0d9488",
@@ -250,19 +250,25 @@
       "screenshots": [
         {
           "layout": "dashboard",
-          "label": "Practice Overview"
+          "label": "Practice Overview",
+          "caption": "",
+          "skin": "browser"
         },
         {
           "layout": "table",
-          "label": "Patient Records"
+          "label": "Patient Records",
+          "caption": "",
+          "skin": "browser"
         },
         {
           "layout": "chart",
-          "label": "Appointment Analytics"
+          "label": "Appointment Analytics",
+          "caption": "",
+          "skin": "browser"
         }
       ],
       "order": 3,
-      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "updatedAt": "2026-09-28T22:49:19.111Z",
       "matrix": {
         "architecture": {
           "deployment": "Dedicated Healthcare Cloud (HIPAA)",
@@ -418,7 +424,7 @@
         }
       ],
       "order": 4,
-      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "updatedAt": "2026-09-28T22:49:19.111Z",
       "matrix": {
         "architecture": {
           "deployment": "High-Throughput Financial Cloud",
@@ -574,7 +580,7 @@
         }
       ],
       "order": 5,
-      "updatedAt": "2026-09-14T12:18:16.389Z",
+      "updatedAt": "2026-09-28T22:49:19.111Z",
       "matrix": {
         "architecture": {
           "deployment": "Edge + Cloud Hybrid Architecture",

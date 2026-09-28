@@ -1,18 +1,1 @@
-[
-  {
-    "id": "notif_1789426070306_e34cf6",
-    "timestamp": "2026-09-14T22:47:50.307Z",
-    "category": "leads",
-    "title": "Demo Request: Ted Khalwale",
-    "message": "BloomWeb — FinanceFlow",
-    "severity": "urgent",
-    "read": true,
-    "link": "#leads",
-    "meta": {
-      "ref_id": "softify-2026-8C7B7C",
-      "email": "khalwaleted@gmail.com",
-      "formType": "demo_request"
-    },
-    "readAt": "2026-09-14T22:54:08.991Z"
-  }
-]
+[]

@@ -1,5 +1,5 @@
 /**
- * softify — Interactive Product Comparison & Feature Matrix Engine
+ * versaly — Interactive Product Comparison & Feature Matrix Engine
  * Phase 19: Product Comparison & Interactive Feature Matrix
  */
 
@@ -385,7 +385,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `softify-product-comparison-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `versaly-product-comparison-${new Date().toISOString().slice(0, 10)}.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

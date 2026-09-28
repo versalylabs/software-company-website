@@ -1,20 +1,23 @@
 /* ==========================================================
-   softify Admin Control Center Styles
+   versaly Admin Control Center Styles
    Phase 7 — Product Management CMS & Analytics
    ========================================================== */
 
 :root {
-    --adm-bg: #0b0f19;
-    --adm-surface: #111827;
-    --adm-surface-hover: #1f2937;
-    --adm-border: #1f293d;
+    --adm-bg: #0a1120;
+  --adm-navy: #14213d;
+  --adm-silver: #e5e5e5;
+  --adm-gold: #fca311;
+    --adm-surface: #14213d;
+    --adm-surface-hover: #1c2e54;
+    --adm-border: rgba(229, 229, 229, 0.14);
     --adm-border-subtle: #162032;
     --adm-text: #f8fafc;
     --adm-text-muted: #94a3b8;
     --adm-text-subtle: #64748b;
-    --adm-primary: #4f46e5;
-    --adm-primary-hover: #4338ca;
-    --adm-primary-light: rgba(79, 70, 229, 0.15);
+    --adm-primary: #fca311;
+    --adm-primary-hover: #ffb733;
+    --adm-primary-light: rgba(252, 163, 17, 0.16);
     --adm-success: #10b981;
     --adm-warning: #f59e0b;
     --adm-danger: #ef4444;
@@ -43,7 +46,7 @@ body.admin-body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: radial-gradient(circle at 50% 30%, rgba(79, 70, 229, 0.12) 0%, transparent 60%), #0b0f19;
+    background: radial-gradient(circle at 50% 30%, rgba(252, 163, 17, 0.12) 0%, transparent 60%), #0b0f19;
 }
 
 .admin-login-card {
@@ -61,15 +64,19 @@ body.admin-body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 800;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: #14213d;
+    background-image: url('../assets/brand/icon-mark-gold-transparent.png');
+    background-size: 78% auto;
+    background-position: center;
+    background-repeat: no-repeat;
     margin-bottom: 1.25rem;
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 8px 24px rgba(20, 33, 61, 0.45), 0 0 16px rgba(252, 163, 17, 0.35);
+    border: 1.5px solid rgba(252, 163, 17, 0.45);
+    text-indent: -9999px;
+    overflow: hidden;
 }
 
 .admin-login-title {
@@ -138,11 +145,11 @@ body.admin-body {
 }
 .admin-input:focus {
     border-color: var(--adm-primary);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+    box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.25);
 }
 
 .admin-btn {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #ffffff;
     border: none;
     padding: 0.75rem 1.4rem;
@@ -226,16 +233,19 @@ body.admin-body {
 }
 
 .admin-nav__logo {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: #fff;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: #14213d;
+    background-image: url('../assets/brand/icon-mark-gold-transparent.png');
+    background-size: 78% auto;
+    background-position: center;
+    background-repeat: no-repeat;
     flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(20, 33, 61, 0.3), 0 0 10px rgba(252, 163, 17, 0.3);
+    border: 1px solid rgba(252, 163, 17, 0.4);
+    text-indent: -9999px;
+    overflow: hidden;
 }
 
 .admin-sidebar__title-wrap {
@@ -252,7 +262,7 @@ body.admin-body {
 }
 
 .admin-nav__badge {
-    background: rgba(79, 70, 229, 0.2);
+    background: rgba(252, 163, 17, 0.2);
     color: #a5b4fc;
     font-size: 0.68rem;
     font-weight: 600;
@@ -314,10 +324,10 @@ body.admin-body {
     color: var(--adm-text);
 }
 .admin-sidebar__link.active {
-    background: rgba(79, 70, 229, 0.18);
+    background: rgba(252, 163, 17, 0.18);
     color: #ffffff;
     font-weight: 600;
-    border: 1px solid rgba(79, 70, 229, 0.35);
+    border: 1px solid rgba(252, 163, 17, 0.35);
 }
 .admin-sidebar__link.active svg {
     stroke: #818cf8;
@@ -465,7 +475,7 @@ body.admin-body {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    background: linear-gradient(90deg, #fca311, #e5920a);
     opacity: 0.7;
 }
 
@@ -551,12 +561,12 @@ body.admin-body {
     border-color: var(--adm-text-muted);
 }
 .admin-btn-action.primary {
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(124, 58, 237, 0.3));
+    background: linear-gradient(135deg, rgba(252, 163, 17, 0.3), rgba(124, 58, 237, 0.3));
     border-color: rgba(99, 102, 241, 0.5);
     color: #e0e7ff;
 }
 .admin-btn-action.primary:hover {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #ffffff;
 }
 
@@ -617,7 +627,7 @@ body.admin-body {
 .admin-bar-fill {
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    background: linear-gradient(90deg, #fca311, #e5920a);
     transition: width 0.4s ease;
 }
 
@@ -868,10 +878,10 @@ body.admin-body {
 .status-in_review::before { background: #f59e0b; }
 
 .status-contacted { background: rgba(124, 58, 237, 0.15); color: #c4b5fd; }
-.status-contacted::before { background: #7c3aed; }
+.status-contacted::before { background: #e5920a; }
 
 .status-qualified { background: rgba(99, 102, 241, 0.15); color: #a5b4fc; }
-.status-qualified::before { background: #6366f1; }
+.status-qualified::before { background: #fca311; }
 
 .status-proposal_sent { background: rgba(14, 165, 233, 0.15); color: #7dd3fc; }
 .status-proposal_sent::before { background: #0ea5e9; }
@@ -1459,8 +1469,8 @@ body.admin-body {
 }
 .admin-dropzone:hover, .admin-dropzone.is-dragover, .admin-dropzone:focus-visible {
     border-color: var(--adm-primary);
-    background: rgba(79, 70, 229, 0.08);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    background: rgba(252, 163, 17, 0.08);
+    box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.15);
 }
 .admin-dropzone__icon {
     margin-bottom: 0.75rem;
@@ -1494,7 +1504,7 @@ body.admin-body {
 .admin-progress-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #4f46e5, #38bdf8);
+    background: linear-gradient(90deg, #fca311, #38bdf8);
     transition: width 0.3s ease;
 }
 
@@ -1697,8 +1707,8 @@ body.admin-body {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    background: rgba(79, 70, 229, 0.15);
-    border: 1px solid rgba(79, 70, 229, 0.3);
+    background: rgba(252, 163, 17, 0.15);
+    border: 1px solid rgba(252, 163, 17, 0.3);
     color: #c7d2fe;
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
@@ -1730,7 +1740,7 @@ body.admin-body {
 }
 .admin-picker-item.selected {
     border-color: var(--adm-primary);
-    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 0 2px rgba(252, 163, 17, 0.3);
 }
 .admin-picker-thumb {
     height: 110px;
@@ -1852,10 +1862,10 @@ body.admin-body {
     border-color: #334155;
 }
 .admin-subnav-btn.active {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    background: linear-gradient(135deg, #fca311, #e5920a);
     color: #fff;
     border-color: transparent;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 2px 8px rgba(252, 163, 17, 0.35);
 }
 .admin-subnav-badge {
     background: rgba(15, 23, 42, 0.6);
@@ -1994,7 +2004,7 @@ body.admin-body {
     font-weight: 700;
     text-transform: uppercase;
     color: #818cf8;
-    background: rgba(79, 70, 229, 0.15);
+    background: rgba(252, 163, 17, 0.15);
     padding: 0.15rem 0.45rem;
     border-radius: 4px;
     margin-bottom: 0.35rem;
@@ -2249,7 +2259,7 @@ body.admin-body {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #6366f1;
+    background: #fca311;
     position: absolute;
     left: 6px;
     top: 14px;
@@ -2330,10 +2340,14 @@ body.admin-body {
 @media (max-width: 640px) {
     .admin-metrics-grid { grid-template-columns: 1fr; }
     .admin-insights-grid { grid-template-columns: 1fr; }
-    .admin-modal { max-height: 95vh; }
+    .admin-media-grid { grid-template-columns: 1fr; }
+    .admin-modal { max-height: 95vh; margin: 0.75rem; width: calc(100% - 1.5rem); }
     .admin-drawer { max-width: 100%; }
     .admin-time-range-bar { flex-direction: column; align-items: flex-start; }
     .admin-notif-dropdown { width: calc(100vw - 2rem); right: -60px; }
+    .admin-dropzone { padding: 1.5rem 1rem; }
+    .admin-toolbar { flex-direction: column; align-items: stretch; }
+    .admin-filter-group { flex-wrap: wrap; }
 }
 
 

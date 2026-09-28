@@ -1,7 +1,7 @@
 ﻿{
-  "name": "softify-website",
+  "name": "versaly-website",
   "version": "1.0.0",
-  "description": "softify - Modern Software Company Website & Enquiry System",
+  "description": "versaly - Modern Software Company Website & Enquiry System",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -15,7 +15,7 @@
     "lead-generation",
     "enquiry-system"
   ],
-  "author": "softify",
+  "author": "versaly",
   "license": "ISC"
 }
 

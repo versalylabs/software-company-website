@@ -1,11 +1,11 @@
-﻿{
-  "name": "softify — Business Software",
-  "short_name": "softify",
+{
+  "name": "versaly — Business Software",
+  "short_name": "versaly",
   "description": "Purpose-built business software for healthcare, finance, manufacturing, hospitality, and retail.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
+  "background_color": "#14213d",
+  "theme_color": "#14213d",
   "icons": [
     {
       "src": "/assets/icons/icon-192.svg",

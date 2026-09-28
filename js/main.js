@@ -1,5 +1,5 @@
 /**
- * softify Main UI & Navigation Controller
+ * versaly Main UI & Navigation Controller
  */
 
 const navToggle = document.querySelector('.nav-toggle');
@@ -59,7 +59,7 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Reveal elements setup (Harmonized with softifyMotion)
+// Reveal elements setup (Harmonized with versalyMotion)
 document.addEventListener('DOMContentLoaded', () => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -1,5 +1,5 @@
 ﻿# ==========================================
-# softify Robots Configuration
+# versaly Robots Configuration
 # ==========================================
 
 User-agent: *
@@ -11,5 +11,5 @@ Disallow: /test/
 Disallow: /api/
 
 # Sitemap Location
-Sitemap: https://softify.example.com/sitemap.xml
+Sitemap: https://versaly.example.com/sitemap.xml
 

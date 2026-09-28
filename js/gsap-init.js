@@ -1,5 +1,5 @@
 /**
- * softify GSAP Integration Engine (js/gsap-init.js)
+ * versaly GSAP Integration Engine (js/gsap-init.js)
  * Coordinates hero choreography, elegant text/image reveals, subtle product showcases,
  * and the interactive 'HOW WE WORK' Showreel Theater.
  * Fast, minimal, professional, zero-duplication, and strictly respects prefers-reduced-motion.
@@ -25,7 +25,7 @@
                 'Constraint identification & zero-assumption data schemas',
                 'Functional prototype alignment with key stakeholders'
             ],
-            uri: 'softify://pipeline/01-understand.flow',
+            uri: 'versaly://pipeline/01-understand.flow',
             renderGraphic: () => `
                 <div class="sr-visual-card">
                     <div class="sr-topology-grid">
@@ -64,7 +64,7 @@
                 'High-density data layouts optimized for speed & clarity',
                 'Unified component library with reusable design tokens'
             ],
-            uri: 'softify://pipeline/02-design.system',
+            uri: 'versaly://pipeline/02-design.system',
             renderGraphic: () => `
                 <div class="sr-visual-card">
                     <div class="sr-terminal-box sr-anim-node" style="margin-bottom:1rem;">
@@ -107,14 +107,14 @@
                 'Modular micro-services & zero runtime bloat',
                 'Isolated staging sandboxes for client review'
             ],
-            uri: 'softify://pipeline/03-build.engine',
+            uri: 'versaly://pipeline/03-build.engine',
             renderGraphic: () => `
                 <div class="sr-visual-card">
                     <div class="sr-terminal-box sr-anim-node">
-                        <div class="sr-terminal-line success">✓ Compiling @softify/core [12ms]</div>
+                        <div class="sr-terminal-line success">✓ Compiling @versaly/core [12ms]</div>
                         <div class="sr-terminal-line success">✓ API Security & Honeypot Filters initialized</div>
                         <div class="sr-terminal-line success">✓ Automated Test Runner: 108 / 108 tests passing</div>
-                        <div class="sr-terminal-line highlight">🚀 Staging sandbox deployed: https://preview.softify.io</div>
+                        <div class="sr-terminal-line highlight">🚀 Staging sandbox deployed: https://preview.versaly.io</div>
                     </div>
                     <div class="sr-topology-grid" style="margin-top:1rem;margin-bottom:0;">
                         <div class="sr-topology-node sr-anim-node">
@@ -144,7 +144,7 @@
                 'Database indexing & sub-millisecond query tuning',
                 'Direct feedback loops and quarterly capability upgrades'
             ],
-            uri: 'softify://pipeline/04-improve.telemetry',
+            uri: 'versaly://pipeline/04-improve.telemetry',
             renderGraphic: () => `
                 <div class="sr-visual-card">
                     <div class="sr-terminal-box sr-anim-node" style="margin-bottom:1rem;">
@@ -380,10 +380,10 @@
             getCurrent: () => currentStage
         };
 
-        window.softifyHowShowreel = controller;
-        window.softifyShowreelNext = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.next(); };
-        window.softifyShowreelPrev = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.prev(); };
-        window.softifyShowreelGo = (idx, e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.goTo(idx); };
+        window.versalyHowShowreel = controller;
+        window.versalyShowreelNext = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.next(); };
+        window.versalyShowreelPrev = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.prev(); };
+        window.versalyShowreelGo = (idx, e) => { if (e) { e.preventDefault(); e.stopPropagation(); } controller.goTo(idx); };
     }
 
     /**
@@ -568,14 +568,15 @@
     }
 
     // Public API
-    const softifyGSAP = {
+    const versalyGSAP = {
         init: initGSAP,
         initHowShowreel: initHowShowreel,
         isReducedMotion: isReducedMotion
     };
 
     if (typeof window !== 'undefined') {
-        window.softifyGSAP = softifyGSAP;
+        window.versalyGSAP = versalyGSAP;
+        window.softifyGSAP = versalyGSAP;
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initGSAP);
@@ -585,6 +586,6 @@
     }
 
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = softifyGSAP;
+        module.exports = versalyGSAP;
     }
 })();

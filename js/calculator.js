@@ -1,5 +1,5 @@
 ﻿/**
- * softify ROI & Value Calculator Engine (js/calculator.js) — Phase 13
+ * versaly ROI & Value Calculator Engine (js/calculator.js) — Phase 13
  * Provides dynamic recalculation of hours saved, dollar efficiency, and ROI multipliers,
  * with animated numeral displays and URL parameter generator for demo booking handoff.
  */
@@ -103,6 +103,6 @@
     }
 
     if (typeof window !== 'undefined') {
-        window.softifyCalculator = { init: initCalculator };
+        window.versalyCalculator = { init: initCalculator };
     }
 })();

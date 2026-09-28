@@ -1,21 +1,7 @@
 [
   {
-    "id": "act_1789426070303_1ccbac",
-    "timestamp": "2026-09-14T22:47:50.303Z",
-    "action": "lead_received",
-    "category": "leads",
-    "details": {
-      "ref_id": "softify-2026-8C7B7C",
-      "name": "Ted Khalwale",
-      "form_type": "demo_request",
-      "product": "FinanceFlow"
-    },
-    "user": "leads",
-    "ip": "127.0.0.1"
-  },
-  {
-    "id": "act_1789388298210_1a9805",
-    "timestamp": "2026-09-14T12:18:18.210Z",
+    "id": "act_1790635759629_0bfe54",
+    "timestamp": "2026-09-28T22:49:19.630Z",
     "action": "notifications_cleared",
     "category": "system",
     "details": {
@@ -25,24 +11,24 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388298181_b00258",
-    "timestamp": "2026-09-14T12:18:18.181Z",
+    "id": "act_1790635759625_e2fb98",
+    "timestamp": "2026-09-28T22:49:19.625Z",
     "action": "webhook_deleted",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1789388298047_61a00d",
+      "webhook_id": "wh_1790635759584_256c1e",
       "name": "Slack Alerts Integration Enterprise"
     },
     "user": "settings",
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388298148_b08255",
-    "timestamp": "2026-09-14T12:18:18.148Z",
+    "id": "act_1790635759617_8751c2",
+    "timestamp": "2026-09-28T22:49:19.617Z",
     "action": "webhook_tested",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1789388298047_61a00d",
+      "webhook_id": "wh_1790635759584_256c1e",
       "name": "Slack Alerts Integration Enterprise",
       "status": 405
     },
@@ -50,24 +36,24 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388298087_db23e7",
-    "timestamp": "2026-09-14T12:18:18.087Z",
+    "id": "act_1790635759600_bf65a4",
+    "timestamp": "2026-09-28T22:49:19.600Z",
     "action": "webhook_updated",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1789388298047_61a00d",
+      "webhook_id": "wh_1790635759584_256c1e",
       "name": "Slack Alerts Integration Enterprise"
     },
     "user": "settings",
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388298057_160b48",
-    "timestamp": "2026-09-14T12:18:18.057Z",
+    "id": "act_1790635759587_8e7b5c",
+    "timestamp": "2026-09-28T22:49:19.587Z",
     "action": "webhook_created",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1789388298047_61a00d",
+      "webhook_id": "wh_1790635759584_256c1e",
       "name": "Slack Alerts Integration",
       "type": "slack",
       "url": "http://localhost:3456/api/health"
@@ -76,12 +62,12 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388297912_9ca178",
-    "timestamp": "2026-09-14T12:18:17.912Z",
+    "id": "act_1790635759565_c78689",
+    "timestamp": "2026-09-28T22:49:19.565Z",
     "action": "lead_received",
     "category": "leads",
     "details": {
-      "ref_id": "softify-2026-384602",
+      "ref_id": "versaly-2026-F25EBF",
       "name": "Webhook Verification Lead",
       "form_type": "contact",
       "product": "General"
@@ -90,12 +76,12 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1789388297858_c1dbdc",
-    "timestamp": "2026-09-14T12:18:17.858Z",
+    "id": "act_1790635759547_446285",
+    "timestamp": "2026-09-28T22:49:19.547Z",
     "action": "audit_log_cleared",
     "category": "system",
     "details": {
-      "cleared_at": "2026-09-14T12:18:17.857Z"
+      "cleared_at": "2026-09-28T22:49:19.546Z"
     },
     "user": "admin",
     "ip": "::1"

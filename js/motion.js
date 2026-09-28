@@ -1,5 +1,5 @@
 /**
- * softify Motion Engine (js/motion.js) — Phase 11 Upgrade
+ * versaly Motion Engine (js/motion.js) — Phase 11 Upgrade
  * High-performance, lightweight, restrained animation and interaction module.
  * Zero-dependency, accessible, and strictly respects prefers-reduced-motion.
  */
@@ -287,7 +287,7 @@
     }
 
     // Public API
-    const softifyMotion = {
+    const versalyMotion = {
         animate,
         inView,
         stagger,
@@ -299,8 +299,8 @@
     };
 
     if (typeof window !== 'undefined') {
-        window.softifyMotion = softifyMotion;
-        window.motion = softifyMotion; // Alias for standard usage
+        window.versalyMotion = versalyMotion;
+        window.motion = versalyMotion; // Alias for standard usage
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initDeclarative);
@@ -310,6 +310,6 @@
     }
 
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = softifyMotion;
+        module.exports = versalyMotion;
     }
 })();

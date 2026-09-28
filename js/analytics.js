@@ -1,5 +1,5 @@
-﻿/**
- * softify Analytics & Privacy-First Conversion Tracking Engine
+/**
+ * versaly Analytics & Privacy-First Conversion Tracking Engine
  * 
  * Supports Google Analytics 4 (GA4) with zero PII leakage, automatic CTA delegation,
  * product interest metrics, conversion funnel tracking, and graceful fallback.
@@ -19,7 +19,7 @@
         // Set to true to log tracked events and funnel steps to the browser console
         debug: false,
         
-        // If true, requires explicit consent via softifyAnalytics.setConsent(true) before sending events
+        // If true, requires explicit consent via versalyAnalytics.setConsent(true) before sending events
         requireConsent: false,
         
         // If true, disables external tracking when browser Do Not Track (DNT) is active
@@ -27,7 +27,7 @@
     };
 
     // Merge global configuration if predefined
-    var config = Object.assign({}, DEFAULT_CONFIG, window.softifyAnalyticsConfig || {});
+    var config = Object.assign({}, DEFAULT_CONFIG, window.versalyAnalyticsConfig || {});
 
     // Internal state
     var state = {
@@ -147,17 +147,17 @@
 
             state.providerLoaded = true;
             if (config.debug) {
-                console.log('[softifyAnalytics] GA4 Provider loaded successfully (' + config.measurementId + ')');
+                console.log('[versalyAnalytics] GA4 Provider loaded successfully (' + config.measurementId + ')');
             }
         } catch (e) {
             if (config.debug) {
-                console.warn('[softifyAnalytics] Failed to load provider script:', e);
+                console.warn('[versalyAnalytics] Failed to load provider script:', e);
             }
         }
     }
 
     // ── Public API ──────────────────────────────────────────────────────────
-    var softifyAnalytics = {
+    var versalyAnalytics = {
         /**
          * Initialize analytics engine with custom options
          * @param {Object} options 
@@ -169,7 +169,7 @@
 
             // Restore consent from localStorage if previously stored
             try {
-                var storedConsent = localStorage.getItem('softify_analytics_consent');
+                var storedConsent = localStorage.getItem('versaly_analytics_consent');
                 if (storedConsent === 'granted') {
                     state.consentGranted = true;
                 }
@@ -178,7 +178,7 @@
             state.initialized = true;
 
             if (config.debug) {
-                console.log('[softifyAnalytics] Initialized with config:', {
+                console.log('[versalyAnalytics] Initialized with config:', {
                     enabled: config.enabled,
                     measurementId: config.measurementId ? '[CONFIGURED]' : '[NOT SET]',
                     debug: config.debug,
@@ -199,7 +199,7 @@
         setConsent: function (granted) {
             state.consentGranted = !!granted;
             try {
-                localStorage.setItem('softify_analytics_consent', granted ? 'granted' : 'denied');
+                localStorage.setItem('versaly_analytics_consent', granted ? 'granted' : 'denied');
             } catch (e) {}
 
             if (granted) {
@@ -207,7 +207,7 @@
             }
 
             if (config.debug) {
-                console.log('[softifyAnalytics] Consent updated:', granted ? 'granted' : 'denied');
+                console.log('[versalyAnalytics] Consent updated:', granted ? 'granted' : 'denied');
             }
         },
 
@@ -230,14 +230,14 @@
             var safeParams = sanitizeParams(params);
 
             if (config.debug) {
-                console.log('[softifyAnalytics Event]', eventName, safeParams);
+                console.log('[versalyAnalytics Event]', eventName, safeParams);
             }
 
             if (isTrackingAllowed() && typeof window.gtag === 'function') {
                 try {
                     window.gtag('event', eventName, safeParams);
                 } catch (e) {
-                    if (config.debug) console.warn('[softifyAnalytics] gtag dispatch failed:', e);
+                    if (config.debug) console.warn('[versalyAnalytics] gtag dispatch failed:', e);
                 }
             }
         },
@@ -407,7 +407,7 @@
                 var extra = {};
                 if (prodId) extra.product_id = prodId;
 
-                softifyAnalytics.trackCTA(ctaName, ctaLoc, extra);
+                versalyAnalytics.trackCTA(ctaName, ctaLoc, extra);
             });
         }
     };
@@ -416,19 +416,20 @@
     if (typeof document !== 'undefined' && document.readyState) {
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function () {
-                softifyAnalytics.init();
+                versalyAnalytics.init();
             });
         } else {
-            softifyAnalytics.init();
+            versalyAnalytics.init();
         }
     }
 
     // Expose to global window / environment
     if (typeof window !== 'undefined') {
-        window.softifyAnalytics = softifyAnalytics;
+        window.versalyAnalytics = versalyAnalytics;
+        window.softifyAnalytics = versalyAnalytics;
     }
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = softifyAnalytics;
+        module.exports = versalyAnalytics;
     }
 
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), typeof document !== 'undefined' ? document : {});

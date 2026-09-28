@@ -1,5 +1,5 @@
 /* ==========================================================
-   products.js — softify Phase 9
+   products.js — versaly Phase 9
    Renders catalogue cards, spotlight strips, and full detail pages.
    All products are in-development; no live/deployed language used.
    ========================================================== */
@@ -182,7 +182,7 @@ function renderScreenshot(accent, screen, isHero = false) {
     + '</div>'
     + '<div class="pd-browser-url">'
     + '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>'
-    + 'https://softify.cloud/app/' + esc((screen.layout || 'dashboard').toLowerCase())
+    + 'https://versaly.cloud/app/' + esc((screen.layout || 'dashboard').toLowerCase())
     + '</div>'
     + '</div>'
     + '<div class="pd-browser-content">'
@@ -295,13 +295,13 @@ function initCatalog() {
     updateResultsCount(products.length, products.length);
 
     // Track catalogue view
-    if (window.softifyAnalytics) {
-      softifyAnalytics.trackCatalogueView(products.length);
+    if (window.versalyAnalytics) {
+      versalyAnalytics.trackCatalogueView(products.length);
     }
 
     // Trigger Motion system on cards
-    if (window.softifyMotion) {
-      softifyMotion.init();
+    if (window.versalyMotion) {
+      versalyMotion.init();
     }
 
     // Wire filter + search controls
@@ -363,8 +363,8 @@ function wireControls(products) {
       filterBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       currentFilter = btn.dataset.filter || 'all';
-      if (window.softifyAnalytics) {
-        softifyAnalytics.trackProductCategoryFilter(currentFilter);
+      if (window.versalyAnalytics) {
+        versalyAnalytics.trackProductCategoryFilter(currentFilter);
       }
       applyFilters();
     });
@@ -379,8 +379,8 @@ function wireControls(products) {
       }
       if (searchTimer) clearTimeout(searchTimer);
       searchTimer = setTimeout(function() {
-        if (window.softifyAnalytics && currentQuery.trim()) {
-          softifyAnalytics.trackProductSearch(currentQuery.trim().length);
+        if (window.versalyAnalytics && currentQuery.trim()) {
+          versalyAnalytics.trackProductSearch(currentQuery.trim().length);
         }
       }, 500);
       applyFilters();
@@ -403,8 +403,8 @@ function wireControls(products) {
       if (allBtn) allBtn.classList.add('active');
       if (searchInput) searchInput.value = '';
       if (clearBtn) clearBtn.classList.remove('visible');
-      if (window.softifyAnalytics) {
-        softifyAnalytics.trackProductCategoryFilter('all');
+      if (window.versalyAnalytics) {
+        versalyAnalytics.trackProductCategoryFilter('all');
       }
       applyFilters();
     });
@@ -427,12 +427,12 @@ function initDetail() {
     if (!product) { container.innerHTML = '<p>Product not found. <a href="products.html">Back to Products</a></p>'; return; }
 
     // Track product detail view
-    if (window.softifyAnalytics) {
-      softifyAnalytics.trackProductView(product);
+    if (window.versalyAnalytics) {
+      versalyAnalytics.trackProductView(product);
     }
 
     // Update page title
-    document.title = esc(product.name) + ' — softify';
+    document.title = esc(product.name) + ' — versaly';
 
     var c = product.accent || '#4f46e5';
     var bg = accentBg(c);
@@ -608,7 +608,7 @@ function renderDetail(p, related, screens, primaryScreen, c, bg) {
 
   // Dynamically update document title & SEO metadata
   try {
-    document.title = p.name + ' — softify | ' + p.category + ' Software';
+    document.title = p.name + ' — versaly | ' + p.category + ' Software';
     var metaDesc = document.getElementById('page-meta-desc');
     if (metaDesc) metaDesc.setAttribute('content', p.tagline || p.problem || p.fullDescription);
 
@@ -626,8 +626,8 @@ function renderDetail(p, related, screens, primaryScreen, c, bg) {
         "operatingSystem": "Web-based, Cloud-native",
         "author": {
           "@type": "Organization",
-          "name": "softify",
-          "url": "https://softify.example.com/"
+          "name": "versaly",
+          "url": "https://versaly.example.com/"
         }
       });
       document.head.appendChild(schemaScript);
