@@ -598,7 +598,6 @@ body.contact-page .pg-hero,
 [data-theme="dark"] .ab-values__title,
 [data-theme="dark"] .ab-values__header h2,
 [data-theme="dark"] .ab-mission__title,
-[data-theme="dark"] .px-cta-heading,
 [data-theme="dark"] .pd-hero__name,
 [data-theme="dark"] .pd-section__title,
 [data-theme="dark"] .cmp-cta-title,
@@ -612,6 +611,33 @@ body.contact-page .pg-hero,
   color: #fca311 !important;
   font-family: 'Glorase', 'Playfair Display', Georgia, serif !important;
   font-weight: 400 !important;
+}
+
+/* Amber CTA Banners (Products & About): Ensure high contrast deep navy typography on amber */
+[data-theme="dark"] .px-cta-heading,
+[data-theme="dark"] .pg-cta__title {
+  color: #14213d !important;
+  font-family: 'Glorase', 'Playfair Display', Georgia, serif !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .px-cta-subtitle,
+[data-theme="dark"] .pg-cta__sub {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="dark"] .px-cta-btn,
+[data-theme="dark"] .pg-cta__btn {
+  background: #14213d !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .px-cta-btn:hover,
+[data-theme="dark"] .pg-cta__btn:hover {
+  background: #000814 !important;
+  color: #ffffff !important;
 }
 
 /* Crisp White Major Display Headings */

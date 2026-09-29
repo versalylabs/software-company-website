@@ -571,6 +571,13 @@ button, input, textarea, select {
     visibility: visible;
 }
 
+.hn-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
 .nav-panel {
     position: fixed;
     top: 0;
@@ -581,10 +588,11 @@ button, input, textarea, select {
     border-left: 1px solid var(--color-border);
     box-shadow: var(--shadow-xl);
     flex-direction: column;
-    padding: var(--space-2xl) var(--space-xl);
+    padding: 6.75rem var(--space-xl) var(--space-2xl);
     gap: var(--space-lg);
     transition: right var(--transition-slow);
     z-index: 950;
+    overflow-y: auto;
 }
 
 .nav-panel.is-open {
@@ -2617,6 +2625,7 @@ button, input, textarea, select {
 @media (max-width: var(--breakpoint-md)) {
     .nav-panel {
         width: min(420px, 90vw);
+        padding-top: 6.75rem !important;
     }
 
     .nav-panel .nav-menu {

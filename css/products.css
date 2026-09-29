@@ -492,23 +492,35 @@
 .px-cta-inner { position: relative; z-index: 1; max-width: 40rem; margin-inline: auto; }
 .px-cta-heading {
     font-family: 'Glorase', 'Playfair Display', Georgia, serif;
-    font-size: clamp(1.5rem,3vw,2.2rem);
-    font-weight: 400;
-    color: #fca311;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    font-weight: 700;
+    color: #14213d !important;
     letter-spacing: -0.01em;
     margin: 0 0 0.75rem;
 }
-.px-cta-subtitle { font-size: 0.95rem; color:rgba(255,255,255,0.82); line-height:1.65; margin:0 0 2rem; }
+.px-cta-subtitle {
+    font-size: 1rem;
+    color: #1e293b !important;
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    font-weight: 500;
+}
 .px-cta-btn {
     display: inline-flex; align-items: center;
     padding: 0.9rem 2rem;
-    background: #fff; color: #fca311;
+    background: #14213d !important;
+    color: #ffffff !important;
     font-size: 0.95rem; font-weight: 700;
     border-radius: 8px; text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(20, 33, 61, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
-.px-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.px-cta-btn:hover {
+    background: #000814 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(20, 33, 61, 0.4);
+}
 
 /* ==========================================================
    PRODUCT DETAIL PAGE
