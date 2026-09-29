@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -25,8 +25,12 @@
             <form id="admin-login-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
                 <div class="admin-form-group">
                     <label class="admin-form-label" for="admin-password">Admin Password</label>
-                    <div class="admin-input-wrap">
+                    <div class="admin-input-wrap admin-input-wrap--password">
                         <input type="password" id="admin-password" class="admin-input" placeholder="••••••••••••" required autofocus autocomplete="current-password">
+                        <button type="button" id="toggle-admin-password" class="admin-pwd-toggle-btn" aria-label="Show password" title="Toggle password visibility">
+                            <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        </button>
                     </div>
                 </div>
                 <button type="submit" id="login-submit-btn" class="admin-btn">
@@ -873,15 +877,33 @@
                                 <div class="admin-form-grid-3">
                                     <div class="admin-form-group">
                                         <label class="admin-form-label" for="pwd-current">Current Password</label>
-                                        <input type="password" id="pwd-current" class="admin-input" placeholder="Enter current password" required>
+                                        <div class="admin-input-wrap admin-input-wrap--password">
+                                            <input type="password" id="pwd-current" class="admin-input" placeholder="Enter current password" required>
+                                            <button type="button" class="admin-pwd-toggle-btn" data-target="pwd-current" aria-label="Show password" title="Toggle password visibility">
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="admin-form-group">
                                         <label class="admin-form-label" for="pwd-new">New Password</label>
-                                        <input type="password" id="pwd-new" class="admin-input" placeholder="Minimum 6 characters" required>
+                                        <div class="admin-input-wrap admin-input-wrap--password">
+                                            <input type="password" id="pwd-new" class="admin-input" placeholder="Minimum 6 characters" required>
+                                            <button type="button" class="admin-pwd-toggle-btn" data-target="pwd-new" aria-label="Show password" title="Toggle password visibility">
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="admin-form-group">
                                         <label class="admin-form-label" for="pwd-confirm">Confirm New Password</label>
-                                        <input type="password" id="pwd-confirm" class="admin-input" placeholder="Re-enter new password" required>
+                                        <div class="admin-input-wrap admin-input-wrap--password">
+                                            <input type="password" id="pwd-confirm" class="admin-input" placeholder="Re-enter new password" required>
+                                            <button type="button" class="admin-pwd-toggle-btn" data-target="pwd-confirm" aria-label="Show password" title="Toggle password visibility">
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                                <svg class="admin-pwd-eye-icon admin-pwd-eye-icon--hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="button" id="btn-change-password" class="admin-btn-secondary" style="color:#ef4444; border-color:rgba(239,68,68,0.4); margin-top:0.5rem;">

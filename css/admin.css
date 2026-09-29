@@ -128,6 +128,44 @@ body.admin-body {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+.admin-input-wrap--password .admin-input {
+    padding-right: 2.75rem;
+}
+
+.admin-pwd-toggle-btn {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--adm-text-subtle);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem;
+    border-radius: 6px;
+    transition: color 0.2s, background-color 0.2s, transform 0.15s;
+    line-height: 1;
+    z-index: 3;
+}
+
+.admin-pwd-toggle-btn:hover {
+    color: var(--adm-primary);
+    background: rgba(252, 163, 17, 0.12);
+}
+
+.admin-pwd-toggle-btn:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.admin-pwd-toggle-btn:focus-visible {
+    outline: 2px solid var(--adm-primary);
+    outline-offset: 1px;
 }
 
 .admin-input {

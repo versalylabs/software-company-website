@@ -374,14 +374,20 @@
     }
 
     function getToken() {
-        return sessionStorage.getItem(TOKEN_KEY);
+        try {
+            return sessionStorage.getItem(TOKEN_KEY) || localStorage.getItem(TOKEN_KEY);
+        } catch (e) {
+            return null;
+        }
     }
 
     function setToken(token) {
         if (token) {
-            sessionStorage.setItem(TOKEN_KEY, token);
+            try { sessionStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+            try { localStorage.setItem(TOKEN_KEY, token); } catch (e) {}
         } else {
-            sessionStorage.removeItem(TOKEN_KEY);
+            try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {}
+            try { localStorage.removeItem(TOKEN_KEY); } catch (e) {}
         }
     }
 
@@ -3497,6 +3503,40 @@
         }
     }
 
+    // --- Password Visibility Toggles ---
+    function setupPasswordToggles() {
+        const toggleButtons = document.querySelectorAll('.admin-pwd-toggle-btn');
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetId = btn.getAttribute('data-target');
+                let input = null;
+                if (targetId) {
+                    input = document.getElementById(targetId);
+                }
+                if (!input) {
+                    input = btn.closest('.admin-input-wrap')?.querySelector('input');
+                }
+                if (!input) return;
+
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+
+                const showIcon = btn.querySelector('.admin-pwd-eye-icon--show');
+                const hideIcon = btn.querySelector('.admin-pwd-eye-icon--hide');
+                if (showIcon && hideIcon) {
+                    showIcon.style.display = isPassword ? 'none' : 'block';
+                    hideIcon.style.display = isPassword ? 'block' : 'none';
+                }
+                const label = isPassword ? 'Hide password' : 'Show password';
+                btn.setAttribute('aria-label', label);
+                btn.setAttribute('title', label);
+                input.focus();
+            });
+        });
+    }
+
     // --- Global Event Attachments ---
     function setupEvents() {
         // Notification Center bindings (Phase 18)
@@ -3624,6 +3664,7 @@
                 }
             });
         }
+        setupPasswordToggles();
 
         // Header bindings
         if (btnLogout) {

@@ -609,19 +609,53 @@ function executeSingleWebhook(hook, eventType, eventData) {
 // --- Admin Session Store & Rate Limiter ---
 const adminSessions = new Map();
 const adminLoginAttempts = new Map();
+const revokedAdminTokens = new Set();
 const SESSIONS_FILE = path.resolve(__dirname, 'data', '.sessions.json');
+const AUTH_SECRET = process.env.ADMIN_JWT_SECRET || 'versaly_admin_stateless_hmac_secret_key_2026_98a7sd6f';
+
+function generateHmacToken(payloadObj) {
+    const payloadStr = Buffer.from(JSON.stringify(payloadObj)).toString('base64url');
+    const sig = crypto.createHmac('sha256', AUTH_SECRET).update(payloadStr).digest('base64url');
+    return `${payloadStr}.${sig}`;
+}
+
+function verifyHmacToken(token) {
+    if (!token || typeof token !== 'string') return null;
+    if (revokedAdminTokens.has(token)) return null;
+    const parts = token.split('.');
+    if (parts.length !== 2) return null;
+    const [payloadStr, sig] = parts;
+    if (!payloadStr || !sig) return null;
+    try {
+        const expectedSig = crypto.createHmac('sha256', AUTH_SECRET).update(payloadStr).digest('base64url');
+        const bufSig = Buffer.from(sig);
+        const bufExpected = Buffer.from(expectedSig);
+        if (bufSig.length !== bufExpected.length || !crypto.timingSafeEqual(bufSig, bufExpected)) {
+            return null;
+        }
+        const payload = JSON.parse(Buffer.from(payloadStr, 'base64url').toString('utf8'));
+        if (payload && payload.exp && payload.exp > Date.now()) {
+            return payload;
+        }
+    } catch (e) {
+        return null;
+    }
+    return null;
+}
 
 function loadSessionsFromDisk() {
     try {
         if (fs.existsSync(SESSIONS_FILE)) {
             const raw = JSON.parse(fs.readFileSync(SESSIONS_FILE, 'utf8'));
-            if (Array.isArray(raw)) {
-                const now = Date.now();
-                raw.forEach(s => {
-                    if (s && s.token && s.expiresAt > now) {
-                        adminSessions.set(s.token, { createdAt: s.createdAt, expiresAt: s.expiresAt });
-                    }
-                });
+            const list = Array.isArray(raw) ? raw : (raw.sessions || []);
+            const now = Date.now();
+            list.forEach(s => {
+                if (s && s.token && s.expiresAt > now) {
+                    adminSessions.set(s.token, { createdAt: s.createdAt, expiresAt: s.expiresAt });
+                }
+            });
+            if (raw.revoked && Array.isArray(raw.revoked)) {
+                raw.revoked.forEach(t => revokedAdminTokens.add(t));
             }
         }
     } catch (e) {}
@@ -637,7 +671,8 @@ function saveSessionsToDisk() {
                 arr.push({ token, createdAt: data.createdAt, expiresAt: data.expiresAt });
             }
         }
-        fs.writeFileSync(SESSIONS_FILE, JSON.stringify(arr), 'utf8');
+        const revokedArr = Array.from(revokedAdminTokens);
+        fs.writeFileSync(SESSIONS_FILE, JSON.stringify({ sessions: arr, revoked: revokedArr }), 'utf8');
     } catch (e) {}
 }
 
@@ -656,11 +691,15 @@ function isLoginRateLimited(ip) {
 }
 
 function createAdminSession() {
-    const token = crypto.randomBytes(32).toString('hex');
     const now = Date.now();
+    const token = generateHmacToken({
+        role: 'admin',
+        ts: now,
+        exp: now + 7 * 24 * 60 * 60 * 1000 // 7 days valid
+    });
     adminSessions.set(token, {
         createdAt: now,
-        expiresAt: now + 24 * 60 * 60 * 1000 // 24 hours
+        expiresAt: now + 7 * 24 * 60 * 60 * 1000
     });
     saveSessionsToDisk();
     return token;
@@ -681,7 +720,13 @@ function isValidAdminSession(req) {
         } catch (e) {}
     }
     if (!token) return false;
+    if (revokedAdminTokens.has(token)) return false;
 
+    // 1. Stateless HMAC validation (works seamlessly across Vercel lambdas and restarts)
+    const verified = verifyHmacToken(token);
+    if (verified) return true;
+
+    // 2. In-memory / disk session fallback
     const session = adminSessions.get(token);
     if (!session) return false;
 
@@ -1146,6 +1191,7 @@ function requestHandler(req, res) {
         const authHeader = req.headers['authorization'] || '';
         const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7).trim() : req.headers['x-admin-token'];
         if (token) {
+            revokedAdminTokens.add(token);
             adminSessions.delete(token);
             saveSessionsToDisk();
         }
