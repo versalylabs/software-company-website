@@ -107,12 +107,13 @@
                 </a>
             </div>
         </aside>
+        <div id="sidebar-backdrop" class="admin-sidebar-backdrop" aria-hidden="true"></div>
 
         <!-- Main Wrapper -->
         <div class="admin-main-wrap">
             <!-- Top Header Bar -->
             <header class="admin-nav">
-                <div style="display:flex; align-items:center; gap:0.75rem;">
+                <div class="admin-nav__left">
                     <button class="admin-nav__mobile-toggle" id="sidebar-toggle-btn" aria-label="Open sidebar">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </button>
@@ -236,7 +237,7 @@
 
                     <!-- Interactive Acquisition & Conversion Trend Line Chart Card -->
                     <section class="admin-card" style="margin-bottom: 1.5rem;" aria-label="Acquisition & Conversion Trends">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                        <div class="admin-chart-card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
                             <div>
                                 <h3 class="admin-card__title" style="margin-bottom:0.2rem;">
                                     <span>Acquisition Velocity &amp; Demo Conversion Trajectory</span>
@@ -354,7 +355,7 @@
 
                     <!-- Recent Activity Feed & Audit Trail Section -->
                     <section class="admin-card" style="margin-top: 1.5rem;" aria-label="Recent Admin Activity &amp; Audit Trail">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
+                        <div class="admin-card-header-flex" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem;">
                             <div>
                                 <h3 class="admin-card__title" style="margin-bottom:0.2rem;">
                                     <span>System Activity &amp; Audit Trail</span>

@@ -465,6 +465,8 @@
 
         // Close mobile sidebar if open
         if (adminSidebar) adminSidebar.classList.remove('is-open');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        if (sidebarBackdrop) sidebarBackdrop.classList.remove('is-open');
 
         // Trigger tab specific data load if needed
         if (tabId === 'products') {
@@ -3858,12 +3860,26 @@
             });
         });
 
-        // Mobile sidebar toggle
-        if (sidebarToggleBtn && adminSidebar) {
-            sidebarToggleBtn.addEventListener('click', () => adminSidebar.classList.toggle('is-open'));
+        // Mobile sidebar toggle with backdrop
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        function closeMobileSidebar() {
+            if (adminSidebar) adminSidebar.classList.remove('is-open');
+            if (sidebarBackdrop) sidebarBackdrop.classList.remove('is-open');
         }
-        if (sidebarCloseMobile && adminSidebar) {
-            sidebarCloseMobile.addEventListener('click', () => adminSidebar.classList.remove('is-open'));
+        function toggleMobileSidebar() {
+            if (!adminSidebar) return;
+            const isOpen = adminSidebar.classList.toggle('is-open');
+            if (sidebarBackdrop) sidebarBackdrop.classList.toggle('is-open', isOpen);
+        }
+
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', toggleMobileSidebar);
+        }
+        if (sidebarCloseMobile) {
+            sidebarCloseMobile.addEventListener('click', closeMobileSidebar);
+        }
+        if (sidebarBackdrop) {
+            sidebarBackdrop.addEventListener('click', closeMobileSidebar);
         }
 
         // Quick action buttons
