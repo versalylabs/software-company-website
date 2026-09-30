@@ -1892,6 +1892,124 @@ select {
   border-color: #fca311 !important;
 }
 
+/* ── 18B. PRODUCTS CATALOGUE & DETAIL HIGH-CONTRAST ENGINE ── */
+[data-theme="dark"] .px-grid-label,
+[data-theme="dark"] .px-grid-label-wrap p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pc-card {
+  background: var(--color-bg-surface-card) !important;
+  border: 1px solid var(--color-border-medium) !important;
+}
+
+[data-theme="dark"] .pc-card__tagline {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pc-card__features li {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .pc-card__link--secondary {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pc-card__link--secondary:hover {
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .px-empty p {
+  color: #cbd5e1 !important;
+}
+
+/* Single Product Detail Page (product.html) */
+[data-theme="dark"] .pd-hero__tagline {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .pd-section__sub {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pd-problem {
+  background: #14213d !important;
+  border: 1px solid var(--color-border-medium) !important;
+  border-left: 4px solid #fca311 !important;
+}
+
+[data-theme="dark"] .pd-problem p {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .pd-cap-card {
+  background: var(--color-bg-surface-card) !important;
+  border: 1px solid var(--color-border-medium) !important;
+  box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-cap-card h3 {
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pd-cap-card p {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .pd-aud-card {
+  background: var(--color-bg-surface-card) !important;
+  border: 1px solid var(--color-border-medium) !important;
+  box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-aud-card h3 {
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pd-aud-card p {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .pd-status-banner {
+  background: var(--color-bg-surface-card) !important;
+  border: 1px solid var(--color-border-medium) !important;
+  box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-status-banner h3 {
+  color: var(--color-text-primary) !important;
+}
+
+[data-theme="dark"] .pd-status-banner p {
+  color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .pd-gallery {
+  background: #0d1629 !important;
+  border: 1px solid var(--color-border-subtle) !important;
+}
+
+[data-theme="dark"] .pd-gallery__caption {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pd-gallery__cap {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pd-cta {
+  background: linear-gradient(135deg, #14213d, #1c2e54) !important;
+  border: 1px solid var(--color-border-medium) !important;
+}
+
+[data-theme="dark"] .pd-cta__title {
+  color: #fca311 !important;
+}
+
+[data-theme="dark"] .pd-cta__sub {
+  color: #e2e8f0 !important;
+}
+
 /* ── 19. CONTACT & REQUEST DEMO CONTRAST FIXES ────────────── */
 [data-theme="dark"] .ct-form-copy p,
 [data-theme="dark"] .dm-copy__sub,

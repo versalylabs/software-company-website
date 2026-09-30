@@ -96,9 +96,9 @@
     margin: 0 0 0.4rem;
 }
 .pc-card__tagline {
-    font-size: 0.78rem;
-    color: #64748b;
-    line-height: 1.55;
+    font-size: 0.82rem;
+    color: #334155;
+    line-height: 1.6;
     margin: 0 0 1rem;
     flex: 1;
 }
@@ -114,8 +114,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.78rem;
-    color: #475569;
+    font-size: 0.8rem;
+    color: #334155;
     font-weight: 500;
 }
 .pc-card__feat-dot {
@@ -143,7 +143,17 @@
     transition: gap 0.2s ease;
 }
 .pc-card__link:hover { gap: 0.55rem; }
+.pc-card__link--secondary {
+    color: #475569;
+}
+.pc-card__link--secondary:hover {
+    color: #fca311;
+}
 .pc-card__link-arrow { font-size: 1rem; line-height: 1; }
+
+.px-grid-label {
+    color: #475569;
+}
 
 /* Old class bridge — products.js still emits .product-card and .product-category */
 .product-card { display: contents; }
@@ -214,8 +224,8 @@
     line-height: 1.1;
 }
 .px-spot-card__tagline {
-    font-size: 0.88rem;
-    color: #64748b;
+    font-size: 0.92rem;
+    color: #1e293b;
     line-height: 1.6;
     margin: 0;
 }
@@ -225,11 +235,11 @@
     flex: 1;
 }
 .px-spot-card__building-label {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #94a3b8;
+    color: #334155;
     margin-bottom: 0.6rem;
     display: block;
 }
@@ -245,8 +255,8 @@
     display: flex;
     align-items: flex-start;
     gap: 0.55rem;
-    font-size: 0.82rem;
-    color: #475569;
+    font-size: 0.85rem;
+    color: #1e293b;
     line-height: 1.5;
 }
 .px-spot-card__check {
@@ -279,9 +289,9 @@
 }
 .px-spot-card__cta:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(79,70,229,0.32); }
 .px-spot-card__secondary {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: #64748b;
+    color: #334155;
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -651,7 +661,7 @@
 }
 .pd-section__sub {
     font-size: 0.95rem;
-    color: #64748b;
+    color: #334155;
     line-height: 1.7;
     max-width: 52rem;
     margin: 0 0 2.5rem;
@@ -664,7 +674,7 @@
     padding: 2rem 2rem 2rem 2.5rem;
     border-left: 4px solid #fca311;
 }
-.pd-problem p { font-size: 0.95rem; color: #475569; line-height: 1.75; margin: 0; }
+.pd-problem p { font-size: 0.95rem; color: #1e293b; line-height: 1.75; margin: 0; }
 
 /* What we are building */
 .pd-building-list {
@@ -679,7 +689,7 @@
     align-items: flex-start;
     gap: 0.65rem;
     font-size: 0.88rem;
-    color: #374151;
+    color: #1e293b;
     line-height: 1.55;
     padding: 0.85rem 1rem;
     background: #fff;
@@ -716,7 +726,7 @@
 }
 .pd-cap-card__icon svg { width: 20px; height: 20px; }
 .pd-cap-card h3 { font-size: 0.92rem; font-weight: 700; color: #0f172a; margin: 0 0 0.35rem; }
-.pd-cap-card p  { font-size: 0.8rem; color: #64748b; line-height: 1.6; margin: 0; }
+.pd-cap-card p  { font-size: 0.85rem; color: #334155; line-height: 1.6; margin: 0; }
 
 /* Audience grid */
 .pd-audience-grid {
@@ -741,7 +751,7 @@
 }
 .pd-aud-card__icon svg { width: 22px; height: 22px; }
 .pd-aud-card h3 { font-size: 0.9rem; font-weight: 700; color: #0f172a; margin: 0 0 0.35rem; }
-.pd-aud-card p  { font-size: 0.78rem; color: #64748b; line-height: 1.55; margin: 0; }
+.pd-aud-card p  { font-size: 0.82rem; color: #334155; line-height: 1.55; margin: 0; }
 
 /* Status banner */
 .pd-status-banner {
@@ -760,7 +770,7 @@
 }
 .pd-status-banner__icon svg { width: 24px; height: 24px; }
 .pd-status-banner h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin: 0 0 0.4rem; }
-.pd-status-banner p  { font-size: 0.85rem; color: #64748b; line-height: 1.65; margin: 0; }
+.pd-status-banner p  { font-size: 0.9rem; color: #334155; line-height: 1.65; margin: 0; }
 
 /* Mockup gallery */
 .pd-gallery {

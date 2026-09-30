@@ -127,9 +127,13 @@
     const prodFeaturedImage = document.getElementById('prod-featured-image');
     const prodFeaturedPreviewImg = document.getElementById('prod-featured-preview-img');
     const prodFeaturedPreviewEmpty = document.getElementById('prod-featured-preview-empty');
+    const btnUploadFeaturedMedia = document.getElementById('btn-upload-featured-media');
+    const prodFeaturedFileInput = document.getElementById('prod-featured-file-input');
     const btnPickFeaturedMedia = document.getElementById('btn-pick-featured-media');
     const btnClearFeaturedMedia = document.getElementById('btn-clear-featured-media');
     const screenshotsContainer = document.getElementById('screenshots-container');
+    const btnUploadGalleryMedia = document.getElementById('btn-upload-gallery-media');
+    const prodGalleryFileInput = document.getElementById('prod-gallery-file-input');
     const btnAddScreenshot = document.getElementById('btn-add-screenshot');
     const btnPickGalleryMedia = document.getElementById('btn-pick-gallery-media');
 
@@ -226,6 +230,9 @@
     const pickerSelectionInfo = document.getElementById('picker-selection-info');
     const pickerCancelBtn = document.getElementById('picker-cancel-btn');
     const pickerConfirmBtn = document.getElementById('picker-confirm-btn');
+    const pickerUploadBtn = document.getElementById('picker-upload-btn');
+    const pickerFileInput = document.getElementById('picker-file-input');
+    const pickerUploadStatus = document.getElementById('picker-upload-status');
 
     // Tab 5: Content & Trust CMS Elements (Phase 9)
     let currentContent = { testimonials: [], faqs: [], stats: [], values: [], partners: [] };
@@ -788,6 +795,33 @@
     }
 
     // --- File Upload Processing ---
+    async function uploadSingleFile(file) {
+        const base64 = await readFileAsBase64(file);
+        const payload = {
+            originalName: file.name,
+            mimeType: file.type || 'image/png',
+            base64: base64,
+            size: file.size,
+            title: file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ')
+        };
+
+        const res = await authFetch('/api/admin/media/upload', {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (res.ok && data.success && data.media) {
+            const idx = currentMedia.findIndex(m => m.id === data.media.id);
+            if (idx !== -1) currentMedia[idx] = data.media;
+            else currentMedia.unshift(data.media);
+            if (badgeMediaCount) badgeMediaCount.textContent = currentMedia.length;
+            if (metricMediaTotal) metricMediaTotal.textContent = currentMedia.length;
+            return data.media;
+        } else {
+            throw new Error((data && data.error) || 'Upload error');
+        }
+    }
+
     async function uploadFiles(files) {
         if (!files || files.length === 0) return;
 
@@ -801,26 +835,8 @@
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             try {
-                const base64 = await readFileAsBase64(file);
-                const payload = {
-                    originalName: file.name,
-                    mimeType: file.type || 'image/png',
-                    base64: base64,
-                    size: file.size,
-                    title: file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ')
-                };
-
-                const res = await authFetch('/api/admin/media/upload', {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                });
-                const data = await res.json();
-
-                if (res.ok && data.success) {
-                    uploadedCount++;
-                } else {
-                    errors.push(`${file.name}: ${data.error || 'Upload error'}`);
-                }
+                await uploadSingleFile(file);
+                uploadedCount++;
             } catch (err) {
                 errors.push(`${file.name}: ${err.message}`);
             }
@@ -2292,6 +2308,28 @@
         prodFeaturedImage.addEventListener('input', () => updateFeaturedPreview(prodFeaturedImage.value));
     }
 
+    if (btnUploadFeaturedMedia && prodFeaturedFileInput) {
+        btnUploadFeaturedMedia.addEventListener('click', () => prodFeaturedFileInput.click());
+        prodFeaturedFileInput.addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const origHtml = btnUploadFeaturedMedia.innerHTML;
+            btnUploadFeaturedMedia.innerHTML = '<span>Uploading...</span>';
+            btnUploadFeaturedMedia.disabled = true;
+            try {
+                const media = await uploadSingleFile(file);
+                if (prodFeaturedImage) prodFeaturedImage.value = media.url;
+                updateFeaturedPreview(media.url);
+            } catch (err) {
+                alert('Upload failed: ' + err.message);
+            } finally {
+                btnUploadFeaturedMedia.innerHTML = origHtml;
+                btnUploadFeaturedMedia.disabled = false;
+                prodFeaturedFileInput.value = '';
+            }
+        });
+    }
+
     if (btnPickFeaturedMedia) {
         btnPickFeaturedMedia.addEventListener('click', () => {
             openMediaPicker((mediaItem) => {
@@ -2336,7 +2374,7 @@
             <div class="admin-screenshot-thumb-box">
                 ${thumbHtml}
             </div>
-            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <div style="display:flex; flex-direction:column; gap:0.5rem; flex:1;">
                 <div class="admin-form-grid-3" style="grid-template-columns: 140px 140px 1fr;">
                     <div>
                         <label style="font-size:0.7rem; color:var(--adm-text-subtle); display:block; margin-bottom:2px;">Layout / Style</label>
@@ -2364,6 +2402,10 @@
                 </div>
                 <div style="display:flex; gap:0.5rem; align-items:center;">
                     <input type="text" class="admin-input screen-img-url" value="${escapeHtml(imgUrl)}" placeholder="Image URL (e.g. /assets/uploads/...) or leave blank for SVG mockup" style="padding:0.4rem 0.6rem; font-size:0.8rem; flex:1;">
+                    <input type="file" class="screen-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif" style="display:none;">
+                    <button type="button" class="admin-btn screen-upload-btn" style="font-size:0.75rem; padding:0.4rem 0.75rem; width:auto; white-space:nowrap;">
+                        Upload
+                    </button>
                     <button type="button" class="admin-btn-secondary screen-pick-media-btn" style="font-size:0.75rem; padding:0.4rem 0.65rem; white-space:nowrap;">
                         Choose Visual
                     </button>
@@ -2379,6 +2421,8 @@
 
         const imgInput = card.querySelector('.screen-img-url');
         const thumbBox = card.querySelector('.admin-screenshot-thumb-box');
+        const uploadBtn = card.querySelector('.screen-upload-btn');
+        const screenFileInput = card.querySelector('.screen-file-input');
         const pickBtn = card.querySelector('.screen-pick-media-btn');
         const removeBtn = card.querySelector('.screen-remove-btn');
         const upBtn = card.querySelector('.screen-order-up');
@@ -2393,6 +2437,33 @@
                 thumbBox.innerHTML = `<div style="font-size:0.7rem; color:var(--adm-text-subtle); text-align:center; padding:0.25rem;">${escapeHtml(l)}</div>`;
             }
         });
+
+        if (uploadBtn && screenFileInput) {
+            uploadBtn.addEventListener('click', () => screenFileInput.click());
+            screenFileInput.addEventListener('change', async (e) => {
+                const file = e.target.files && e.target.files[0];
+                if (!file) return;
+                uploadBtn.textContent = 'Uploading...';
+                uploadBtn.disabled = true;
+                try {
+                    const media = await uploadSingleFile(file);
+                    imgInput.value = media.url;
+                    if (!card.querySelector('.screen-label').value) {
+                        card.querySelector('.screen-label').value = media.title || '';
+                    }
+                    if (!card.querySelector('.screen-caption').value) {
+                        card.querySelector('.screen-caption').value = media.caption || '';
+                    }
+                    thumbBox.innerHTML = `<img src="${escapeHtml(media.url)}" alt="Thumbnail">`;
+                } catch (err) {
+                    alert('Upload failed: ' + err.message);
+                } finally {
+                    uploadBtn.textContent = 'Upload';
+                    uploadBtn.disabled = false;
+                    screenFileInput.value = '';
+                }
+            });
+        }
 
         pickBtn.addEventListener('click', () => {
             openMediaPicker((mediaItem) => {
@@ -2446,6 +2517,36 @@
         btnAddScreenshot.addEventListener('click', () => {
             addScreenshotCard({ layout: 'browser', label: '', caption: '', image: '', skin: 'browser' });
             updateScreenshotOrderButtons();
+        });
+    }
+
+    if (btnUploadGalleryMedia && prodGalleryFileInput) {
+        btnUploadGalleryMedia.addEventListener('click', () => prodGalleryFileInput.click());
+        prodGalleryFileInput.addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files || []);
+            if (!files.length) return;
+            const origHtml = btnUploadGalleryMedia.innerHTML;
+            btnUploadGalleryMedia.innerHTML = '<span>Uploading...</span>';
+            btnUploadGalleryMedia.disabled = true;
+            try {
+                for (const file of files) {
+                    const media = await uploadSingleFile(file);
+                    addScreenshotCard({
+                        layout: 'browser',
+                        label: media.title || '',
+                        caption: media.caption || '',
+                        image: media.url,
+                        skin: 'browser'
+                    });
+                }
+                updateScreenshotOrderButtons();
+            } catch (err) {
+                alert('Upload failed: ' + err.message);
+            } finally {
+                btnUploadGalleryMedia.innerHTML = origHtml;
+                btnUploadGalleryMedia.disabled = false;
+                prodGalleryFileInput.value = '';
+            }
         });
     }
 
@@ -4241,13 +4342,55 @@
         if (pickerCancelBtn) pickerCancelBtn.addEventListener('click', closeMediaPicker);
         if (pickerConfirmBtn) pickerConfirmBtn.addEventListener('click', confirmMediaPicker);
 
+        if (pickerUploadBtn && pickerFileInput) {
+            pickerUploadBtn.addEventListener('click', () => pickerFileInput.click());
+            pickerFileInput.addEventListener('change', async (e) => {
+                const files = Array.from(e.target.files || []);
+                if (!files.length) return;
+                if (pickerUploadStatus) {
+                    pickerUploadStatus.textContent = `Uploading ${files.length} asset${files.length > 1 ? 's' : ''}...`;
+                    pickerUploadStatus.style.display = 'block';
+                }
+                const origHtml = pickerUploadBtn.innerHTML;
+                pickerUploadBtn.innerHTML = '<span>Uploading...</span>';
+                pickerUploadBtn.disabled = true;
+                let lastUploaded = null;
+                try {
+                    for (const file of files) {
+                        lastUploaded = await uploadSingleFile(file);
+                    }
+                    renderPickerGrid('all', '');
+                    if (lastUploaded) {
+                        selectedPickerItem = lastUploaded;
+                        if (pickerConfirmBtn) pickerConfirmBtn.disabled = false;
+                        if (pickerSelectionInfo) {
+                            pickerSelectionInfo.textContent = `Selected: ${lastUploaded.title || lastUploaded.filename}`;
+                        }
+                        if (pickerGridContainer) {
+                            pickerGridContainer.querySelectorAll('.admin-picker-item').forEach(el => {
+                                if (el.dataset.pickerId === lastUploaded.id) el.classList.add('selected');
+                                else el.classList.remove('selected');
+                            });
+                        }
+                    }
+                } catch (err) {
+                    alert('Upload failed: ' + err.message);
+                } finally {
+                    pickerUploadBtn.innerHTML = origHtml;
+                    pickerUploadBtn.disabled = false;
+                    if (pickerUploadStatus) pickerUploadStatus.style.display = 'none';
+                    pickerFileInput.value = '';
+                }
+            });
+        }
+
         if (pickerFilterGroup) {
             pickerFilterGroup.addEventListener('click', e => {
                 const btn = e.target.closest('.admin-filter-btn');
                 if (!btn) return;
                 pickerFilterGroup.querySelectorAll('.admin-filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const t = btn.dataset.pickerType || 'all';
+                const t = btn.dataset.pickerFilter || btn.dataset.pickerType || 'all';
                 const q = pickerSearchInput ? pickerSearchInput.value.trim() : '';
                 renderPickerGrid(t, q);
             });
@@ -4256,7 +4399,7 @@
         if (pickerSearchInput) {
             pickerSearchInput.addEventListener('input', () => {
                 const activeBtn = pickerFilterGroup ? pickerFilterGroup.querySelector('.admin-filter-btn.active') : null;
-                const t = activeBtn ? (activeBtn.dataset.pickerType || 'all') : 'all';
+                const t = activeBtn ? (activeBtn.dataset.pickerFilter || activeBtn.dataset.pickerType || 'all') : 'all';
                 renderPickerGrid(t, pickerSearchInput.value.trim());
             });
         }
@@ -4264,6 +4407,49 @@
         if (mediaPickerBackdrop) {
             mediaPickerBackdrop.addEventListener('click', e => {
                 if (e.target === mediaPickerBackdrop) closeMediaPicker();
+            });
+
+            ['dragenter', 'dragover'].forEach(evtName => {
+                mediaPickerBackdrop.addEventListener(evtName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+
+            mediaPickerBackdrop.addEventListener('drop', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    const files = Array.from(e.dataTransfer.files);
+                    if (pickerUploadStatus) {
+                        pickerUploadStatus.textContent = `Uploading ${files.length} asset${files.length > 1 ? 's' : ''}...`;
+                        pickerUploadStatus.style.display = 'block';
+                    }
+                    let lastUploaded = null;
+                    try {
+                        for (const file of files) {
+                            lastUploaded = await uploadSingleFile(file);
+                        }
+                        renderPickerGrid('all', '');
+                        if (lastUploaded) {
+                            selectedPickerItem = lastUploaded;
+                            if (pickerConfirmBtn) pickerConfirmBtn.disabled = false;
+                            if (pickerSelectionInfo) {
+                                pickerSelectionInfo.textContent = `Selected: ${lastUploaded.title || lastUploaded.filename}`;
+                            }
+                            if (pickerGridContainer) {
+                                pickerGridContainer.querySelectorAll('.admin-picker-item').forEach(el => {
+                                    if (el.dataset.pickerId === lastUploaded.id) el.classList.add('selected');
+                                    else el.classList.remove('selected');
+                                });
+                            }
+                        }
+                    } catch (err) {
+                        alert('Upload failed: ' + err.message);
+                    } finally {
+                        if (pickerUploadStatus) pickerUploadStatus.style.display = 'none';
+                    }
+                }
             });
         }
 

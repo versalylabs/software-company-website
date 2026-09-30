@@ -1071,6 +1071,21 @@ const MIME_TYPES = {
 };
 
 function serveStaticFile(req, res, pathname) {
+    // If requesting an uploaded asset from /assets/uploads/, check CONFIG.uploadsDir first (supports Vercel /tmp)
+    if (pathname.startsWith('/assets/uploads/')) {
+        const uploadFilename = path.basename(pathname);
+        const uploadFilePath = path.join(CONFIG.uploadsDir, uploadFilename);
+        if (fs.existsSync(uploadFilePath)) {
+            try {
+                const stats = fs.statSync(uploadFilePath);
+                if (stats.isFile()) {
+                    const ext = path.extname(uploadFilePath).toLowerCase();
+                    return serveFileContent(req, res, uploadFilePath, ext);
+                }
+            } catch (e) {}
+        }
+    }
+
     const publicDir = path.resolve(__dirname);
     let relativePath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
     const filePath = path.resolve(publicDir, relativePath);

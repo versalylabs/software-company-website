@@ -1084,7 +1084,12 @@
                                     <label class="admin-form-label" for="prod-featured-image">Featured Asset URL / Path</label>
                                     <input type="text" id="prod-featured-image" class="admin-input" placeholder="e.g. /assets/uploads/hotelflow-dashboard.svg">
                                 </div>
-                                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                                <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                                    <button type="button" id="btn-upload-featured-media" class="admin-btn" style="font-size:0.8rem; width:auto; padding:0.45rem 1rem;">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                        <span>Upload Image</span>
+                                    </button>
+                                    <input type="file" id="prod-featured-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif" style="display:none;">
                                     <button type="button" id="btn-pick-featured-media" class="admin-btn-secondary" style="font-size:0.8rem;">
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                                         <span>Choose from Media Library</span>
@@ -1104,9 +1109,14 @@
                         <div id="screenshots-container" class="admin-dynamic-cards">
                             <!-- Populated dynamically -->
                         </div>
-                        <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap;">
+                        <div style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap; align-items:center;">
+                            <button type="button" id="btn-upload-gallery-media" class="admin-btn" style="font-size:0.8rem; width:auto; padding:0.45rem 1rem;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <span>Upload Screenshot</span>
+                            </button>
+                            <input type="file" id="prod-gallery-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif" multiple style="display:none;">
                             <button type="button" id="btn-add-screenshot" class="admin-btn-secondary">
-                                + Add Screenshot Item
+                                + Add Blank Mockup
                             </button>
                             <button type="button" id="btn-pick-gallery-media" class="admin-btn-secondary">
                                 + Pick from Media Library
@@ -1420,15 +1430,25 @@
             </div>
 
             <div class="admin-modal__body">
-                <div class="admin-toolbar" style="margin-bottom: 1rem;">
+                <div class="admin-toolbar" style="margin-bottom: 1rem; gap: 0.75rem; flex-wrap: wrap;">
                     <div class="admin-filter-group" id="picker-filter-group">
                         <button class="admin-filter-btn active" data-picker-filter="all">All Assets</button>
                         <button class="admin-filter-btn" data-picker-filter="svg">SVGs</button>
                         <button class="admin-filter-btn" data-picker-filter="raster">Images</button>
                     </div>
-                    <div class="admin-search-wrap" style="flex:1;">
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <input type="file" id="picker-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml,image/gif" multiple style="display:none;">
+                        <button type="button" id="picker-upload-btn" class="admin-btn" style="width: auto; padding: 0.45rem 1rem; font-size: 0.8rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <span>Upload New Visual</span>
+                        </button>
+                    </div>
+                    <div class="admin-search-wrap" style="flex:1; min-width: 200px;">
                         <input type="text" id="picker-search-input" class="admin-search-input" placeholder="Search visuals...">
                     </div>
+                </div>
+                <div id="picker-upload-status" style="display:none; font-size:0.8rem; color:#fca311; margin-bottom:0.75rem; padding:0.5rem 0.75rem; background:rgba(252,163,17,0.1); border-radius:6px; border:1px solid rgba(252,163,17,0.25);">
+                    Uploading visual asset...
                 </div>
 
                 <div id="picker-grid-container" class="admin-picker-grid">

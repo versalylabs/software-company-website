@@ -266,7 +266,7 @@ function renderCard(p) {
     + '</ul>'
     + '<div class="pc-card__footer">'
     + '<a href="product.html?id=' + encodeURIComponent(p.id) + '" class="pc-card__link" data-track-cta="view_product" data-track-location="catalogue_grid" data-track-product="' + esc(p.id) + '">View Product <span class="pc-card__link-arrow">→</span></a>'
-    + '<a href="request-demo.html?product=' + encodeURIComponent(p.id) + '" class="pc-card__link" data-track-cta="request_demo" data-track-location="catalogue_grid" data-track-product="' + esc(p.id) + '" style="color:#64748b">Request Demo</a>'
+    + '<a href="request-demo.html?product=' + encodeURIComponent(p.id) + '" class="pc-card__link pc-card__link--secondary" data-track-cta="request_demo" data-track-location="catalogue_grid" data-track-product="' + esc(p.id) + '">Request Demo</a>'
     + '</div>'
     + '</div>';
 }
