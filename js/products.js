@@ -193,17 +193,25 @@ function renderScreenshot(accent, screen, isHero = false) {
 
 /* ── Fetch helper ─────────────────────────────────────────── */
 function fetchProducts() {
-  return fetch(DATA_URL, {cache:'no-store'}).then(function(res) {
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return res.json();
-  }).then(function(data) {
-    if (data && Array.isArray(data.products)) {
-      data.products = data.products
-        .filter(function(p) { return p.status !== 'draft' && p.status !== 'archived'; })
-        .sort(function(a, b) { return (a.order || 999) - (b.order || 999); });
-    }
-    return data;
-  });
+  return fetch('/api/products', { cache: 'no-store' })
+    .then(function(res) {
+      if (res.ok) return res.json();
+      throw new Error('API unavailable, trying static fallback');
+    })
+    .catch(function() {
+      return fetch(DATA_URL, { cache: 'no-store' }).then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      });
+    })
+    .then(function(data) {
+      if (data && Array.isArray(data.products)) {
+        data.products = data.products
+          .filter(function(p) { return p.status !== 'draft' && p.status !== 'archived'; })
+          .sort(function(a, b) { return (a.order || 999) - (b.order || 999); });
+      }
+      return data;
+    });
 }
 
 

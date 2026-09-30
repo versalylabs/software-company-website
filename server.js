@@ -1086,6 +1086,21 @@ function serveStaticFile(req, res, pathname) {
         }
     }
 
+    // If requesting a data file from /data/, check dynamic data directory first (supports Vercel /tmp)
+    if (pathname.startsWith('/data/')) {
+        const dataFilename = path.basename(pathname);
+        const dynamicDataPath = path.join(path.dirname(CONFIG.productsFile), dataFilename);
+        if (fs.existsSync(dynamicDataPath)) {
+            try {
+                const stats = fs.statSync(dynamicDataPath);
+                if (stats.isFile()) {
+                    const ext = path.extname(dynamicDataPath).toLowerCase();
+                    return serveFileContent(req, res, dynamicDataPath, ext);
+                }
+            } catch (e) {}
+        }
+    }
+
     const publicDir = path.resolve(__dirname);
     let relativePath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
     const filePath = path.resolve(publicDir, relativePath);
@@ -2289,9 +2304,10 @@ function requestHandler(req, res) {
                     status: sanitizeString(body.status || 'in-development', 50),
                     spotlight: Boolean(body.spotlight),
                     featured: Boolean(body.featured),
-                    accent: sanitizeString(body.accent || '#4f46e5', 20),
+                    accent: sanitizeString(body.accent || body.accentColor || '#4f46e5', 20),
+                    featuredImage: sanitizeString(body.featuredImage || '', 500),
                     shortDescription: sanitizeString(body.shortDescription || '', 500),
-                    fullDescription: sanitizeString(body.fullDescription || '', 3000),
+                    fullDescription: sanitizeString(body.fullDescription || body.description || '', 3000),
                     problem: sanitizeString(body.problem || '', 3000),
                     whatWeAreBuilding: Array.isArray(body.whatWeAreBuilding) ? body.whatWeAreBuilding.map(s => sanitizeString(s, 300)).filter(Boolean) : [],
                     keyFeatures: Array.isArray(body.keyFeatures) ? body.keyFeatures.map(s => sanitizeString(s, 200)).filter(Boolean) : [],
@@ -2305,12 +2321,12 @@ function requestHandler(req, res) {
                         title: sanitizeString(b.title || '', 120),
                         description: sanitizeString(b.description || '', 500)
                     })).filter(b => b.title) : [],
-                    audience: Array.isArray(body.audience) ? body.audience.map(a => ({
+                    audience: Array.isArray(body.audience || body.targetAudience) ? (body.audience || body.targetAudience).map(a => ({
                         icon: sanitizeString(a.icon || 'building', 50),
                         title: sanitizeString(a.title || '', 120),
                         description: sanitizeString(a.description || '', 500)
                     })).filter(a => a.title) : [],
-                    relatedIds: Array.isArray(body.relatedIds) ? body.relatedIds.map(r => sanitizeString(r, 80)).filter(Boolean) : [],
+                    relatedIds: Array.isArray(body.relatedIds || body.relatedProducts) ? (body.relatedIds || body.relatedProducts).map(r => sanitizeString(r, 80)).filter(Boolean) : [],
                     order: typeof body.order === 'number' ? body.order : list.length + 1,
                     stats: typeof body.stats === 'object' && body.stats !== null ? body.stats : {},
                     screenshots: Array.isArray(body.screenshots) ? body.screenshots : [
@@ -2367,9 +2383,10 @@ function requestHandler(req, res) {
                     status: body.status !== undefined ? sanitizeString(body.status, 50) : existing.status,
                     spotlight: body.spotlight !== undefined ? Boolean(body.spotlight) : existing.spotlight,
                     featured: body.featured !== undefined ? Boolean(body.featured) : existing.featured,
-                    accent: body.accent !== undefined ? sanitizeString(body.accent, 20) : existing.accent,
+                    accent: (body.accent !== undefined || body.accentColor !== undefined) ? sanitizeString(body.accent !== undefined ? body.accent : body.accentColor, 20) : existing.accent,
+                    featuredImage: body.featuredImage !== undefined ? sanitizeString(body.featuredImage, 500) : (existing.featuredImage || ''),
                     shortDescription: body.shortDescription !== undefined ? sanitizeString(body.shortDescription, 500) : existing.shortDescription,
-                    fullDescription: body.fullDescription !== undefined ? sanitizeString(body.fullDescription, 3000) : existing.fullDescription,
+                    fullDescription: (body.fullDescription !== undefined || body.description !== undefined) ? sanitizeString(body.fullDescription !== undefined ? body.fullDescription : body.description, 3000) : existing.fullDescription,
                     problem: body.problem !== undefined ? sanitizeString(body.problem, 3000) : existing.problem,
                     whatWeAreBuilding: Array.isArray(body.whatWeAreBuilding) ? body.whatWeAreBuilding.map(s => sanitizeString(s, 300)).filter(Boolean) : existing.whatWeAreBuilding,
                     keyFeatures: Array.isArray(body.keyFeatures) ? body.keyFeatures.map(s => sanitizeString(s, 200)).filter(Boolean) : existing.keyFeatures,
@@ -2383,12 +2400,12 @@ function requestHandler(req, res) {
                         title: sanitizeString(b.title || '', 120),
                         description: sanitizeString(b.description || '', 500)
                     })).filter(b => b.title) : existing.benefits,
-                    audience: Array.isArray(body.audience) ? body.audience.map(a => ({
+                    audience: Array.isArray(body.audience || body.targetAudience) ? (body.audience || body.targetAudience).map(a => ({
                         icon: sanitizeString(a.icon || 'building', 50),
                         title: sanitizeString(a.title || '', 120),
                         description: sanitizeString(a.description || '', 500)
                     })).filter(a => a.title) : existing.audience,
-                    relatedIds: Array.isArray(body.relatedIds) ? body.relatedIds.map(r => sanitizeString(r, 80)).filter(Boolean) : existing.relatedIds,
+                    relatedIds: Array.isArray(body.relatedIds || body.relatedProducts) ? (body.relatedIds || body.relatedProducts).map(r => sanitizeString(r, 80)).filter(Boolean) : existing.relatedIds,
                     order: typeof body.order === 'number' ? body.order : existing.order,
                     screenshots: Array.isArray(body.screenshots) ? body.screenshots : existing.screenshots,
                     updatedAt: new Date().toISOString()

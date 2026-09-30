@@ -2009,7 +2009,7 @@
         }
 
         productsTbody.innerHTML = filtered.map((prod, index) => {
-            const accent = prod.accentColor || '#4f46e5';
+            const accent = prod.accent || prod.accentColor || '#4f46e5';
             const status = prod.status || 'in-development';
             const statusClass = 'status-' + status;
             const featuredBadge = prod.featured ? '<span title="Featured on Homepage" style="cursor:help; margin-right:4px;">⭐</span>' : '';
@@ -2079,14 +2079,14 @@
             prodId.disabled = true; // slug locked when editing
             prodCategory.value = product.category || 'Hospitality';
             prodStatus.value = product.status || 'in-development';
-            prodAccent.value = product.accentColor || '#4f46e5';
-            prodAccentPicker.value = product.accentColor || '#4f46e5';
+            prodAccent.value = product.accent || product.accentColor || '#4f46e5';
+            prodAccentPicker.value = product.accent || product.accentColor || '#4f46e5';
             prodTagline.value = product.tagline || '';
             prodFeatured.checked = !!product.featured;
             prodSpotlight.checked = !!product.spotlight;
             prodOrder.value = product.order || 1;
             prodShortDesc.value = product.shortDescription || '';
-            prodFullDesc.value = product.description || '';
+            prodFullDesc.value = product.fullDescription || product.description || '';
             prodProblem.value = product.problem || '';
 
             // Featured Image & Screenshot Gallery
@@ -2098,8 +2098,8 @@
             populateBuildingItems(product.whatWeAreBuilding || []);
             populateFeatureCards(product.features || []);
             populateBenefitCards(product.benefits || []);
-            populateAudienceCards(product.targetAudience || []);
-            populateRelatedProducts(product.relatedProducts || [], product.id);
+            populateAudienceCards(product.audience || product.targetAudience || []);
+            populateRelatedProducts(product.relatedIds || product.relatedProducts || [], product.id);
 
             if (productModalDeleteBtn) productModalDeleteBtn.style.display = 'inline-flex';
         } else {
@@ -2163,6 +2163,12 @@
                 prodId.value = slug;
                 if (productModalSlugPreview) productModalSlugPreview.textContent = slug ? '/' + slug : '';
             }
+        });
+    }
+    if (prodId) {
+        prodId.addEventListener('input', function () {
+            const cleanSlug = prodId.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
+            if (productModalSlugPreview) productModalSlugPreview.textContent = cleanSlug ? '/' + cleanSlug : '';
         });
     }
 
@@ -2588,9 +2594,17 @@
 
     // Collect Form Data
     function collectProductFormData(forceDraft = false) {
-        const id = prodId.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
+        let id = prodId.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
         const name = prodName.value.trim();
-        if (!name || !id) {
+        if (!name) {
+            alert('Product Name is required.');
+            return null;
+        }
+        if (!id) {
+            id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            prodId.value = id;
+        }
+        if (!id) {
             alert('Product Name and URL Slug are required.');
             return null;
         }
@@ -2639,6 +2653,8 @@
             .map(cb => cb.value);
 
         const status = forceDraft ? 'draft' : prodStatus.value;
+        const accentVal = prodAccent.value.trim() || '#4f46e5';
+        const fullDescVal = prodFullDesc.value.trim();
 
         return {
             id,
@@ -2646,19 +2662,23 @@
             tagline: prodTagline.value.trim(),
             category: prodCategory.value,
             status,
-            accentColor: prodAccent.value.trim() || '#4f46e5',
+            accent: accentVal,
+            accentColor: accentVal,
             featured: prodFeatured.checked,
             spotlight: prodSpotlight.checked,
             order: parseInt(prodOrder.value, 10) || 1,
             shortDescription: prodShortDesc.value.trim(),
-            description: prodFullDesc.value.trim(),
+            fullDescription: fullDescVal,
+            description: fullDescVal,
             problem: prodProblem.value.trim(),
             featuredImage,
             screenshots,
             whatWeAreBuilding,
             features,
             benefits,
+            audience: targetAudience,
             targetAudience,
+            relatedIds: relatedProducts,
             relatedProducts
         };
     }
@@ -4065,7 +4085,14 @@
             });
         }
 
-        // Product Modal Buttons
+        // Product Modal Buttons & Form
+        const productEditorForm = document.getElementById('product-editor-form');
+        if (productEditorForm) {
+            productEditorForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveProduct(false);
+            });
+        }
         if (productModalCloseBtn) productModalCloseBtn.addEventListener('click', closeProductModal);
         if (productModalCancelBtn) productModalCancelBtn.addEventListener('click', closeProductModal);
         if (productModalSaveBtn) productModalSaveBtn.addEventListener('click', () => saveProduct(false));

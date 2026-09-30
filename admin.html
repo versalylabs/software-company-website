@@ -933,7 +933,7 @@
             </div>
 
             <div class="admin-modal__body">
-                <form id="product-editor-form" autocomplete="off">
+                <form id="product-editor-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
                     <input type="hidden" id="prod-original-id" value="">
 
                     <!-- Section 1: General & Classification -->
@@ -1482,7 +1482,7 @@
             </div>
 
             <div class="admin-modal__body">
-                <form id="content-item-form" autocomplete="off">
+                <form id="content-item-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
                     <input type="hidden" id="content-item-id" value="">
                     <input type="hidden" id="content-item-section" value="testimonials">
 
