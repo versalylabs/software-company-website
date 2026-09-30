@@ -793,7 +793,6 @@ body.contact-page .pg-hero,
 [data-theme="dark"] .form-card,
 [data-theme="dark"] .calc-inputs-card,
 [data-theme="dark"] .calc-results-card,
-[data-theme="dark"] .pd-building-list li,
 [data-theme="dark"] .pd-feature-card {
   background: var(--color-bg-surface-card) !important;
   border: 1px solid var(--color-border-medium) !important;
@@ -1923,9 +1922,25 @@ select {
   color: #cbd5e1 !important;
 }
 
-/* Single Product Detail Page (product.html) */
+/* Single Product Detail Page (product.html) & Catalogue High-Contrast Engine */
 [data-theme="dark"] .pd-hero__tagline {
   color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .pd-back {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .pd-back:hover {
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pd-section__eyebrow {
+  color: #fca311 !important;
+}
+
+[data-theme="dark"] .pd-section__title {
+  color: #fca311 !important;
 }
 
 [data-theme="dark"] .pd-section__sub {
@@ -1942,10 +1957,39 @@ select {
   color: #e2e8f0 !important;
 }
 
+/* Planned capabilities list (high-contrast texts and check icons) */
+[data-theme="dark"] .pd-building-list li {
+  background: var(--color-bg-surface-card) !important;
+  border: 1px solid var(--color-border-medium) !important;
+  color: #f8fafc !important;
+  box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-building-list li:hover {
+  background: var(--color-bg-surface-elevated) !important;
+  border-color: rgba(252, 163, 17, 0.4) !important;
+}
+
+[data-theme="dark"] .pd-building-list li .pd-bcheck {
+  background: rgba(252, 163, 17, 0.18) !important;
+  border: 1px solid rgba(252, 163, 17, 0.45) !important;
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pd-building-list li .pd-bcheck svg {
+  color: #ffd17a !important;
+  stroke: #ffd17a !important;
+}
+
 [data-theme="dark"] .pd-cap-card {
   background: var(--color-bg-surface-card) !important;
   border: 1px solid var(--color-border-medium) !important;
   box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-cap-card:hover {
+  background: var(--color-bg-surface-elevated) !important;
+  border-color: rgba(252, 163, 17, 0.4) !important;
 }
 
 [data-theme="dark"] .pd-cap-card h3 {
@@ -1956,10 +2000,25 @@ select {
   color: var(--color-text-secondary) !important;
 }
 
+[data-theme="dark"] .pd-cap-card__icon {
+  background: rgba(252, 163, 17, 0.16) !important;
+  border: 1px solid rgba(252, 163, 17, 0.35) !important;
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pd-cap-card__icon svg {
+  color: #ffd17a !important;
+}
+
 [data-theme="dark"] .pd-aud-card {
   background: var(--color-bg-surface-card) !important;
   border: 1px solid var(--color-border-medium) !important;
   box-shadow: var(--shadow-dark-sm) !important;
+}
+
+[data-theme="dark"] .pd-aud-card:hover {
+  background: var(--color-bg-surface-elevated) !important;
+  border-color: rgba(252, 163, 17, 0.4) !important;
 }
 
 [data-theme="dark"] .pd-aud-card h3 {
@@ -1968,6 +2027,16 @@ select {
 
 [data-theme="dark"] .pd-aud-card p {
   color: var(--color-text-secondary) !important;
+}
+
+[data-theme="dark"] .pd-aud-card__icon {
+  background: rgba(252, 163, 17, 0.16) !important;
+  border: 1px solid rgba(252, 163, 17, 0.35) !important;
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pd-aud-card__icon svg {
+  color: #ffd17a !important;
 }
 
 [data-theme="dark"] .pd-status-banner {
@@ -1984,6 +2053,16 @@ select {
   color: var(--color-text-secondary) !important;
 }
 
+[data-theme="dark"] .pd-status-banner__icon {
+  background: rgba(252, 163, 17, 0.16) !important;
+  border: 1px solid rgba(252, 163, 17, 0.35) !important;
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pd-status-banner__icon svg {
+  color: #ffd17a !important;
+}
+
 [data-theme="dark"] .pd-gallery {
   background: #0d1629 !important;
   border: 1px solid var(--color-border-subtle) !important;
@@ -1994,12 +2073,26 @@ select {
 }
 
 [data-theme="dark"] .pd-gallery__cap {
-  color: #cbd5e1 !important;
+  color: #e2e8f0 !important;
+  background: #14213d !important;
+  border-top: 1px solid var(--color-border-subtle) !important;
+}
+
+[data-theme="dark"] .pd-gallery__thumb {
+  border-color: var(--color-border-subtle) !important;
+}
+
+[data-theme="dark"] .pd-gallery__thumb.active {
+  border-color: #fca311 !important;
 }
 
 [data-theme="dark"] .pd-cta {
   background: linear-gradient(135deg, #14213d, #1c2e54) !important;
   border: 1px solid var(--color-border-medium) !important;
+}
+
+[data-theme="dark"] .pd-cta__eyebrow {
+  color: #fca311 !important;
 }
 
 [data-theme="dark"] .pd-cta__title {
@@ -2008,6 +2101,54 @@ select {
 
 [data-theme="dark"] .pd-cta__sub {
   color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .pd-cta__btn {
+  background: #fca311 !important;
+  color: #101828 !important;
+}
+
+[data-theme="dark"] .pd-cta__btn:hover {
+  background: #ffb733 !important;
+  color: #000000 !important;
+}
+
+/* Product catalogue & related product card icons and status badges */
+[data-theme="dark"] .pc-card__icon {
+  background: rgba(252, 163, 17, 0.18) !important;
+  border: 1px solid rgba(252, 163, 17, 0.35) !important;
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pc-card__icon svg {
+  color: #ffd17a !important;
+}
+
+[data-theme="dark"] .pc-card__feat-dot {
+  background: #fca311 !important;
+}
+
+[data-theme="dark"] .pc-status--dev {
+  background: rgba(252, 163, 17, 0.18) !important;
+  color: #ffd17a !important;
+  border: 1px solid rgba(252, 163, 17, 0.35) !important;
+}
+
+[data-theme="dark"] .pc-status--soon {
+  background: rgba(245, 158, 11, 0.18) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+[data-theme="dark"] .pc-status--live {
+  background: rgba(34, 197, 94, 0.18) !important;
+  color: #4ade80 !important;
+  border: 1px solid rgba(34, 197, 94, 0.35) !important;
+}
+
+[data-theme="dark"] .pc-status--dot,
+[data-theme="dark"] .pc-status__dot {
+  background: currentColor !important;
 }
 
 /* ── 19. CONTACT & REQUEST DEMO CONTRAST FIXES ────────────── */
