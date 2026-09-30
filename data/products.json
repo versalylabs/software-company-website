@@ -1,6 +1,328 @@
 {
   "products": [
     {
+      "id": "versaly-crm",
+      "name": "Versaly CRM",
+      "tagline": "Full-stack, multi-tenant B2B Sales, Omnichannel Inbox & Retention OS.",
+      "category": "Sales & CRM",
+      "status": "live",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#6366f1",
+      "shortDescription": "Modern B2B revenue and sales operating system with omnichannel inboxes, deal stage pipelines, AI copilots, and multi-currency billing.",
+      "fullDescription": "Versaly CRM is purpose-built for fast-moving sales, client success, and retention teams. It unifies email, WhatsApp, Meta Lead Ads, and deal tracking in one responsive interface, backed by Next.js 14, Prisma ORM, and enterprise-grade multi-currency billing.",
+      "problem": "Sales teams lose deals when leads slip through disconnected inboxes, CRM boards don't talk to payment processors, and sales reps spend more time updating spreadsheets than closing clients.",
+      "whatWeAreBuilding": [
+        "Unified Omnichannel Inbox (Email, WhatsApp, SMS, Meta Lead Ads)",
+        "Visual Drag-and-Drop Deal Pipelines with Probability Forecasting",
+        "AI Copilot for Automated Email Drafting & Lead Qualification",
+        "Multi-Tenant Role Based Access with Team Leaderboards",
+        "Automated Multi-Currency Billing (KES, USD, EUR via Stripe & M-Pesa)",
+        "Real-time Sales Activity and Conversion Telemetry"
+      ],
+      "keyFeatures": [
+        "Omnichannel Unified Inbox",
+        "AI Sales Copilot & Scoring",
+        "Multi-Currency Deal Engine"
+      ],
+      "features": [
+        {
+          "icon": "zap",
+          "title": "Omnichannel Inbox",
+          "description": "Consolidate inbound conversations from email, live chat, and ad campaigns into a single collaborative team thread."
+        },
+        {
+          "icon": "chart",
+          "title": "Deal Pipelines & Forecasting",
+          "description": "Visual Kanban deal stages with weighted values, expected close dates, and automated stale-deal nudges."
+        },
+        {
+          "icon": "shield",
+          "title": "AI Copilot & Lead Scoring",
+          "description": "Instant response recommendations, sentiment analysis, and intent detection powered by local AI."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Multi-Currency Billing",
+          "description": "Built-in support for KES and USD subscription plans, automated invoices, and payment webhook tracking."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "trend",
+          "title": "Higher Lead Conversion",
+          "description": "Speed-to-lead improves with instant alerts and automated lead capture hooks."
+        },
+        {
+          "icon": "clock",
+          "title": "Hours Saved Weekly",
+          "description": "AI reply drafts and automated stage updates eliminate repetitive CRM data entry."
+        },
+        {
+          "icon": "star",
+          "title": "Total Pipeline Clarity",
+          "description": "Executive dashboards give founders and sales leads live visibility into every active opportunity."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "B2B Sales Teams",
+          "description": "Agencies, SaaS providers, and consultancies managing high-touch deal pipelines."
+        },
+        {
+          "icon": "city",
+          "title": "Growing Startups",
+          "description": "Founders who need an all-in-one CRM without bloated enterprise pricing."
+        },
+        {
+          "icon": "home",
+          "title": "Outreach & Retention Units",
+          "description": "Customer success departments handling post-sale onboarding and renewal contracts."
+        }
+      ],
+      "relatedIds": [
+        "melio-restaurant",
+        "ict-institution-management-platform",
+        "pulse-gym-ms"
+      ],
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Pipeline Command Center",
+          "caption": "Real-time deal Kanban, revenue forecasting, and omnichannel activity feed.",
+          "skin": "browser"
+        },
+        {
+          "layout": "table",
+          "label": "Omnichannel Unified Inbox",
+          "caption": "Collaborative message streams across email, chat, and Meta leads.",
+          "skin": "browser"
+        },
+        {
+          "layout": "chart",
+          "label": "Revenue Velocity",
+          "caption": "Monthly recurring revenue, churn velocity, and deal closure rates.",
+          "skin": "browser"
+        }
+      ],
+      "order": 1,
+      "updatedAt": "2026-09-30T10:00:00.000Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Vercel Edge & Cloudflare Mesh",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Optimistic UI Caching",
+          "multiTenant": true,
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Owner, Admin, Sales Lead, Account Executive",
+          "ssoSaml": true,
+          "encryption": "AES-256 at rest / TLS 1.3 in transit",
+          "auditTrail": true,
+          "gdprCompliant": true,
+          "complianceCert": "SOC 2 Type II Ready",
+          "backups": "Automated Hourly Multi-Region Replication"
+        },
+        "workflows": {
+          "workflowBuilder": "Visual Deal Progression & Email Triggers",
+          "customFields": true,
+          "multiLocation": "Multi-Territory / Branch Routing",
+          "taskDelegation": "Automated Lead Assignment Pools",
+          "slaAlerts": "Instant Stale Deal Escalation Alerts"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Win Rates, Velocity & Pipeline Health",
+          "customKpi": true,
+          "scheduledExports": "Weekly Pipeline Reports & CSV Stream",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "Zapier, Slack, Discord, WhatsApp API",
+          "erpAccounting": "QuickBooks, Xero, Stripe Invoicing",
+          "posHardware": "N/A",
+          "paymentGateways": "Stripe, M-Pesa, PayPal",
+          "customSdk": "Full GraphQL & REST Developer APIs"
+        },
+        "support": {
+          "uptimeSla": "99.98% High Availability SLA",
+          "onboarding": "1-3 Days Dedicated Migration",
+          "dedicatedEngineer": true,
+          "supportTier": "Priority Business WhatsApp & Desk"
+        },
+        "commercial": {
+          "pricingModel": "Per User / Monthly & Annual",
+          "sandboxTrial": "14-Day Free Live Sandbox",
+          "customEnterpriseTier": "Custom Dedicated Tenant Deployment"
+        }
+      }
+    },
+    {
+      "id": "melio-restaurant",
+      "name": "Melio Restaurant OS",
+      "tagline": "Turnkey restaurant operations: POS, Kitchen Display, Shifts & Online Ordering.",
+      "category": "Hospitality",
+      "status": "live",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#f97316",
+      "shortDescription": "A complete 360-degree restaurant management system combining counter POS, kitchen order routing, shift tracking, and a customer-facing menu website.",
+      "fullDescription": "Melio is an all-in-one restaurant operations platform built over 31 development phases. It eliminates the chaos of split orders, paper tickets, and untracked ingredient waste by connecting kitchen staff, servers, management, and online diners in one unified operating system.",
+      "problem": "Hospitality businesses struggle with disconnected POS devices, missed online takeout orders, slow table turnaround, and lack of real-time visibility into daily expenses and cash drawer reconciliations.",
+      "whatWeAreBuilding": [
+        "Ultra-Fast Touch Point-of-Sale (POS) with split bill capability",
+        "Real-Time Kitchen Display System (KDS) with visual ticket timers",
+        "Customer-Facing Menu & Online Table Ordering Website",
+        "Staff Shift Clock-In, Role Permissions & Daily Expense Logs",
+        "Ingredient Inventory Tracking with Low-Stock Alerts",
+        "Supabase Cloud Menu Photo Gallery & High-Res CDN"
+      ],
+      "keyFeatures": [
+        "Interactive Touch POS & Table Map",
+        "Zero-Latency Kitchen Display (KDS)",
+        "Staff Shifts & Daily Cash Reconciliations"
+      ],
+      "features": [
+        {
+          "icon": "zap",
+          "title": "Counter & Table POS",
+          "description": "Lightning-fast order entry with modifier choices, table map layouts, and instant split-tender payments."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Kitchen Display System",
+          "description": "Color-coded order tickets, live countdown timers, and station routing for hot line and bar."
+        },
+        {
+          "icon": "clock",
+          "title": "Staff Shifts & Clock-In",
+          "description": "PIN-based clock-in/out, role-restricted cash drawer balance checks, and end-of-shift reports."
+        },
+        {
+          "icon": "chart",
+          "title": "Food Cost & Expense Engine",
+          "description": "Track vendor invoices, daily petty cash payouts, and item profit margins in real time."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "clock",
+          "title": "30% Faster Order-to-Table",
+          "description": "Orders shoot instantly to the kitchen display, cutting wait times and eliminating paper mistakes."
+        },
+        {
+          "icon": "trend",
+          "title": "Eliminate Unaccounted Food Waste",
+          "description": "Real-time stock depletion flags inventory leaks before they erode food margins."
+        },
+        {
+          "icon": "star",
+          "title": "Dual Online & In-House Reach",
+          "description": "Customers order from their phones or counter with branded menus synced from your database."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Full-Service Restaurants",
+          "description": "Sit-down dining venues needing table floor plans, split checks, and course pacing."
+        },
+        {
+          "icon": "home",
+          "title": "Quick-Service Cafes & Bistros",
+          "description": "High-volume counter businesses requiring rapid order processing and tap-to-pay."
+        },
+        {
+          "icon": "city",
+          "title": "Ghost Kitchens & Caterers",
+          "description": "Multi-brand delivery hubs managing digital order streams under one roof."
+        }
+      ],
+      "relatedIds": [
+        "hotel-management-system",
+        "versaly-crm",
+        "pulse-gym-ms"
+      ],
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "POS Table & Floor Matrix",
+          "caption": "Live graphical floor plan, open tickets, and split-tender billing.",
+          "skin": "browser"
+        },
+        {
+          "layout": "table",
+          "label": "Kitchen Display Terminal",
+          "caption": "Color-coded station queue with prep time alerts and item modifier flags.",
+          "skin": "browser"
+        },
+        {
+          "layout": "chart",
+          "label": "Daily Shift & Revenue Ledger",
+          "caption": "End-of-day register z-reports, shift clock logs, and gross margin analysis.",
+          "skin": "browser"
+        }
+      ],
+      "order": 2,
+      "updatedAt": "2026-09-30T10:00:00.000Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Docker Containerized & Cloud Edge",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Local POS SQLite Offline Resilience",
+          "multiTenant": true,
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Floor Manager, Cashier, Head Chef, Host",
+          "ssoSaml": false,
+          "encryption": "AES-256 encrypted database & HTTPS",
+          "auditTrail": true,
+          "gdprCompliant": true,
+          "complianceCert": "EMV & PCI-DSS Compliant Terminals",
+          "backups": "Automated Shift-End Cloud Snapshots"
+        },
+        "workflows": {
+          "workflowBuilder": "Order Routing & Prep Station Routing",
+          "customFields": true,
+          "multiLocation": "Multi-Branch Restaurant Group Support",
+          "taskDelegation": "Front-of-House to Kitchen Handoffs",
+          "slaAlerts": "Order Prep Delay Alerts (>15 mins)"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Covers, RevPASH & Average Order Value",
+          "customKpi": true,
+          "scheduledExports": "Daily Z-Report & Accounting Summary",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "SMS Order Notifications & Slack Alerts",
+          "erpAccounting": "QuickBooks, Xero POS Sync",
+          "posHardware": "ESC/POS Thermal Printers, Cash Drawers, Kitchen Bump Bars",
+          "paymentGateways": "Stripe Terminal, Square, M-Pesa Till",
+          "customSdk": "Public Menu & Ordering REST API"
+        },
+        "support": {
+          "uptimeSla": "99.99% Weekend & Evening Reliability SLA",
+          "onboarding": "Same-Day Menu Import & Staff Training",
+          "dedicatedEngineer": true,
+          "supportTier": "24/7 Hospitality Urgent Hotline"
+        },
+        "commercial": {
+          "pricingModel": "Per Terminal / Monthly Flat Rate",
+          "sandboxTrial": "Interactive Sandbox Demo Menu",
+          "customEnterpriseTier": "Franchise & Multi-Unit Packages"
+        }
+      }
+    },
+    {
       "id": "hotel-management-system",
       "name": "HotelFlow",
       "tagline": "All-in-one hotel operations, from front desk to housekeeping.",
@@ -106,7 +428,7 @@
         }
       ],
       "order": 2,
-      "updatedAt": "2026-09-28T22:49:19.111Z",
+      "updatedAt": "2026-09-30T11:11:05.304Z",
       "matrix": {
         "architecture": {
           "deployment": "Cloud Native (AWS/GCP)",
@@ -161,10 +483,171 @@
       }
     },
     {
+      "id": "ict-institution-management-platform",
+      "name": "Versaly Campus (ICT ERP)",
+      "tagline": "Enterprise student lifecycle, double-entry financial ledger & mobile app.",
+      "category": "Education",
+      "status": "live",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#0284c7",
+      "shortDescription": "Turnkey academic institution ERP covering student enrollment, verified cryptographic certificates, automated fee invoicing, and native Android & Desktop applications.",
+      "fullDescription": "Versaly Campus is an enterprise institutional operating system built with Django REST Framework and React/TypeScript. Tested with over 201 automated regression tests, it powers student admissions, class timetabling, attendance tracking, graduation clearance, and strict double-entry fee accounting.",
+      "problem": "Educational institutions suffer from fragmented enrollment paperwork, student fee arrears, unverified fake academic transcripts, and clunky software that doesn't work on mobile devices.",
+      "whatWeAreBuilding": [
+        "Complete Student Lifecycle Management (Admissions to Alumni)",
+        "Double-Entry Financial Ledger with Automated Fee Statements",
+        "Cryptographically Verifiable Academic Certificates (SHA-256 / QR)",
+        "Dynamic Course Timetable Auto-Scheduler & Room Allocator",
+        "Native Android Mobile App (Capacitor) & Desktop Executable (Electron)",
+        "Trainer Gradebook, Attendance Beacons & Student Clearance Portal"
+      ],
+      "keyFeatures": [
+        "201-Test Verified Architecture",
+        "Cryptographic Certificate Verification",
+        "Cross-Platform (Web, Android APK, Electron Desktop)"
+      ],
+      "features": [
+        {
+          "icon": "clipboard",
+          "title": "Admissions & Student Lifecycle",
+          "description": "From public online applications to class enrollment and graduation clearance in one audit-safe workflow."
+        },
+        {
+          "icon": "shield",
+          "title": "Verifiable Certificates",
+          "description": "Cryptographically hashed certificate verification tokens that employers can inspect online via public QR code."
+        },
+        {
+          "icon": "chart",
+          "title": "Double-Entry Tuition Ledger",
+          "description": "Student fee accounts, payment gateway webhooks, automated receipt generation, and fee balance tracking."
+        },
+        {
+          "icon": "zap",
+          "title": "Native Android & Desktop",
+          "description": "Pre-packaged Capacitor Android app and Electron desktop builds for campus labs and mobile students."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "trend",
+          "title": "Eliminate Fee Revenue Leakage",
+          "description": "Automated clearance gating ensures students can only sit exams and receive certificates once fees are cleared."
+        },
+        {
+          "icon": "star",
+          "title": "Zero Fraudulent Credentials",
+          "description": "Instant public verification portal guarantees the authenticity of all issued certificates."
+        },
+        {
+          "icon": "clock",
+          "title": "Paperless Campus Operations",
+          "description": "Trainers take digital attendance, calculate grades, and submit reports in minutes instead of days."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Technical & Vocational Institutes",
+          "description": "Colleges needing modular course structures, practical grading, and fast student enrollment."
+        },
+        {
+          "icon": "city",
+          "title": "Training Academies & Bootcamps",
+          "description": "Accelerated coding and professional schools with cohort-based timetables."
+        },
+        {
+          "icon": "home",
+          "title": "Universities & Secondary Campuses",
+          "description": "Multi-department campuses requiring strict role isolation and financial audit trails."
+        }
+      ],
+      "relatedIds": [
+        "versaly-crm",
+        "pulse-gym-ms",
+        "hotel-management-system"
+      ],
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Institutional Admin Campus Hub",
+          "caption": "Real-time enrollment counts, revenue collections, and timetable allocations.",
+          "skin": "browser"
+        },
+        {
+          "layout": "table",
+          "label": "Student Academic Ledger",
+          "caption": "Complete financial statement, invoice history, and fee clearance badges.",
+          "skin": "browser"
+        },
+        {
+          "layout": "chart",
+          "label": "Attendance & Academic Telemetry",
+          "caption": "Cohort attendance trends, course completion metrics, and exam statistics.",
+          "skin": "browser"
+        }
+      ],
+      "order": 3,
+      "updatedAt": "2026-09-30T10:00:00.000Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Docker Compose / AWS ECS / Ubuntu Server",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "PWA Offline Service Worker Enabled",
+          "multiTenant": true,
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Principal, Registrar, Finance Bursar, Trainer, Student",
+          "ssoSaml": true,
+          "encryption": "Argon2 Password Hashing & AES-256 Storage",
+          "auditTrail": true,
+          "gdprCompliant": true,
+          "complianceCert": "FERPA / Data Protection Act Compliant",
+          "backups": "Automated Google Drive & GCS Backup Scripts"
+        },
+        "workflows": {
+          "workflowBuilder": "Student Admissions & Clearance Trees",
+          "customFields": true,
+          "multiLocation": "Multi-Campus Branch Administration",
+          "taskDelegation": "Departmental Approval Routing",
+          "slaAlerts": "Overdue Fee & Attendance Drop Triggers"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Enrollment, Tuition AR & Class Attendance",
+          "customKpi": true,
+          "scheduledExports": "Bursar Monthly Audits & Student Records",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "SMS Gateway, Email Announcements, Webhooks",
+          "erpAccounting": "Integrated Double-Entry Accounting Engine",
+          "posHardware": "Barcode/QR Scanners for ID & Certificates",
+          "paymentGateways": "M-Pesa Express, Stripe, Direct Bank Transfer",
+          "customSdk": "Comprehensive Django REST Framework API"
+        },
+        "support": {
+          "uptimeSla": "99.95% Academic Operations SLA",
+          "onboarding": "Full Historical Data Migration & Training",
+          "dedicatedEngineer": true,
+          "supportTier": "Direct Slack/WhatsApp Developer Support"
+        },
+        "commercial": {
+          "pricingModel": "Per Student / Semester or Annual Institutional License",
+          "sandboxTrial": "Complete Demo Data Sandbox with Seed Commands",
+          "customEnterpriseTier": "On-Premises Dedicated Server Deployment"
+        }
+      }
+    },
+    {
       "id": "healthcare-pro",
-      "name": "Pulse Gym MS",
-      "tagline": "Clinic management built for the way medical teams actually work.",
-      "category": "Custom",
+      "name": "ClinicOS",
+      "tagline": "Clinic management built for the way modern medical practices operate.",
+      "category": "Healthcare",
       "status": "live",
       "spotlight": true,
       "featured": true,
@@ -268,7 +751,7 @@
         }
       ],
       "order": 3,
-      "updatedAt": "2026-09-28T22:49:19.111Z",
+      "updatedAt": "2026-09-30T11:11:05.304Z",
       "matrix": {
         "architecture": {
           "deployment": "Dedicated Healthcare Cloud (HIPAA)",
@@ -319,6 +802,167 @@
           "pricingModel": "Per Practitioner / Month",
           "sandboxTrial": "Compliant Sandbox Environment",
           "customEnterpriseTier": "Hospital Network & Enterprise"
+        }
+      }
+    },
+    {
+      "id": "pulse-gym-ms",
+      "name": "Pulse Gym MS",
+      "tagline": "Modern member management, automated recurring dues & class booking.",
+      "category": "Fitness & Wellness",
+      "status": "live",
+      "spotlight": true,
+      "featured": true,
+      "accent": "#10b981",
+      "shortDescription": "Full-stack fitness club operating system with member check-in portals, automated recurring billing, trainer schedules, and class attendance.",
+      "fullDescription": "Pulse Gym MS powers modern gyms, CrossFit boxes, and boutique fitness studios. Built on Next.js 14 and Prisma, it automates membership renewals, digital check-ins, personal trainer appointments, and retention tracking so fitness founders can focus on training.",
+      "problem": "Gym owners waste hours chasing expired memberships, dealing with turnstile bottlenecks, and manually scheduling trainer sessions on WhatsApp and paper clipboards.",
+      "whatWeAreBuilding": [
+        "Contactless Member Check-In via QR / Barcode / NFC",
+        "Automated Recurring Membership Billing & Dues Reminders",
+        "Class Booking & Personal Trainer Schedule Calendar",
+        "Member Health Metrics, Goal Milestones & Attendance Streaks",
+        "Staff Shift Management & Equipment Maintenance Logs",
+        "Interactive Gym Marketing Homepage & Member Sign-Up Portal"
+      ],
+      "keyFeatures": [
+        "Fast QR Check-in Station",
+        "Automated Membership Renewal",
+        "Class & Trainer Scheduler"
+      ],
+      "features": [
+        {
+          "icon": "zap",
+          "title": "Contactless Check-In",
+          "description": "Rapid tablet kiosk check-in with live membership status indicators (Active, Due, Suspended)."
+        },
+        {
+          "icon": "clipboard",
+          "title": "Membership Tiers & Billing",
+          "description": "Flexible daily, monthly, and annual subscription packages with automated renewal reminders."
+        },
+        {
+          "icon": "calendar",
+          "title": "Class & Trainer Bookings",
+          "description": "Visual class calendar with capacity caps, waitlists, and personal training session logs."
+        },
+        {
+          "icon": "chart",
+          "title": "Member Retention Analytics",
+          "description": "Track member visit frequency, identify at-risk dropouts, and trigger automated re-engagement texts."
+        }
+      ],
+      "benefits": [
+        {
+          "icon": "trend",
+          "title": "Zero Unpaid Facility Access",
+          "description": "Front desk kiosks instantly alert staff if an entering member's subscription has expired."
+        },
+        {
+          "icon": "star",
+          "title": "Boost Member Retention",
+          "description": "Automated streak recognition and check-in milestones keep members motivated and renewing."
+        },
+        {
+          "icon": "clock",
+          "title": "Save 15+ Hours Admin Weekly",
+          "description": "Automated card renewals and self-service class bookings remove desk congestion."
+        }
+      ],
+      "audience": [
+        {
+          "icon": "building",
+          "title": "Commercial Gyms & Fitness Clubs",
+          "description": "Multi-floor facilities with hundreds of daily members requiring fast check-in."
+        },
+        {
+          "icon": "home",
+          "title": "CrossFit & Boutique Studios",
+          "description": "Yoga, Pilates, and functional fitness studios with capped class sizes."
+        },
+        {
+          "icon": "city",
+          "title": "Personal Training Centers",
+          "description": "Private trainer hubs managing client workout plans and session packages."
+        }
+      ],
+      "relatedIds": [
+        "versaly-crm",
+        "melio-restaurant",
+        "hotel-management-system"
+      ],
+      "screenshots": [
+        {
+          "layout": "dashboard",
+          "label": "Facility Check-In Kiosk",
+          "caption": "Live front desk member verification, visit counts, and membership status.",
+          "skin": "browser"
+        },
+        {
+          "layout": "table",
+          "label": "Member Subscription Roster",
+          "caption": "Tier breakdown, renewal dates, and payment history.",
+          "skin": "browser"
+        },
+        {
+          "layout": "chart",
+          "label": "Peak Facility Utilization",
+          "caption": "Hourly traffic heatmaps, class occupancy rates, and member retention curves.",
+          "skin": "browser"
+        }
+      ],
+      "order": 4,
+      "updatedAt": "2026-09-30T10:00:00.000Z",
+      "matrix": {
+        "architecture": {
+          "deployment": "Next.js Vercel & PostgreSQL Cloud",
+          "restApi": true,
+          "webhooks": true,
+          "offlineMode": "Kiosk Offline Check-In Buffer",
+          "multiTenant": true,
+          "realtimeSync": true,
+          "mobileOptimized": true
+        },
+        "security": {
+          "rbac": "Owner, Front Desk, Personal Trainer, Member",
+          "ssoSaml": false,
+          "encryption": "AES-256 Storage & Tokenized Card Processing",
+          "auditTrail": true,
+          "gdprCompliant": true,
+          "complianceCert": "PCI-DSS Level 1 Gateway Partner",
+          "backups": "Automated Daily Database Snapshots"
+        },
+        "workflows": {
+          "workflowBuilder": "Automated Member Dues & Re-Engagement Triggers",
+          "customFields": true,
+          "multiLocation": "Multi-Gym Franchise & Branch Management",
+          "taskDelegation": "Trainer Client Handoffs",
+          "slaAlerts": "Expired Member Access Notification"
+        },
+        "analytics": {
+          "realtimeDashboards": "Live Floor Attendance, Churn Rate & MRR",
+          "customKpi": true,
+          "scheduledExports": "Monthly Dues Audit & Member Census",
+          "csvStream": true,
+          "multiEntityRollup": true
+        },
+        "integrations": {
+          "webhooksEcosystem": "WhatsApp Attendance Alerts, Stripe Webhooks",
+          "erpAccounting": "QuickBooks, Xero Financial Sync",
+          "posHardware": "Barcode/QR Scanners, Turnstile Access Relays",
+          "paymentGateways": "Stripe Recurring, M-Pesa Till, Cash Register",
+          "customSdk": "Next.js REST API Routes"
+        },
+        "support": {
+          "uptimeSla": "99.98% High Availability SLA",
+          "onboarding": "1-2 Days Roster Import & Kiosk Setup",
+          "dedicatedEngineer": true,
+          "supportTier": "WhatsApp & Phone Helpdesk"
+        },
+        "commercial": {
+          "pricingModel": "Monthly Flat Rate / Unlimited Members",
+          "sandboxTrial": "14-Day Free Club Sandbox",
+          "customEnterpriseTier": "Gym Franchise Multi-Location License"
         }
       }
     },
@@ -424,7 +1068,7 @@
         }
       ],
       "order": 4,
-      "updatedAt": "2026-09-28T22:49:19.111Z",
+      "updatedAt": "2026-09-30T11:11:05.304Z",
       "matrix": {
         "architecture": {
           "deployment": "High-Throughput Financial Cloud",
@@ -580,7 +1224,7 @@
         }
       ],
       "order": 5,
-      "updatedAt": "2026-09-28T22:49:19.111Z",
+      "updatedAt": "2026-09-30T11:11:05.304Z",
       "matrix": {
         "architecture": {
           "deployment": "Edge + Cloud Hybrid Architecture",
