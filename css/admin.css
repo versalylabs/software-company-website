@@ -40,6 +40,13 @@ body.admin-body {
 }
 
 /* ── LOGIN SCREEN ─────────────────────────────────────────── */
+html.admin-authenticated #admin-login-view {
+    display: none !important;
+}
+html.admin-authenticated #admin-dashboard-view {
+    display: flex !important;
+}
+
 .admin-login-wrap {
     min-height: 100vh;
     display: flex;

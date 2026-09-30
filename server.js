@@ -610,7 +610,7 @@ function executeSingleWebhook(hook, eventType, eventData) {
 const adminSessions = new Map();
 const adminLoginAttempts = new Map();
 const revokedAdminTokens = new Set();
-const SESSIONS_FILE = path.resolve(__dirname, 'data', '.sessions.json');
+const SESSIONS_FILE = resolveDataPath('SESSIONS_FILE', 'data/.sessions.json');
 const AUTH_SECRET = process.env.ADMIN_JWT_SECRET || 'versaly_admin_stateless_hmac_secret_key_2026_98a7sd6f';
 
 function generateHmacToken(payloadObj) {
@@ -695,11 +695,11 @@ function createAdminSession() {
     const token = generateHmacToken({
         role: 'admin',
         ts: now,
-        exp: now + 7 * 24 * 60 * 60 * 1000 // 7 days valid
+        exp: now + 30 * 24 * 60 * 60 * 1000 // 30 days valid
     });
     adminSessions.set(token, {
         createdAt: now,
-        expiresAt: now + 7 * 24 * 60 * 60 * 1000
+        expiresAt: now + 30 * 24 * 60 * 60 * 1000
     });
     saveSessionsToDisk();
     return token;
@@ -718,8 +718,12 @@ function isValidAdminSession(req) {
             const qToken = parsed.searchParams.get('token');
             if (qToken) token = qToken.trim();
         } catch (e) {}
+        if (!token && req.headers.cookie) {
+            const cookieMatch = req.headers.cookie.match(/(?:^|;\s*)versaly_admin_token=([^;]+)/);
+            if (cookieMatch) token = decodeURIComponent(cookieMatch[1].trim());
+        }
     }
-    if (!token) return false;
+    if (!token || token === 'null' || token === 'undefined') return false;
     if (revokedAdminTokens.has(token)) return false;
 
     // 1. Stateless HMAC validation (works seamlessly across Vercel lambdas and restarts)
@@ -1203,11 +1207,14 @@ function requestHandler(req, res) {
             const providedPassword = (body.password || '').trim();
             if (providedPassword === CONFIG.adminPassword || providedPassword === 'versaly_admin_2026' || providedPassword === 'softify_admin_2026') {
                 const token = createAdminSession();
-                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.writeHead(200, {
+                    'Content-Type': 'application/json',
+                    'Set-Cookie': `versaly_admin_token=${encodeURIComponent(token)}; Path=/; Max-Age=2592000; SameSite=Lax`
+                });
                 res.end(JSON.stringify({
                     success: true,
                     token: token,
-                    expiresIn: 86400
+                    expiresIn: 2592000
                 }));
             } else {
                 res.writeHead(401, { 'Content-Type': 'application/json' });
@@ -1225,7 +1232,10 @@ function requestHandler(req, res) {
             adminSessions.delete(token);
             saveSessionsToDisk();
         }
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Set-Cookie': 'versaly_admin_token=; Path=/; Max-Age=0; SameSite=Lax'
+        });
         res.end(JSON.stringify({ success: true }));
         return;
     }
@@ -2366,14 +2376,62 @@ function requestHandler(req, res) {
                 const list = prodData.products || [];
                 const idx = list.findIndex(p => p.id === id);
 
+                const existing = list[idx];
+                const updatedName = body.name !== undefined ? sanitizeString(body.name, 120) : (existing ? existing.name : '');
+
                 if (idx === -1) {
-                    res.writeHead(404, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ success: false, error: 'Product not found.' }));
+                    // Resilient upsert: create product if not currently on this container
+                    const newProduct = {
+                        id: id,
+                        name: updatedName || 'Untitled Product',
+                        tagline: body.tagline !== undefined ? sanitizeString(body.tagline, 255) : '',
+                        category: body.category !== undefined ? sanitizeString(body.category, 80) : 'General',
+                        status: body.status !== undefined ? sanitizeString(body.status, 50) : 'in-development',
+                        spotlight: body.spotlight !== undefined ? Boolean(body.spotlight) : false,
+                        featured: body.featured !== undefined ? Boolean(body.featured) : false,
+                        accent: (body.accent !== undefined || body.accentColor !== undefined) ? sanitizeString(body.accent !== undefined ? body.accent : body.accentColor, 20) : '#4f46e5',
+                        featuredImage: body.featuredImage !== undefined ? sanitizeString(body.featuredImage, 500) : '',
+                        shortDescription: body.shortDescription !== undefined ? sanitizeString(body.shortDescription, 500) : '',
+                        fullDescription: (body.fullDescription !== undefined || body.description !== undefined) ? sanitizeString(body.fullDescription !== undefined ? body.fullDescription : body.description, 3000) : '',
+                        problem: body.problem !== undefined ? sanitizeString(body.problem, 3000) : '',
+                        whatWeAreBuilding: Array.isArray(body.whatWeAreBuilding) ? body.whatWeAreBuilding.map(s => sanitizeString(s, 300)).filter(Boolean) : [],
+                        keyFeatures: Array.isArray(body.keyFeatures) ? body.keyFeatures.map(s => sanitizeString(s, 200)).filter(Boolean) : [],
+                        features: Array.isArray(body.features) ? body.features.map(f => ({
+                            icon: sanitizeString(f.icon || 'check', 50),
+                            title: sanitizeString(f.title || '', 120),
+                            description: sanitizeString(f.description || '', 500)
+                        })).filter(f => f.title) : [],
+                        benefits: Array.isArray(body.benefits) ? body.benefits.map(b => ({
+                            icon: sanitizeString(b.icon || 'star', 50),
+                            title: sanitizeString(b.title || '', 120),
+                            description: sanitizeString(b.description || '', 500)
+                        })).filter(b => b.title) : [],
+                        audience: Array.isArray(body.audience || body.targetAudience) ? (body.audience || body.targetAudience).map(a => ({
+                            icon: sanitizeString(a.icon || 'building', 50),
+                            title: sanitizeString(a.title || '', 120),
+                            description: sanitizeString(a.description || '', 500)
+                        })).filter(a => a.title) : [],
+                        relatedIds: Array.isArray(body.relatedIds || body.relatedProducts) ? (body.relatedIds || body.relatedProducts).map(r => sanitizeString(r, 80)).filter(Boolean) : [],
+                        order: typeof body.order === 'number' ? body.order : list.length + 1,
+                        screenshots: Array.isArray(body.screenshots) ? body.screenshots : [
+                            { layout: 'dashboard', label: 'Dashboard Overview' },
+                            { layout: 'table', label: 'Management View' }
+                        ],
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    };
+                    list.push(newProduct);
+                    saveProductsData({ products: list });
+                    logActivity('product_created', {
+                        product_id: newProduct.id,
+                        product_name: newProduct.name,
+                        category: newProduct.category,
+                        status: newProduct.status
+                    });
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: true, product: newProduct }));
                     return;
                 }
-
-                const existing = list[idx];
-                const updatedName = body.name !== undefined ? sanitizeString(body.name, 120) : existing.name;
 
                 list[idx] = {
                     ...existing,

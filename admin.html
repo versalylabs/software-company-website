@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="css/motion.css">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/dark.css">
+    <script>
+        (function() {
+            try {
+                var m = document.cookie.match(/(?:^|;\s*)versaly_admin_token=([^;]+)/);
+                var t = localStorage.getItem('versaly_admin_token') || sessionStorage.getItem('versaly_admin_token') || (m ? decodeURIComponent(m[1]) : null);
+                if (t && t !== 'null' && t !== 'undefined') {
+                    document.documentElement.classList.add('admin-authenticated');
+                }
+            } catch(e) {}
+        })();
+    </script>
 </head>
 <body class="admin-body">
 

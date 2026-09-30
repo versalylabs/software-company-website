@@ -206,6 +206,20 @@ function fetchProducts() {
     })
     .then(function(data) {
       if (data && Array.isArray(data.products)) {
+        try {
+          var custom = localStorage.getItem('versaly_custom_products');
+          if (custom) {
+            var customList = JSON.parse(custom);
+            if (Array.isArray(customList)) {
+              customList.forEach(function(cp) {
+                var idx = data.products.findIndex(function(p) { return p.id === cp.id; });
+                if (idx >= 0) data.products[idx] = cp;
+                else data.products.push(cp);
+              });
+            }
+          }
+        } catch (e) {}
+
         data.products = data.products
           .filter(function(p) { return p.status !== 'draft' && p.status !== 'archived'; })
           .sort(function(a, b) { return (a.order || 999) - (b.order || 999); });

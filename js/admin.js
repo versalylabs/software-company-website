@@ -382,20 +382,63 @@
 
     function getToken() {
         try {
-            return sessionStorage.getItem(TOKEN_KEY) || localStorage.getItem(TOKEN_KEY);
+            const token = localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
+            if (token && token !== 'null' && token !== 'undefined') return token;
+            const match = document.cookie.match(new RegExp('(^|;\\s*)' + TOKEN_KEY + '=([^;]+)'));
+            if (match) {
+                const val = decodeURIComponent(match[2].trim());
+                if (val && val !== 'null' && val !== 'undefined') {
+                    try { localStorage.setItem(TOKEN_KEY, val); } catch (e) {}
+                    return val;
+                }
+            }
+            return null;
         } catch (e) {
             return null;
         }
     }
 
     function setToken(token) {
-        if (token) {
-            try { sessionStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+        if (token && token !== 'null' && token !== 'undefined') {
             try { localStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+            try { sessionStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+            try { document.cookie = `${TOKEN_KEY}=${encodeURIComponent(token)}; path=/; max-age=2592000; SameSite=Lax`; } catch (e) {}
+            document.documentElement.classList.add('admin-authenticated');
         } else {
-            try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {}
             try { localStorage.removeItem(TOKEN_KEY); } catch (e) {}
+            try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {}
+            try { document.cookie = `${TOKEN_KEY}=; path=/; max-age=0; SameSite=Lax`; } catch (e) {}
+            document.documentElement.classList.remove('admin-authenticated');
         }
+    }
+
+    // Client-side Custom Products Persistence
+    const CUSTOM_PRODUCTS_KEY = 'versaly_custom_products';
+    function getCustomProductsFromStorage() {
+        try {
+            const raw = localStorage.getItem(CUSTOM_PRODUCTS_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+            return [];
+        }
+    }
+    function saveCustomProductToStorage(prod) {
+        if (!prod || !prod.id) return;
+        try {
+            const list = getCustomProductsFromStorage();
+            const idx = list.findIndex(p => p.id === prod.id);
+            if (idx >= 0) list[idx] = prod;
+            else list.push(prod);
+            localStorage.setItem(CUSTOM_PRODUCTS_KEY, JSON.stringify(list));
+        } catch (e) {}
+    }
+    function removeCustomProductFromStorage(prodId) {
+        if (!prodId) return;
+        try {
+            let list = getCustomProductsFromStorage();
+            list = list.filter(p => p.id !== prodId);
+            localStorage.setItem(CUSTOM_PRODUCTS_KEY, JSON.stringify(list));
+        } catch (e) {}
     }
 
     async function authFetch(url, options = {}) {
@@ -421,6 +464,7 @@
 
     // --- View Switching ---
     function showLogin() {
+        document.documentElement.classList.remove('admin-authenticated');
         if (loginView) loginView.style.display = 'flex';
         if (dashboardView) {
             dashboardView.classList.remove('is-visible');
@@ -429,6 +473,7 @@
     }
 
     function showDashboard() {
+        document.documentElement.classList.add('admin-authenticated');
         if (loginView) loginView.style.display = 'none';
         if (dashboardView) {
             dashboardView.classList.add('is-visible');
@@ -641,7 +686,14 @@
             const res = await authFetch('/api/admin/products');
             const data = await res.json();
             if (data.success && data.products) {
-                currentProducts = data.products;
+                const custom = getCustomProductsFromStorage();
+                const merged = [...data.products];
+                custom.forEach(cp => {
+                    const idx = merged.findIndex(p => p.id === cp.id);
+                    if (idx >= 0) merged[idx] = cp;
+                    else merged.push(cp);
+                });
+                currentProducts = merged;
                 if (badgeProductsCount) badgeProductsCount.textContent = currentProducts.length;
                 renderProductsTable();
             }
@@ -2696,13 +2748,23 @@
         if (productModalDraftBtn) productModalDraftBtn.disabled = true;
 
         try {
-            const res = await authFetch(targetUrl, {
+            let res = await authFetch(targetUrl, {
                 method,
                 body: JSON.stringify(payload)
             });
-            const data = await res.json();
+            let data = await res.json().catch(() => ({}));
+
+            // Resilient fallback: If PUT returned 404 (product not yet on this container), retry with POST
+            if (!res.ok && res.status === 404 && isEdit) {
+                res = await authFetch('/api/admin/products', {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                data = await res.json().catch(() => ({}));
+            }
 
             if (res.ok && data.success) {
+                saveCustomProductToStorage(data.product || payload);
                 closeProductModal();
                 await loadAllData();
             } else {
@@ -2722,6 +2784,7 @@
         const confirmed = confirm(`Are you sure you want to permanently delete product "${prodName.value}" (${prodOriginalId.value})? This cannot be undone.`);
         if (!confirmed) return;
 
+        removeCustomProductFromStorage(prodOriginalId.value);
         try {
             const res = await authFetch(`/api/admin/products/${prodOriginalId.value}`, {
                 method: 'DELETE'
@@ -4668,20 +4731,31 @@
 
         const token = getToken();
         if (token) {
+            // Immediate transition: zero delay, zero login screen flicker on reload
+            showDashboard();
+            loadAllData();
+
+            // Background verification: only kick out if server explicitly returns 401 with authenticated === false
             try {
                 const verifyUrl = getApiUrl('/api/admin/verify');
                 const res = await fetch(verifyUrl, {
                     headers: { 'Authorization': 'Bearer ' + token, 'x-admin-token': token }
                 });
-                const data = await res.json();
-                if (res.ok && data.authenticated) {
-                    showDashboard();
-                    await loadAllData();
-                    return;
+                if (res.status === 401) {
+                    const data = await res.json().catch(() => ({}));
+                    if (!data.authenticated) {
+                        setToken(null);
+                        showLogin();
+                        return;
+                    }
                 }
-            } catch (e) {}
+            } catch (e) {
+                // If offline or network error, DO NOT log out!
+                console.warn('Session verification deferred:', e.message);
+            }
+            return;
         }
-        setToken(null);
+
         showLogin();
     }
 
