@@ -2789,4 +2789,39 @@ html.admin-authenticated #admin-dashboard-view {
     }
 }
 
+/* Phase 21: Client Portal Admin Styles */
+.admin-subtab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--adm-text-muted);
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.admin-subtab-btn:hover {
+    color: var(--adm-text);
+}
+.admin-subtab-btn.active {
+    color: var(--adm-gold, #fca311);
+    border-bottom-color: var(--adm-gold, #fca311);
+    background: rgba(252, 163, 17, 0.08);
+    border-radius: 4px 4px 0 0;
+}
+.cl-item-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--adm-border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.cl-item-card:hover {
+    border-color: rgba(252, 163, 17, 0.3);
+}
+
 

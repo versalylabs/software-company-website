@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Workspace Portal — Versaly</title>
+  <meta name="description" content="Secure, authenticated client workspace for Versaly projects. Track timelines, review deliverables, meeting notes, approved files, and invoices.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://versaly.example.com/portal.html">
+
+  <!-- Favicon & Brand Meta -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0a1120">
+
+  <!-- Preload Glorase Custom Serif Font matching UI design -->
+  <link rel="preload" href="assets/fonts/Glorase.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/dark.css">
+
+  <script>
+    (function(){try{
+      document.documentElement.setAttribute('data-theme','dark');
+      localStorage.setItem('versaly-theme','dark');
+    }catch(e){}})();
+  </script>
+</head>
+<body class="portal-body">
+  <a href="#portal-content-anchor" class="skip-link">Skip to workspace</a>
+
+  <!-- TOP FLOATING NAVBAR -->
+  <header class="hn-bar portal-bar" role="banner">
+    <div class="hn-inner">
+      <div class="portal-brand-wrap">
+        <a href="index.html" class="hn-brand" aria-label="Versaly Home">
+          <span class="hn-logo" aria-hidden="true">V</span>
+          <span class="hn-brand-name">Versaly</span>
+        </a>
+        <span class="portal-badge-pill" id="portal-badge-pill">Client Portal</span>
+      </div>
+
+      <div class="portal-nav-actions" id="portal-header-actions" style="display: none;">
+        <div class="portal-client-tag">
+          <span class="portal-client-avatar" id="header-avatar">C</span>
+          <div class="portal-client-text">
+            <span class="portal-client-name" id="header-client-name">Client User</span>
+            <span class="portal-client-company" id="header-client-company">Company</span>
+          </div>
+        </div>
+
+        <button type="button" class="portal-btn-sm portal-btn-outline" id="btn-contact-lead" title="Contact Versaly Lead">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Support Lead</span>
+        </button>
+
+        <button type="button" class="portal-btn-sm portal-btn-danger" id="portal-logout-btn" title="Sign out of portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="portal-content-anchor" class="portal-main">
+
+    <!-- 1. LOGIN SCREEN -->
+    <section id="portal-login-view" class="portal-login-wrap" aria-label="Client Login">
+      <div class="portal-login-card motion-fade-up">
+        <div class="portal-login-header">
+          <div class="portal-login-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fca311" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h1 class="portal-login-title">Client Workspace</h1>
+          <p class="portal-login-sub">Sign in to access your project roadmap, deliverables, invoices, and direct communications.</p>
+        </div>
+
+        <form id="portal-login-form" class="portal-form" autocomplete="on">
+          <div id="login-error-alert" class="portal-alert portal-alert--danger" style="display: none;" role="alert"></div>
+
+          <div class="portal-field">
+            <label for="portal-email">Work Email</label>
+            <div class="portal-input-icon-wrap">
+              <input type="email" id="portal-email" class="portal-input" placeholder="e.g. sophia@velournailstudio.com" required autocomplete="email">
+              <svg class="portal-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+          </div>
+
+          <div class="portal-field">
+            <div class="portal-field-row">
+              <label for="portal-password">Password or Access Key</label>
+            </div>
+            <div class="portal-input-icon-wrap">
+              <input type="password" id="portal-password" class="portal-input" placeholder="Enter your portal password" required autocomplete="current-password">
+              <svg class="portal-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+          </div>
+
+          <div class="portal-form-options">
+            <label class="portal-checkbox-label">
+              <input type="checkbox" id="portal-remember" checked>
+              <span>Stay signed in on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" id="portal-login-submit" class="portal-btn-primary">
+            <span>Sign In to Project Portal</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+
+        <div class="portal-login-footer">
+          <div class="portal-demo-pill">
+            <span class="portal-demo-pill__badge">Test Account</span>
+            <code>sophia@velournailstudio.com</code> &bull; <code>client_demo_2026</code>
+          </div>
+          <p class="portal-security-notice">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            256-bit TLS encrypted session &bull; Role-isolated workspace
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. AUTHENTICATED CLIENT DASHBOARD VIEW -->
+    <section id="portal-dashboard-view" class="portal-dashboard-wrap" style="display: none;" aria-label="Project Workspace">
+      
+      <!-- HERO BANNER -->
+      <div class="portal-hero">
+        <div class="portal-hero__inner">
+          <div class="portal-hero__top">
+            <div class="portal-hero__badges">
+              <span class="portal-stage-badge" id="dash-project-stage">Beta Testing</span>
+              <span class="portal-status-badge" id="dash-project-status">In Progress</span>
+              <span class="portal-client-company-tag" id="dash-client-company">Company</span>
+            </div>
+            <div class="portal-hero__lead">
+              <span class="portal-lead-label">Versaly Engineering Lead:</span>
+              <strong id="dash-versaly-lead">Alex Mercer</strong>
+            </div>
+          </div>
+
+          <h1 class="portal-hero__title" id="dash-project-name">Project Loading...</h1>
+          <p class="portal-hero__desc" id="dash-project-desc">Detailed software architecture and status report.</p>
+
+          <!-- PROGRESS METRICS STRIP -->
+          <div class="portal-metrics-strip">
+            <div class="portal-metric-card">
+              <span class="portal-metric-label">Project Completion</span>
+              <div class="portal-metric-progress-wrap">
+                <div class="portal-progress-bar-bg">
+                  <div class="portal-progress-bar-fill" id="dash-progress-fill" style="width: 0%;"></div>
+                </div>
+                <span class="portal-progress-text" id="dash-progress-percent">0%</span>
+              </div>
+            </div>
+
+            <div class="portal-metric-card">
+              <span class="portal-metric-label">Target Launch Date</span>
+              <div class="portal-metric-val" id="dash-target-date">&mdash;</div>
+            </div>
+
+            <div class="portal-metric-card">
+              <span class="portal-metric-label">Pending Deliverables</span>
+              <div class="portal-metric-val portal-metric-val--amber" id="dash-pending-deliverables">0</div>
+            </div>
+
+            <div class="portal-metric-card">
+              <span class="portal-metric-label">Invoices Status</span>
+              <div class="portal-metric-val" id="dash-invoice-summary">Up to date</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKSPACE TABS NAV -->
+      <nav class="portal-subnav" aria-label="Portal Navigation Tabs">
+        <div class="portal-subnav__inner">
+          <button type="button" class="portal-tab-btn active" data-tab="overview">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Timeline &amp; Overview</span>
+          </button>
+
+          <button type="button" class="portal-tab-btn" data-tab="deliverables">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            <span>Deliverables &amp; Artifacts</span>
+            <span class="portal-badge-counter" id="badge-deliverables" style="display: none;">0</span>
+          </button>
+
+          <button type="button" class="portal-tab-btn" data-tab="meetings">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>Meeting Notes &amp; Decisions</span>
+          </button>
+
+          <button type="button" class="portal-tab-btn" data-tab="files">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+            <span>Approved Files</span>
+          </button>
+
+          <button type="button" class="portal-tab-btn" data-tab="feedback">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            <span>Feedback &amp; Approvals</span>
+          </button>
+
+          <button type="button" class="portal-tab-btn" data-tab="invoices">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <span>Invoices &amp; Payments</span>
+            <span class="portal-badge-counter portal-badge-counter--due" id="badge-invoices" style="display: none;">Due</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- PANES CONTAINER -->
+      <div class="portal-panes-wrap">
+
+        <!-- 1. PANE: OVERVIEW & TIMELINE -->
+        <div id="pane-overview" class="portal-pane active">
+          <div class="portal-pane-grid">
+            <div class="portal-pane-main">
+              <div class="portal-card">
+                <div class="portal-card__header">
+                  <div>
+                    <h2 class="portal-card__title">Project Roadmap &amp; Milestones</h2>
+                    <p class="portal-card__sub">Track progression through each critical phase of the build.</p>
+                  </div>
+                </div>
+
+                <div class="portal-timeline" id="portal-timeline-list">
+                  <!-- Rendered dynamically via portal.js -->
+                </div>
+              </div>
+            </div>
+
+            <div class="portal-pane-sidebar">
+              <div class="portal-card">
+                <h3 class="portal-card__title-sm">Versaly Dedicated Team</h3>
+                <div class="portal-team-card">
+                  <div class="portal-team-avatar">V</div>
+                  <div class="portal-team-info">
+                    <strong id="sidebar-lead-name">Alex Mercer</strong>
+                    <span id="sidebar-lead-role">Principal Software Architect</span>
+                    <a href="mailto:team@versaly.example.com" id="sidebar-lead-email" class="portal-team-email">team@versaly.example.com</a>
+                  </div>
+                </div>
+                <button type="button" class="portal-btn-secondary portal-btn-full" id="btn-request-call">Schedule Project Call</button>
+              </div>
+
+              <div class="portal-card">
+                <h3 class="portal-card__title-sm">Project Specification</h3>
+                <p class="portal-text-muted" id="sidebar-project-desc">Custom enterprise software system.</p>
+                <div class="portal-meta-list">
+                  <div class="portal-meta-item">
+                    <span>Architecture:</span>
+                    <strong>Cloud-Native &bull; API-First</strong>
+                  </div>
+                  <div class="portal-meta-item">
+                    <span>Target Deployment:</span>
+                    <strong id="sidebar-target-deployment">Q4 2026</strong>
+                  </div>
+                  <div class="portal-meta-item">
+                    <span>Service SLA:</span>
+                    <strong>Priority 99.98%</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. PANE: DELIVERABLES -->
+        <div id="pane-deliverables" class="portal-pane">
+          <div class="portal-card">
+            <div class="portal-card__header">
+              <div>
+                <h2 class="portal-card__title">Deliverables &amp; Artifacts</h2>
+                <p class="portal-card__sub">Review specifications, prototypes, designs, and production staging environments.</p>
+              </div>
+              <div class="portal-filter-tabs">
+                <button type="button" class="portal-pill-filter active" data-filter="all">All</button>
+                <button type="button" class="portal-pill-filter" data-filter="pending_review">Pending Review</button>
+                <button type="button" class="portal-pill-filter" data-filter="approved">Approved</button>
+              </div>
+            </div>
+
+            <div class="portal-deliverables-grid" id="portal-deliverables-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. PANE: MEETING NOTES -->
+        <div id="pane-meetings" class="portal-pane">
+          <div class="portal-card">
+            <div class="portal-card__header">
+              <div>
+                <h2 class="portal-card__title">Meeting Notes &amp; Decision Logs</h2>
+                <p class="portal-card__sub">Summaries of project walkthroughs, design decisions, and agreed action items.</p>
+              </div>
+            </div>
+
+            <div class="portal-meetings-list" id="portal-meetings-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. PANE: APPROVED FILES -->
+        <div id="pane-files" class="portal-pane">
+          <div class="portal-card">
+            <div class="portal-card__header">
+              <div>
+                <h2 class="portal-card__title">Approved Files &amp; Assets Repository</h2>
+                <p class="portal-card__sub">Signed agreements, system specifications, brand assets, and technical documentation.</p>
+              </div>
+            </div>
+
+            <div class="portal-files-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>File Name</th>
+                    <th>Category</th>
+                    <th>Uploaded Date</th>
+                    <th>Size</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="portal-files-tbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. PANE: FEEDBACK & APPROVALS -->
+        <div id="pane-feedback" class="portal-pane">
+          <div class="portal-pane-grid">
+            <div class="portal-pane-main">
+              <div class="portal-card">
+                <h2 class="portal-card__title">Feedback &amp; Approval Activity</h2>
+                <p class="portal-card__sub">Audit history of your signoffs, design notes, and Versaly engineering replies.</p>
+                <div class="portal-feedback-feed" id="portal-feedback-feed">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <div class="portal-pane-sidebar">
+              <div class="portal-card">
+                <h3 class="portal-card__title-sm">Submit Project Note</h3>
+                <p class="portal-text-muted">Questions or change requests for the engineering team.</p>
+                <form id="portal-feedback-form">
+                  <div class="portal-field">
+                    <label for="fb-type">Entry Type</label>
+                    <select id="fb-type" class="portal-input">
+                      <option value="feedback">General Feedback</option>
+                      <option value="change_request">Change Request</option>
+                      <option value="question">Architecture Question</option>
+                    </select>
+                  </div>
+                  <div class="portal-field">
+                    <label for="fb-comment">Message</label>
+                    <textarea id="fb-comment" class="portal-input portal-textarea" rows="4" placeholder="Detail your thoughts or questions..." required></textarea>
+                  </div>
+                  <button type="submit" class="portal-btn-primary portal-btn-full" id="fb-submit-btn">Send to Versaly Team</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. PANE: INVOICES & PAYMENTS -->
+        <div id="pane-invoices" class="portal-pane">
+          <div class="portal-card">
+            <div class="portal-card__header">
+              <div>
+                <h2 class="portal-card__title">Invoices &amp; Payment Links</h2>
+                <p class="portal-card__sub">Transparent milestone billing, receipts, and secure online payment options.</p>
+              </div>
+              <div class="portal-billing-summary" id="portal-billing-summary">
+                <!-- Invoiced & Paid totals -->
+              </div>
+            </div>
+
+            <div class="portal-invoices-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Milestone Title</th>
+                    <th>Issue Date</th>
+                    <th>Due Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Payment / Receipt</th>
+                  </tr>
+                </thead>
+                <tbody id="portal-invoices-tbody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: APPROVE DELIVERABLE -->
+  <div id="modal-approve-deliverable" class="portal-modal-backdrop" aria-hidden="true">
+    <div class="portal-modal-card">
+      <div class="portal-modal-header">
+        <h3 class="portal-modal-title">Sign Off &amp; Approve Deliverable</h3>
+        <button type="button" class="portal-modal-close" id="btn-close-approve-modal">&times;</button>
+      </div>
+      <div class="portal-modal-body">
+        <p>You are officially signing off on: <strong id="modal-del-title">Deliverable Title</strong>.</p>
+        <div class="portal-field">
+          <label for="approve-notes">Approval Notes / Feedback (Optional)</label>
+          <textarea id="approve-notes" class="portal-input portal-textarea" rows="3" placeholder="Add any final signoff comments or conditions..."></textarea>
+        </div>
+      </div>
+      <div class="portal-modal-footer">
+        <button type="button" class="portal-btn-secondary" id="btn-cancel-approve">Cancel</button>
+        <button type="button" class="portal-btn-primary" id="btn-confirm-approve">Confirm &amp; Approve</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CONTACT TEAM -->
+  <div id="modal-contact-lead" class="portal-modal-backdrop" aria-hidden="true">
+    <div class="portal-modal-card">
+      <div class="portal-modal-header">
+        <h3 class="portal-modal-title">Connect with Versaly Engineering</h3>
+        <button type="button" class="portal-modal-close" id="btn-close-contact-modal">&times;</button>
+      </div>
+      <div class="portal-modal-body">
+        <p>Your dedicated technical contact is available for architecture reviews and questions.</p>
+        <div class="portal-contact-box">
+          <div class="portal-contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fca311" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div>
+            <strong id="contact-modal-name">Alex Mercer</strong>
+            <span id="contact-modal-role">Principal Software Architect</span>
+            <a href="mailto:team@versaly.example.com" id="contact-modal-email" class="portal-link-accent">team@versaly.example.com</a>
+          </div>
+        </div>
+        <p class="portal-text-muted portal-text-xs">Emergency escalation line &bull; SLA response under 2 business hours.</p>
+      </div>
+      <div class="portal-modal-footer">
+        <a href="mailto:team@versaly.example.com" class="portal-btn-primary portal-btn-full" id="contact-modal-mailto">Launch Email Client</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="portal-toast" class="portal-toast" aria-live="polite"></div>
+
+  <script src="js/portal.js"></script>
+</body>
+</html>

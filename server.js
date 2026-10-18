@@ -79,6 +79,7 @@ const CONFIG = {
     notificationsFile: resolveDataPath('NOTIFICATIONS_FILE', 'data/notifications.json'),
     webhooksFile: resolveDataPath('WEBHOOKS_FILE', 'data/webhooks.json'),
     webhookDeliveriesFile: resolveDataPath('WEBHOOK_DELIVERIES_FILE', 'data/webhook_deliveries.json'),
+    clientsFile: resolveDataPath('CLIENTS_FILE', 'data/clients.json'),
     uploadsDir: resolveUploadsPath('UPLOADS_DIR', 'assets/uploads'),
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX, 10) || 15,
     rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10) || 15 * 60 * 1000, // 15 mins
@@ -728,7 +729,7 @@ function isValidAdminSession(req) {
 
     // 1. Stateless HMAC validation (works seamlessly across Vercel lambdas and restarts)
     const verified = verifyHmacToken(token);
-    if (verified) return true;
+    if (verified && verified.role === 'admin') return true;
 
     // 2. In-memory / disk session fallback
     const session = adminSessions.get(token);
@@ -741,6 +742,121 @@ function isValidAdminSession(req) {
     }
 
     return true;
+}
+
+// ════════════════════════════════════════════════════════════════
+// CLIENT PORTAL DATA & SECURITY HELPERS
+// ════════════════════════════════════════════════════════════════
+
+function readClientsData() {
+    if (!fs.existsSync(CONFIG.clientsFile)) {
+        return { clients: [] };
+    }
+    try {
+        const raw = fs.readFileSync(CONFIG.clientsFile, 'utf8');
+        return JSON.parse(raw);
+    } catch (e) {
+        console.error('[STORAGE] Error reading clients data:', e.message);
+        return { clients: [] };
+    }
+}
+
+function writeClientsData(data) {
+    try {
+        const dir = path.dirname(CONFIG.clientsFile);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(CONFIG.clientsFile, JSON.stringify(data, null, 2), 'utf8');
+        return true;
+    } catch (e) {
+        console.error('[STORAGE] Error writing clients data:', e.message);
+        return false;
+    }
+}
+
+function hashClientPassword(password, salt) {
+    if (!salt) salt = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 32, 'sha256').toString('hex');
+    return { hash, salt };
+}
+
+function verifyClientPassword(password, storedHash, salt) {
+    if (!password || !storedHash || !salt) return false;
+    const calculated = crypto.pbkdf2Sync(password, salt, 1000, 32, 'sha256').toString('hex');
+    const bufA = Buffer.from(calculated, 'utf8');
+    const bufB = Buffer.from(storedHash, 'utf8');
+    if (bufA.length !== bufB.length) return false;
+    return crypto.timingSafeEqual(bufA, bufB);
+}
+
+function createClientSession(client) {
+    const now = Date.now();
+    const token = generateHmacToken({
+        role: 'client',
+        clientId: client.id,
+        email: client.email,
+        ts: now,
+        exp: now + 14 * 24 * 60 * 60 * 1000 // 14 days valid
+    });
+    return token;
+}
+
+const clientLoginAttempts = new Map();
+function isClientLoginRateLimited(ip) {
+    const now = Date.now();
+    const record = clientLoginAttempts.get(ip) || { count: 0, resetAt: now + 15 * 60 * 1000 };
+    if (now > record.resetAt) {
+        record.count = 1;
+        record.resetAt = now + 15 * 60 * 1000;
+        clientLoginAttempts.set(ip, record);
+        return false;
+    }
+    record.count += 1;
+    clientLoginAttempts.set(ip, record);
+    return record.count > 12;
+}
+
+function getClientSessionFromReq(req) {
+    const authHeader = req.headers['authorization'] || '';
+    let token = '';
+    if (authHeader.startsWith('Bearer ')) {
+        token = authHeader.substring(7).trim();
+    } else if (req.headers['x-client-token']) {
+        token = req.headers['x-client-token'].trim();
+    } else {
+        try {
+            const parsed = new URL(req.url, 'http://' + (req.headers.host || 'localhost'));
+            const qToken = parsed.searchParams.get('token');
+            if (qToken) token = qToken.trim();
+        } catch (e) {}
+        if (!token && req.headers.cookie) {
+            const cookieMatch = req.headers.cookie.match(/(?:^|;\s*)versaly_client_token=([^;]+)/);
+            if (cookieMatch) token = decodeURIComponent(cookieMatch[1].trim());
+        }
+    }
+    if (!token || token === 'null' || token === 'undefined') return null;
+    const verified = verifyHmacToken(token);
+    if (verified && verified.role === 'client' && verified.clientId) {
+        return verified;
+    }
+    return null;
+}
+
+function sanitizeClientForPortal(client) {
+    if (!client) return null;
+    const copy = JSON.parse(JSON.stringify(client));
+    delete copy.passwordHash;
+    delete copy.salt;
+    delete copy.internalNotes;
+    if (copy.project) {
+        delete copy.project.internalNotes;
+        if (Array.isArray(copy.project.meetingNotes)) {
+            copy.project.meetingNotes = copy.project.meetingNotes.filter(n => n.isClientVisible !== false);
+        }
+    }
+    if (Array.isArray(copy.meetingNotes)) {
+        copy.meetingNotes = copy.meetingNotes.filter(n => n.isClientVisible !== false);
+    }
+    return copy;
 }
 
 // --- 2. In-Memory Rate Limiter ---
@@ -1585,6 +1701,264 @@ function requestHandler(req, res) {
                 ticket: newTicket,
                 message: `Support ticket ${ticketId} created successfully. Our engineering desk will respond within SLA.`
             }));
+        });
+        return;
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // SECURE CLIENT PORTAL API ENDPOINTS
+    // ════════════════════════════════════════════════════════════════
+
+    // POST /api/portal/login - Authenticate client by email + password
+    if (req.method === 'POST' && pathname === '/api/portal/login') {
+        if (isClientLoginRateLimited(clientIp)) {
+            res.writeHead(429, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Too many login attempts. Please wait 15 minutes.' }));
+            return;
+        }
+
+        let raw = '';
+        req.on('data', chunk => raw += chunk);
+        req.on('end', () => {
+            let body = {};
+            try { body = JSON.parse(raw); } catch (e) {}
+
+            const email = (body.email || '').trim().toLowerCase();
+            const password = (body.password || '').trim();
+
+            if (!email || !password) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Email and password are required.' }));
+                return;
+            }
+
+            const data = readClientsData();
+            const client = (data.clients || []).find(c => (c.email || '').toLowerCase() === email);
+
+            if (!client || client.status === 'suspended') {
+                res.writeHead(401, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Invalid client credentials.' }));
+                return;
+            }
+
+            const isValid = verifyClientPassword(password, client.passwordHash, client.salt);
+            if (!isValid) {
+                res.writeHead(401, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Invalid client credentials.' }));
+                return;
+            }
+
+            // Update lastLogin
+            client.lastLogin = new Date().toISOString();
+            writeClientsData(data);
+
+            const token = createClientSession(client);
+            res.writeHead(200, {
+                'Content-Type': 'application/json',
+                'Set-Cookie': `versaly_client_token=${encodeURIComponent(token)}; Path=/; Max-Age=1209600; SameSite=Lax`
+            });
+            res.end(JSON.stringify({
+                success: true,
+                token: token,
+                client: sanitizeClientForPortal(client)
+            }));
+        });
+        return;
+    }
+
+    // GET /api/portal/me - Validate current client session & return profile
+    if (req.method === 'GET' && pathname === '/api/portal/me') {
+        const session = getClientSessionFromReq(req);
+        if (!session) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Unauthorized: Valid client session required.' }));
+            return;
+        }
+
+        const data = readClientsData();
+        const client = (data.clients || []).find(c => c.id === session.clientId && c.status === 'active');
+        if (!client) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Client account not found or inactive.' }));
+            return;
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            success: true,
+            client: sanitizeClientForPortal(client)
+        }));
+        return;
+    }
+
+    // POST /api/portal/logout - Invalidate client session
+    if (req.method === 'POST' && pathname === '/api/portal/logout') {
+        res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Set-Cookie': 'versaly_client_token=; Path=/; Max-Age=0; SameSite=Lax'
+        });
+        res.end(JSON.stringify({ success: true }));
+        return;
+    }
+
+    // GET /api/portal/project - Get authenticated client's project status, timeline, deliverables, meeting notes (client-visible only), approved files, feedback, and invoices
+    if (req.method === 'GET' && pathname === '/api/portal/project') {
+        const session = getClientSessionFromReq(req);
+        if (!session) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Unauthorized: Valid client session required.' }));
+            return;
+        }
+
+        const data = readClientsData();
+        const client = (data.clients || []).find(c => c.id === session.clientId && c.status === 'active');
+        if (!client) {
+            res.writeHead(404, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Client account not found.' }));
+            return;
+        }
+
+        const sanitized = sanitizeClientForPortal(client);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            success: true,
+            client: {
+                id: sanitized.id,
+                name: sanitized.name,
+                company: sanitized.company,
+                email: sanitized.email
+            },
+            project: sanitized.project || {}
+        }));
+        return;
+    }
+
+    // POST /api/portal/feedback - Submit feedback, questions, or change request
+    if (req.method === 'POST' && pathname === '/api/portal/feedback') {
+        const session = getClientSessionFromReq(req);
+        if (!session) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Unauthorized: Valid client session required.' }));
+            return;
+        }
+
+        let raw = '';
+        req.on('data', chunk => raw += chunk);
+        req.on('end', () => {
+            let body = {};
+            try { body = JSON.parse(raw); } catch (e) {}
+
+            const comment = (body.comment || body.message || '').trim();
+            if (!comment) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Feedback comment is required.' }));
+                return;
+            }
+
+            const data = readClientsData();
+            const client = (data.clients || []).find(c => c.id === session.clientId && c.status === 'active');
+            if (!client) {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Client account not found.' }));
+                return;
+            }
+
+            if (!client.project) client.project = {};
+            if (!Array.isArray(client.project.feedback)) client.project.feedback = [];
+            if (!Array.isArray(client.feedback)) client.feedback = [];
+
+            const newFb = {
+                id: 'fb_' + Date.now() + '_' + crypto.randomBytes(3).toString('hex'),
+                type: body.type || 'feedback',
+                targetType: body.targetType || 'project',
+                targetId: body.targetId || client.project.id || null,
+                topic: body.topic || 'General Feedback',
+                author: client.name,
+                comment: comment,
+                message: comment,
+                urgency: body.urgency || 'Normal',
+                createdAt: new Date().toISOString(),
+                status: 'submitted',
+                adminResponse: null
+            };
+
+            client.project.feedback.unshift(newFb);
+            if (Array.isArray(client.feedback)) client.feedback.unshift(newFb);
+            writeClientsData(data);
+
+            logActivity('client_feedback_submitted', {
+                clientId: client.id,
+                clientName: client.name,
+                company: client.company,
+                feedbackId: newFb.id
+            });
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, feedback: newFb }));
+        });
+        return;
+    }
+
+    // POST /api/portal/deliverables/:id/approve - Approve a pending deliverable
+    if (req.method === 'POST' && pathname.startsWith('/api/portal/deliverables/') && pathname.endsWith('/approve')) {
+        const session = getClientSessionFromReq(req);
+        if (!session) {
+            res.writeHead(401, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Unauthorized: Valid client session required.' }));
+            return;
+        }
+
+        const match = pathname.match(/^\/api\/portal\/deliverables\/([^/]+)\/approve$/);
+        const delId = match ? match[1] : null;
+
+        let raw = '';
+        req.on('data', chunk => raw += chunk);
+        req.on('end', () => {
+            let body = {};
+            try { body = JSON.parse(raw); } catch (e) {}
+
+            const data = readClientsData();
+            const client = (data.clients || []).find(c => c.id === session.clientId && c.status === 'active');
+            if (!client || !client.project || !Array.isArray(client.project.deliverables)) {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Deliverable not found.' }));
+                return;
+            }
+
+            const del = client.project.deliverables.find(d => d.id === delId);
+            if (!del) {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Deliverable not found.' }));
+                return;
+            }
+
+            del.status = 'approved';
+            del.approvedAt = new Date().toISOString();
+            if (body.notes) {
+                del.notes = body.notes;
+            }
+
+            if (!Array.isArray(client.project.feedback)) client.project.feedback = [];
+            client.project.feedback.unshift({
+                id: 'fb_' + Date.now() + '_' + crypto.randomBytes(3).toString('hex'),
+                type: 'approval',
+                targetType: 'deliverable',
+                targetId: del.id,
+                author: client.name,
+                comment: body.notes || `Deliverable "${del.title}" approved by client.`,
+                createdAt: new Date().toISOString()
+            });
+
+            writeClientsData(data);
+
+            logActivity('client_deliverable_approved', {
+                clientId: client.id,
+                deliverableId: del.id,
+                title: del.title
+            });
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, deliverable: del }));
         });
         return;
     }
@@ -3508,6 +3882,305 @@ function requestHandler(req, res) {
                 const newToken = createAdminSession();
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ success: true, message: 'Admin password changed successfully.', token: newToken }));
+            });
+            return;
+        }
+
+        // ════════════════════════════════════════════════════════════════
+        // ADMIN: CLIENT PORTAL MANAGEMENT
+        // ════════════════════════════════════════════════════════════════
+
+        // GET /api/admin/clients - List all client portals with summary statistics
+        if (req.method === 'GET' && pathname === '/api/admin/clients') {
+            const data = readClientsData();
+            const list = (data.clients || []).map(c => {
+                const proj = c.project || {};
+                const deliverables = proj.deliverables || [];
+                const invoices = proj.invoices || [];
+                return {
+                    id: c.id,
+                    name: c.name,
+                    email: c.email,
+                    company: c.company,
+                    status: c.status || 'active',
+                    createdAt: c.createdAt,
+                    lastLogin: c.lastLogin,
+                    project: {
+                        id: proj.id,
+                        name: proj.name,
+                        stage: proj.stage,
+                        status: proj.status,
+                        progressPercent: proj.progressPercent || 0,
+                        targetLaunchDate: proj.targetLaunchDate,
+                        versalyLead: proj.versalyLead,
+                        pendingDeliverablesCount: deliverables.filter(d => d.status === 'pending_review').length,
+                        unpaidInvoicesCount: invoices.filter(i => i.status === 'due').length,
+                        totalInvoiced: invoices.reduce((acc, i) => acc + (Number(i.amount) || 0), 0)
+                    }
+                };
+            });
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, clients: list, count: list.length }));
+            return;
+        }
+
+        // POST /api/admin/clients - Create a new client portal account
+        if (req.method === 'POST' && pathname === '/api/admin/clients') {
+            let raw = '';
+            req.on('data', chunk => raw += chunk);
+            req.on('end', () => {
+                let body = {};
+                try { body = JSON.parse(raw); } catch (e) {}
+
+                const name = (body.name || '').trim();
+                const email = (body.email || '').trim().toLowerCase();
+                const company = (body.company || '').trim();
+                const initialPassword = (body.password || '').trim() || 'client_' + crypto.randomBytes(4).toString('hex');
+                const projectName = (body.projectName || (body.project && body.project.name) || `${company} Bespoke System`).trim();
+                const projectStage = (body.projectStage || (body.project && body.project.stage) || 'Discovery').trim();
+                const projectDesc = (body.projectDescription || (body.project && body.project.description) || `Enterprise bespoke digital platform for ${company}.`).trim();
+                const progressNum = Number(body.progressPercent || (body.project && (body.project.progressPercent != null ? body.project.progressPercent : body.project.progress))) || 10;
+                const versalyLead = (body.versalyLead || (body.project && (body.project.versalyLead || body.project.lead)) || 'Alex Mercer').trim();
+                const internalNotes = (body.internalNotes || (body.project && body.project.internalNotes) || '').trim();
+
+                if (!name || !email || !company) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'Name, email, and company are required.' }));
+                    return;
+                }
+
+                const data = readClientsData();
+                if ((data.clients || []).some(c => (c.email || '').toLowerCase() === email)) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'A client with this email already exists.' }));
+                    return;
+                }
+
+                const clientId = 'client_' + slugify(company).replace(/[^a-z0-9]/g, '_') + '_' + crypto.randomBytes(3).toString('hex');
+                const { hash, salt } = hashClientPassword(initialPassword);
+
+                const newClient = {
+                    id: clientId,
+                    name: name,
+                    email: email,
+                    company: company,
+                    passwordHash: hash,
+                    salt: salt,
+                    role: 'client',
+                    status: 'active',
+                    createdAt: new Date().toISOString(),
+                    lastLogin: null,
+                    internalNotes: internalNotes,
+                    project: {
+                        id: 'proj_' + crypto.randomBytes(4).toString('hex'),
+                        name: projectName,
+                        description: projectDesc,
+                        stage: projectStage,
+                        status: 'in_progress',
+                        progressPercent: progressNum,
+                        progress: progressNum,
+                        targetLaunchDate: body.targetLaunchDate || (body.project && body.project.targetLaunchDate) || null,
+                        versalyLead: versalyLead,
+                        lead: versalyLead,
+                        contactEmail: body.contactEmail || 'team@versaly.example.com',
+                        timeline: (body.project && body.project.timeline) || body.timeline || [
+                            { id: 'tl_1', phase: 'Discovery & Architecture Blueprint', status: 'in_progress', completedDate: null, targetDate: null, summary: 'Requirements elicitation, system architecture, UX wireframing.' }
+                        ],
+                        deliverables: (body.project && body.project.deliverables) || body.deliverables || [],
+                        meetingNotes: (body.project && body.project.meetingNotes) || body.meetingNotes || [],
+                        approvedFiles: (body.project && body.project.approvedFiles) || body.approvedFiles || [],
+                        feedback: [],
+                        invoices: (body.project && body.project.invoices) || body.invoices || [],
+                        internalNotes: internalNotes
+                    }
+                };
+
+                if (!Array.isArray(data.clients)) data.clients = [];
+                data.clients.unshift(newClient);
+                writeClientsData(data);
+
+                logActivity('admin_created_client_portal', {
+                    clientId: newClient.id,
+                    name: newClient.name,
+                    company: newClient.company
+                });
+
+                res.writeHead(201, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({
+                    success: true,
+                    client: newClient,
+                    initialPassword: initialPassword
+                }));
+            });
+            return;
+        }
+
+        // GET /api/admin/clients/:id - Retrieve full client portal details
+        if (req.method === 'GET' && pathname.startsWith('/api/admin/clients/') && !pathname.includes('/reset-password')) {
+            const clientId = pathname.replace('/api/admin/clients/', '').trim();
+            const data = readClientsData();
+            const client = (data.clients || []).find(c => c.id === clientId);
+
+            if (!client) {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Client portal not found.' }));
+                return;
+            }
+
+            const copy = JSON.parse(JSON.stringify(client));
+            delete copy.passwordHash;
+            delete copy.salt;
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, client: copy }));
+            return;
+        }
+
+        // PUT /api/admin/clients/:id - Update client portal details
+        if (req.method === 'PUT' && pathname.startsWith('/api/admin/clients/')) {
+            const clientId = pathname.replace('/api/admin/clients/', '').trim();
+            let raw = '';
+            req.on('data', chunk => raw += chunk);
+            req.on('end', () => {
+                let body = {};
+                try { body = JSON.parse(raw); } catch (e) {}
+
+                const data = readClientsData();
+                const client = (data.clients || []).find(c => c.id === clientId);
+
+                if (!client) {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'Client portal not found.' }));
+                    return;
+                }
+
+                if (body.name) client.name = body.name.trim();
+                if (body.email) client.email = body.email.trim().toLowerCase();
+                if (body.company) client.company = body.company.trim();
+                if (body.status) client.status = body.status;
+                if (body.internalNotes !== undefined) {
+                    client.internalNotes = body.internalNotes;
+                    if (client.project) client.project.internalNotes = body.internalNotes;
+                }
+
+                if (body.project) {
+                    if (!client.project) client.project = {};
+                    const bp = body.project;
+                    if (bp.name !== undefined) client.project.name = bp.name;
+                    if (bp.description !== undefined) client.project.description = bp.description;
+                    if (bp.stage !== undefined) client.project.stage = bp.stage;
+                    if (bp.status !== undefined) client.project.status = bp.status;
+                    if (bp.progress !== undefined || bp.progressPercent !== undefined) {
+                        const prog = Number(bp.progress !== undefined ? bp.progress : bp.progressPercent);
+                        client.project.progress = prog;
+                        client.project.progressPercent = prog;
+                    }
+                    if (bp.targetLaunchDate !== undefined) client.project.targetLaunchDate = bp.targetLaunchDate;
+                    if (bp.lead !== undefined || bp.versalyLead !== undefined) {
+                        const lead = bp.lead !== undefined ? bp.lead : bp.versalyLead;
+                        client.project.lead = lead;
+                        client.project.versalyLead = lead;
+                    }
+                    if (bp.contactEmail !== undefined) client.project.contactEmail = bp.contactEmail;
+                    if (bp.timeline !== undefined) client.project.timeline = bp.timeline;
+                    if (bp.deliverables !== undefined) client.project.deliverables = bp.deliverables;
+                    if (bp.meetingNotes !== undefined) client.project.meetingNotes = bp.meetingNotes;
+                    if (bp.approvedFiles !== undefined) client.project.approvedFiles = bp.approvedFiles;
+                    if (bp.feedback !== undefined) client.project.feedback = bp.feedback;
+                    if (bp.invoices !== undefined) client.project.invoices = bp.invoices;
+                    if (bp.internalNotes !== undefined) {
+                        client.project.internalNotes = bp.internalNotes;
+                        client.internalNotes = bp.internalNotes;
+                    }
+                }
+
+                writeClientsData(data);
+
+                logActivity('admin_updated_client_portal', {
+                    clientId: client.id,
+                    company: client.company
+                });
+
+                const copy = JSON.parse(JSON.stringify(client));
+                delete copy.passwordHash;
+                delete copy.salt;
+
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: true, client: copy }));
+            });
+            return;
+        }
+
+        // DELETE /api/admin/clients/:id - Remove client portal
+        if (req.method === 'DELETE' && pathname.startsWith('/api/admin/clients/')) {
+            const clientId = pathname.replace('/api/admin/clients/', '').trim();
+            const data = readClientsData();
+            const idx = (data.clients || []).findIndex(c => c.id === clientId);
+
+            if (idx === -1) {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: false, error: 'Client portal not found.' }));
+                return;
+            }
+
+            const removed = data.clients.splice(idx, 1)[0];
+            writeClientsData(data);
+
+            logActivity('admin_deleted_client_portal', {
+                clientId: removed.id,
+                company: removed.company
+            });
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, message: 'Client portal deleted.' }));
+            return;
+        }
+
+        // POST /api/admin/clients/:id/reset-password - Reset password for client
+        if (req.method === 'POST' && pathname.startsWith('/api/admin/clients/') && pathname.endsWith('/reset-password')) {
+            const match = pathname.match(/^\/api\/admin\/clients\/([^/]+)\/reset-password$/);
+            const clientId = match ? match[1] : null;
+
+            let raw = '';
+            req.on('data', chunk => raw += chunk);
+            req.on('end', () => {
+                let body = {};
+                try { body = JSON.parse(raw); } catch (e) {}
+
+                const newPassword = (body.newPassword || body.password || '').trim() || ('client_' + crypto.randomBytes(4).toString('hex'));
+                if (newPassword.length < 6) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'Password must be at least 6 characters.' }));
+                    return;
+                }
+
+                const data = readClientsData();
+                const client = (data.clients || []).find(c => c.id === clientId);
+
+                if (!client) {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: false, error: 'Client portal not found.' }));
+                    return;
+                }
+
+                const { hash, salt } = hashClientPassword(newPassword);
+                client.passwordHash = hash;
+                client.salt = salt;
+                writeClientsData(data);
+
+                logActivity('admin_reset_client_password', {
+                    clientId: client.id,
+                    company: client.company
+                });
+
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({
+                    success: true,
+                    message: 'Password reset successfully.',
+                    password: newPassword,
+                    newPassword: newPassword
+                }));
             });
             return;
         }

@@ -1,0 +1,475 @@
+{
+  "clients": [
+    {
+      "id": "client_velour",
+      "name": "Sophia Laurent",
+      "email": "sophia@velournailstudio.com",
+      "company": "Velour Nail Studio & Atelier",
+      "passwordHash": "f1d597bad41dd0d4f7ed46d98b6939f79c682c762636baa35fceb9de91c903b8",
+      "salt": "versaly_velour_salt_2026",
+      "role": "client",
+      "status": "active",
+      "createdAt": "2026-09-15T10:00:00.000Z",
+      "lastLogin": "2026-10-18T20:36:39.187Z",
+      "project": {
+        "id": "proj_velour_core",
+        "name": "Velour Luxury Atelier ERP & Booking Engine",
+        "description": "Bespoke digital atelier management platform featuring real-time multi-chair scheduling, liquid glass visual lookbook, client bespoke formula archive, and POS.",
+        "stage": "Beta Testing",
+        "status": "in_progress",
+        "progressPercent": 78,
+        "targetLaunchDate": "2026-11-30",
+        "versalyLead": "Alex Mercer (Principal Software Architect)",
+        "contactEmail": "team@versaly.example.com",
+        "timeline": [
+          {
+            "id": "tl_1",
+            "phase": "Architecture & UX Specifications",
+            "status": "completed",
+            "completedDate": "2026-09-28",
+            "targetDate": "2026-09-30",
+            "summary": "System architectural blueprint, database schema, and high-fidelity figma flows finalized."
+          },
+          {
+            "id": "tl_2",
+            "phase": "Core Booking Engine & Waitlist Balancing",
+            "status": "completed",
+            "completedDate": "2026-10-10",
+            "targetDate": "2026-10-12",
+            "summary": "Real-time calendar slot reservation and multi-technician schedule synchronization completed."
+          },
+          {
+            "id": "tl_3",
+            "phase": "Client Formula Archive & Lookbook Integration",
+            "status": "in_progress",
+            "completedDate": null,
+            "targetDate": "2026-10-25",
+            "summary": "Private lookbook uploads, formulation ledger, and client visual history database."
+          },
+          {
+            "id": "tl_4",
+            "phase": "UAT, Security Audit & Cloud Deployment",
+            "status": "upcoming",
+            "completedDate": null,
+            "targetDate": "2026-11-20",
+            "summary": "End-to-end stress testing, staff onboarding walkthrough, and production deployment."
+          }
+        ],
+        "deliverables": [
+          {
+            "id": "del_1",
+            "title": "System Architecture & API Specification Document",
+            "category": "Specification",
+            "status": "approved",
+            "dueDate": "2026-09-25",
+            "submittedDate": "2026-09-24",
+            "fileUrl": "https://versaly.example.com/docs/spec_velour_v1.pdf",
+            "approvedAt": "2026-09-26T14:10:00.000Z",
+            "notes": "Approved by Sophia Laurent."
+          },
+          {
+            "id": "del_2",
+            "title": "Interactive Lookbook & UI Component Design",
+            "category": "Design",
+            "status": "approved",
+            "dueDate": "2026-10-05",
+            "submittedDate": "2026-10-04",
+            "fileUrl": "https://versaly.example.com/assets/lookbook_design_v2.png",
+            "approvedAt": "2026-10-06T09:15:00.000Z",
+            "notes": "Colors and typography pairing signed off."
+          },
+          {
+            "id": "del_3",
+            "title": "Booking & POS Beta Staging Environment Build",
+            "category": "Software",
+            "status": "approved",
+            "dueDate": "2026-10-22",
+            "submittedDate": "2026-10-18",
+            "fileUrl": "https://staging.velour.versaly.cloud",
+            "approvedAt": "2026-10-18T20:36:39.218Z",
+            "notes": "Deployed to private staging cluster for client walkthrough and signoff."
+          }
+        ],
+        "meetingNotes": [
+          {
+            "id": "mn_1",
+            "title": "Sprint 3 Demo & Lookbook Walkthrough",
+            "date": "2026-10-16",
+            "attendees": "Sophia Laurent, Alex Mercer, Marcus Vance",
+            "summary": "Reviewed lookbook interactive canvas and offline-resilient sync. Client requested dark mode toggle in the atelier tablet view.",
+            "nextSteps": "Implement tablet dark palette; prep staging link.",
+            "isClientVisible": true
+          },
+          {
+            "id": "mn_2",
+            "title": "Discovery & Requirements Alignment",
+            "date": "2026-09-18",
+            "attendees": "Sophia Laurent, Versaly Core Team",
+            "summary": "Agreed on core scope: client formulation ledger, booking automation, artisan commission analytics.",
+            "nextSteps": "Draft architecture spec.",
+            "isClientVisible": true
+          },
+          {
+            "id": "mn_internal_1",
+            "title": "Internal Sprint Retro: Velour DB Sharding",
+            "date": "2026-10-14",
+            "attendees": "Alex, Dev Team",
+            "summary": "INTERNAL ONLY: Sharding database partitions for multi-tenant luxury salon instances. Budget allocation verified.",
+            "nextSteps": "Monitor index query times.",
+            "isClientVisible": false
+          }
+        ],
+        "approvedFiles": [
+          {
+            "id": "f_1",
+            "name": "Velour Atelier Master Service Agreement (Signed).pdf",
+            "type": "Contract",
+            "uploadedAt": "2026-09-12",
+            "size": "1.2 MB",
+            "url": "https://versaly.example.com/assets/velour_agreement_signed.pdf"
+          },
+          {
+            "id": "f_2",
+            "name": "Brand Design Guidelines & Asset Kit.zip",
+            "type": "Asset",
+            "uploadedAt": "2026-09-20",
+            "size": "14.8 MB",
+            "url": "https://versaly.example.com/assets/velour_brand_kit.zip"
+          },
+          {
+            "id": "f_3",
+            "name": "Staging Environment Credentials & Testing Guide.pdf",
+            "type": "Documentation",
+            "uploadedAt": "2026-10-18",
+            "size": "450 KB",
+            "url": "https://versaly.example.com/assets/velour_testing_guide.pdf"
+          }
+        ],
+        "feedback": [
+          {
+            "id": "fb_1792355799218_4e9a2f",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_3",
+            "author": "Sophia Laurent",
+            "comment": "Deliverable \"Booking & POS Beta Staging Environment Build\" approved by client.",
+            "createdAt": "2026-10-18T20:36:39.218Z"
+          },
+          {
+            "id": "fb_1792355799208_fe2ff4",
+            "type": "feedback",
+            "targetType": "project",
+            "targetId": "proj_velour_core",
+            "topic": "Design System Review",
+            "author": "Sophia Laurent",
+            "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+            "message": "We tested the booking flow on mobile safari and it looks sublime!",
+            "urgency": "Medium",
+            "createdAt": "2026-10-18T20:36:39.208Z",
+            "status": "submitted",
+            "adminResponse": null
+          },
+          {
+            "id": "fb_1792355688853_ae39a9",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_3",
+            "author": "Sophia Laurent",
+            "comment": "Deliverable \"Booking & POS Beta Staging Environment Build\" approved by client.",
+            "createdAt": "2026-10-18T20:34:48.854Z"
+          },
+          {
+            "id": "fb_1792355688842_7eb0ae",
+            "type": "feedback",
+            "targetType": "project",
+            "targetId": "proj_velour_core",
+            "topic": "Design System Review",
+            "author": "Sophia Laurent",
+            "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+            "message": "We tested the booking flow on mobile safari and it looks sublime!",
+            "urgency": "Medium",
+            "createdAt": "2026-10-18T20:34:48.843Z",
+            "status": "submitted",
+            "adminResponse": null
+          },
+          {
+            "id": "fb_1792355647002_73b0d9",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_3",
+            "author": "Sophia Laurent",
+            "comment": "Deliverable \"Booking & POS Beta Staging Environment Build\" approved by client.",
+            "createdAt": "2026-10-18T20:34:07.002Z"
+          },
+          {
+            "id": "fb_1792355646990_221f86",
+            "type": "feedback",
+            "targetType": "project",
+            "targetId": "proj_velour_core",
+            "topic": "Design System Review",
+            "author": "Sophia Laurent",
+            "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+            "message": "We tested the booking flow on mobile safari and it looks sublime!",
+            "urgency": "Medium",
+            "createdAt": "2026-10-18T20:34:06.990Z",
+            "status": "submitted",
+            "adminResponse": null
+          },
+          {
+            "id": "fb_1792355382027_1873e1",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_3",
+            "author": "Sophia Laurent",
+            "comment": "Deliverable \"Booking & POS Beta Staging Environment Build\" approved by client.",
+            "createdAt": "2026-10-18T20:29:42.027Z"
+          },
+          {
+            "id": "fb_1",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_2",
+            "author": "Sophia Laurent",
+            "comment": "The atelier lookbook colors match our aesthetic perfectly. Approved!",
+            "createdAt": "2026-10-06T09:15:00.000Z"
+          },
+          {
+            "id": "fb_2",
+            "type": "feedback",
+            "targetType": "project",
+            "targetId": "proj_velour_core",
+            "author": "Sophia Laurent",
+            "comment": "Could we make sure the receipt printer supports 80mm thermal paper format in the next staging push?",
+            "createdAt": "2026-10-17T11:40:00.000Z",
+            "status": "reviewed",
+            "adminResponse": "Yes, 80mm ESC/POS protocol support has been added to the build."
+          }
+        ],
+        "invoices": [
+          {
+            "id": "INV-2026-0901",
+            "title": "Milestone 1 — Discovery & System Blueprint",
+            "amount": 12500,
+            "currency": "USD",
+            "issueDate": "2026-09-15",
+            "dueDate": "2026-09-30",
+            "status": "paid",
+            "paidAt": "2026-09-28",
+            "paymentUrl": "https://pay.versaly.com/inv-2026-0901",
+            "receiptUrl": "https://versaly.example.com/assets/receipt_inv_2026_0901.pdf"
+          },
+          {
+            "id": "INV-2026-1002",
+            "title": "Milestone 2 — Core Engine & Lookbook Development",
+            "amount": 18500,
+            "currency": "USD",
+            "issueDate": "2026-10-01",
+            "dueDate": "2026-10-25",
+            "status": "paid",
+            "paidAt": "2026-10-15",
+            "paymentUrl": "https://pay.versaly.com/inv-2026-1002",
+            "receiptUrl": "https://versaly.example.com/assets/receipt_inv_2026_1002.pdf"
+          },
+          {
+            "id": "INV-2026-1103",
+            "title": "Milestone 3 — Beta Delivery & Deployment Signoff",
+            "amount": 15000,
+            "currency": "USD",
+            "issueDate": "2026-10-18",
+            "dueDate": "2026-11-15",
+            "status": "due",
+            "paidAt": null,
+            "paymentUrl": "https://pay.versaly.com/inv-2026-1103",
+            "receiptUrl": null
+          }
+        ],
+        "internalNotes": "VIP enterprise account. Priority technical support enabled. Sophia prefers direct Slack check-ins."
+      },
+      "feedback": [
+        {
+          "id": "fb_1792355799208_fe2ff4",
+          "type": "feedback",
+          "targetType": "project",
+          "targetId": "proj_velour_core",
+          "topic": "Design System Review",
+          "author": "Sophia Laurent",
+          "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+          "message": "We tested the booking flow on mobile safari and it looks sublime!",
+          "urgency": "Medium",
+          "createdAt": "2026-10-18T20:36:39.208Z",
+          "status": "submitted",
+          "adminResponse": null
+        },
+        {
+          "id": "fb_1792355688842_7eb0ae",
+          "type": "feedback",
+          "targetType": "project",
+          "targetId": "proj_velour_core",
+          "topic": "Design System Review",
+          "author": "Sophia Laurent",
+          "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+          "message": "We tested the booking flow on mobile safari and it looks sublime!",
+          "urgency": "Medium",
+          "createdAt": "2026-10-18T20:34:48.843Z",
+          "status": "submitted",
+          "adminResponse": null
+        },
+        {
+          "id": "fb_1792355646990_221f86",
+          "type": "feedback",
+          "targetType": "project",
+          "targetId": "proj_velour_core",
+          "topic": "Design System Review",
+          "author": "Sophia Laurent",
+          "comment": "We tested the booking flow on mobile safari and it looks sublime!",
+          "message": "We tested the booking flow on mobile safari and it looks sublime!",
+          "urgency": "Medium",
+          "createdAt": "2026-10-18T20:34:06.990Z",
+          "status": "submitted",
+          "adminResponse": null
+        }
+      ]
+    },
+    {
+      "id": "client_apex",
+      "name": "David Miller",
+      "email": "david.m@apexlogistics.io",
+      "company": "Apex Global Logistics",
+      "passwordHash": "c134a00ffb908cb2edcfe9e811004e737266e297a67e983c9f6bfddf90fb853f",
+      "salt": "versaly_apex_salt_2026",
+      "role": "client",
+      "status": "active",
+      "createdAt": "2026-10-02T11:00:00.000Z",
+      "lastLogin": "2026-10-17T09:20:00.000Z",
+      "project": {
+        "id": "proj_apex_telemetry",
+        "name": "Cold-Chain IoT Fleet Telemetry & Dispatch Cloud",
+        "description": "Enterprise tracking system integrating cold-chain temperature telemetry, automated route optimization, and driver communication.",
+        "stage": "Architecture",
+        "status": "in_progress",
+        "progressPercent": 35,
+        "targetLaunchDate": "2027-01-15",
+        "versalyLead": "Elena Rostova (IoT Systems Lead)",
+        "contactEmail": "team@versaly.example.com",
+        "timeline": [
+          {
+            "id": "tl_apex_1",
+            "phase": "Telemetry Protocol & Architecture Blueprint",
+            "status": "completed",
+            "completedDate": "2026-10-14",
+            "targetDate": "2026-10-15",
+            "summary": "MQTT/CoAP telemetry bridge architecture and database partitioning finalized."
+          },
+          {
+            "id": "tl_apex_2",
+            "phase": "Fleet Dispatch Engine Prototype",
+            "status": "in_progress",
+            "completedDate": null,
+            "targetDate": "2026-11-10",
+            "summary": "Developing automated vehicle routing algorithms and temperature anomaly alerts."
+          },
+          {
+            "id": "tl_apex_3",
+            "phase": "Mobile Driver App & Field Walkthrough",
+            "status": "upcoming",
+            "completedDate": null,
+            "targetDate": "2026-12-05",
+            "summary": "iOS/Android driver companion app and barcode shipment scanning."
+          }
+        ],
+        "deliverables": [
+          {
+            "id": "del_apex_1",
+            "title": "Hardware Sensor Ingestion Blueprint",
+            "category": "Specification",
+            "status": "approved",
+            "dueDate": "2026-10-12",
+            "submittedDate": "2026-10-11",
+            "fileUrl": "https://versaly.example.com/docs/apex_sensor_blueprint.pdf",
+            "approvedAt": "2026-10-13T16:00:00.000Z",
+            "notes": "Signed off by David Miller."
+          },
+          {
+            "id": "del_apex_2",
+            "title": "Real-Time Fleet Dashboard Wireframe Suite",
+            "category": "Design",
+            "status": "pending_review",
+            "dueDate": "2026-10-24",
+            "submittedDate": "2026-10-18",
+            "fileUrl": "https://versaly.example.com/assets/apex_fleet_wireframes.pdf",
+            "approvedAt": null,
+            "notes": "Ready for operations team feedback."
+          }
+        ],
+        "meetingNotes": [
+          {
+            "id": "mn_apex_1",
+            "title": "Telemetry Integration Kickoff",
+            "date": "2026-10-08",
+            "attendees": "David Miller, Elena Rostova, Marcus Vance",
+            "summary": "Confirmed hardware firmware specs and cellular SIM telemetry packet size limits.",
+            "nextSteps": "Complete MQTT ingestion prototype.",
+            "isClientVisible": true
+          },
+          {
+            "id": "mn_apex_internal_1",
+            "title": "Internal Risk Assessment: Cold-Chain SLA Guarantees",
+            "date": "2026-10-10",
+            "attendees": "Elena, Legal, Alex",
+            "summary": "INTERNAL ONLY: Verified third-party cellular carrier outage indemnification clauses.",
+            "nextSteps": "Draft fallback satellite uplink spec.",
+            "isClientVisible": false
+          }
+        ],
+        "approvedFiles": [
+          {
+            "id": "f_apex_1",
+            "name": "Master Development Agreement - Apex & Versaly.pdf",
+            "type": "Contract",
+            "uploadedAt": "2026-10-02",
+            "size": "2.1 MB",
+            "url": "https://versaly.example.com/assets/apex_mda_signed.pdf"
+          }
+        ],
+        "feedback": [
+          {
+            "id": "fb_apex_1",
+            "type": "approval",
+            "targetType": "deliverable",
+            "targetId": "del_apex_1",
+            "author": "David Miller",
+            "comment": "Sensor blueprint covers our Nordic refrigerated trailer fleet. Approved.",
+            "createdAt": "2026-10-13T16:00:00.000Z"
+          }
+        ],
+        "invoices": [
+          {
+            "id": "INV-2026-1008",
+            "title": "Sprint 1 — Architecture Blueprint & Gateway Prototype",
+            "amount": 22000,
+            "currency": "USD",
+            "issueDate": "2026-10-05",
+            "dueDate": "2026-10-20",
+            "status": "paid",
+            "paidAt": "2026-10-14",
+            "paymentUrl": "https://pay.versaly.com/inv-2026-1008",
+            "receiptUrl": "https://versaly.example.com/assets/receipt_inv_2026_1008.pdf"
+          },
+          {
+            "id": "INV-2026-1025",
+            "title": "Sprint 2 — Fleet Dispatch Cloud Implementation",
+            "amount": 25000,
+            "currency": "USD",
+            "issueDate": "2026-10-18",
+            "dueDate": "2026-11-05",
+            "status": "due",
+            "paidAt": null,
+            "paymentUrl": "https://pay.versaly.com/inv-2026-1025",
+            "receiptUrl": null
+          }
+        ],
+        "internalNotes": "INTERNAL ONLY: Hardware vendor integration testing pending for GPS gateway."
+      }
+    }
+  ]
+}

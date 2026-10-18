@@ -91,6 +91,12 @@
                     <span id="badge-media-count" class="admin-nav__count-pill">0</span>
                 </button>
 
+                <button class="admin-sidebar__link" data-tab="clients">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    <span>Client Portals</span>
+                    <span id="badge-clients-count" class="admin-nav__count-pill">0</span>
+                </button>
+
                 <div class="admin-sidebar__section-title">Roadmap & Platform</div>
                 <button class="admin-sidebar__link" data-tab="content">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -546,6 +552,91 @@
                             <tbody id="leads-tbody">
                                 <tr>
                                     <td colspan="8" class="admin-empty-table">Loading inquiries...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <!-- TAB: CLIENT PORTALS & WORKSPACES (Phase 21) -->
+                <!-- ════════════════════════════════════════════════════════════════ -->
+                <div id="tab-clients" class="admin-tab-pane">
+                    <div class="admin-section-header">
+                        <div>
+                            <h2 class="admin-section-title">Client Portals &amp; Workspace Manager</h2>
+                            <p class="admin-section-sub">Create and manage dedicated client portals, track deliverables, project milestones, meeting notes, approved assets, and milestone billing.</p>
+                        </div>
+                        <div style="display:flex; gap:0.75rem;">
+                            <a href="portal.html" target="_blank" rel="noopener" class="admin-btn admin-btn--secondary" title="Open Client Portal Login">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                <span>Preview Portal</span>
+                            </a>
+                            <button type="button" class="admin-btn admin-btn--primary" id="btn-create-client">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <span>New Client Portal</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Client Portals KPI Strip -->
+                    <div class="admin-metrics-grid" style="margin-bottom: 1.5rem;">
+                        <div class="admin-metric-card">
+                            <span class="admin-metric-card__label">Active Client Workspaces</span>
+                            <div class="admin-metric-card__val" id="metric-clients-count">0</div>
+                            <span class="admin-metric-card__sub">Role-isolated portals</span>
+                        </div>
+                        <div class="admin-metric-card">
+                            <span class="admin-metric-card__label">Active Projects</span>
+                            <div class="admin-metric-card__val admin-metric-card__val--primary" id="metric-clients-projects">0</div>
+                            <span class="admin-metric-card__sub">In architecture or build</span>
+                        </div>
+                        <div class="admin-metric-card">
+                            <span class="admin-metric-card__label">Pending Client Approvals</span>
+                            <div class="admin-metric-card__val admin-metric-card__val--warning" id="metric-clients-approvals">0</div>
+                            <span class="admin-metric-card__sub">Deliverables awaiting signoff</span>
+                        </div>
+                        <div class="admin-metric-card">
+                            <span class="admin-metric-card__label">Outstanding Invoices</span>
+                            <div class="admin-metric-card__val" id="metric-clients-unpaid">0</div>
+                            <span class="admin-metric-card__sub">Payment links dispatched</span>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="admin-filter-bar" style="margin-bottom: 1.25rem;">
+                        <div class="admin-search-wrap" style="flex: 1;">
+                            <input type="text" id="clients-search-input" class="admin-input" placeholder="Search by client name, company, email, or project...">
+                        </div>
+                        <select id="clients-filter-stage" class="admin-select" style="max-width: 200px;">
+                            <option value="all">All Project Stages</option>
+                            <option value="Discovery">Discovery</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="In Development">In Development</option>
+                            <option value="Beta Testing">Beta Testing</option>
+                            <option value="UAT">UAT &amp; Signoff</option>
+                            <option value="Deployed">Deployed</option>
+                        </select>
+                    </div>
+
+                    <!-- Clients Table -->
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Client &amp; Company</th>
+                                    <th>Project Name</th>
+                                    <th>Stage</th>
+                                    <th>Progress</th>
+                                    <th>Deliverables</th>
+                                    <th>Billing</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clients-tbody">
+                                <tr>
+                                    <td colspan="8" class="admin-empty-table">Loading client workspaces...</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1780,6 +1871,277 @@
                     <button type="button" id="webhook-modal-cancel-btn" class="admin-btn-secondary">Cancel</button>
                     <button type="button" id="webhook-modal-save-btn" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
                         <span>Save Webhook</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- CLIENT PORTAL: NEW CLIENT MODAL (Phase 21) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="client-new-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true" style="display:none;">
+        <div class="admin-modal" role="dialog" aria-modal="true" style="max-width: 650px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 class="admin-modal__title">Create Client Workspace</h3>
+                    <p class="admin-modal__subtitle">Provision a secure, isolated project portal for your client.</p>
+                </div>
+                <button type="button" class="admin-modal__close" id="btn-close-new-client-modal">&times;</button>
+            </div>
+            <div class="admin-modal__body">
+                <form id="new-client-form" autocomplete="off" onsubmit="event.preventDefault(); return false;">
+                    <div class="admin-form-grid-2">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-company">Company / Atelier Name <span class="required">*</span></label>
+                            <input type="text" id="new-client-company" class="admin-input" placeholder="e.g. Velour Nail Studio, Apex Logistics" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-name">Primary Contact Name <span class="required">*</span></label>
+                            <input type="text" id="new-client-name" class="admin-input" placeholder="e.g. Sophia Laurent" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-grid-2">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-email">Client Work Email <span class="required">*</span></label>
+                            <input type="email" id="new-client-email" class="admin-input" placeholder="e.g. sophia@velournailstudio.com" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-password">Initial Password (Optional)</label>
+                            <input type="text" id="new-client-password" class="admin-input" placeholder="Leave blank to auto-generate">
+                        </div>
+                    </div>
+
+                    <hr style="border:none; border-top:1px solid var(--adm-border); margin:1.25rem 0;">
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="new-client-project-name">Project Title <span class="required">*</span></label>
+                        <input type="text" id="new-client-project-name" class="admin-input" placeholder="e.g. Velour Luxury Atelier ERP & Booking Engine" required>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="new-client-project-desc">Project Overview / Scope Summary</label>
+                        <textarea id="new-client-project-desc" class="admin-input" rows="3" placeholder="Brief summary visible to client on their portal dashboard..."></textarea>
+                    </div>
+
+                    <div class="admin-form-grid-2">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-project-stage">Initial Project Stage</label>
+                            <select id="new-client-project-stage" class="admin-input">
+                                <option value="Discovery">Discovery &amp; Scoping</option>
+                                <option value="Architecture">Architecture &amp; UX Specs</option>
+                                <option value="In Development">In Development</option>
+                                <option value="Beta Testing" selected>Beta Testing</option>
+                                <option value="UAT">UAT &amp; Signoff</option>
+                                <option value="Deployed">Deployed &amp; Live</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="new-client-target-date">Target Launch Date</label>
+                            <input type="date" id="new-client-target-date" class="admin-input">
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="new-client-lead">Assigned Versaly Engineering Lead</label>
+                        <input type="text" id="new-client-lead" class="admin-input" value="Alex Mercer (Principal Software Architect)">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="new-client-internal-notes">Internal Staff Notes (Hidden from Client)</label>
+                        <textarea id="new-client-internal-notes" class="admin-input" rows="2" placeholder="Private internal notes strictly visible to Versaly team..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="admin-modal__footer">
+                <button type="button" id="btn-cancel-new-client" class="admin-btn-secondary">Cancel</button>
+                <button type="button" id="btn-save-new-client" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
+                    <span>Create Workspace</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- CLIENT PORTAL: MANAGE CLIENT DRAWER / MODAL (Phase 21) -->
+    <!-- ════════════════════════════════════════════════════════════════ -->
+    <div id="client-manage-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true" style="display:none;">
+        <div class="admin-modal" role="dialog" aria-modal="true" style="max-width: 950px;">
+            <div class="admin-modal__header">
+                <div>
+                    <h3 class="admin-modal__title" id="manage-client-title">Manage Client Portal</h3>
+                    <p class="admin-modal__subtitle" id="manage-client-subtitle">Live project workspace details</p>
+                </div>
+                <button type="button" class="admin-modal__close" id="btn-close-manage-client-modal">&times;</button>
+            </div>
+
+            <div class="admin-modal__body" style="padding: 0;">
+                <input type="hidden" id="manage-client-id" value="">
+
+                <!-- Modal Subnav -->
+                <div class="admin-subnav" style="border-bottom: 1px solid var(--adm-border); padding: 0.5rem 1.5rem; background: rgba(0,0,0,0.2); display: flex; gap: 0.5rem; overflow-x: auto;">
+                    <button type="button" class="admin-subtab-btn active" data-cl-subtab="status">Overview &amp; Status</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="timeline">Milestones</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="deliverables">Deliverables</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="meetings">Meeting Notes</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="files">Approved Files</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="invoices">Invoices &amp; Billing</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="feedback">Feedback Feed</button>
+                    <button type="button" class="admin-subtab-btn" data-cl-subtab="internal" style="color: var(--adm-gold);">Internal Notes</button>
+                </div>
+
+                <div style="padding: 1.5rem;">
+                    <!-- Subtab 1: Status & Project Info -->
+                    <div id="cl-subtab-status" class="cl-subtab-pane active">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Client Name</label>
+                                <input type="text" id="edit-client-name" class="admin-input">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Client Email</label>
+                                <input type="email" id="edit-client-email" class="admin-input">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Company Name</label>
+                                <input type="text" id="edit-client-company" class="admin-input">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Account Status</label>
+                                <select id="edit-client-status" class="admin-input">
+                                    <option value="active">Active (Access Granted)</option>
+                                    <option value="suspended">Suspended (Access Blocked)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Project Title</label>
+                            <input type="text" id="edit-project-name" class="admin-input">
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Project Description</label>
+                            <textarea id="edit-project-desc" class="admin-input" rows="3"></textarea>
+                        </div>
+
+                        <div class="admin-form-grid-3" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem;">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Current Stage</label>
+                                <select id="edit-project-stage" class="admin-input">
+                                    <option value="Discovery">Discovery</option>
+                                    <option value="Architecture">Architecture</option>
+                                    <option value="In Development">In Development</option>
+                                    <option value="Beta Testing">Beta Testing</option>
+                                    <option value="UAT">UAT &amp; Signoff</option>
+                                    <option value="Deployed">Deployed</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Progress Percentage (0-100%)</label>
+                                <input type="number" id="edit-project-progress" class="admin-input" min="0" max="100">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Target Launch Date</label>
+                                <input type="date" id="edit-project-target-date" class="admin-input">
+                            </div>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Engineering Lead</label>
+                            <input type="text" id="edit-project-lead" class="admin-input">
+                        </div>
+
+                        <div style="background:rgba(252,163,17,0.06); border:1px dashed var(--adm-border-accent); border-radius:8px; padding:1rem; margin-top:1rem; display:flex; align-items:center; justify-content:space-between;">
+                            <div>
+                                <strong style="color:var(--adm-gold); display:block; font-size:0.9rem;">Reset Client Access Password</strong>
+                                <span style="font-size:0.75rem; color:var(--adm-text-muted);">Generate a new password for the client to log in.</span>
+                            </div>
+                            <button type="button" id="btn-admin-reset-client-pw" class="admin-btn-secondary" style="white-space:nowrap;">Reset Password</button>
+                        </div>
+                    </div>
+
+                    <!-- Subtab 2: Timeline Milestones -->
+                    <div id="cl-subtab-timeline" class="cl-subtab-pane" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.95rem; color:var(--adm-text);">Project Roadmap Milestones</h4>
+                            <button type="button" id="btn-add-milestone" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">+ Add Milestone</button>
+                        </div>
+                        <div id="cl-manage-timeline-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 3: Deliverables -->
+                    <div id="cl-subtab-deliverables" class="cl-subtab-pane" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.95rem; color:var(--adm-text);">Deliverables &amp; Artifacts</h4>
+                            <button type="button" id="btn-add-deliverable" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">+ Add Deliverable</button>
+                        </div>
+                        <div id="cl-manage-deliverables-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 4: Meeting Notes -->
+                    <div id="cl-subtab-meetings" class="cl-subtab-pane" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <div>
+                                <h4 style="margin:0; font-size:0.95rem; color:var(--adm-text);">Meeting Notes &amp; Decisions</h4>
+                                <span style="font-size:0.74rem; color:var(--adm-text-muted);">Use the client-visible checkbox to control what is published to the client portal.</span>
+                            </div>
+                            <button type="button" id="btn-add-meeting" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">+ Add Note</button>
+                        </div>
+                        <div id="cl-manage-meetings-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 5: Approved Files -->
+                    <div id="cl-subtab-files" class="cl-subtab-pane" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.95rem; color:var(--adm-text);">Approved Repository Files &amp; Links</h4>
+                            <button type="button" id="btn-add-file" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">+ Add File Link</button>
+                        </div>
+                        <div id="cl-manage-files-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 6: Invoices & Billing -->
+                    <div id="cl-subtab-invoices" class="cl-subtab-pane" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h4 style="margin:0; font-size:0.95rem; color:var(--adm-text);">Invoices &amp; Milestone Billing</h4>
+                            <button type="button" id="btn-add-invoice" class="admin-btn-secondary" style="font-size:0.8rem; padding:0.4rem 0.8rem;">+ Create Invoice</button>
+                        </div>
+                        <div id="cl-manage-invoices-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 7: Feedback Feed -->
+                    <div id="cl-subtab-feedback" class="cl-subtab-pane" style="display:none;">
+                        <h4 style="margin:0 0 1rem; font-size:0.95rem; color:var(--adm-text);">Client Feedback &amp; Approvals History</h4>
+                        <div id="cl-manage-feedback-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+                    </div>
+
+                    <!-- Subtab 8: Staff Internal Notes -->
+                    <div id="cl-subtab-internal" class="cl-subtab-pane" style="display:none;">
+                        <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.25); border-radius:8px; padding:0.85rem; margin-bottom:1rem;">
+                            <strong style="color:#f87171; font-size:0.85rem; display:block;">Private Internal Notes</strong>
+                            <span style="font-size:0.75rem; color:var(--adm-text-muted);">These notes are strictly confidential to Versaly team members and are NEVER sent to the client portal API.</span>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label" for="edit-internal-notes">Internal Staff Commentary</label>
+                            <textarea id="edit-internal-notes" class="admin-input" rows="7" placeholder="Add confidential internal retrospective, budget tracking, technical debt notes..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-modal__footer">
+                <button type="button" id="btn-delete-client" class="admin-btn-secondary" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    <span>Delete Workspace</span>
+                </button>
+                <div style="display:flex; gap:0.75rem; margin-left:auto;">
+                    <button type="button" id="btn-cancel-manage-client" class="admin-btn-secondary">Close</button>
+                    <button type="button" id="btn-save-manage-client" class="admin-btn" style="width:auto; padding:0.6rem 1.4rem;">
+                        <span>Save Changes</span>
                     </button>
                 </div>
             </div>

@@ -178,6 +178,75 @@
     const drawerSaveBtn = document.getElementById('drawer-save-btn');
     const drawerDeleteBtn = document.getElementById('drawer-delete-btn');
 
+    // Tab: Client Portal & Workspace Manager (Phase 21)
+    let currentClients = [];
+    let clientsFilter = { stage: 'all', search: '' };
+    let editingClient = null;
+    let activeClientSubTab = 'status';
+
+    const metricClientsCount = document.getElementById('metric-clients-count');
+    const metricClientsProjects = document.getElementById('metric-clients-projects');
+    const metricClientsApprovals = document.getElementById('metric-clients-approvals');
+    const metricClientsUnpaid = document.getElementById('metric-clients-unpaid');
+    const clientsSearchInput = document.getElementById('clients-search-input');
+    const clientsFilterStage = document.getElementById('clients-filter-stage');
+    const clientsTbody = document.getElementById('clients-tbody');
+    const btnCreateClient = document.getElementById('btn-create-client');
+    const badgeClientsCount = document.getElementById('badge-clients-count');
+
+    // New Client Modal Elements
+    const clientNewModalBackdrop = document.getElementById('client-new-modal-backdrop');
+    const btnCloseNewClientModal = document.getElementById('btn-close-new-client-modal');
+    const btnCancelNewClient = document.getElementById('btn-cancel-new-client');
+    const btnSaveNewClient = document.getElementById('btn-save-new-client');
+    const newClientCompany = document.getElementById('new-client-company');
+    const newClientName = document.getElementById('new-client-name');
+    const newClientEmail = document.getElementById('new-client-email');
+    const newClientPassword = document.getElementById('new-client-password');
+    const newClientProjectName = document.getElementById('new-client-project-name');
+    const newClientProjectDesc = document.getElementById('new-client-project-desc');
+    const newClientProjectStage = document.getElementById('new-client-project-stage');
+    const newClientTargetDate = document.getElementById('new-client-target-date');
+    const newClientLead = document.getElementById('new-client-lead');
+    const newClientInternalNotes = document.getElementById('new-client-internal-notes');
+
+    // Manage Client Modal Elements
+    const clientManageModalBackdrop = document.getElementById('client-manage-modal-backdrop');
+    const manageClientTitle = document.getElementById('manage-client-title');
+    const manageClientSubtitle = document.getElementById('manage-client-subtitle');
+    const manageClientId = document.getElementById('manage-client-id');
+    const btnCloseManageClientModal = document.getElementById('btn-close-manage-client-modal');
+    const btnCancelManageClient = document.getElementById('btn-cancel-manage-client');
+    const btnSaveManageClient = document.getElementById('btn-save-manage-client');
+    const btnDeleteClient = document.getElementById('btn-delete-client');
+    const btnAdminResetClientPw = document.getElementById('btn-admin-reset-client-pw');
+
+    // Manage Client Fields
+    const editClientName = document.getElementById('edit-client-name');
+    const editClientEmail = document.getElementById('edit-client-email');
+    const editClientCompany = document.getElementById('edit-client-company');
+    const editClientStatus = document.getElementById('edit-client-status');
+    const editProjectName = document.getElementById('edit-project-name');
+    const editProjectDesc = document.getElementById('edit-project-desc');
+    const editProjectStage = document.getElementById('edit-project-stage');
+    const editProjectProgress = document.getElementById('edit-project-progress');
+    const editProjectTargetDate = document.getElementById('edit-project-target-date');
+    const editProjectLead = document.getElementById('edit-project-lead');
+    const editInternalNotes = document.getElementById('edit-internal-notes');
+
+    // Manage Client Dynamic Containers & Add Buttons
+    const clManageTimelineList = document.getElementById('cl-manage-timeline-list');
+    const btnAddMilestone = document.getElementById('btn-add-milestone');
+    const clManageDeliverablesList = document.getElementById('cl-manage-deliverables-list');
+    const btnAddDeliverable = document.getElementById('btn-add-deliverable');
+    const clManageMeetingsList = document.getElementById('cl-manage-meetings-list');
+    const btnAddMeeting = document.getElementById('btn-add-meeting');
+    const clManageFilesList = document.getElementById('cl-manage-files-list');
+    const btnAddFile = document.getElementById('btn-add-file');
+    const clManageInvoicesList = document.getElementById('cl-manage-invoices-list');
+    const btnAddInvoice = document.getElementById('btn-add-invoice');
+    const clManageFeedbackList = document.getElementById('cl-manage-feedback-list');
+
     // Tab 4: Media Library Elements (Phase 8)
     let currentMedia = [];
     let mediaFilter = { type: 'all', product: 'all', search: '' };
@@ -507,6 +576,7 @@
             dashboard: 'Overview Dashboard',
             products: 'Product Management (CMS)',
             leads: 'Client Inquiries & Leads',
+            clients: 'Client Portals & Workspaces',
             media: 'Media Library & Assets',
             content: 'Trust & Content Management',
             settings: 'Settings & System Health'
@@ -525,6 +595,8 @@
             renderProductsTable();
         } else if (tabId === 'leads') {
             renderLeadsTable();
+        } else if (tabId === 'clients') {
+            renderClientsTable();
         } else if (tabId === 'media') {
             renderMediaGrid();
         } else if (tabId === 'content') {
@@ -597,6 +669,7 @@
                 loadStats(),
                 loadProducts(),
                 loadSubmissions(),
+                loadClients(),
                 loadMedia(),
                 loadContent(),
                 loadSettings(),
@@ -3689,6 +3762,541 @@
         }
     }
 
+    // --- Phase 21: Client Portal & Workspace CMS Logic ---
+    async function loadClients() {
+        try {
+            const res = await authFetch('/api/admin/clients');
+            const data = await res.json();
+            if (data.success && Array.isArray(data.clients)) {
+                currentClients = data.clients;
+                updateClientsKPIs();
+                renderClientsTable();
+            }
+        } catch (err) {
+            console.error('Error loading clients:', err);
+        }
+    }
+
+    function updateClientsKPIs() {
+        if (metricClientsCount) metricClientsCount.textContent = currentClients.length;
+        if (badgeClientsCount) badgeClientsCount.textContent = currentClients.length;
+        if (metricClientsProjects) {
+            const activeProjects = currentClients.filter(c => c.project && c.project.stage !== 'Deployed').length;
+            metricClientsProjects.textContent = activeProjects;
+        }
+        if (metricClientsApprovals) {
+            let pendingApprovals = 0;
+            currentClients.forEach(c => {
+                if (Array.isArray(c.deliverables)) {
+                    pendingApprovals += c.deliverables.filter(d => d.status === 'pending_review').length;
+                }
+            });
+            metricClientsApprovals.textContent = pendingApprovals;
+        }
+        if (metricClientsUnpaid) {
+            let unpaidInvoices = 0;
+            currentClients.forEach(c => {
+                if (Array.isArray(c.invoices)) {
+                    unpaidInvoices += c.invoices.filter(i => i.status === 'unpaid' || i.status === 'draft').length;
+                }
+            });
+            metricClientsUnpaid.textContent = unpaidInvoices;
+        }
+    }
+
+    function renderClientsTable() {
+        if (!clientsTbody) return;
+        const q = (clientsFilter.search || '').toLowerCase();
+        const stage = clientsFilter.stage || 'all';
+
+        const filtered = currentClients.filter(c => {
+            if (stage !== 'all' && (!c.project || c.project.stage !== stage)) return false;
+            if (q) {
+                const text = `${c.name} ${c.company || ''} ${c.email} ${(c.project && c.project.name) || ''}`.toLowerCase();
+                if (!text.includes(q)) return false;
+            }
+            return true;
+        });
+
+        if (filtered.length === 0) {
+            clientsTbody.innerHTML = `<tr><td colspan="8" class="admin-empty-table" style="padding:2.5rem; text-align:center; color:var(--adm-text-muted);">No client workspaces match the current criteria. Click "New Client Portal" to create one.</td></tr>`;
+            return;
+        }
+
+        const stageColors = {
+            'Discovery': 'background:rgba(59,130,246,0.12); color:#60a5fa; border:1px solid rgba(59,130,246,0.3);',
+            'Architecture': 'background:rgba(168,85,247,0.12); color:#c084fc; border:1px solid rgba(168,85,247,0.3);',
+            'In Development': 'background:rgba(252,163,17,0.12); color:#fca311; border:1px solid rgba(252,163,17,0.3);',
+            'Beta Testing': 'background:rgba(236,72,153,0.12); color:#f472b6; border:1px solid rgba(236,72,153,0.3);',
+            'UAT': 'background:rgba(245,158,11,0.12); color:#fbbf24; border:1px solid rgba(245,158,11,0.3);',
+            'Deployed': 'background:rgba(16,185,129,0.12); color:#34d399; border:1px solid rgba(16,185,129,0.3);'
+        };
+
+        clientsTbody.innerHTML = filtered.map(c => {
+            const p = c.project || {};
+            const prog = p.progress != null ? p.progress : 0;
+            const deliverablesCount = Array.isArray(c.deliverables) ? c.deliverables.length : 0;
+            const pendingDeliv = Array.isArray(c.deliverables) ? c.deliverables.filter(d => d.status === 'pending_review').length : 0;
+            const invoicesCount = Array.isArray(c.invoices) ? c.invoices.length : 0;
+            const unpaidInv = Array.isArray(c.invoices) ? c.invoices.filter(i => i.status === 'unpaid').length : 0;
+            const stageStyle = stageColors[p.stage] || 'background:rgba(255,255,255,0.06); color:#cbd5e1;';
+
+            return `
+                <tr>
+                    <td>
+                        <div style="font-weight:700; color:var(--adm-text); font-size:0.9rem;">${escapeHtml(c.company || c.name)}</div>
+                        <div style="font-size:0.78rem; color:var(--adm-text-muted); display:flex; gap:0.5rem; align-items:center;">
+                            <span>${escapeHtml(c.name)}</span>
+                            <span>•</span>
+                            <span>${escapeHtml(c.email)}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-weight:600; color:var(--adm-text); font-size:0.86rem;">${escapeHtml(p.name || 'Untitled Project')}</div>
+                        <div style="font-size:0.75rem; color:var(--adm-text-subtle);">Lead: ${escapeHtml(p.lead || 'Alex Mercer')}</div>
+                    </td>
+                    <td>
+                        <span style="display:inline-block; padding:0.25rem 0.65rem; border-radius:999px; font-size:0.75rem; font-weight:600; ${stageStyle}">
+                            ${escapeHtml(p.stage || 'Discovery')}
+                        </span>
+                    </td>
+                    <td style="min-width:110px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:0.25rem; font-weight:600;">
+                            <span>${prog}%</span>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:999px; overflow:hidden;">
+                            <div style="height:100%; width:${prog}%; background:linear-gradient(90deg, #fca311, #e5920a); border-radius:999px;"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:0.82rem; font-weight:600; color:var(--adm-text);">${deliverablesCount} items</div>
+                        ${pendingDeliv > 0 ? `<span style="font-size:0.72rem; color:#fca311; font-weight:600;">${pendingDeliv} pending signoff</span>` : `<span style="font-size:0.72rem; color:#34d399;">All approved</span>`}
+                    </td>
+                    <td>
+                        <div style="font-size:0.82rem; font-weight:600; color:var(--adm-text);">${invoicesCount} invoices</div>
+                        ${unpaidInv > 0 ? `<span style="font-size:0.72rem; color:#ef4444; font-weight:600;">${unpaidInv} unpaid</span>` : `<span style="font-size:0.72rem; color:#34d399;">Paid in full</span>`}
+                    </td>
+                    <td style="font-size:0.78rem; color:var(--adm-text-muted);">
+                        ${c.lastLogin ? formatTimeAgo(c.lastLogin) : 'Never'}
+                    </td>
+                    <td>
+                        <div style="display:flex; gap:0.4rem; align-items:center;">
+                            <button type="button" class="admin-btn-action primary" data-action="manage-client" data-id="${c.id}" title="Manage Client Portal">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                <span>Manage</span>
+                            </button>
+                            <button type="button" class="admin-btn-action" data-action="copy-portal-login" data-id="${c.id}" data-email="${escapeHtml(c.email)}" title="Copy Client Login Instructions">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                            <button type="button" class="admin-btn-action danger" data-action="delete-client" data-id="${c.id}" title="Delete Client Workspace">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    function openNewClientModal() {
+        if (!clientNewModalBackdrop) return;
+        const form = document.getElementById('new-client-form');
+        if (form) form.reset();
+        clientNewModalBackdrop.style.display = 'flex';
+        clientNewModalBackdrop.classList.add('is-open');
+        if (newClientCompany) newClientCompany.focus();
+    }
+
+    function closeNewClientModal() {
+        if (!clientNewModalBackdrop) return;
+        clientNewModalBackdrop.classList.remove('is-open');
+        clientNewModalBackdrop.style.display = 'none';
+    }
+
+    async function saveNewClient() {
+        const company = (newClientCompany ? newClientCompany.value : '').trim();
+        const name = (newClientName ? newClientName.value : '').trim();
+        const email = (newClientEmail ? newClientEmail.value : '').trim();
+        const password = (newClientPassword ? newClientPassword.value : '').trim();
+        const projectName = (newClientProjectName ? newClientProjectName.value : '').trim();
+        const projectDesc = (newClientProjectDesc ? newClientProjectDesc.value : '').trim();
+        const projectStage = newClientProjectStage ? newClientProjectStage.value : 'Beta Testing';
+        const targetLaunchDate = newClientTargetDate ? newClientTargetDate.value : '';
+        const lead = (newClientLead ? newClientLead.value : '').trim() || 'Alex Mercer';
+        const internalNotes = (newClientInternalNotes ? newClientInternalNotes.value : '').trim();
+
+        if (!company || !name || !email || !projectName) {
+            alert('Please fill in Company Name, Primary Contact Name, Email, and Project Title.');
+            return;
+        }
+
+        try {
+            const res = await authFetch('/api/admin/clients', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    company,
+                    name,
+                    email,
+                    password: password || undefined,
+                    project: {
+                        name: projectName,
+                        description: projectDesc,
+                        stage: projectStage,
+                        progress: 15,
+                        targetLaunchDate,
+                        lead
+                    },
+                    internalNotes
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                closeNewClientModal();
+                await loadClients();
+                alert(`Client portal created successfully for ${company}!\n\nLogin Email: ${email}\nPassword: ${data.initialPassword || password || 'Generated'}\n\nPlease share these credentials with the client.`);
+            } else {
+                alert('Error creating client workspace: ' + (data.error || 'Server error'));
+            }
+        } catch (err) {
+            alert('Connection error: ' + err.message);
+        }
+    }
+
+    function openManageClientModal(clientId) {
+        if (!clientId || !clientManageModalBackdrop) return;
+        const found = currentClients.find(c => c.id === clientId);
+        if (!found) return;
+
+        editingClient = JSON.parse(JSON.stringify(found));
+        if (!Array.isArray(editingClient.timeline)) editingClient.timeline = [];
+        if (!Array.isArray(editingClient.deliverables)) editingClient.deliverables = [];
+        if (!Array.isArray(editingClient.meetingNotes)) editingClient.meetingNotes = [];
+        if (!Array.isArray(editingClient.files)) editingClient.files = [];
+        if (!Array.isArray(editingClient.invoices)) editingClient.invoices = [];
+        if (!Array.isArray(editingClient.feedback)) editingClient.feedback = [];
+
+        if (manageClientId) manageClientId.value = editingClient.id;
+        if (manageClientTitle) manageClientTitle.textContent = editingClient.company || editingClient.name;
+        if (manageClientSubtitle) {
+            const pName = (editingClient.project && editingClient.project.name) || 'Project Workspace';
+            manageClientSubtitle.textContent = `${editingClient.email} • ${pName}`;
+        }
+
+        if (editClientName) editClientName.value = editingClient.name || '';
+        if (editClientEmail) editClientEmail.value = editingClient.email || '';
+        if (editClientCompany) editClientCompany.value = editingClient.company || '';
+        if (editClientStatus) editClientStatus.value = editingClient.status || 'active';
+        if (editInternalNotes) editInternalNotes.value = editingClient.internalNotes || '';
+
+        const p = editingClient.project || {};
+        if (editProjectName) editProjectName.value = p.name || '';
+        if (editProjectDesc) editProjectDesc.value = p.description || '';
+        if (editProjectStage) editProjectStage.value = p.stage || 'In Development';
+        if (editProjectProgress) editProjectProgress.value = p.progress != null ? p.progress : 25;
+        if (editProjectTargetDate) editProjectTargetDate.value = p.targetLaunchDate || '';
+        if (editProjectLead) editProjectLead.value = p.lead || 'Alex Mercer';
+
+        renderManageTimeline();
+        renderManageDeliverables();
+        renderManageMeetings();
+        renderManageFiles();
+        renderManageInvoices();
+        renderManageFeedback();
+
+        switchClientSubtab('status');
+        clientManageModalBackdrop.style.display = 'flex';
+        clientManageModalBackdrop.classList.add('is-open');
+    }
+
+    function closeManageClientModal() {
+        if (!clientManageModalBackdrop) return;
+        clientManageModalBackdrop.classList.remove('is-open');
+        clientManageModalBackdrop.style.display = 'none';
+        editingClient = null;
+    }
+
+    function switchClientSubtab(tabKey) {
+        activeClientSubTab = tabKey;
+        if (!clientManageModalBackdrop) return;
+        const subnavBtns = clientManageModalBackdrop.querySelectorAll('.admin-subtab-btn');
+        subnavBtns.forEach(b => {
+            if (b.dataset.clSubtab === tabKey) b.classList.add('active');
+            else b.classList.remove('active');
+        });
+        const panes = clientManageModalBackdrop.querySelectorAll('.cl-subtab-pane');
+        panes.forEach(p => {
+            if (p.id === `cl-subtab-${tabKey}`) p.style.display = 'block';
+            else p.style.display = 'none';
+        });
+    }
+
+    function renderManageTimeline() {
+        if (!clManageTimelineList || !editingClient) return;
+        const list = Array.isArray(editingClient.timeline) ? editingClient.timeline : [];
+        if (list.length === 0) {
+            clManageTimelineList.innerHTML = `<div style="padding:1rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No milestones configured yet. Click "+ Add Milestone" above.</div>`;
+            return;
+        }
+        clManageTimelineList.innerHTML = list.map((m, idx) => `
+            <div class="cl-item-card" data-idx="${idx}">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">Milestone #${idx + 1}</span>
+                    <button type="button" class="admin-btn-action danger" data-del-milestone="${idx}" title="Delete Milestone">&times;</button>
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 140px; gap:0.5rem;">
+                    <input type="date" class="admin-input" data-milestone-field="date" data-idx="${idx}" value="${escapeHtml(m.date || '')}">
+                    <input type="text" class="admin-input" data-milestone-field="title" data-idx="${idx}" placeholder="Milestone Title" value="${escapeHtml(m.title || '')}">
+                    <select class="admin-input" data-milestone-field="status" data-idx="${idx}">
+                        <option value="completed" ${m.status === 'completed' ? 'selected' : ''}>Completed</option>
+                        <option value="in_progress" ${m.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+                        <option value="upcoming" ${m.status === 'upcoming' ? 'selected' : ''}>Upcoming</option>
+                    </select>
+                </div>
+                <input type="text" class="admin-input" data-milestone-field="description" data-idx="${idx}" placeholder="Brief description visible on timeline..." value="${escapeHtml(m.description || '')}">
+            </div>
+        `).join('');
+    }
+
+    function renderManageDeliverables() {
+        if (!clManageDeliverablesList || !editingClient) return;
+        const list = Array.isArray(editingClient.deliverables) ? editingClient.deliverables : [];
+        if (list.length === 0) {
+            clManageDeliverablesList.innerHTML = `<div style="padding:1rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No deliverables added yet. Click "+ Add Deliverable" above.</div>`;
+            return;
+        }
+        clManageDeliverablesList.innerHTML = list.map((d, idx) => `
+            <div class="cl-item-card" data-idx="${idx}">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">Deliverable: ${escapeHtml(d.title || 'Untitled')}</span>
+                    <button type="button" class="admin-btn-action danger" data-del-deliverable="${idx}" title="Delete Deliverable">&times;</button>
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 1fr 100px 140px; gap:0.5rem;">
+                    <input type="text" class="admin-input" data-deliv-field="title" data-idx="${idx}" placeholder="Deliverable Title" value="${escapeHtml(d.title || '')}">
+                    <input type="text" class="admin-input" data-deliv-field="version" data-idx="${idx}" placeholder="v1.0" value="${escapeHtml(d.version || 'v1.0')}">
+                    <select class="admin-input" data-deliv-field="status" data-idx="${idx}">
+                        <option value="pending_review" ${d.status === 'pending_review' ? 'selected' : ''}>Pending Review</option>
+                        <option value="approved" ${d.status === 'approved' ? 'selected' : ''}>Approved</option>
+                        <option value="draft" ${d.status === 'draft' ? 'selected' : ''}>Draft</option>
+                    </select>
+                </div>
+                <div class="admin-form-grid-2">
+                    <input type="date" class="admin-input" data-deliv-field="dueDate" data-idx="${idx}" value="${escapeHtml(d.dueDate || '')}">
+                    <input type="url" class="admin-input" data-deliv-field="fileUrl" data-idx="${idx}" placeholder="Download/Preview Link (e.g. Figma, Drive, GitHub)" value="${escapeHtml(d.fileUrl || '')}">
+                </div>
+                <textarea class="admin-input" data-deliv-field="summary" data-idx="${idx}" rows="2" placeholder="Summary of deliverable for client review...">${escapeHtml(d.summary || '')}</textarea>
+                ${d.clientFeedback ? `<div style="font-size:0.75rem; color:#34d399; background:rgba(16,185,129,0.08); padding:0.5rem; border-radius:6px;"><strong>Client Feedback:</strong> ${escapeHtml(d.clientFeedback)} (Approved by client on ${escapeHtml(d.approvedAt ? formatDate(d.approvedAt, true) : 'portal')})</div>` : ''}
+            </div>
+        `).join('');
+    }
+
+    function renderManageMeetings() {
+        if (!clManageMeetingsList || !editingClient) return;
+        const list = Array.isArray(editingClient.meetingNotes) ? editingClient.meetingNotes : [];
+        if (list.length === 0) {
+            clManageMeetingsList.innerHTML = `<div style="padding:1rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No meeting notes added yet. Click "+ Add Note" above.</div>`;
+            return;
+        }
+        clManageMeetingsList.innerHTML = list.map((m, idx) => `
+            <div class="cl-item-card" data-idx="${idx}">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label class="admin-checkbox-label" style="margin:0;">
+                        <input type="checkbox" data-meeting-field="isClientVisible" data-idx="${idx}" ${m.isClientVisible !== false ? 'checked' : ''}>
+                        <span style="font-weight:600; color:${m.isClientVisible !== false ? '#34d399' : '#f87171'}; font-size:0.8rem;">
+                            ${m.isClientVisible !== false ? '✓ Visible on Client Portal' : '✕ Hidden / Staff Only'}
+                        </span>
+                    </label>
+                    <button type="button" class="admin-btn-action danger" data-del-meeting="${idx}" title="Delete Note">&times;</button>
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 1fr; gap:0.5rem;">
+                    <input type="date" class="admin-input" data-meeting-field="date" data-idx="${idx}" value="${escapeHtml(m.date || '')}">
+                    <input type="text" class="admin-input" data-meeting-field="title" data-idx="${idx}" placeholder="Meeting Subject" value="${escapeHtml(m.title || '')}">
+                    <input type="text" class="admin-input" data-meeting-field="attendees" data-idx="${idx}" placeholder="Attendees" value="${escapeHtml(m.attendees || '')}">
+                </div>
+                <textarea class="admin-input" data-meeting-field="summary" data-idx="${idx}" rows="2" placeholder="Discussion summary & key decisions...">${escapeHtml(m.summary || '')}</textarea>
+                <input type="text" class="admin-input" data-meeting-field="actionItems" data-idx="${idx}" placeholder="Action items & next steps..." value="${escapeHtml(m.actionItems || '')}">
+            </div>
+        `).join('');
+    }
+
+    function renderManageFiles() {
+        if (!clManageFilesList || !editingClient) return;
+        const list = Array.isArray(editingClient.files) ? editingClient.files : [];
+        if (list.length === 0) {
+            clManageFilesList.innerHTML = `<div style="padding:1rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No files linked yet. Click "+ Add File Link" above.</div>`;
+            return;
+        }
+        clManageFilesList.innerHTML = list.map((f, idx) => `
+            <div class="cl-item-card" data-idx="${idx}">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">${escapeHtml(f.name || 'File Link')}</span>
+                    <button type="button" class="admin-btn-action danger" data-del-file="${idx}" title="Delete File">&times;</button>
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 1.5fr 1fr 100px; gap:0.5rem;">
+                    <input type="text" class="admin-input" data-file-field="name" data-idx="${idx}" placeholder="Document Name" value="${escapeHtml(f.name || '')}">
+                    <select class="admin-input" data-file-field="category" data-idx="${idx}">
+                        <option value="Architecture" ${f.category === 'Architecture' ? 'selected' : ''}>Architecture</option>
+                        <option value="Specification" ${f.category === 'Specification' ? 'selected' : ''}>Specification</option>
+                        <option value="Design Assets" ${f.category === 'Design Assets' ? 'selected' : ''}>Design Assets</option>
+                        <option value="Deliverable Build" ${f.category === 'Deliverable Build' ? 'selected' : ''}>Deliverable Build</option>
+                        <option value="Contract & Scope" ${f.category === 'Contract & Scope' ? 'selected' : ''}>Contract & Scope</option>
+                    </select>
+                    <input type="text" class="admin-input" data-file-field="size" data-idx="${idx}" placeholder="PDF / 2.4 MB" value="${escapeHtml(f.size || '')}">
+                </div>
+                <input type="url" class="admin-input" data-file-field="url" data-idx="${idx}" placeholder="File URL (https://...)" value="${escapeHtml(f.url || '')}">
+            </div>
+        `).join('');
+    }
+
+    function renderManageInvoices() {
+        if (!clManageInvoicesList || !editingClient) return;
+        const list = Array.isArray(editingClient.invoices) ? editingClient.invoices : [];
+        if (list.length === 0) {
+            clManageInvoicesList.innerHTML = `<div style="padding:1rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No invoices created yet. Click "+ Create Invoice" above.</div>`;
+            return;
+        }
+        clManageInvoicesList.innerHTML = list.map((inv, idx) => `
+            <div class="cl-item-card" data-idx="${idx}">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">${escapeHtml(inv.invoiceNumber || 'Invoice')}</span>
+                    <button type="button" class="admin-btn-action danger" data-del-invoice="${idx}" title="Delete Invoice">&times;</button>
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 120px; gap:0.5rem;">
+                    <input type="text" class="admin-input" data-inv-field="invoiceNumber" data-idx="${idx}" placeholder="INV-2026-001" value="${escapeHtml(inv.invoiceNumber || '')}">
+                    <input type="text" class="admin-input" data-inv-field="description" data-idx="${idx}" placeholder="Milestone / Sprint Fee" value="${escapeHtml(inv.description || '')}">
+                    <input type="number" class="admin-input" data-inv-field="amount" data-idx="${idx}" placeholder="Amount ($)" value="${inv.amount || 0}">
+                </div>
+                <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 130px 140px 1fr; gap:0.5rem;">
+                    <select class="admin-input" data-inv-field="status" data-idx="${idx}">
+                        <option value="unpaid" ${inv.status === 'unpaid' ? 'selected' : ''}>Unpaid</option>
+                        <option value="paid" ${inv.status === 'paid' ? 'selected' : ''}>Paid</option>
+                        <option value="draft" ${inv.status === 'draft' ? 'selected' : ''}>Draft</option>
+                    </select>
+                    <input type="date" class="admin-input" data-inv-field="dueDate" data-idx="${idx}" value="${escapeHtml(inv.dueDate || '')}">
+                    <input type="url" class="admin-input" data-inv-field="paymentLink" data-idx="${idx}" placeholder="Payment Checkout / Wire Link" value="${escapeHtml(inv.paymentLink || '')}">
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderManageFeedback() {
+        if (!clManageFeedbackList || !editingClient) return;
+        const list = Array.isArray(editingClient.feedback) ? editingClient.feedback : [];
+        if (list.length === 0) {
+            clManageFeedbackList.innerHTML = `<div style="padding:1.5rem; text-align:center; color:var(--adm-text-muted); font-size:0.85rem;">No client feedback or approval requests received yet from the portal.</div>`;
+            return;
+        }
+        clManageFeedbackList.innerHTML = list.map(fb => `
+            <div style="background:rgba(255,255,255,0.03); border:1px solid var(--adm-border); border-radius:8px; padding:0.85rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
+                    <span style="font-weight:700; color:var(--adm-text); font-size:0.85rem;">${escapeHtml(fb.topic || 'General Feedback')}</span>
+                    <span style="font-size:0.75rem; color:var(--adm-text-muted);">${formatDate(fb.createdAt, true)}</span>
+                </div>
+                <p style="font-size:0.82rem; color:var(--adm-text-main); margin:0 0 0.35rem; line-height:1.4;">${escapeHtml(fb.message || '')}</p>
+                ${fb.urgency ? `<span style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:999px; background:rgba(252,163,17,0.12); color:#fca311; font-weight:600;">Priority: ${escapeHtml(fb.urgency)}</span>` : ''}
+            </div>
+        `).join('');
+    }
+
+    async function saveManageClient() {
+        if (!editingClient) return;
+
+        editingClient.name = (editClientName ? editClientName.value : editingClient.name).trim();
+        editingClient.email = (editClientEmail ? editClientEmail.value : editingClient.email).trim();
+        editingClient.company = (editClientCompany ? editClientCompany.value : editingClient.company).trim();
+        editingClient.status = editClientStatus ? editClientStatus.value : editingClient.status;
+        editingClient.internalNotes = editInternalNotes ? editInternalNotes.value : editingClient.internalNotes;
+
+        if (!editingClient.project) editingClient.project = {};
+        editingClient.project.name = (editProjectName ? editProjectName.value : editingClient.project.name).trim();
+        editingClient.project.description = (editProjectDesc ? editProjectDesc.value : editingClient.project.description).trim();
+        editingClient.project.stage = editProjectStage ? editProjectStage.value : editingClient.project.stage;
+        editingClient.project.progress = editProjectProgress ? parseInt(editProjectProgress.value, 10) || 0 : 0;
+        editingClient.project.targetLaunchDate = editProjectTargetDate ? editProjectTargetDate.value : '';
+        editingClient.project.lead = (editProjectLead ? editProjectLead.value : editingClient.project.lead).trim();
+
+        try {
+            const res = await authFetch(`/api/admin/clients/${editingClient.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(editingClient)
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                closeManageClientModal();
+                await loadClients();
+                alert('Client workspace updated successfully.');
+            } else {
+                alert('Error updating client workspace: ' + (data.error || 'Server error'));
+            }
+        } catch (err) {
+            alert('Connection error: ' + err.message);
+        }
+    }
+
+    async function deleteClient(clientId) {
+        if (!clientId) return;
+        const c = currentClients.find(it => it.id === clientId);
+        const name = c ? (c.company || c.name) : clientId;
+        if (!confirm(`Are you sure you want to completely delete the client workspace for "${name}"?\nAll deliverables, notes, invoices, and portal login access will be permanently removed.`)) {
+            return;
+        }
+
+        try {
+            const res = await authFetch(`/api/admin/clients/${clientId}`, {
+                method: 'DELETE'
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                if (editingClient && editingClient.id === clientId) {
+                    closeManageClientModal();
+                }
+                await loadClients();
+                alert(`Workspace "${name}" was deleted.`);
+            } else {
+                alert('Error deleting client workspace: ' + (data.error || 'Server error'));
+            }
+        } catch (err) {
+            alert('Connection error: ' + err.message);
+        }
+    }
+
+    async function resetClientPassword(clientId) {
+        if (!clientId) return;
+        const newPassword = prompt('Enter a new password for this client (leave blank to auto-generate a secure password):');
+        if (newPassword === null) return;
+
+        try {
+            const res = await authFetch(`/api/admin/clients/${clientId}/reset-password`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ newPassword: newPassword.trim() || undefined })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                alert(`Password updated successfully!\n\nNew Client Password: ${data.newPassword}\n\nPlease share this password with the client along with the portal link.`);
+            } else {
+                alert('Error resetting password: ' + (data.error || 'Server error'));
+            }
+        } catch (err) {
+            alert('Connection error: ' + err.message);
+        }
+    }
+
+    function copyClientPortalLogin(clientId, clientEmail) {
+        const portalUrl = window.location.origin + '/portal.html';
+        const text = `Versaly Client Portal\nURL: ${portalUrl}\nYour Login Email: ${clientEmail}\n(Please use your provided portal password to log in)`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Client Portal access instructions copied to clipboard!\n\n' + text);
+            }).catch(() => {
+                prompt('Copy client portal access details:', text);
+            });
+        } else {
+            prompt('Copy client portal access details:', text);
+        }
+    }
+
     // --- Password Visibility Toggles ---
     function setupPasswordToggles() {
         const toggleButtons = document.querySelectorAll('.admin-pwd-toggle-btn');
@@ -4664,6 +5272,260 @@
             });
         }
 
+        // Client Portal Bindings (Phase 21)
+        if (btnCreateClient) btnCreateClient.addEventListener('click', openNewClientModal);
+        if (btnCloseNewClientModal) btnCloseNewClientModal.addEventListener('click', closeNewClientModal);
+        if (btnCancelNewClient) btnCancelNewClient.addEventListener('click', closeNewClientModal);
+        if (btnSaveNewClient) btnSaveNewClient.addEventListener('click', saveNewClient);
+
+        if (clientNewModalBackdrop) {
+            clientNewModalBackdrop.addEventListener('click', e => {
+                if (e.target === clientNewModalBackdrop) closeNewClientModal();
+            });
+        }
+
+        if (btnCloseManageClientModal) btnCloseManageClientModal.addEventListener('click', closeManageClientModal);
+        if (btnCancelManageClient) btnCancelManageClient.addEventListener('click', closeManageClientModal);
+        if (btnSaveManageClient) btnSaveManageClient.addEventListener('click', saveManageClient);
+        if (btnDeleteClient) {
+            btnDeleteClient.addEventListener('click', () => {
+                if (editingClient) deleteClient(editingClient.id);
+            });
+        }
+        if (btnAdminResetClientPw) {
+            btnAdminResetClientPw.addEventListener('click', () => {
+                if (editingClient) resetClientPassword(editingClient.id);
+            });
+        }
+
+        if (clientManageModalBackdrop) {
+            clientManageModalBackdrop.addEventListener('click', e => {
+                if (e.target === clientManageModalBackdrop) closeManageClientModal();
+
+                // Subtab button
+                const subtabBtn = e.target.closest('.admin-subtab-btn');
+                if (subtabBtn && subtabBtn.dataset.clSubtab) {
+                    switchClientSubtab(subtabBtn.dataset.clSubtab);
+                    return;
+                }
+
+                // Delete milestone
+                const delMilestoneBtn = e.target.closest('[data-del-milestone]');
+                if (delMilestoneBtn && editingClient) {
+                    const idx = parseInt(delMilestoneBtn.dataset.delMilestone, 10);
+                    if (!isNaN(idx) && editingClient.timeline) {
+                        editingClient.timeline.splice(idx, 1);
+                        renderManageTimeline();
+                    }
+                    return;
+                }
+
+                // Delete deliverable
+                const delDelivBtn = e.target.closest('[data-del-deliverable]');
+                if (delDelivBtn && editingClient) {
+                    const idx = parseInt(delDelivBtn.dataset.delDeliverable, 10);
+                    if (!isNaN(idx) && editingClient.deliverables) {
+                        editingClient.deliverables.splice(idx, 1);
+                        renderManageDeliverables();
+                    }
+                    return;
+                }
+
+                // Delete meeting note
+                const delMeetingBtn = e.target.closest('[data-del-meeting]');
+                if (delMeetingBtn && editingClient) {
+                    const idx = parseInt(delMeetingBtn.dataset.delMeeting, 10);
+                    if (!isNaN(idx) && editingClient.meetingNotes) {
+                        editingClient.meetingNotes.splice(idx, 1);
+                        renderManageMeetings();
+                    }
+                    return;
+                }
+
+                // Delete file
+                const delFileBtn = e.target.closest('[data-del-file]');
+                if (delFileBtn && editingClient) {
+                    const idx = parseInt(delFileBtn.dataset.delFile, 10);
+                    if (!isNaN(idx) && editingClient.files) {
+                        editingClient.files.splice(idx, 1);
+                        renderManageFiles();
+                    }
+                    return;
+                }
+
+                // Delete invoice
+                const delInvBtn = e.target.closest('[data-del-invoice]');
+                if (delInvBtn && editingClient) {
+                    const idx = parseInt(delInvBtn.dataset.delInvoice, 10);
+                    if (!isNaN(idx) && editingClient.invoices) {
+                        editingClient.invoices.splice(idx, 1);
+                        renderManageInvoices();
+                    }
+                    return;
+                }
+            });
+
+            // Input synchronization for dynamic cards
+            clientManageModalBackdrop.addEventListener('input', e => {
+                if (!editingClient) return;
+                const target = e.target;
+                const idx = parseInt(target.dataset.idx, 10);
+                if (isNaN(idx)) return;
+
+                if (target.dataset.milestoneField && editingClient.timeline && editingClient.timeline[idx]) {
+                    editingClient.timeline[idx][target.dataset.milestoneField] = target.value;
+                } else if (target.dataset.delivField && editingClient.deliverables && editingClient.deliverables[idx]) {
+                    editingClient.deliverables[idx][target.dataset.delivField] = target.value;
+                } else if (target.dataset.meetingField && editingClient.meetingNotes && editingClient.meetingNotes[idx]) {
+                    editingClient.meetingNotes[idx][target.dataset.meetingField] = target.value;
+                } else if (target.dataset.fileField && editingClient.files && editingClient.files[idx]) {
+                    editingClient.files[idx][target.dataset.fileField] = target.value;
+                } else if (target.dataset.invField && editingClient.invoices && editingClient.invoices[idx]) {
+                    if (target.dataset.invField === 'amount') {
+                        editingClient.invoices[idx].amount = parseFloat(target.value) || 0;
+                    } else {
+                        editingClient.invoices[idx][target.dataset.invField] = target.value;
+                    }
+                }
+            });
+
+            clientManageModalBackdrop.addEventListener('change', e => {
+                if (!editingClient) return;
+                const target = e.target;
+                const idx = parseInt(target.dataset.idx, 10);
+                if (isNaN(idx)) return;
+
+                if (target.dataset.meetingField === 'isClientVisible' && editingClient.meetingNotes && editingClient.meetingNotes[idx]) {
+                    editingClient.meetingNotes[idx].isClientVisible = target.checked;
+                } else if (target.dataset.milestoneField === 'status' && editingClient.timeline && editingClient.timeline[idx]) {
+                    editingClient.timeline[idx].status = target.value;
+                } else if (target.dataset.delivField === 'status' && editingClient.deliverables && editingClient.deliverables[idx]) {
+                    editingClient.deliverables[idx].status = target.value;
+                } else if (target.dataset.invField === 'status' && editingClient.invoices && editingClient.invoices[idx]) {
+                    editingClient.invoices[idx].status = target.value;
+                }
+            });
+        }
+
+        // Add item buttons
+        if (btnAddMilestone) {
+            btnAddMilestone.addEventListener('click', () => {
+                if (!editingClient) return;
+                if (!Array.isArray(editingClient.timeline)) editingClient.timeline = [];
+                editingClient.timeline.push({
+                    date: new Date().toISOString().split('T')[0],
+                    title: 'New Milestone',
+                    description: '',
+                    status: 'upcoming'
+                });
+                renderManageTimeline();
+            });
+        }
+
+        if (btnAddDeliverable) {
+            btnAddDeliverable.addEventListener('click', () => {
+                if (!editingClient) return;
+                if (!Array.isArray(editingClient.deliverables)) editingClient.deliverables = [];
+                editingClient.deliverables.push({
+                    id: 'deliv_' + Date.now(),
+                    title: 'New Deliverable',
+                    version: 'v1.0',
+                    status: 'pending_review',
+                    dueDate: '',
+                    fileUrl: '',
+                    summary: ''
+                });
+                renderManageDeliverables();
+            });
+        }
+
+        if (btnAddMeeting) {
+            btnAddMeeting.addEventListener('click', () => {
+                if (!editingClient) return;
+                if (!Array.isArray(editingClient.meetingNotes)) editingClient.meetingNotes = [];
+                editingClient.meetingNotes.push({
+                    id: 'note_' + Date.now(),
+                    date: new Date().toISOString().split('T')[0],
+                    title: 'Sprint Review & Sync',
+                    attendees: 'Versaly Team, Client Team',
+                    summary: '',
+                    actionItems: '',
+                    isClientVisible: true
+                });
+                renderManageMeetings();
+            });
+        }
+
+        if (btnAddFile) {
+            btnAddFile.addEventListener('click', () => {
+                if (!editingClient) return;
+                if (!Array.isArray(editingClient.files)) editingClient.files = [];
+                editingClient.files.push({
+                    id: 'file_' + Date.now(),
+                    name: 'New Document / Asset',
+                    category: 'Specification',
+                    url: '',
+                    uploadedAt: new Date().toISOString(),
+                    size: 'Web Link'
+                });
+                renderManageFiles();
+            });
+        }
+
+        if (btnAddInvoice) {
+            btnAddInvoice.addEventListener('click', () => {
+                if (!editingClient) return;
+                if (!Array.isArray(editingClient.invoices)) editingClient.invoices = [];
+                editingClient.invoices.push({
+                    id: 'inv_' + Date.now(),
+                    invoiceNumber: 'INV-2026-00' + (editingClient.invoices.length + 1),
+                    description: 'Milestone Deliverable Fee',
+                    amount: 5000,
+                    status: 'unpaid',
+                    dueDate: '',
+                    paymentLink: ''
+                });
+                renderManageInvoices();
+            });
+        }
+
+        // Clients table filter & search
+        if (clientsSearchInput) {
+            clientsSearchInput.addEventListener('input', () => {
+                clientsFilter.search = clientsSearchInput.value.trim();
+                renderClientsTable();
+            });
+        }
+
+        if (clientsFilterStage) {
+            clientsFilterStage.addEventListener('change', () => {
+                clientsFilter.stage = clientsFilterStage.value;
+                renderClientsTable();
+            });
+        }
+
+        if (clientsTbody) {
+            clientsTbody.addEventListener('click', async e => {
+                const manageBtn = e.target.closest('[data-action="manage-client"]');
+                if (manageBtn) {
+                    openManageClientModal(manageBtn.dataset.id);
+                    return;
+                }
+
+                const copyBtn = e.target.closest('[data-action="copy-portal-login"]');
+                if (copyBtn) {
+                    copyClientPortalLogin(copyBtn.dataset.id, copyBtn.dataset.email);
+                    return;
+                }
+
+                const delBtn = e.target.closest('[data-action="delete-client"]');
+                if (delBtn) {
+                    await deleteClient(delBtn.dataset.id);
+                    return;
+                }
+            });
+        }
+
         // Global Escape Key to close modals
         window.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
@@ -4677,6 +5539,10 @@
                     closeMediaPicker();
                 } else if (contentModalBackdrop && contentModalBackdrop.classList.contains('is-open')) {
                     closeContentModal();
+                } else if (clientNewModalBackdrop && clientNewModalBackdrop.classList.contains('is-open')) {
+                    closeNewClientModal();
+                } else if (clientManageModalBackdrop && clientManageModalBackdrop.classList.contains('is-open')) {
+                    closeManageClientModal();
                 }
             }
         });

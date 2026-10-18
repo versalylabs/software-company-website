@@ -1271,6 +1271,162 @@ async function runTests() {
             darkCssRes.body.includes('--border-color: rgba(255, 255, 255, 0.12)');
         assert('Phase 20: Dark Mode WCAG Compliant Contrast Variables Defined', darkHasContrastRules);
 
+        // =================================================================
+        // =================================================================
+        // PHASE 21: CLIENT PORTAL & WORKSPACE MANAGER TESTS
+        // =================================================================
+        console.log(`\n🔐 Testing Phase 21 — Secure Client Portal & Role-Based Isolation...`);
+
+        // Test 1: Static assets serve correctly
+        const portalHtmlRes = await get('/portal.html');
+        assert('Phase 21: Serve /portal.html (200)', portalHtmlRes.status === 200 && portalHtmlRes.body.includes('Client Portal'));
+
+        const portalCssRes = await get('/css/portal.css');
+        assert('Phase 21: Serve /css/portal.css (200)', portalCssRes.status === 200 && portalCssRes.body.includes('.portal-bar'));
+
+        const portalJsRes = await get('/js/portal.js');
+        assert('Phase 21: Serve /js/portal.js (200)', portalJsRes.status === 200 && portalJsRes.body.includes('versaly_client_token'));
+
+        // Test 2: Unauthenticated protection
+        const unauthProjectRes = await get('/api/portal/project');
+        assert('Phase 21: Protected Portal Project API Rejects Unauthenticated (401)', unauthProjectRes.status === 401);
+
+        const unauthMeRes = await get('/api/portal/me');
+        assert('Phase 21: Protected Portal Me API Rejects Unauthenticated (401)', unauthMeRes.status === 401);
+
+        const unauthFeedbackRes = await postJson('/api/portal/feedback', { message: 'hello' });
+        assert('Phase 21: Protected Portal Feedback Rejects Unauthenticated (401)', unauthFeedbackRes.status === 401);
+
+        // Test 3: Invalid credentials rejected
+        const invalidLoginRes = await postJson('/api/portal/login', { email: 'sophia@velournailstudio.com', password: 'wrongpassword' });
+        assert('Phase 21: Client Login Rejects Incorrect Password (401)', invalidLoginRes.status === 401 && invalidLoginRes.body.success === false);
+
+        // Test 4: Valid client authentication (Velour Nail Studio)
+        const clientLoginRes = await postJson('/api/portal/login', {
+            email: 'sophia@velournailstudio.com',
+            password: 'client_demo_2026'
+        });
+        assert('Phase 21: Client Login Authenticates Successfully (200)', clientLoginRes.status === 200 && clientLoginRes.body.success === true && !!clientLoginRes.body.token);
+        const clientToken = clientLoginRes.body.token;
+
+        // Test 5: Role-based separation — Client token CANNOT access Admin APIs
+        const adminAccessWithClientToken = await authRequest('GET', '/api/admin/clients', null, clientToken);
+        assert('Phase 21: RBAC Enforcement — Client Token Cannot Access Admin APIs (401)', adminAccessWithClientToken.status === 401);
+
+        // Test 6: Scoped profile endpoint GET /api/portal/me
+        const portalMeRes = await authRequest('GET', '/api/portal/me', null, clientToken);
+        assert('Phase 21: GET /api/portal/me Returns Client Profile',
+            portalMeRes.status === 200 && portalMeRes.body.success === true && portalMeRes.body.client.email === 'sophia@velournailstudio.com'
+        );
+
+        // Test 7: Scoped data isolation & sanitization GET /api/portal/project
+        const portalProjectRes = await authRequest('GET', '/api/portal/project', null, clientToken);
+        const clientData = portalProjectRes.body.client;
+        assert('Phase 21: Scoped Project View Loaded for Authorized Client',
+            portalProjectRes.status === 200 && portalProjectRes.body.success === true && clientData.id === 'client_velour'
+        );
+        assert('Phase 21: Data Isolation — Password Hash & Salt Stripped from Response',
+            clientData.passwordHash === undefined && clientData.salt === undefined
+        );
+        assert('Phase 21: Data Privacy — Internal Notes Strictly Stripped from Portal API',
+            clientData.internalNotes === undefined && (portalProjectRes.body.project && portalProjectRes.body.project.internalNotes === undefined)
+        );
+
+        // Verify meeting notes visibility filter
+        const clientProject = portalProjectRes.body.project || {};
+        const hasHiddenMeeting = Array.isArray(clientProject.meetingNotes) && clientProject.meetingNotes.some(m => m.isClientVisible === false);
+        assert('Phase 21: Data Privacy — Meeting Notes Filtered by Client Visibility', !hasHiddenMeeting);
+
+        // Test 8: Submit client feedback via portal
+        const feedbackRes = await authRequest('POST', '/api/portal/feedback', {
+            topic: 'Design System Review',
+            message: 'We tested the booking flow on mobile safari and it looks sublime!',
+            urgency: 'Medium'
+        }, clientToken);
+        assert('Phase 21: Client Feedback Submission (POST /api/portal/feedback -> 200)', feedbackRes.status === 200 && feedbackRes.body.success === true);
+
+        // Test 9: Client approves a deliverable
+        const approveRes = await authRequest('POST', '/api/portal/deliverables/del_3/approve', {
+            feedback: 'Approved by Atelier Leadership with great pleasure.'
+        }, clientToken);
+        assert('Phase 21: Client Deliverable Approval (POST /api/portal/deliverables/:id/approve -> 200)',
+            approveRes.status === 200 && approveRes.body.success === true && approveRes.body.deliverable.status === 'approved'
+        );
+
+        // Test 10: Client Logout
+        const portalLogoutRes = await authRequest('POST', '/api/portal/logout', {}, clientToken);
+        assert('Phase 21: Client Logout Endpoint (POST /api/portal/logout -> 200)', portalLogoutRes.status === 200 && portalLogoutRes.body.success === true);
+
+        // Test 11: Admin Client Management Workflow
+        const adminLoginForClients = await postJson('/api/admin/login', { password: CONFIG.adminPassword });
+        const adminTokenForClients = adminLoginForClients.body.token;
+
+        const listClientsRes = await authRequest('GET', '/api/admin/clients', null, adminTokenForClients);
+        assert('Phase 21: Admin Lists All Clients (GET /api/admin/clients -> 200)',
+            listClientsRes.status === 200 && listClientsRes.body.success === true && Array.isArray(listClientsRes.body.clients) && listClientsRes.body.clients.length >= 2
+        );
+
+        // Test 12: Admin creates a new client workspace
+        const createClientRes = await authRequest('POST', '/api/admin/clients', {
+            company: 'Test Client Enterprise',
+            name: 'Jordan Miller',
+            email: 'jordan@testenterprise.com',
+            project: {
+                name: 'Enterprise Supply Chain Cloud',
+                stage: 'Beta Testing',
+                progress: 40,
+                lead: 'Alex Mercer'
+            },
+            internalNotes: 'Private billing notes for finance team.'
+        }, adminTokenForClients);
+        assert('Phase 21: Admin Creates Client Workspace (POST /api/admin/clients -> 201)',
+            createClientRes.status === 201 && createClientRes.body.success === true && !!createClientRes.body.client.id
+        );
+        const newClientId = createClientRes.body.client.id;
+
+        // Test 13: Admin views client with internal notes
+        const getAdminClientRes = await authRequest('GET', `/api/admin/clients/${newClientId}`, null, adminTokenForClients);
+        assert('Phase 21: Admin Can View Full Client Record With Internal Notes',
+            getAdminClientRes.status === 200 && getAdminClientRes.body.client.internalNotes === 'Private billing notes for finance team.'
+        );
+
+        // Test 14: Admin updates client workspace
+        const updateClientRes = await authRequest('PUT', `/api/admin/clients/${newClientId}`, {
+            company: 'Test Client Enterprise (Updated)',
+            project: {
+                name: 'Enterprise Supply Chain Cloud',
+                stage: 'UAT',
+                progress: 85,
+                lead: 'Alex Mercer'
+            }
+        }, adminTokenForClients);
+        assert('Phase 21: Admin Updates Client Workspace (PUT /api/admin/clients/:id -> 200)',
+            updateClientRes.status === 200 && updateClientRes.body.client.company === 'Test Client Enterprise (Updated)' && updateClientRes.body.client.project.progress === 85
+        );
+
+        // Test 15: Admin resets client password
+        const resetPwRes = await authRequest('POST', `/api/admin/clients/${newClientId}/reset-password`, {
+            newPassword: 'test_secure_pass_2026'
+        }, adminTokenForClients);
+        assert('Phase 21: Admin Resets Client Access Password (POST /api/admin/clients/:id/reset-password -> 200)',
+            resetPwRes.status === 200 && resetPwRes.body.success === true && resetPwRes.body.newPassword === 'test_secure_pass_2026'
+        );
+
+        // Verify the client can now log in with the reset password
+        const newClientLoginRes = await postJson('/api/portal/login', {
+            email: 'jordan@testenterprise.com',
+            password: 'test_secure_pass_2026'
+        });
+        assert('Phase 21: Client Can Authenticate With Reset Password',
+            newClientLoginRes.status === 200 && newClientLoginRes.body.success === true
+        );
+
+        // Test 16: Admin deletes client workspace
+        const deleteClientRes = await authRequest('DELETE', `/api/admin/clients/${newClientId}`, null, adminTokenForClients);
+        assert('Phase 21: Admin Deletes Client Workspace (DELETE /api/admin/clients/:id -> 200)',
+            deleteClientRes.status === 200 && deleteClientRes.body.success === true
+        );
+
         console.log(`\n=================================================`);
         console.log(`Test Results: ${passed} Passed, ${failed} Failed`);
         console.log(`=================================================\n`);

@@ -67,7 +67,7 @@
       "answer": "Yes. All Versaly platforms are API-first and cloud-native, providing robust REST/GraphQL connectors and webhook triggers to sync with existing on-premises or cloud legacy systems.",
       "order": 2,
       "status": "published",
-      "updatedAt": "2026-09-28T22:49:19.228Z"
+      "updatedAt": "2026-10-18T20:36:38.601Z"
     },
     {
       "id": "faq-2",
@@ -76,7 +76,7 @@
       "answer": "Because our platforms are purpose-built for specific industries with intuitive zero-bloat UX, standard deployments typically take 2 to 4 weeks including data migration and staff walkthroughs.",
       "order": 3,
       "status": "published",
-      "updatedAt": "2026-09-28T22:49:19.228Z"
+      "updatedAt": "2026-10-18T20:36:38.601Z"
     },
     {
       "id": "faq-3",

@@ -1,5 +1,31 @@
 [
   {
+    "id": "SUP-2026-F8DC9C",
+    "submitted_at": "2026-10-18T20:36:38.807Z",
+    "name": "Dev Operations Team",
+    "email": "ops@company.internal",
+    "company": "N/A",
+    "product": "financeflow",
+    "severity": "P2 - Degraded / Urge",
+    "subject": "Webhook Delivery Delay",
+    "message": "Noticing a 250ms propagation latency in batch ledger synchronizations.",
+    "status": "open",
+    "internal_notes": ""
+  },
+  {
+    "id": "SUP-2026-69303E",
+    "submitted_at": "2026-10-18T20:34:48.447Z",
+    "name": "Dev Operations Team",
+    "email": "ops@company.internal",
+    "company": "N/A",
+    "product": "financeflow",
+    "severity": "P2 - Degraded / Urge",
+    "subject": "Webhook Delivery Delay",
+    "message": "Noticing a 250ms propagation latency in batch ledger synchronizations.",
+    "status": "open",
+    "internal_notes": ""
+  },
+  {
     "id": "SUP-2026-75926F",
     "submitted_at": "2026-09-28T22:49:19.423Z",
     "name": "Dev Operations Team",

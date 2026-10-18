@@ -1,7 +1,83 @@
 [
   {
-    "id": "act_1790635759629_0bfe54",
-    "timestamp": "2026-09-28T22:49:19.630Z",
+    "id": "act_1792355799298_121611",
+    "timestamp": "2026-10-18T20:36:39.299Z",
+    "action": "admin_deleted_client_portal",
+    "category": "system",
+    "details": {
+      "clientId": "client_test_client_enterprise_ab85fd",
+      "company": "Test Client Enterprise (Updated)"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799277_bcb4ca",
+    "timestamp": "2026-10-18T20:36:39.277Z",
+    "action": "admin_reset_client_password",
+    "category": "auth",
+    "details": {
+      "clientId": "client_test_client_enterprise_ab85fd",
+      "company": "Test Client Enterprise (Updated)"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799264_4857e7",
+    "timestamp": "2026-10-18T20:36:39.264Z",
+    "action": "admin_updated_client_portal",
+    "category": "system",
+    "details": {
+      "clientId": "client_test_client_enterprise_ab85fd",
+      "company": "Test Client Enterprise (Updated)"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799248_403974",
+    "timestamp": "2026-10-18T20:36:39.248Z",
+    "action": "admin_created_client_portal",
+    "category": "system",
+    "details": {
+      "clientId": "client_test_client_enterprise_ab85fd",
+      "name": "Jordan Miller",
+      "company": "Test Client Enterprise"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799223_aade91",
+    "timestamp": "2026-10-18T20:36:39.223Z",
+    "action": "client_deliverable_approved",
+    "category": "system",
+    "details": {
+      "clientId": "client_velour",
+      "deliverableId": "del_3",
+      "title": "Booking & POS Beta Staging Environment Build"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799212_840baa",
+    "timestamp": "2026-10-18T20:36:39.212Z",
+    "action": "client_feedback_submitted",
+    "category": "system",
+    "details": {
+      "clientId": "client_velour",
+      "clientName": "Sophia Laurent",
+      "company": "Velour Nail Studio & Atelier",
+      "feedbackId": "fb_1792355799208_fe2ff4"
+    },
+    "user": "admin",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "act_1792355799051_ff802b",
+    "timestamp": "2026-10-18T20:36:39.051Z",
     "action": "notifications_cleared",
     "category": "system",
     "details": {
@@ -11,24 +87,24 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759625_e2fb98",
-    "timestamp": "2026-09-28T22:49:19.625Z",
+    "id": "act_1792355799044_649c42",
+    "timestamp": "2026-10-18T20:36:39.045Z",
     "action": "webhook_deleted",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1790635759584_256c1e",
+      "webhook_id": "wh_1792355798996_11bd8c",
       "name": "Slack Alerts Integration Enterprise"
     },
     "user": "settings",
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759617_8751c2",
-    "timestamp": "2026-09-28T22:49:19.617Z",
+    "id": "act_1792355799031_aa0324",
+    "timestamp": "2026-10-18T20:36:39.031Z",
     "action": "webhook_tested",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1790635759584_256c1e",
+      "webhook_id": "wh_1792355798996_11bd8c",
       "name": "Slack Alerts Integration Enterprise",
       "status": 405
     },
@@ -36,24 +112,24 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759600_bf65a4",
-    "timestamp": "2026-09-28T22:49:19.600Z",
+    "id": "act_1792355799013_644de9",
+    "timestamp": "2026-10-18T20:36:39.013Z",
     "action": "webhook_updated",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1790635759584_256c1e",
+      "webhook_id": "wh_1792355798996_11bd8c",
       "name": "Slack Alerts Integration Enterprise"
     },
     "user": "settings",
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759587_8e7b5c",
-    "timestamp": "2026-09-28T22:49:19.587Z",
+    "id": "act_1792355799000_e1a429",
+    "timestamp": "2026-10-18T20:36:39.000Z",
     "action": "webhook_created",
     "category": "system",
     "details": {
-      "webhook_id": "wh_1790635759584_256c1e",
+      "webhook_id": "wh_1792355798996_11bd8c",
       "name": "Slack Alerts Integration",
       "type": "slack",
       "url": "http://localhost:3456/api/health"
@@ -62,12 +138,12 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759565_c78689",
-    "timestamp": "2026-09-28T22:49:19.565Z",
+    "id": "act_1792355798965_ab3bfe",
+    "timestamp": "2026-10-18T20:36:38.966Z",
     "action": "lead_received",
     "category": "leads",
     "details": {
-      "ref_id": "versaly-2026-F25EBF",
+      "ref_id": "versaly-2026-7095EB",
       "name": "Webhook Verification Lead",
       "form_type": "contact",
       "product": "General"
@@ -76,12 +152,12 @@
     "ip": "127.0.0.1"
   },
   {
-    "id": "act_1790635759547_446285",
-    "timestamp": "2026-09-28T22:49:19.547Z",
+    "id": "act_1792355798946_21e76a",
+    "timestamp": "2026-10-18T20:36:38.946Z",
     "action": "audit_log_cleared",
     "category": "system",
     "details": {
-      "cleared_at": "2026-09-28T22:49:19.546Z"
+      "cleared_at": "2026-10-18T20:36:38.945Z"
     },
     "user": "admin",
     "ip": "::1"
