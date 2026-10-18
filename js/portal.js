@@ -19,6 +19,7 @@
   var loginView = document.getElementById('portal-login-view');
   var dashboardView = document.getElementById('portal-dashboard-view');
   var headerActions = document.getElementById('portal-header-actions');
+  var publicNav = document.getElementById('portal-public-nav');
   var loginForm = document.getElementById('portal-login-form');
   var loginError = document.getElementById('login-error-alert');
   var toastEl = document.getElementById('portal-toast');
@@ -93,12 +94,14 @@
     if (loginView) loginView.style.display = 'flex';
     if (dashboardView) dashboardView.style.display = 'none';
     if (headerActions) headerActions.style.display = 'none';
+    if (publicNav) publicNav.style.display = 'flex';
   }
 
   function showDashboardView() {
     if (loginView) loginView.style.display = 'none';
     if (dashboardView) dashboardView.style.display = 'block';
     if (headerActions) headerActions.style.display = 'flex';
+    if (publicNav) publicNav.style.display = 'none';
   }
 
   function showToast(msg, duration) {
@@ -680,5 +683,9 @@
       .replace(/'/g, '&#39;');
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

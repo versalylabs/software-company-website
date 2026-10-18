@@ -21,9 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/portal.css">
-  <link rel="stylesheet" href="css/motion.css">
   <link rel="stylesheet" href="css/dark.css">
 
   <script>
@@ -36,17 +34,26 @@
 <body class="portal-body">
   <a href="#portal-content-anchor" class="skip-link">Skip to workspace</a>
 
-  <!-- TOP FLOATING NAVBAR -->
-  <header class="hn-bar portal-bar" role="banner">
-    <div class="hn-inner">
+  <!-- TOP HEADER NAVBAR -->
+  <header class="portal-bar" role="banner">
+    <div class="portal-bar__inner">
       <div class="portal-brand-wrap">
-        <a href="index.html" class="hn-brand" aria-label="Versaly Home">
-          <span class="hn-logo" aria-hidden="true">V</span>
-          <span class="hn-brand-name">Versaly</span>
+        <a href="index.html" class="portal-brand" aria-label="Versaly Home">
+          <span class="portal-logo" aria-hidden="true">V</span>
+          <span class="portal-brand-name">versaly</span>
         </a>
         <span class="portal-badge-pill" id="portal-badge-pill">Client Portal</span>
       </div>
 
+      <!-- Public Navigation when logged out -->
+      <div class="portal-public-nav" id="portal-public-nav">
+        <a href="index.html" class="portal-link-back">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Return to Site</span>
+        </a>
+      </div>
+
+      <!-- Authenticated Client Actions -->
       <div class="portal-nav-actions" id="portal-header-actions" style="display: none;">
         <div class="portal-client-tag">
           <span class="portal-client-avatar" id="header-avatar">C</span>
@@ -73,7 +80,7 @@
 
     <!-- 1. LOGIN SCREEN -->
     <section id="portal-login-view" class="portal-login-wrap" aria-label="Client Login">
-      <div class="portal-login-card motion-fade-up">
+      <div class="portal-login-card">
         <div class="portal-login-header">
           <div class="portal-login-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fca311" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>

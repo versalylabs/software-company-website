@@ -39,21 +39,87 @@ body.portal-body {
   flex-direction: column;
 }
 
+.portal-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
 /* ── HEADER NAVBAR ────────────────────────────────────────── */
 .portal-bar {
-  background: rgba(11, 15, 25, 0.88);
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgba(11, 15, 25, 0.94) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--ptl-border);
-  position: sticky;
-  top: 0;
-  z-index: 99;
+  border: none !important;
+  border-bottom: 1px solid var(--ptl-border) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  z-index: 999 !important;
+}
+
+.portal-bar__inner {
+  max-width: 76rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .portal-brand-wrap {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+}
+
+.portal-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.portal-logo {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fca311;
+  background-image: url('../assets/brand/icon-mark-navy-transparent.png');
+  background-size: 72% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #0a1120;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(252, 163, 17, 0.4);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.portal-brand-name {
+  font-family: 'Glorase', 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #f8fafc;
+  text-transform: lowercase;
 }
 
 .portal-badge-pill {
@@ -66,6 +132,32 @@ body.portal-body {
   background: var(--ptl-gold-light);
   color: var(--ptl-gold);
   border: 1px solid var(--ptl-border-accent);
+}
+
+.portal-public-nav {
+  display: flex;
+  align-items: center;
+}
+
+.portal-link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ptl-text-secondary);
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--ptl-radius-sm);
+  border: 1px solid var(--ptl-border);
+  background: var(--ptl-surface-card);
+  transition: all 0.2s ease;
+}
+
+.portal-link-back:hover {
+  color: var(--ptl-gold);
+  border-color: var(--ptl-border-accent);
+  background: var(--ptl-surface-elevated);
 }
 
 .portal-nav-actions {
@@ -156,7 +248,20 @@ body.portal-body {
   align-items: center;
   justify-content: center;
   padding: 3rem 1.5rem;
-  background: radial-gradient(circle at 50% 25%, rgba(252, 163, 17, 0.1) 0%, transparent 55%), var(--ptl-bg);
+  min-height: calc(100vh - 68px);
+  box-sizing: border-box;
+  background: radial-gradient(circle at 50% 25%, rgba(252, 163, 17, 0.08) 0%, transparent 60%), var(--ptl-bg);
+}
+
+@keyframes portalCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .portal-login-card {
@@ -167,6 +272,8 @@ body.portal-body {
   border-radius: var(--ptl-radius);
   padding: 2.5rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  opacity: 1 !important;
+  animation: portalCardEntrance 0.35s ease-out forwards;
 }
 
 .portal-login-header {
