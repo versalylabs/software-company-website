@@ -203,6 +203,7 @@
     const newClientName = document.getElementById('new-client-name');
     const newClientEmail = document.getElementById('new-client-email');
     const newClientPassword = document.getElementById('new-client-password');
+    const newClientProjectProduct = document.getElementById('new-client-project-product');
     const newClientProjectName = document.getElementById('new-client-project-name');
     const newClientProjectDesc = document.getElementById('new-client-project-desc');
     const newClientProjectStage = document.getElementById('new-client-project-stage');
@@ -226,12 +227,14 @@
     const editClientEmail = document.getElementById('edit-client-email');
     const editClientCompany = document.getElementById('edit-client-company');
     const editClientStatus = document.getElementById('edit-client-status');
+    const editProjectProduct = document.getElementById('edit-project-product');
     const editProjectName = document.getElementById('edit-project-name');
     const editProjectDesc = document.getElementById('edit-project-desc');
     const editProjectStage = document.getElementById('edit-project-stage');
     const editProjectProgress = document.getElementById('edit-project-progress');
     const editProjectTargetDate = document.getElementById('edit-project-target-date');
     const editProjectLead = document.getElementById('edit-project-lead');
+    const editProjectContactEmail = document.getElementById('edit-project-contact-email');
     const editInternalNotes = document.getElementById('edit-internal-notes');
 
     // Manage Client Dynamic Containers & Add Buttons
@@ -3787,18 +3790,16 @@
         if (metricClientsApprovals) {
             let pendingApprovals = 0;
             currentClients.forEach(c => {
-                if (Array.isArray(c.deliverables)) {
-                    pendingApprovals += c.deliverables.filter(d => d.status === 'pending_review').length;
-                }
+                const delivs = (c.project && Array.isArray(c.project.deliverables)) ? c.project.deliverables : (Array.isArray(c.deliverables) ? c.deliverables : []);
+                pendingApprovals += delivs.filter(d => d.status === 'pending_review').length;
             });
             metricClientsApprovals.textContent = pendingApprovals;
         }
         if (metricClientsUnpaid) {
             let unpaidInvoices = 0;
             currentClients.forEach(c => {
-                if (Array.isArray(c.invoices)) {
-                    unpaidInvoices += c.invoices.filter(i => i.status === 'unpaid' || i.status === 'draft').length;
-                }
+                const invs = (c.project && Array.isArray(c.project.invoices)) ? c.project.invoices : (Array.isArray(c.invoices) ? c.invoices : []);
+                unpaidInvoices += invs.filter(i => i.status === 'unpaid' || i.status === 'due' || i.status === 'draft').length;
             });
             metricClientsUnpaid.textContent = unpaidInvoices;
         }
@@ -3834,12 +3835,15 @@
 
         clientsTbody.innerHTML = filtered.map(c => {
             const p = c.project || {};
-            const prog = p.progress != null ? p.progress : 0;
-            const deliverablesCount = Array.isArray(c.deliverables) ? c.deliverables.length : 0;
-            const pendingDeliv = Array.isArray(c.deliverables) ? c.deliverables.filter(d => d.status === 'pending_review').length : 0;
-            const invoicesCount = Array.isArray(c.invoices) ? c.invoices.length : 0;
-            const unpaidInv = Array.isArray(c.invoices) ? c.invoices.filter(i => i.status === 'unpaid').length : 0;
+            const prog = p.progressPercent != null ? p.progressPercent : (p.progress != null ? p.progress : 0);
+            const delivs = Array.isArray(p.deliverables) ? p.deliverables : (Array.isArray(c.deliverables) ? c.deliverables : []);
+            const deliverablesCount = delivs.length;
+            const pendingDeliv = delivs.filter(d => d.status === 'pending_review').length;
+            const invs = Array.isArray(p.invoices) ? p.invoices : (Array.isArray(c.invoices) ? c.invoices : []);
+            const invoicesCount = invs.length;
+            const unpaidInv = invs.filter(i => i.status === 'unpaid' || i.status === 'due').length;
             const stageStyle = stageColors[p.stage] || 'background:rgba(255,255,255,0.06); color:#cbd5e1;';
+            const leadDisplay = p.versalyLead || p.lead || 'Alex Mercer';
 
             return `
                 <tr>
@@ -3853,7 +3857,7 @@
                     </td>
                     <td>
                         <div style="font-weight:600; color:var(--adm-text); font-size:0.86rem;">${escapeHtml(p.name || 'Untitled Project')}</div>
-                        <div style="font-size:0.75rem; color:var(--adm-text-subtle);">Lead: ${escapeHtml(p.lead || 'Alex Mercer')}</div>
+                        <div style="font-size:0.75rem; color:var(--adm-text-subtle);">Lead: ${escapeHtml(leadDisplay)}</div>
                     </td>
                     <td>
                         <span style="display:inline-block; padding:0.25rem 0.65rem; border-radius:999px; font-size:0.75rem; font-weight:600; ${stageStyle}">
@@ -3885,10 +3889,10 @@
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                 <span>Manage</span>
                             </button>
-                            <button type="button" class="admin-btn-action" data-action="copy-portal-login" data-id="${c.id}" data-email="${escapeHtml(c.email)}" title="Copy Client Login Instructions">
+                            <button type="button" class="admin-btn-action icon-only" data-action="copy-portal-login" data-id="${c.id}" data-email="${escapeHtml(c.email)}" title="Copy Client Login Instructions">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             </button>
-                            <button type="button" class="admin-btn-action danger" data-action="delete-client" data-id="${c.id}" title="Delete Client Workspace">
+                            <button type="button" class="admin-btn-action danger icon-only" data-action="delete-client" data-id="${c.id}" title="Delete Client Workspace">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                             </button>
                         </div>
@@ -3918,6 +3922,7 @@
         const name = (newClientName ? newClientName.value : '').trim();
         const email = (newClientEmail ? newClientEmail.value : '').trim();
         const password = (newClientPassword ? newClientPassword.value : '').trim();
+        const product = newClientProjectProduct ? newClientProjectProduct.value : 'custom';
         const projectName = (newClientProjectName ? newClientProjectName.value : '').trim();
         const projectDesc = (newClientProjectDesc ? newClientProjectDesc.value : '').trim();
         const projectStage = newClientProjectStage ? newClientProjectStage.value : 'Beta Testing';
@@ -3939,13 +3944,16 @@
                     name,
                     email,
                     password: password || undefined,
+                    product,
                     project: {
                         name: projectName,
+                        product,
                         description: projectDesc,
                         stage: projectStage,
                         progress: 15,
                         targetLaunchDate,
-                        lead
+                        lead,
+                        versalyLead: lead
                     },
                     internalNotes
                 })
@@ -3969,17 +3977,32 @@
         if (!found) return;
 
         editingClient = JSON.parse(JSON.stringify(found));
-        if (!Array.isArray(editingClient.timeline)) editingClient.timeline = [];
-        if (!Array.isArray(editingClient.deliverables)) editingClient.deliverables = [];
-        if (!Array.isArray(editingClient.meetingNotes)) editingClient.meetingNotes = [];
-        if (!Array.isArray(editingClient.files)) editingClient.files = [];
-        if (!Array.isArray(editingClient.invoices)) editingClient.invoices = [];
-        if (!Array.isArray(editingClient.feedback)) editingClient.feedback = [];
+        const p = editingClient.project || {};
+        editingClient.project = p;
+
+        // Normalize sub-collections between root and project
+        editingClient.timeline = Array.isArray(p.timeline) ? p.timeline : (Array.isArray(editingClient.timeline) ? editingClient.timeline : []);
+        p.timeline = editingClient.timeline;
+
+        editingClient.deliverables = Array.isArray(p.deliverables) ? p.deliverables : (Array.isArray(editingClient.deliverables) ? editingClient.deliverables : []);
+        p.deliverables = editingClient.deliverables;
+
+        editingClient.meetingNotes = Array.isArray(p.meetingNotes) ? p.meetingNotes : (Array.isArray(editingClient.meetingNotes) ? editingClient.meetingNotes : []);
+        p.meetingNotes = editingClient.meetingNotes;
+
+        editingClient.files = Array.isArray(p.approvedFiles) ? p.approvedFiles : (Array.isArray(editingClient.files) ? editingClient.files : (Array.isArray(p.files) ? p.files : []));
+        p.approvedFiles = editingClient.files;
+
+        editingClient.invoices = Array.isArray(p.invoices) ? p.invoices : (Array.isArray(editingClient.invoices) ? editingClient.invoices : []);
+        p.invoices = editingClient.invoices;
+
+        editingClient.feedback = Array.isArray(p.feedback) ? p.feedback : (Array.isArray(editingClient.feedback) ? editingClient.feedback : []);
+        p.feedback = editingClient.feedback;
 
         if (manageClientId) manageClientId.value = editingClient.id;
         if (manageClientTitle) manageClientTitle.textContent = editingClient.company || editingClient.name;
         if (manageClientSubtitle) {
-            const pName = (editingClient.project && editingClient.project.name) || 'Project Workspace';
+            const pName = p.name || 'Project Workspace';
             manageClientSubtitle.textContent = `${editingClient.email} • ${pName}`;
         }
 
@@ -3987,15 +4010,18 @@
         if (editClientEmail) editClientEmail.value = editingClient.email || '';
         if (editClientCompany) editClientCompany.value = editingClient.company || '';
         if (editClientStatus) editClientStatus.value = editingClient.status || 'active';
-        if (editInternalNotes) editInternalNotes.value = editingClient.internalNotes || '';
+        if (editInternalNotes) editInternalNotes.value = editingClient.internalNotes || p.internalNotes || '';
 
-        const p = editingClient.project || {};
+        // Project fields
+        if (editProjectProduct) editProjectProduct.value = p.product || p.productId || editingClient.product || 'custom';
         if (editProjectName) editProjectName.value = p.name || '';
         if (editProjectDesc) editProjectDesc.value = p.description || '';
         if (editProjectStage) editProjectStage.value = p.stage || 'In Development';
-        if (editProjectProgress) editProjectProgress.value = p.progress != null ? p.progress : 25;
+        const progVal = p.progressPercent != null ? p.progressPercent : (p.progress != null ? p.progress : 25);
+        if (editProjectProgress) editProjectProgress.value = progVal;
         if (editProjectTargetDate) editProjectTargetDate.value = p.targetLaunchDate || '';
-        if (editProjectLead) editProjectLead.value = p.lead || 'Alex Mercer';
+        if (editProjectLead) editProjectLead.value = p.versalyLead || p.lead || 'Alex Mercer';
+        if (editProjectContactEmail) editProjectContactEmail.value = p.contactEmail || '';
 
         renderManageTimeline();
         renderManageDeliverables();
@@ -4042,18 +4068,18 @@
             <div class="cl-item-card" data-idx="${idx}">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">Milestone #${idx + 1}</span>
-                    <button type="button" class="admin-btn-action danger" data-del-milestone="${idx}" title="Delete Milestone">&times;</button>
+                    <button type="button" class="admin-btn-action danger icon-only" data-del-milestone="${idx}" title="Delete Milestone">&times;</button>
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 140px; gap:0.5rem;">
-                    <input type="date" class="admin-input" data-milestone-field="date" data-idx="${idx}" value="${escapeHtml(m.date || '')}">
-                    <input type="text" class="admin-input" data-milestone-field="title" data-idx="${idx}" placeholder="Milestone Title" value="${escapeHtml(m.title || '')}">
+                    <input type="date" class="admin-input" data-milestone-field="date" data-idx="${idx}" value="${escapeHtml(m.date || m.targetDate || '')}">
+                    <input type="text" class="admin-input" data-milestone-field="title" data-idx="${idx}" placeholder="Milestone Title" value="${escapeHtml(m.title || m.phase || '')}">
                     <select class="admin-input" data-milestone-field="status" data-idx="${idx}">
                         <option value="completed" ${m.status === 'completed' ? 'selected' : ''}>Completed</option>
                         <option value="in_progress" ${m.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
                         <option value="upcoming" ${m.status === 'upcoming' ? 'selected' : ''}>Upcoming</option>
                     </select>
                 </div>
-                <input type="text" class="admin-input" data-milestone-field="description" data-idx="${idx}" placeholder="Brief description visible on timeline..." value="${escapeHtml(m.description || '')}">
+                <input type="text" class="admin-input" data-milestone-field="description" data-idx="${idx}" placeholder="Brief description visible on timeline..." value="${escapeHtml(m.description || m.summary || '')}">
             </div>
         `).join('');
     }
@@ -4069,11 +4095,11 @@
             <div class="cl-item-card" data-idx="${idx}">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">Deliverable: ${escapeHtml(d.title || 'Untitled')}</span>
-                    <button type="button" class="admin-btn-action danger" data-del-deliverable="${idx}" title="Delete Deliverable">&times;</button>
+                    <button type="button" class="admin-btn-action danger icon-only" data-del-deliverable="${idx}" title="Delete Deliverable">&times;</button>
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 1fr 100px 140px; gap:0.5rem;">
                     <input type="text" class="admin-input" data-deliv-field="title" data-idx="${idx}" placeholder="Deliverable Title" value="${escapeHtml(d.title || '')}">
-                    <input type="text" class="admin-input" data-deliv-field="version" data-idx="${idx}" placeholder="v1.0" value="${escapeHtml(d.version || 'v1.0')}">
+                    <input type="text" class="admin-input" data-deliv-field="version" data-idx="${idx}" placeholder="v1.0" value="${escapeHtml(d.version || d.category || 'v1.0')}">
                     <select class="admin-input" data-deliv-field="status" data-idx="${idx}">
                         <option value="pending_review" ${d.status === 'pending_review' ? 'selected' : ''}>Pending Review</option>
                         <option value="approved" ${d.status === 'approved' ? 'selected' : ''}>Approved</option>
@@ -4084,8 +4110,8 @@
                     <input type="date" class="admin-input" data-deliv-field="dueDate" data-idx="${idx}" value="${escapeHtml(d.dueDate || '')}">
                     <input type="url" class="admin-input" data-deliv-field="fileUrl" data-idx="${idx}" placeholder="Download/Preview Link (e.g. Figma, Drive, GitHub)" value="${escapeHtml(d.fileUrl || '')}">
                 </div>
-                <textarea class="admin-input" data-deliv-field="summary" data-idx="${idx}" rows="2" placeholder="Summary of deliverable for client review...">${escapeHtml(d.summary || '')}</textarea>
-                ${d.clientFeedback ? `<div style="font-size:0.75rem; color:#34d399; background:rgba(16,185,129,0.08); padding:0.5rem; border-radius:6px;"><strong>Client Feedback:</strong> ${escapeHtml(d.clientFeedback)} (Approved by client on ${escapeHtml(d.approvedAt ? formatDate(d.approvedAt, true) : 'portal')})</div>` : ''}
+                <textarea class="admin-input" data-deliv-field="summary" data-idx="${idx}" rows="2" placeholder="Summary of deliverable for client review...">${escapeHtml(d.summary || d.notes || '')}</textarea>
+                ${(d.clientFeedback || d.notes) && d.status === 'approved' ? `<div style="font-size:0.75rem; color:#34d399; background:rgba(16,185,129,0.08); padding:0.5rem; border-radius:6px;"><strong>Client Feedback:</strong> ${escapeHtml(d.clientFeedback || d.notes)} (Approved by client on ${escapeHtml(d.approvedAt ? formatDate(d.approvedAt, true) : 'portal')})</div>` : ''}
             </div>
         `).join('');
     }
@@ -4106,7 +4132,7 @@
                             ${m.isClientVisible !== false ? '✓ Visible on Client Portal' : '✕ Hidden / Staff Only'}
                         </span>
                     </label>
-                    <button type="button" class="admin-btn-action danger" data-del-meeting="${idx}" title="Delete Note">&times;</button>
+                    <button type="button" class="admin-btn-action danger icon-only" data-del-meeting="${idx}" title="Delete Note">&times;</button>
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 1fr; gap:0.5rem;">
                     <input type="date" class="admin-input" data-meeting-field="date" data-idx="${idx}" value="${escapeHtml(m.date || '')}">
@@ -4114,7 +4140,7 @@
                     <input type="text" class="admin-input" data-meeting-field="attendees" data-idx="${idx}" placeholder="Attendees" value="${escapeHtml(m.attendees || '')}">
                 </div>
                 <textarea class="admin-input" data-meeting-field="summary" data-idx="${idx}" rows="2" placeholder="Discussion summary & key decisions...">${escapeHtml(m.summary || '')}</textarea>
-                <input type="text" class="admin-input" data-meeting-field="actionItems" data-idx="${idx}" placeholder="Action items & next steps..." value="${escapeHtml(m.actionItems || '')}">
+                <input type="text" class="admin-input" data-meeting-field="actionItems" data-idx="${idx}" placeholder="Action items & next steps..." value="${escapeHtml(m.actionItems || m.nextSteps || '')}">
             </div>
         `).join('');
     }
@@ -4130,16 +4156,17 @@
             <div class="cl-item-card" data-idx="${idx}">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">${escapeHtml(f.name || 'File Link')}</span>
-                    <button type="button" class="admin-btn-action danger" data-del-file="${idx}" title="Delete File">&times;</button>
+                    <button type="button" class="admin-btn-action danger icon-only" data-del-file="${idx}" title="Delete File">&times;</button>
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 1.5fr 1fr 100px; gap:0.5rem;">
                     <input type="text" class="admin-input" data-file-field="name" data-idx="${idx}" placeholder="Document Name" value="${escapeHtml(f.name || '')}">
                     <select class="admin-input" data-file-field="category" data-idx="${idx}">
-                        <option value="Architecture" ${f.category === 'Architecture' ? 'selected' : ''}>Architecture</option>
-                        <option value="Specification" ${f.category === 'Specification' ? 'selected' : ''}>Specification</option>
-                        <option value="Design Assets" ${f.category === 'Design Assets' ? 'selected' : ''}>Design Assets</option>
-                        <option value="Deliverable Build" ${f.category === 'Deliverable Build' ? 'selected' : ''}>Deliverable Build</option>
-                        <option value="Contract & Scope" ${f.category === 'Contract & Scope' ? 'selected' : ''}>Contract & Scope</option>
+                        <option value="Architecture" ${f.category === 'Architecture' || f.type === 'Architecture' ? 'selected' : ''}>Architecture</option>
+                        <option value="Specification" ${f.category === 'Specification' || f.type === 'Specification' ? 'selected' : ''}>Specification</option>
+                        <option value="Design Assets" ${f.category === 'Design Assets' || f.type === 'Design Assets' || f.type === 'Asset' ? 'selected' : ''}>Design Assets</option>
+                        <option value="Deliverable Build" ${f.category === 'Deliverable Build' || f.type === 'Deliverable Build' ? 'selected' : ''}>Deliverable Build</option>
+                        <option value="Contract & Scope" ${f.category === 'Contract & Scope' || f.type === 'Contract & Scope' || f.type === 'Contract' ? 'selected' : ''}>Contract & Scope</option>
+                        <option value="Documentation" ${f.category === 'Documentation' || f.type === 'Documentation' ? 'selected' : ''}>Documentation</option>
                     </select>
                     <input type="text" class="admin-input" data-file-field="size" data-idx="${idx}" placeholder="PDF / 2.4 MB" value="${escapeHtml(f.size || '')}">
                 </div>
@@ -4158,22 +4185,22 @@
         clManageInvoicesList.innerHTML = list.map((inv, idx) => `
             <div class="cl-item-card" data-idx="${idx}">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">${escapeHtml(inv.invoiceNumber || 'Invoice')}</span>
-                    <button type="button" class="admin-btn-action danger" data-del-invoice="${idx}" title="Delete Invoice">&times;</button>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--adm-gold);">${escapeHtml(inv.invoiceNumber || inv.id || 'Invoice')}</span>
+                    <button type="button" class="admin-btn-action danger icon-only" data-del-invoice="${idx}" title="Delete Invoice">&times;</button>
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 140px 1fr 120px; gap:0.5rem;">
-                    <input type="text" class="admin-input" data-inv-field="invoiceNumber" data-idx="${idx}" placeholder="INV-2026-001" value="${escapeHtml(inv.invoiceNumber || '')}">
-                    <input type="text" class="admin-input" data-inv-field="description" data-idx="${idx}" placeholder="Milestone / Sprint Fee" value="${escapeHtml(inv.description || '')}">
+                    <input type="text" class="admin-input" data-inv-field="invoiceNumber" data-idx="${idx}" placeholder="INV-2026-001" value="${escapeHtml(inv.invoiceNumber || inv.id || '')}">
+                    <input type="text" class="admin-input" data-inv-field="description" data-idx="${idx}" placeholder="Milestone / Sprint Fee" value="${escapeHtml(inv.description || inv.title || '')}">
                     <input type="number" class="admin-input" data-inv-field="amount" data-idx="${idx}" placeholder="Amount ($)" value="${inv.amount || 0}">
                 </div>
                 <div class="admin-form-grid-3" style="display:grid; grid-template-columns: 130px 140px 1fr; gap:0.5rem;">
                     <select class="admin-input" data-inv-field="status" data-idx="${idx}">
-                        <option value="unpaid" ${inv.status === 'unpaid' ? 'selected' : ''}>Unpaid</option>
+                        <option value="unpaid" ${inv.status === 'unpaid' || inv.status === 'due' ? 'selected' : ''}>Unpaid</option>
                         <option value="paid" ${inv.status === 'paid' ? 'selected' : ''}>Paid</option>
                         <option value="draft" ${inv.status === 'draft' ? 'selected' : ''}>Draft</option>
                     </select>
                     <input type="date" class="admin-input" data-inv-field="dueDate" data-idx="${idx}" value="${escapeHtml(inv.dueDate || '')}">
-                    <input type="url" class="admin-input" data-inv-field="paymentLink" data-idx="${idx}" placeholder="Payment Checkout / Wire Link" value="${escapeHtml(inv.paymentLink || '')}">
+                    <input type="url" class="admin-input" data-inv-field="paymentLink" data-idx="${idx}" placeholder="Payment Checkout / Wire Link" value="${escapeHtml(inv.paymentLink || inv.paymentUrl || '')}">
                 </div>
             </div>
         `).join('');
@@ -4189,10 +4216,10 @@
         clManageFeedbackList.innerHTML = list.map(fb => `
             <div style="background:rgba(255,255,255,0.03); border:1px solid var(--adm-border); border-radius:8px; padding:0.85rem;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
-                    <span style="font-weight:700; color:var(--adm-text); font-size:0.85rem;">${escapeHtml(fb.topic || 'General Feedback')}</span>
+                    <span style="font-weight:700; color:var(--adm-text); font-size:0.85rem;">${escapeHtml(fb.topic || (fb.type === 'approval' ? 'Deliverable Approval' : 'Client Feedback'))}</span>
                     <span style="font-size:0.75rem; color:var(--adm-text-muted);">${formatDate(fb.createdAt, true)}</span>
                 </div>
-                <p style="font-size:0.82rem; color:var(--adm-text-main); margin:0 0 0.35rem; line-height:1.4;">${escapeHtml(fb.message || '')}</p>
+                <p style="font-size:0.82rem; color:var(--adm-text-main); margin:0 0 0.35rem; line-height:1.4;">${escapeHtml(fb.comment || fb.message || '')}</p>
                 ${fb.urgency ? `<span style="font-size:0.72rem; padding:0.15rem 0.5rem; border-radius:999px; background:rgba(252,163,17,0.12); color:#fca311; font-weight:600;">Priority: ${escapeHtml(fb.urgency)}</span>` : ''}
             </div>
         `).join('');
@@ -4208,12 +4235,86 @@
         editingClient.internalNotes = editInternalNotes ? editInternalNotes.value : editingClient.internalNotes;
 
         if (!editingClient.project) editingClient.project = {};
+        const chosenProduct = editProjectProduct ? editProjectProduct.value : 'custom';
+        editingClient.product = chosenProduct;
+        editingClient.project.product = chosenProduct;
+        editingClient.project.productId = chosenProduct;
         editingClient.project.name = (editProjectName ? editProjectName.value : editingClient.project.name).trim();
         editingClient.project.description = (editProjectDesc ? editProjectDesc.value : editingClient.project.description).trim();
         editingClient.project.stage = editProjectStage ? editProjectStage.value : editingClient.project.stage;
-        editingClient.project.progress = editProjectProgress ? parseInt(editProjectProgress.value, 10) || 0 : 0;
+        const progressNum = editProjectProgress ? parseInt(editProjectProgress.value, 10) || 0 : 0;
+        editingClient.project.progress = progressNum;
+        editingClient.project.progressPercent = progressNum;
         editingClient.project.targetLaunchDate = editProjectTargetDate ? editProjectTargetDate.value : '';
-        editingClient.project.lead = (editProjectLead ? editProjectLead.value : editingClient.project.lead).trim();
+        const leadVal = (editProjectLead ? editProjectLead.value : (editingClient.project.lead || editingClient.project.versalyLead)).trim();
+        editingClient.project.lead = leadVal;
+        editingClient.project.versalyLead = leadVal;
+        editingClient.project.contactEmail = editProjectContactEmail ? editProjectContactEmail.value.trim() : '';
+
+        // Mirror sub-collections into project object so both APIs have full consistency
+        editingClient.project.timeline = Array.isArray(editingClient.timeline) ? editingClient.timeline.map(m => ({
+            id: m.id || ('tl_' + Date.now() + Math.random().toString(36).substr(2, 4)),
+            phase: m.title || m.phase || 'Milestone',
+            title: m.title || m.phase || 'Milestone',
+            status: m.status || 'upcoming',
+            targetDate: m.date || m.targetDate || '',
+            date: m.date || m.targetDate || '',
+            summary: m.description || m.summary || '',
+            description: m.description || m.summary || ''
+        })) : [];
+        editingClient.timeline = editingClient.project.timeline;
+
+        editingClient.project.deliverables = Array.isArray(editingClient.deliverables) ? editingClient.deliverables.map(d => ({
+            id: d.id || ('del_' + Date.now() + Math.random().toString(36).substr(2, 4)),
+            title: d.title || 'Untitled Deliverable',
+            version: d.version || 'v1.0',
+            category: d.version || d.category || 'Deliverable',
+            status: d.status || 'pending_review',
+            dueDate: d.dueDate || '',
+            fileUrl: d.fileUrl || '',
+            summary: d.summary || d.notes || '',
+            notes: d.summary || d.notes || '',
+            approvedAt: d.approvedAt || null,
+            clientFeedback: d.clientFeedback || null
+        })) : [];
+        editingClient.deliverables = editingClient.project.deliverables;
+
+        editingClient.project.meetingNotes = Array.isArray(editingClient.meetingNotes) ? editingClient.meetingNotes.map(m => ({
+            id: m.id || ('mn_' + Date.now() + Math.random().toString(36).substr(2, 4)),
+            date: m.date || new Date().toISOString().split('T')[0],
+            title: m.title || 'Sync Note',
+            attendees: m.attendees || 'Versaly Team & Client',
+            summary: m.summary || '',
+            nextSteps: m.actionItems || m.nextSteps || '',
+            actionItems: m.actionItems || m.nextSteps || '',
+            isClientVisible: m.isClientVisible !== false
+        })) : [];
+        editingClient.meetingNotes = editingClient.project.meetingNotes;
+
+        editingClient.project.approvedFiles = Array.isArray(editingClient.files) ? editingClient.files.map(f => ({
+            id: f.id || ('f_' + Date.now() + Math.random().toString(36).substr(2, 4)),
+            name: f.name || 'File Link',
+            category: f.category || f.type || 'Specification',
+            type: f.category || f.type || 'Specification',
+            uploadedAt: f.uploadedAt || new Date().toISOString().split('T')[0],
+            size: f.size || 'Web Link',
+            url: f.url || ''
+        })) : [];
+        editingClient.files = editingClient.project.approvedFiles;
+
+        editingClient.project.invoices = Array.isArray(editingClient.invoices) ? editingClient.invoices.map((inv, idx) => ({
+            id: inv.invoiceNumber || inv.id || ('INV-2026-00' + (idx + 1)),
+            invoiceNumber: inv.invoiceNumber || inv.id || ('INV-2026-00' + (idx + 1)),
+            title: inv.description || inv.title || 'Deliverable Fee',
+            description: inv.description || inv.title || 'Deliverable Fee',
+            amount: Number(inv.amount) || 0,
+            currency: inv.currency || 'USD',
+            status: inv.status === 'unpaid' ? 'due' : (inv.status || 'due'),
+            dueDate: inv.dueDate || '',
+            paymentLink: inv.paymentLink || inv.paymentUrl || '',
+            paymentUrl: inv.paymentLink || inv.paymentUrl || ''
+        })) : [];
+        editingClient.invoices = editingClient.project.invoices;
 
         try {
             const res = await authFetch(`/api/admin/clients/${editingClient.id}`, {

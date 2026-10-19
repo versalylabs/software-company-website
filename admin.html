@@ -1880,7 +1880,7 @@
     <!-- ════════════════════════════════════════════════════════════════ -->
     <!-- CLIENT PORTAL: NEW CLIENT MODAL (Phase 21) -->
     <!-- ════════════════════════════════════════════════════════════════ -->
-    <div id="client-new-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true" style="display:none;">
+    <div id="client-new-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true">
         <div class="admin-modal" role="dialog" aria-modal="true" style="max-width: 650px;">
             <div class="admin-modal__header">
                 <div>
@@ -1914,6 +1914,21 @@
                     </div>
 
                     <hr style="border:none; border-top:1px solid var(--adm-border); margin:1.25rem 0;">
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="new-client-project-product">System / Product Bought</label>
+                        <select id="new-client-project-product" class="admin-input">
+                            <option value="custom">Custom Bespoke Platform</option>
+                            <option value="velour-atelier">Velour Luxury Atelier ERP &amp; Booking Engine</option>
+                            <option value="melio-restaurant-os">Melio Restaurant OS</option>
+                            <option value="campus-erp">Campus ERP &amp; Student Information System</option>
+                            <option value="pulse-gym-ms">Pulse Gym &amp; Fitness Management System</option>
+                            <option value="hotel-management-system">Hotel Management System</option>
+                            <option value="healthcare-pro">Healthcare Pro (Clinic Management &amp; Telehealth)</option>
+                            <option value="financeflow">FinanceFlow (BI &amp; Financial Analytics)</option>
+                            <option value="makersuite">MakerSuite (Inventory Management)</option>
+                        </select>
+                    </div>
 
                     <div class="admin-form-group">
                         <label class="admin-form-label" for="new-client-project-name">Project Title <span class="required">*</span></label>
@@ -1966,7 +1981,7 @@
     <!-- ════════════════════════════════════════════════════════════════ -->
     <!-- CLIENT PORTAL: MANAGE CLIENT DRAWER / MODAL (Phase 21) -->
     <!-- ════════════════════════════════════════════════════════════════ -->
-    <div id="client-manage-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true" style="display:none;">
+    <div id="client-manage-modal-backdrop" class="admin-modal-backdrop" aria-hidden="true">
         <div class="admin-modal" role="dialog" aria-modal="true" style="max-width: 950px;">
             <div class="admin-modal__header">
                 <div>
@@ -1996,18 +2011,18 @@
                     <div id="cl-subtab-status" class="cl-subtab-pane active">
                         <div class="admin-form-grid-2">
                             <div class="admin-form-group">
-                                <label class="admin-form-label">Client Name</label>
+                                <label class="admin-form-label">Client Contact Name</label>
                                 <input type="text" id="edit-client-name" class="admin-input">
                             </div>
                             <div class="admin-form-group">
-                                <label class="admin-form-label">Client Email</label>
+                                <label class="admin-form-label">Client Work Email</label>
                                 <input type="email" id="edit-client-email" class="admin-input">
                             </div>
                         </div>
 
                         <div class="admin-form-grid-2">
                             <div class="admin-form-group">
-                                <label class="admin-form-label">Company Name</label>
+                                <label class="admin-form-label">Company / Atelier Name</label>
                                 <input type="text" id="edit-client-company" class="admin-input">
                             </div>
                             <div class="admin-form-group">
@@ -2019,13 +2034,31 @@
                             </div>
                         </div>
 
-                        <div class="admin-form-group">
-                            <label class="admin-form-label">Project Title</label>
-                            <input type="text" id="edit-project-name" class="admin-input">
+                        <hr style="border:none; border-top:1px solid var(--adm-border); margin:1.25rem 0;">
+
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label" for="edit-project-product">System / Product Bought</label>
+                                <select id="edit-project-product" class="admin-input">
+                                    <option value="custom">Custom Bespoke Platform</option>
+                                    <option value="velour-atelier">Velour Luxury Atelier ERP &amp; Booking Engine</option>
+                                    <option value="melio-restaurant-os">Melio Restaurant OS</option>
+                                    <option value="campus-erp">Campus ERP &amp; Student Information System</option>
+                                    <option value="pulse-gym-ms">Pulse Gym &amp; Fitness Management System</option>
+                                    <option value="hotel-management-system">Hotel Management System</option>
+                                    <option value="healthcare-pro">Healthcare Pro (Clinic Management &amp; Telehealth)</option>
+                                    <option value="financeflow">FinanceFlow (BI &amp; Financial Analytics)</option>
+                                    <option value="makersuite">MakerSuite (Inventory Management)</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Project Title</label>
+                                <input type="text" id="edit-project-name" class="admin-input">
+                            </div>
                         </div>
 
                         <div class="admin-form-group">
-                            <label class="admin-form-label">Project Description</label>
+                            <label class="admin-form-label">Project Overview &amp; Architectural Scope</label>
                             <textarea id="edit-project-desc" class="admin-input" rows="3"></textarea>
                         </div>
 
@@ -2051,9 +2084,15 @@
                             </div>
                         </div>
 
-                        <div class="admin-form-group">
-                            <label class="admin-form-label">Engineering Lead</label>
-                            <input type="text" id="edit-project-lead" class="admin-input">
+                        <div class="admin-form-grid-2">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Engineering Lead</label>
+                                <input type="text" id="edit-project-lead" class="admin-input">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Dedicated Support Email</label>
+                                <input type="email" id="edit-project-contact-email" class="admin-input" placeholder="e.g. team@versaly.example.com">
+                            </div>
                         </div>
 
                         <div style="background:rgba(252,163,17,0.06); border:1px dashed var(--adm-border-accent); border-radius:8px; padding:1rem; margin-top:1rem; display:flex; align-items:center; justify-content:space-between;">
@@ -2150,7 +2189,7 @@
 
     <script src="js/motion.js"></script>
     <script src="js/theme.js"></script>
-    <script src="js/admin.js?v=20260914-phase18"></script>
+    <script src="js/admin.js?v=20261019-phase21-portal-manage"></script>
 </body>
 </html>
 

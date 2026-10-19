@@ -3890,34 +3890,25 @@ function requestHandler(req, res) {
         // ADMIN: CLIENT PORTAL MANAGEMENT
         // ════════════════════════════════════════════════════════════════
 
-        // GET /api/admin/clients - List all client portals with summary statistics
+        // GET /api/admin/clients - List all client portals with full project data
         if (req.method === 'GET' && pathname === '/api/admin/clients') {
             const data = readClientsData();
             const list = (data.clients || []).map(c => {
-                const proj = c.project || {};
+                const copy = JSON.parse(JSON.stringify(c));
+                delete copy.passwordHash;
+                delete copy.salt;
+                const proj = copy.project || {};
                 const deliverables = proj.deliverables || [];
                 const invoices = proj.invoices || [];
-                return {
-                    id: c.id,
-                    name: c.name,
-                    email: c.email,
-                    company: c.company,
-                    status: c.status || 'active',
-                    createdAt: c.createdAt,
-                    lastLogin: c.lastLogin,
-                    project: {
-                        id: proj.id,
-                        name: proj.name,
-                        stage: proj.stage,
-                        status: proj.status,
-                        progressPercent: proj.progressPercent || 0,
-                        targetLaunchDate: proj.targetLaunchDate,
-                        versalyLead: proj.versalyLead,
-                        pendingDeliverablesCount: deliverables.filter(d => d.status === 'pending_review').length,
-                        unpaidInvoicesCount: invoices.filter(i => i.status === 'due').length,
-                        totalInvoiced: invoices.reduce((acc, i) => acc + (Number(i.amount) || 0), 0)
-                    }
-                };
+                proj.deliverablesCount = deliverables.length;
+                proj.invoicesCount = invoices.length;
+                proj.pendingDeliverablesCount = deliverables.filter(d => d.status === 'pending_review' || d.status === 'in_progress').length;
+                proj.unpaidInvoicesCount = invoices.filter(i => i.status === 'due' || i.status === 'unpaid').length;
+                proj.totalInvoiced = invoices.reduce((acc, i) => acc + (Number(i.amount) || 0), 0);
+                if (proj.progressPercent != null && proj.progress == null) proj.progress = proj.progressPercent;
+                if (proj.progress != null && proj.progressPercent == null) proj.progressPercent = proj.progress;
+                copy.project = proj;
+                return copy;
             });
 
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -4064,35 +4055,56 @@ function requestHandler(req, res) {
                     if (client.project) client.project.internalNotes = body.internalNotes;
                 }
 
-                if (body.project) {
-                    if (!client.project) client.project = {};
-                    const bp = body.project;
-                    if (bp.name !== undefined) client.project.name = bp.name;
-                    if (bp.description !== undefined) client.project.description = bp.description;
-                    if (bp.stage !== undefined) client.project.stage = bp.stage;
-                    if (bp.status !== undefined) client.project.status = bp.status;
-                    if (bp.progress !== undefined || bp.progressPercent !== undefined) {
-                        const prog = Number(bp.progress !== undefined ? bp.progress : bp.progressPercent);
-                        client.project.progress = prog;
-                        client.project.progressPercent = prog;
-                    }
-                    if (bp.targetLaunchDate !== undefined) client.project.targetLaunchDate = bp.targetLaunchDate;
-                    if (bp.lead !== undefined || bp.versalyLead !== undefined) {
-                        const lead = bp.lead !== undefined ? bp.lead : bp.versalyLead;
-                        client.project.lead = lead;
-                        client.project.versalyLead = lead;
-                    }
-                    if (bp.contactEmail !== undefined) client.project.contactEmail = bp.contactEmail;
-                    if (bp.timeline !== undefined) client.project.timeline = bp.timeline;
-                    if (bp.deliverables !== undefined) client.project.deliverables = bp.deliverables;
-                    if (bp.meetingNotes !== undefined) client.project.meetingNotes = bp.meetingNotes;
-                    if (bp.approvedFiles !== undefined) client.project.approvedFiles = bp.approvedFiles;
-                    if (bp.feedback !== undefined) client.project.feedback = bp.feedback;
-                    if (bp.invoices !== undefined) client.project.invoices = bp.invoices;
-                    if (bp.internalNotes !== undefined) {
-                        client.project.internalNotes = bp.internalNotes;
-                        client.internalNotes = bp.internalNotes;
-                    }
+                if (!client.project) client.project = {};
+                const bp = body.project || {};
+
+                // Product / system bought
+                const prod = bp.product !== undefined ? bp.product : (bp.productId !== undefined ? bp.productId : (body.product !== undefined ? body.product : body.productId));
+                if (prod !== undefined) {
+                    client.project.product = prod;
+                    client.project.productId = prod;
+                }
+
+                if (bp.name !== undefined || body.projectName !== undefined) client.project.name = bp.name !== undefined ? bp.name : body.projectName;
+                if (bp.description !== undefined || body.projectDescription !== undefined) client.project.description = bp.description !== undefined ? bp.description : body.projectDescription;
+                if (bp.stage !== undefined || body.projectStage !== undefined) client.project.stage = bp.stage !== undefined ? bp.stage : body.projectStage;
+                if (bp.status !== undefined) client.project.status = bp.status;
+                if (bp.progress !== undefined || bp.progressPercent !== undefined || body.progress !== undefined || body.progressPercent !== undefined) {
+                    const progVal = bp.progress !== undefined ? bp.progress : (bp.progressPercent !== undefined ? bp.progressPercent : (body.progress !== undefined ? body.progress : body.progressPercent));
+                    const prog = Number(progVal) || 0;
+                    client.project.progress = prog;
+                    client.project.progressPercent = prog;
+                }
+                if (bp.targetLaunchDate !== undefined || body.targetLaunchDate !== undefined) client.project.targetLaunchDate = bp.targetLaunchDate !== undefined ? bp.targetLaunchDate : body.targetLaunchDate;
+                if (bp.lead !== undefined || bp.versalyLead !== undefined || body.versalyLead !== undefined || body.lead !== undefined) {
+                    const lead = bp.lead !== undefined ? bp.lead : (bp.versalyLead !== undefined ? bp.versalyLead : (body.versalyLead !== undefined ? body.versalyLead : body.lead));
+                    client.project.lead = lead;
+                    client.project.versalyLead = lead;
+                }
+                if (bp.contactEmail !== undefined) client.project.contactEmail = bp.contactEmail;
+
+                // Sub-collections (support both bp.* and body.*)
+                const timeline = bp.timeline !== undefined ? bp.timeline : body.timeline;
+                if (timeline !== undefined) client.project.timeline = Array.isArray(timeline) ? timeline : [];
+
+                const deliverables = bp.deliverables !== undefined ? bp.deliverables : body.deliverables;
+                if (deliverables !== undefined) client.project.deliverables = Array.isArray(deliverables) ? deliverables : [];
+
+                const meetingNotes = bp.meetingNotes !== undefined ? bp.meetingNotes : body.meetingNotes;
+                if (meetingNotes !== undefined) client.project.meetingNotes = Array.isArray(meetingNotes) ? meetingNotes : [];
+
+                const approvedFiles = bp.approvedFiles !== undefined ? bp.approvedFiles : (bp.files !== undefined ? bp.files : (body.approvedFiles !== undefined ? body.approvedFiles : body.files));
+                if (approvedFiles !== undefined) client.project.approvedFiles = Array.isArray(approvedFiles) ? approvedFiles : [];
+
+                const invoices = bp.invoices !== undefined ? bp.invoices : body.invoices;
+                if (invoices !== undefined) client.project.invoices = Array.isArray(invoices) ? invoices : [];
+
+                const feedback = bp.feedback !== undefined ? bp.feedback : body.feedback;
+                if (feedback !== undefined) client.project.feedback = Array.isArray(feedback) ? feedback : [];
+
+                if (bp.internalNotes !== undefined) {
+                    client.project.internalNotes = bp.internalNotes;
+                    client.internalNotes = bp.internalNotes;
                 }
 
                 writeClientsData(data);

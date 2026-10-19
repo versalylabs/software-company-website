@@ -2824,4 +2824,21 @@ html.admin-authenticated #admin-dashboard-view {
     border-color: rgba(252, 163, 17, 0.3);
 }
 
+.admin-modal-backdrop.is-open {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 1050 !important;
+}
+
+.admin-btn-action svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.admin-btn-action.icon-only {
+    padding: 0.5rem 0.6rem;
+}
+
 
