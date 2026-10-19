@@ -408,6 +408,8 @@
     const pwdCurrent = document.getElementById('pwd-current');
     const pwdNew = document.getElementById('pwd-new');
     const pwdConfirm = document.getElementById('pwd-confirm');
+    const btnChangePassword = document.getElementById('btn-change-password');
+    const adminPasswordForm = document.getElementById('admin-password-form');
 
     // Phase 18: Notification Center Elements
     const btnNotificationBell = document.getElementById('btn-notification-bell');
@@ -3424,6 +3426,7 @@
             if (btnChangePassword) btnChangePassword.disabled = false;
         }
     }
+    window.changeAdminPassword = changeAdminPassword;
 
     // ════════════════════════════════════════════════════════════════
     // PHASE 18: NOTIFICATION CENTER CONTROLLER
@@ -3885,7 +3888,7 @@
                     </td>
                     <td>
                         <div style="display:flex; gap:0.4rem; align-items:center;">
-                            <button type="button" class="admin-btn-action primary" data-action="manage-client" data-id="${c.id}" title="Manage Client Portal">
+                            <button type="button" class="admin-btn-action primary" data-action="manage-client" data-id="${c.id}" onclick="window.openManageClientModal && window.openManageClientModal('${c.id}')" title="Manage Client Portal">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                 <span>Manage</span>
                             </button>
@@ -3971,76 +3974,112 @@
         }
     }
 
-    function openManageClientModal(clientId) {
-        if (!clientId || !clientManageModalBackdrop) return;
-        const found = currentClients.find(c => c.id === clientId);
-        if (!found) return;
-
-        editingClient = JSON.parse(JSON.stringify(found));
-        const p = editingClient.project || {};
-        editingClient.project = p;
-
-        // Normalize sub-collections between root and project
-        editingClient.timeline = Array.isArray(p.timeline) ? p.timeline : (Array.isArray(editingClient.timeline) ? editingClient.timeline : []);
-        p.timeline = editingClient.timeline;
-
-        editingClient.deliverables = Array.isArray(p.deliverables) ? p.deliverables : (Array.isArray(editingClient.deliverables) ? editingClient.deliverables : []);
-        p.deliverables = editingClient.deliverables;
-
-        editingClient.meetingNotes = Array.isArray(p.meetingNotes) ? p.meetingNotes : (Array.isArray(editingClient.meetingNotes) ? editingClient.meetingNotes : []);
-        p.meetingNotes = editingClient.meetingNotes;
-
-        editingClient.files = Array.isArray(p.approvedFiles) ? p.approvedFiles : (Array.isArray(editingClient.files) ? editingClient.files : (Array.isArray(p.files) ? p.files : []));
-        p.approvedFiles = editingClient.files;
-
-        editingClient.invoices = Array.isArray(p.invoices) ? p.invoices : (Array.isArray(editingClient.invoices) ? editingClient.invoices : []);
-        p.invoices = editingClient.invoices;
-
-        editingClient.feedback = Array.isArray(p.feedback) ? p.feedback : (Array.isArray(editingClient.feedback) ? editingClient.feedback : []);
-        p.feedback = editingClient.feedback;
-
-        if (manageClientId) manageClientId.value = editingClient.id;
-        if (manageClientTitle) manageClientTitle.textContent = editingClient.company || editingClient.name;
-        if (manageClientSubtitle) {
-            const pName = p.name || 'Project Workspace';
-            manageClientSubtitle.textContent = `${editingClient.email} • ${pName}`;
+    async function openManageClientModal(clientId) {
+        const modalBackdrop = document.getElementById('client-manage-modal-backdrop') || clientManageModalBackdrop;
+        if (!clientId) {
+            console.error('[ClientManage] openManageClientModal called without clientId');
+            return;
+        }
+        if (!modalBackdrop) {
+            console.error('[ClientManage] client-manage-modal-backdrop not found');
+            return;
         }
 
-        if (editClientName) editClientName.value = editingClient.name || '';
-        if (editClientEmail) editClientEmail.value = editingClient.email || '';
-        if (editClientCompany) editClientCompany.value = editingClient.company || '';
-        if (editClientStatus) editClientStatus.value = editingClient.status || 'active';
-        if (editInternalNotes) editInternalNotes.value = editingClient.internalNotes || p.internalNotes || '';
+        let found = currentClients && currentClients.find(c => String(c.id) === String(clientId));
+        if (!found) {
+            try {
+                const res = await authFetch(`/api/admin/clients/${encodeURIComponent(clientId)}`);
+                const data = await res.json();
+                if (data.success && data.client) {
+                    found = data.client;
+                    if (!currentClients) currentClients = [];
+                    currentClients.push(found);
+                }
+            } catch (err) {
+                console.warn('[ClientManage] Could not fetch client by ID:', err);
+            }
+        }
 
-        // Project fields
-        if (editProjectProduct) editProjectProduct.value = p.product || p.productId || editingClient.product || 'custom';
-        if (editProjectName) editProjectName.value = p.name || '';
-        if (editProjectDesc) editProjectDesc.value = p.description || '';
-        if (editProjectStage) editProjectStage.value = p.stage || 'In Development';
-        const progVal = p.progressPercent != null ? p.progressPercent : (p.progress != null ? p.progress : 25);
-        if (editProjectProgress) editProjectProgress.value = progVal;
-        if (editProjectTargetDate) editProjectTargetDate.value = p.targetLaunchDate || '';
-        if (editProjectLead) editProjectLead.value = p.versalyLead || p.lead || 'Alex Mercer';
-        if (editProjectContactEmail) editProjectContactEmail.value = p.contactEmail || '';
+        if (!found) {
+            alert('Client workspace not found for ID: ' + clientId);
+            return;
+        }
 
-        renderManageTimeline();
-        renderManageDeliverables();
-        renderManageMeetings();
-        renderManageFiles();
-        renderManageInvoices();
-        renderManageFeedback();
+        try {
+            editingClient = JSON.parse(JSON.stringify(found));
+            const p = editingClient.project || {};
+            editingClient.project = p;
+
+            // Normalize sub-collections between root and project
+            editingClient.timeline = Array.isArray(p.timeline) ? p.timeline : (Array.isArray(editingClient.timeline) ? editingClient.timeline : []);
+            p.timeline = editingClient.timeline;
+
+            editingClient.deliverables = Array.isArray(p.deliverables) ? p.deliverables : (Array.isArray(editingClient.deliverables) ? editingClient.deliverables : []);
+            p.deliverables = editingClient.deliverables;
+
+            editingClient.meetingNotes = Array.isArray(p.meetingNotes) ? p.meetingNotes : (Array.isArray(editingClient.meetingNotes) ? editingClient.meetingNotes : []);
+            p.meetingNotes = editingClient.meetingNotes;
+
+            editingClient.files = Array.isArray(p.approvedFiles) ? p.approvedFiles : (Array.isArray(editingClient.files) ? editingClient.files : (Array.isArray(p.files) ? p.files : []));
+            p.approvedFiles = editingClient.files;
+
+            editingClient.invoices = Array.isArray(p.invoices) ? p.invoices : (Array.isArray(editingClient.invoices) ? editingClient.invoices : []);
+            p.invoices = editingClient.invoices;
+
+            editingClient.feedback = Array.isArray(p.feedback) ? p.feedback : (Array.isArray(editingClient.feedback) ? editingClient.feedback : []);
+            p.feedback = editingClient.feedback;
+
+            if (manageClientId) manageClientId.value = editingClient.id;
+            if (manageClientTitle) manageClientTitle.textContent = editingClient.company || editingClient.name;
+            if (manageClientSubtitle) {
+                const pName = p.name || 'Project Workspace';
+                manageClientSubtitle.textContent = `${editingClient.email} • ${pName}`;
+            }
+
+            if (editClientName) editClientName.value = editingClient.name || '';
+            if (editClientEmail) editClientEmail.value = editingClient.email || '';
+            if (editClientCompany) editClientCompany.value = editingClient.company || '';
+            if (editClientStatus) editClientStatus.value = editingClient.status || 'active';
+            if (editInternalNotes) editInternalNotes.value = editingClient.internalNotes || p.internalNotes || '';
+
+            // Project fields
+            if (editProjectProduct) editProjectProduct.value = p.product || p.productId || editingClient.product || 'custom';
+            if (editProjectName) editProjectName.value = p.name || '';
+            if (editProjectDesc) editProjectDesc.value = p.description || '';
+            if (editProjectStage) editProjectStage.value = p.stage || 'In Development';
+            const progVal = p.progressPercent != null ? p.progressPercent : (p.progress != null ? p.progress : 25);
+            if (editProjectProgress) editProjectProgress.value = progVal;
+            if (editProjectTargetDate) editProjectTargetDate.value = p.targetLaunchDate || '';
+            if (editProjectLead) editProjectLead.value = p.versalyLead || p.lead || 'Alex Mercer';
+            if (editProjectContactEmail) editProjectContactEmail.value = p.contactEmail || '';
+
+            renderManageTimeline();
+            renderManageDeliverables();
+            renderManageMeetings();
+            renderManageFiles();
+            renderManageInvoices();
+            renderManageFeedback();
+        } catch (renderErr) {
+            console.error('[ClientManage] Error rendering manage client sub-tabs:', renderErr);
+        }
 
         switchClientSubtab('status');
-        clientManageModalBackdrop.style.display = 'flex';
-        clientManageModalBackdrop.classList.add('is-open');
+        modalBackdrop.style.display = 'flex';
+        modalBackdrop.classList.add('is-open');
+        modalBackdrop.setAttribute('aria-hidden', 'false');
     }
 
     function closeManageClientModal() {
-        if (!clientManageModalBackdrop) return;
-        clientManageModalBackdrop.classList.remove('is-open');
-        clientManageModalBackdrop.style.display = 'none';
+        const modalBackdrop = document.getElementById('client-manage-modal-backdrop') || clientManageModalBackdrop;
+        if (!modalBackdrop) return;
+        modalBackdrop.classList.remove('is-open');
+        modalBackdrop.style.display = 'none';
+        modalBackdrop.setAttribute('aria-hidden', 'true');
         editingClient = null;
     }
+
+    window.openManageClientModal = openManageClientModal;
+    window.closeManageClientModal = closeManageClientModal;
 
     function switchClientSubtab(tabKey) {
         activeClientSubTab = tabKey;
@@ -4992,6 +5031,13 @@
 
         if (btnChangePassword) {
             btnChangePassword.addEventListener('click', changeAdminPassword);
+        }
+
+        if (adminPasswordForm) {
+            adminPasswordForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                changeAdminPassword();
+            });
         }
 
         // --- Media Library Toolbar & Upload Events (Phase 8) ---
